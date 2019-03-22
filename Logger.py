@@ -1,20 +1,11 @@
+#!/usr/bin/python
+
 from Csv import *
 
-loggerinfo = { 'loggertype'     :"IAQ",
-               'id'             :"NUMBA0",
-               'softwareversion': 0,
-             }
-
-moduleinfo = { 'calibration'    :"NA"
-             }
-
-csv = Csv("test.csv",loggerinfo,moduleinfo)
-
-data = [9000,9001]
-csv.writeData(data)
+csv = Csv("./config/logger_setup.csv")
+csv.setupNewFile()
 
 #while True:
-   
     # If csv reached max limit, close
     # or if csv not reachable
         # create new csv

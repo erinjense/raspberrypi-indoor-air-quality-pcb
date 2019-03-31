@@ -1,5 +1,5 @@
 Logger Type,IAQ
 Id,IAQ_0
 Software Version,Alpha
-Headers,"./config/csv_headers.csv"
-Sensors,"./config/sensors/bme680.csv","./config/sensors/mq_gas.csv"
+Headers,Date(YYYY/MM/DD),Time(HH:MM:SS),Location(degrees),Temp(C),Humidity(RH)
+Sensors,./config/sensors/bme680.csv,./config/sensors/mq_gas.csv

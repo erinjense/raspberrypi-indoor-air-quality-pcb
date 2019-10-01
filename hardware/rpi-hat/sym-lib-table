@@ -1,3 +1,5 @@
 (sym_lib_table
   (lib (name rpi-hat-rescue)(type Legacy)(uri ${KIPRJMOD}/rpi-hat-rescue.lib)(options "")(descr ""))
+  (lib (name DRV8332DKD)(type Legacy)(uri /home/aeryn/Downloads/DRV8332DKD.lib)(options "")(descr ""))
+  (lib (name SM03B-SRSS-TB_LF__SN_)(type Legacy)(uri /home/aeryn/Downloads/SM03B-SRSS-TB_LF__SN_.lib)(options "")(descr ""))
 )

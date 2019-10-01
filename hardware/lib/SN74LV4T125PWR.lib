@@ -1,0 +1,40 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#(c) SnapEDA 2016 (snapeda.com)
+#This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA) with Design Exception 1.0
+#
+# SN74LV4T125PWR
+#
+DEF SN74LV4T125PWR U 0 40 Y Y 1 L N
+F0 "U" -401 801 50 H V L BNN
+F1 "SN74LV4T125PWR" -400 -901 50 H V L BNN
+F2 "SOP65P640X120-14N" 0 0 50 H I L BNN
+F3 "Texas Instruments" 0 0 50 H I L BNN
+F4 "None" 0 0 50 H I L BNN
+F5 "SN74LV4T125PWR" 0 0 50 H I L BNN
+F6 "TSSOP-14 Texas Instruments" 0 0 50 H I L BNN
+F7 "Unavailable" 0 0 50 H I L BNN
+F8 "Single Power Supply Quadruple Buffer GATE w/ 3-State Output CMOS Logic Level Shifter 14-TSSOP -40 to 125" 0 0 50 H I L BNN
+DRAW
+P 2 0 0 10 -400 800 400 800 N
+P 2 0 0 10 400 800 400 -800 N
+P 2 0 0 10 400 -800 -400 -800 N
+P 2 0 0 10 -400 -800 -400 800 N
+X 1!OE 1 -600 500 200 R 40 40 0 0 I 
+X 1A 2 -600 400 200 R 40 40 0 0 I 
+X 2!OE 4 -600 200 200 R 40 40 0 0 I 
+X 2A 5 -600 100 200 R 40 40 0 0 I 
+X 3!OE 10 -600 -100 200 R 40 40 0 0 I 
+X 3A 9 -600 -200 200 R 40 40 0 0 I 
+X 4!OE 13 -600 -400 200 R 40 40 0 0 I 
+X 4A 12 -600 -500 200 R 40 40 0 0 I 
+X 1Y 3 600 400 200 L 40 40 0 0 O 
+X 2Y 6 600 100 200 L 40 40 0 0 O 
+X 3Y 8 600 -200 200 L 40 40 0 0 O 
+X 4Y 11 600 -500 200 L 40 40 0 0 O 
+X VCC 14 600 700 200 L 40 40 0 0 W 
+X GND 7 600 -700 200 L 40 40 0 0 W 
+ENDDRAW
+ENDDEF
+#
+# End Library

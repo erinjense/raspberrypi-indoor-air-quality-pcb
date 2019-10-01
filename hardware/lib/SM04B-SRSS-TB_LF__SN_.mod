@@ -1,0 +1,81 @@
+PCBNEW-LibModule-V1  
+# encoding utf-8
+Units mm
+$INDEX
+JST_SM04B-SRSS-TB(LF)(SN)
+$EndINDEX
+$MODULE JST_SM04B-SRSS-TB(LF)(SN)
+Po 0 0 0 15 00000000 00000000 ~~
+Li JST_SM04B-SRSS-TB(LF)(SN)
+Cd 
+Sc 00000000
+At SMD
+Op 0 0 0
+.SolderMask 0
+.SolderPaste 0
+T0 -1.18084 -1.76768 1.00117 1.00117 0 0.05 N V 21 "JST_SM04B-SRSS-TB(LF)(SN)"
+T1 -0.53681 5.74055 1.00057 1.00057 0 0.05 N V 21 "VAL**"
+DC -2.45 -0.385 -2.35 -0.385 0.3 21
+DS -3 0.325 3 0.325 0.127 27
+DS 3 0.325 3 4.575 0.127 27
+DS 3 4.575 -3 4.575 0.127 27
+DS -3 4.575 -3 0.325 0.127 27
+DS -2.2 0.325 -3 0.325 0.127 21
+DS -3 0.325 -3 2.6 0.127 21
+DS 2.2 0.325 3 0.325 0.127 21
+DS 3 0.325 3 2.6 0.127 21
+DS -1.8 4.575 1.8 4.575 0.127 21
+DC -2.45 -0.385 -2.35 -0.385 0.3 27
+DS -3.65 -1.025 3.65 -1.025 0.05 26
+DS 3.65 -1.025 3.65 5.025 0.05 26
+DS 3.65 5.025 -3.65 5.025 0.05 26
+DS -3.65 5.025 -3.65 -1.025 0.05 26
+$PAD
+Sh "S2" R 1.2 1.8 0 0 1800
+At SMD N 00888000
+.SolderMask 0
+.SolderPaste 0
+Ne 0 ""
+Po 2.8 3.875
+$EndPAD
+$PAD
+Sh "S1" R 1.2 1.8 0 0 1800
+At SMD N 00888000
+.SolderMask 0
+.SolderPaste 0
+Ne 0 ""
+Po -2.8 3.875
+$EndPAD
+$PAD
+Sh "1" R 0.6 1.55 0 0 0
+At SMD N 00888000
+.SolderMask 0
+.SolderPaste 0
+Ne 0 ""
+Po -1.5 0
+$EndPAD
+$PAD
+Sh "2" R 0.6 1.55 0 0 0
+At SMD N 00888000
+.SolderMask 0
+.SolderPaste 0
+Ne 0 ""
+Po -0.5 0
+$EndPAD
+$PAD
+Sh "3" R 0.6 1.55 0 0 0
+At SMD N 00888000
+.SolderMask 0
+.SolderPaste 0
+Ne 0 ""
+Po 0.5 0
+$EndPAD
+$PAD
+Sh "4" R 0.6 1.55 0 0 0
+At SMD N 00888000
+.SolderMask 0
+.SolderPaste 0
+Ne 0 ""
+Po 1.5 0
+$EndPAD
+$EndMODULE JST_SM04B-SRSS-TB(LF)(SN)

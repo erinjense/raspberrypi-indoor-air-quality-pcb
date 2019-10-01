@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:rpi-hat-cache
-EELAYER 26 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -28,7 +27,7 @@ F 3 "" H 4200 3350 50  0001 L BNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D9C2158
 P 3150 3900
 AR Path="/5D9C2158" Ref="#PWR?"  Part="1" 
@@ -53,7 +52,7 @@ Connection ~ 3150 3450
 Wire Wire Line
 	3150 3450 3150 3150
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D9C216A
 P 4800 4050
 AR Path="/5D9C216A" Ref="#PWR?"  Part="1" 
@@ -75,7 +74,7 @@ Wire Wire Line
 Text Notes 3700 2300 0    50   ~ 10
 3.3V to 5V Logic Conversion
 $Comp
-L power:+5V #PWR?
+L zephyrus_iaq:+5V #PWR?
 U 1 1 5D9C2175
 P 5550 2600
 AR Path="/5D9C2175" Ref="#PWR?"  Part="1" 
@@ -88,7 +87,7 @@ F 3 "" H 5550 2600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D9C217B
 P 5550 3050
 AR Path="/5D9C217B" Ref="#PWR?"  Part="1" 
@@ -101,7 +100,7 @@ F 3 "" H 5550 3050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C C?
+L zephyrus_iaq:C C?
 U 1 1 5D9C2181
 P 5400 2850
 AR Path="/5D9C2181" Ref="C?"  Part="1" 
@@ -114,7 +113,7 @@ F 3 "~" H 5400 2850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C C?
+L zephyrus_iaq:C C?
 U 1 1 5D9C2188
 P 5700 2850
 AR Path="/5D9C2188" Ref="C?"  Part="1" 
@@ -129,12 +128,7 @@ $EndComp
 Wire Wire Line
 	5400 3000 5400 3050
 Wire Wire Line
-	5400 3050 5550 3050
-Wire Wire Line
-	5550 3050 5700 3050
-Wire Wire Line
 	5700 3050 5700 3000
-Connection ~ 5550 3050
 Wire Wire Line
 	5400 2700 5400 2650
 Wire Wire Line
@@ -149,7 +143,7 @@ Connection ~ 5550 2650
 Wire Wire Line
 	5550 2650 5700 2650
 $Comp
-L Device:R_US R?
+L zephyrus_iaq:R_US R?
 U 1 1 5D9C25F7
 P 8150 3550
 AR Path="/5D9C25F7" Ref="R?"  Part="1" 
@@ -162,7 +156,7 @@ F 3 "~" H 8150 3550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L zephyrus_iaq:+5V #PWR?
 U 1 1 5D9C2605
 P 6050 3550
 AR Path="/5D9C2605" Ref="#PWR?"  Part="1" 
@@ -188,7 +182,7 @@ F 3 "" H 7350 3100 50  0001 L BNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D9C2612
 P 6550 4000
 AR Path="/5D9C2612" Ref="#PWR?"  Part="1" 
@@ -205,7 +199,7 @@ Wire Wire Line
 Text Notes 6800 2150 0    50   ~ 10
 Analog to Digital Converter
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D9C261B
 P 8150 4050
 AR Path="/5D9C261B" Ref="#PWR?"  Part="1" 
@@ -220,7 +214,7 @@ $EndComp
 Wire Wire Line
 	8150 4000 8150 4050
 $Comp
-L Device:D_Zener D?
+L zephyrus_iaq:D_Zener D?
 U 1 1 5D9C2622
 P 8150 3850
 AR Path="/5D9C2622" Ref="D?"  Part="1" 
@@ -233,7 +227,7 @@ F 3 "~" H 8150 3850 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:C C?
+L zephyrus_iaq:C C?
 U 1 1 5D9C2629
 P 5900 3800
 AR Path="/5D9C2629" Ref="C?"  Part="1" 
@@ -246,7 +240,7 @@ F 3 "~" H 5900 3800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C C?
+L zephyrus_iaq:C C?
 U 1 1 5D9C2630
 P 6200 3800
 AR Path="/5D9C2630" Ref="C?"  Part="1" 
@@ -276,7 +270,6 @@ Connection ~ 6550 3900
 Wire Wire Line
 	6200 4000 6550 4000
 Connection ~ 6200 4000
-Connection ~ 6550 4000
 Wire Wire Line
 	6050 3550 6050 3600
 Connection ~ 6050 3600
@@ -323,4 +316,6 @@ Wire Wire Line
 Connection ~ 6200 3600
 Connection ~ 6550 3600
 Connection ~ 5400 2650
+Wire Wire Line
+	5400 3050 5700 3050
 $EndSCHEMATC

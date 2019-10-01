@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:rpi-hat-cache
-EELAYER 26 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -17,7 +16,7 @@ $EndDescr
 Text Notes 6900 2300 0    50   ~ 10
 Analog Connector Ports (MQ Gas Sesnors)
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5DA09585
 P 6350 2900
 AR Path="/5DA09585" Ref="#PWR?"  Part="1" 
@@ -49,7 +48,7 @@ Wire Wire Line
 Wire Wire Line
 	3800 3900 3850 3900
 $Comp
-L power:+3.3V #PWR?
+L zephyrus_iaq:+3.3V #PWR?
 U 1 1 5DB205DC
 P 3600 3850
 AR Path="/5DB205DC" Ref="#PWR?"  Part="1" 
@@ -62,7 +61,7 @@ F 3 "" H 3600 3850 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L zephyrus_iaq:+5V #PWR?
 U 1 1 5DB205E2
 P 4650 5800
 AR Path="/5DB205E2" Ref="#PWR?"  Part="1" 
@@ -123,7 +122,7 @@ Wire Wire Line
 Wire Wire Line
 	5300 5300 5250 5300
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5DB20600
 P 5350 5550
 AR Path="/5DB20600" Ref="#PWR?"  Part="1" 
@@ -140,7 +139,7 @@ Wire Wire Line
 Wire Wire Line
 	5350 5500 5350 5550
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5DB20608
 P 3700 5300
 AR Path="/5DB20608" Ref="#PWR?"  Part="1" 
@@ -157,7 +156,7 @@ Wire Wire Line
 Wire Wire Line
 	3700 5200 3700 5300
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5DB20610
 P 4550 6250
 AR Path="/5DB20610" Ref="#PWR?"  Part="1" 
@@ -171,7 +170,7 @@ F 3 "" H 4550 6250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C C?
+L zephyrus_iaq:C C?
 U 1 1 5DB20616
 P 4400 6050
 AR Path="/5DB20616" Ref="C?"  Part="1" 
@@ -185,7 +184,7 @@ F 3 "~" H 4400 6050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C C?
+L zephyrus_iaq:C C?
 U 1 1 5DB2061D
 P 4700 6050
 AR Path="/5DB2061D" Ref="C?"  Part="1" 
@@ -201,12 +200,7 @@ $EndComp
 Wire Wire Line
 	4400 6200 4400 6250
 Wire Wire Line
-	4400 6250 4550 6250
-Wire Wire Line
-	4550 6250 4700 6250
-Wire Wire Line
 	4700 6250 4700 6200
-Connection ~ 4550 6250
 Wire Wire Line
 	4400 5900 4400 5850
 Wire Wire Line
@@ -224,7 +218,7 @@ Connection ~ 4650 5850
 Wire Wire Line
 	4650 5850 4700 5850
 $Comp
-L Device:C C?
+L zephyrus_iaq:C C?
 U 1 1 5DB20632
 P 3600 4050
 AR Path="/5DB20632" Ref="C?"  Part="1" 
@@ -264,7 +258,7 @@ Connection ~ 1350 4300
 Wire Wire Line
 	1350 4300 1350 4400
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5DB3B3AE
 P 3100 4150
 AR Path="/5DB3B3AE" Ref="#PWR?"  Part="1" 
@@ -277,7 +271,7 @@ F 3 "" H 3100 4150 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L power:+3.3V #PWR?
+L zephyrus_iaq:+3.3V #PWR?
 U 1 1 5DB3CC06
 P 1250 3950
 AR Path="/5DB3CC06" Ref="#PWR?"  Part="1" 
@@ -290,7 +284,7 @@ F 3 "" H 1250 3950 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C C?
+L zephyrus_iaq:C C?
 U 1 1 5DB3CC0C
 P 1250 4150
 AR Path="/5DB3CC0C" Ref="C?"  Part="1" 
@@ -304,7 +298,7 @@ F 3 "~" H 1250 4150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5DB41731
 P 1250 4400
 AR Path="/5DB41731" Ref="#PWR?"  Part="1" 
@@ -317,7 +311,7 @@ F 3 "" H 1250 4400 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5DB4805A
 P 1350 4850
 AR Path="/5DB4805A" Ref="#PWR?"  Part="1" 
@@ -404,7 +398,7 @@ F 3 "" H 7700 5450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L zephyrus_iaq:+5V #PWR?
 U 1 1 5D92D2F5
 P 8500 5650
 AR Path="/5D92D2F5" Ref="#PWR?"  Part="1" 
@@ -419,7 +413,7 @@ $EndComp
 Text Label 8100 5650 0    50   ~ 0
 Vswitch6
 $Comp
-L power:+5V #PWR?
+L zephyrus_iaq:+5V #PWR?
 U 1 1 5D92EDA0
 P 9500 4550
 AR Path="/5D92EDA0" Ref="#PWR?"  Part="1" 
@@ -443,7 +437,7 @@ F 3 "" H 9950 4450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D937BD2
 P 9500 4950
 AR Path="/5D937BD2" Ref="#PWR?"  Part="1" 
@@ -456,7 +450,7 @@ F 3 "" H 9500 4950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C C?
+L zephyrus_iaq:C C?
 U 1 1 5D93EECB
 P 9500 4750
 AR Path="/5D93EECB" Ref="C?"  Part="1" 
@@ -470,7 +464,7 @@ F 3 "~" H 9500 4750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C C?
+L zephyrus_iaq:C C?
 U 1 1 5D94DB66
 P 10450 4750
 AR Path="/5D94DB66" Ref="C?"  Part="1" 
@@ -486,7 +480,7 @@ $EndComp
 Wire Wire Line
 	10250 4600 10450 4600
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D951DF9
 P 10450 4950
 AR Path="/5D951DF9" Ref="#PWR?"  Part="1" 
@@ -499,7 +493,7 @@ F 3 "" H 10450 4950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L zephyrus_iaq:+5V #PWR?
 U 1 1 5D956469
 P 10050 5050
 AR Path="/5D956469" Ref="#PWR?"  Part="1" 
@@ -516,7 +510,7 @@ Wire Wire Line
 Wire Wire Line
 	10050 5100 10050 5050
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D968994
 P 6900 5800
 AR Path="/5D968994" Ref="#PWR?"  Part="1" 
@@ -541,7 +535,7 @@ Text Label 8200 4550 2    50   ~ 0
 Wire Wire Line
 	9950 5100 10050 5100
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D99FE60
 P 8150 4650
 AR Path="/5D99FE60" Ref="#PWR?"  Part="1" 
@@ -560,7 +554,7 @@ If 'S' is 0V and 'B1' is 0V then 'A' outputs 0V.\nIf 'S' is 0V and 'B1' is 5V  t
 Text HLabel 5300 5200 2    50   Input ~ 0
 Vfan
 $Comp
-L Device:LED D4
+L zephyrus_iaq:LED D4
 U 1 1 5D92EBDF
 P 2000 2350
 F 0 "D4" V 2100 2500 50  0000 C CNN
@@ -571,7 +565,7 @@ F 3 "~" H 2000 2350 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L Device:LED D5
+L zephyrus_iaq:LED D5
 U 1 1 5D92EC86
 P 2400 2350
 F 0 "D5" V 2500 2500 50  0000 C CNN
@@ -582,7 +576,7 @@ F 3 "~" H 2400 2350 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L Device:LED D6
+L zephyrus_iaq:LED D6
 U 1 1 5D931031
 P 2800 2350
 F 0 "D6" V 2900 2500 50  0000 C CNN
@@ -593,7 +587,7 @@ F 3 "~" H 2800 2350 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L Device:LED D7
+L zephyrus_iaq:LED D7
 U 1 1 5D9333DE
 P 3200 2350
 F 0 "D7" V 3300 2500 50  0000 C CNN
@@ -604,7 +598,7 @@ F 3 "~" H 3200 2350 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L Device:LED D8
+L zephyrus_iaq:LED D8
 U 1 1 5D93578F
 P 3600 2350
 F 0 "D8" V 3700 2500 50  0000 C CNN
@@ -615,7 +609,7 @@ F 3 "~" H 3600 2350 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L Device:LED D9
+L zephyrus_iaq:LED D9
 U 1 1 5D937B3E
 P 4000 2350
 F 0 "D9" V 4100 2500 50  0000 C CNN
@@ -638,7 +632,7 @@ Vswitch4
 Text Label 4000 2200 2    50   ~ 0
 Vswitch5
 $Comp
-L Device:R_US R8
+L zephyrus_iaq:R_US R8
 U 1 1 5D948632
 P 2000 2750
 F 0 "R8" H 2068 2796 50  0000 L CNN
@@ -649,7 +643,7 @@ F 3 "~" H 2000 2750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R_US R9
+L zephyrus_iaq:R_US R9
 U 1 1 5D9486C9
 P 2400 2750
 F 0 "R9" H 2468 2796 50  0000 L CNN
@@ -660,7 +654,7 @@ F 3 "~" H 2400 2750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R_US R10
+L zephyrus_iaq:R_US R10
 U 1 1 5D94AA74
 P 2800 2750
 F 0 "R10" H 2868 2796 50  0000 L CNN
@@ -671,7 +665,7 @@ F 3 "~" H 2800 2750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R_US R11
+L zephyrus_iaq:R_US R11
 U 1 1 5D94CE21
 P 3200 2750
 F 0 "R11" H 3268 2796 50  0000 L CNN
@@ -682,7 +676,7 @@ F 3 "~" H 3200 2750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R_US R12
+L zephyrus_iaq:R_US R12
 U 1 1 5D94F1CE
 P 3600 2750
 F 0 "R12" H 3668 2796 50  0000 L CNN
@@ -693,7 +687,7 @@ F 3 "~" H 3600 2750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R_US R13
+L zephyrus_iaq:R_US R13
 U 1 1 5D95157F
 P 4000 2750
 F 0 "R13" H 4068 2796 50  0000 L CNN
@@ -704,7 +698,7 @@ F 3 "~" H 4000 2750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D9539EE
 P 2000 3000
 AR Path="/5D9539EE" Ref="#PWR?"  Part="1" 
@@ -718,7 +712,7 @@ F 3 "" H 2000 3000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D955D9A
 P 2400 3000
 AR Path="/5D955D9A" Ref="#PWR?"  Part="1" 
@@ -732,7 +726,7 @@ F 3 "" H 2400 3000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D958146
 P 2800 3000
 AR Path="/5D958146" Ref="#PWR?"  Part="1" 
@@ -746,7 +740,7 @@ F 3 "" H 2800 3000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D95A4F2
 P 3200 3000
 AR Path="/5D95A4F2" Ref="#PWR?"  Part="1" 
@@ -760,7 +754,7 @@ F 3 "" H 3200 3000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D95C89E
 P 3600 3000
 AR Path="/5D95C89E" Ref="#PWR?"  Part="1" 
@@ -774,7 +768,7 @@ F 3 "" H 3600 3000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D95EC4A
 P 4000 3000
 AR Path="/5D95EC4A" Ref="#PWR?"  Part="1" 
@@ -812,7 +806,7 @@ Wire Wire Line
 Wire Wire Line
 	2000 2900 2000 3000
 $Comp
-L Device:LED D10
+L zephyrus_iaq:LED D10
 U 1 1 5D981A04
 P 4450 2350
 F 0 "D10" V 4550 2500 50  0000 C CNN
@@ -825,7 +819,7 @@ $EndComp
 Text Label 4450 2200 2    50   ~ 0
 Vswitch6
 $Comp
-L Device:R_US R14
+L zephyrus_iaq:R_US R14
 U 1 1 5D981A0C
 P 4450 2750
 F 0 "R14" H 4518 2796 50  0000 L CNN
@@ -836,7 +830,7 @@ F 3 "~" H 4450 2750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D981A13
 P 4450 3000
 AR Path="/5D981A13" Ref="#PWR?"  Part="1" 
@@ -865,7 +859,7 @@ F 3 "None" H 7000 2950 50  0001 L BNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D96A865
 P 7950 2950
 AR Path="/5D96A865" Ref="#PWR?"  Part="1" 
@@ -897,7 +891,7 @@ F 3 "None" H 8600 3000 50  0001 L BNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D9703BD
 P 6350 3800
 AR Path="/5D9703BD" Ref="#PWR?"  Part="1" 
@@ -929,7 +923,7 @@ F 3 "None" H 7000 3850 50  0001 L BNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D9731ED
 P 7950 3800
 AR Path="/5D9731ED" Ref="#PWR?"  Part="1" 
@@ -961,7 +955,7 @@ F 3 "None" H 8600 3850 50  0001 L BNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5D979263
 P 6350 4700
 AR Path="/5D979263" Ref="#PWR?"  Part="1" 
@@ -1016,7 +1010,7 @@ Text Notes 7400 5250 0    50   ~ 10
 Wire Wire Line
 	1250 4300 1250 4400
 $Comp
-L power:GND #PWR?
+L zephyrus_iaq:GND #PWR?
 U 1 1 5DA62396
 P 3600 4200
 AR Path="/5DA62396" Ref="#PWR?"  Part="1" 
@@ -1036,20 +1030,16 @@ Wire Wire Line
 	3800 4200 3850 4200
 Wire Wire Line
 	3600 3900 3800 3900
-Connection ~ 3600 3900
 Connection ~ 3800 3900
 Wire Wire Line
 	3800 4200 3600 4200
 Connection ~ 3800 4200
-Connection ~ 3600 4200
 Wire Wire Line
 	1250 3950 1250 4000
 Wire Wire Line
 	1450 4000 1250 4000
-Connection ~ 1250 4000
 Wire Wire Line
 	1250 4300 1350 4300
-Connection ~ 1250 4300
 Wire Wire Line
 	2850 4100 3100 4100
 Wire Wire Line
@@ -1060,12 +1050,10 @@ Wire Wire Line
 	9500 4900 9500 4950
 Wire Wire Line
 	9500 4600 9650 4600
-Connection ~ 9500 4600
 Wire Wire Line
 	9650 4700 9650 4950
 Wire Wire Line
 	9650 4950 9500 4950
-Connection ~ 9500 4950
 Wire Wire Line
 	10450 4900 10450 4950
 Wire Wire Line
@@ -1076,4 +1064,6 @@ Wire Wire Line
 	8100 5750 8500 5750
 Wire Wire Line
 	8500 5750 8500 5650
+Wire Wire Line
+	4400 6250 4700 6250
 $EndSCHEMATC

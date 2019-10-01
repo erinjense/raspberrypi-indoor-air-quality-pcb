@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:rpi-hat-cache
-EELAYER 26 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -15,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L power:+5V #PWR012
+L zephyrus_iaq:+5V #PWR012
 U 1 1 580C1B61
 P 850 3600
 F 0 "#PWR012" H 850 3450 50  0001 C CNN
@@ -26,7 +25,7 @@ F 3 "" H 850 3600 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR011
+L zephyrus_iaq:GND #PWR011
 U 1 1 580C1D11
 P 3000 3150
 F 0 "#PWR011" H 3000 2900 50  0001 C CNN
@@ -64,7 +63,7 @@ Wire Wire Line
 Wire Wire Line
 	2200 950  2200 1100
 $Comp
-L power:+3.3V #PWR01
+L zephyrus_iaq:+3.3V #PWR01
 U 1 1 580C1BC1
 P 2200 950
 F 0 "#PWR01" H 2200 800 50  0001 C CNN
@@ -241,7 +240,7 @@ SCL
 Text GLabel 8100 2400 0    50   Input ~ 0
 SDA
 $Comp
-L power:+3.3V #PWR05
+L zephyrus_iaq:+3.3V #PWR05
 U 1 1 5CB9A316
 P 6650 2500
 F 0 "#PWR05" H 6650 2350 50  0001 C CNN
@@ -254,7 +253,7 @@ $EndComp
 Wire Wire Line
 	6650 2500 6950 2500
 $Comp
-L power:+3.3V #PWR06
+L zephyrus_iaq:+3.3V #PWR06
 U 1 1 5CB9BB45
 P 7800 2500
 F 0 "#PWR06" H 7800 2350 50  0001 C CNN
@@ -267,7 +266,7 @@ $EndComp
 Wire Wire Line
 	7800 2500 8100 2500
 $Comp
-L power:GND #PWR07
+L zephyrus_iaq:GND #PWR07
 U 1 1 5CB9D57C
 P 6800 2600
 F 0 "#PWR07" H 6800 2350 50  0001 C CNN
@@ -278,7 +277,7 @@ F 3 "" H 6800 2600 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR08
+L zephyrus_iaq:GND #PWR08
 U 1 1 5CB9EE46
 P 7950 2600
 F 0 "#PWR08" H 7950 2350 50  0001 C CNN
@@ -308,7 +307,7 @@ SCL
 Text GLabel 9700 2400 0    50   Input ~ 0
 SDA
 $Comp
-L power:GND #PWR09
+L zephyrus_iaq:GND #PWR09
 U 1 1 5CBA5973
 P 9550 2600
 F 0 "#PWR09" H 9550 2350 50  0001 C CNN
@@ -325,25 +324,25 @@ BME860 Air Quality
 Text Notes 8900 1950 0    50   ~ 10
 CO2 & Temperature & Humidity Sensor (SCD30)
 $Comp
-L Device:R_Small_US R1
+L zephyrus_iaq:R_US R1
 U 1 1 5CBF6130
-P 3800 3650
-F 0 "R1" V 3900 3500 50  0000 L CNN
-F 1 "3.9k" V 3900 3650 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3800 3650 50  0001 C CNN
-F 3 "~" H 3800 3650 50  0001 C CNN
-	1    3800 3650
+P 3750 3650
+F 0 "R1" V 3850 3500 50  0000 L CNN
+F 1 "3.9k" V 3850 3650 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3750 3650 50  0001 C CNN
+F 3 "~" H 3750 3650 50  0001 C CNN
+	1    3750 3650
 	0    1    -1   0   
 $EndComp
 $Comp
-L Device:R_Small_US R2
+L zephyrus_iaq:R_US R2
 U 1 1 5CBF7E94
-P 3800 3900
-F 0 "R2" V 3900 3750 50  0000 L CNN
-F 1 "3.9k" V 3900 3900 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3800 3900 50  0001 C CNN
-F 3 "~" H 3800 3900 50  0001 C CNN
-	1    3800 3900
+P 3750 3900
+F 0 "R2" V 3850 3750 50  0000 L CNN
+F 1 "3.9k" V 3850 3900 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3750 3900 50  0001 C CNN
+F 3 "~" H 3750 3900 50  0001 C CNN
+	1    3750 3900
 	0    1    -1   0   
 $EndComp
 Wire Wire Line
@@ -353,7 +352,7 @@ Wire Wire Line
 Wire Wire Line
 	4100 3900 3900 3900
 $Comp
-L power:+3.3V #PWR013
+L zephyrus_iaq:+3.3V #PWR013
 U 1 1 5CC006CD
 P 4100 3650
 F 0 "#PWR013" H 4100 3500 50  0001 C CNN
@@ -365,7 +364,6 @@ F 3 "" H 4100 3650 50  0000 C CNN
 $EndComp
 Text Notes 3550 3500 0    50   ~ 10
 Pullup Resistors
-Connection ~ 4100 3650
 $Comp
 L zephyrus_iaq:CAT24C32WI-GT3 U1
 U 1 1 5CC23B46
@@ -378,36 +376,25 @@ F 3 "" H 3100 5600 50  0001 L BNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R_Small_US R6
+L zephyrus_iaq:R_US R6
 U 1 1 5CC471B3
-P 1750 5900
-F 0 "R6" H 1850 5900 50  0000 L CNN
-F 1 "10k" H 1850 6000 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1750 5900 50  0001 C CNN
-F 3 "~" H 1750 5900 50  0001 C CNN
-	1    1750 5900
+P 1750 5850
+F 0 "R6" H 1850 5850 50  0000 L CNN
+F 1 "10k" H 1850 5950 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1750 5850 50  0001 C CNN
+F 3 "~" H 1750 5850 50  0001 C CNN
+	1    1750 5850
 	-1   0    0    -1  
 $EndComp
 $Comp
-L Connector:Conn_01x02_Male J9
-U 1 1 5CC4F1F8
-P 1200 6000
-F 0 "J9" H 1100 6000 50  0000 C CNN
-F 1 "Jumper" H 1050 5900 50  0000 C CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical" H 1200 6000 50  0001 C CNN
-F 3 "~" H 1200 6000 50  0001 C CNN
-	1    1200 6000
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_Small_US R7
+L zephyrus_iaq:R_US R7
 U 1 1 5CC574D3
-P 1600 6100
-F 0 "R7" V 1750 5950 50  0000 L CNN
-F 1 "DNP" V 1650 5900 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1600 6100 50  0001 C CNN
-F 3 "~" H 1600 6100 50  0001 C CNN
-	1    1600 6100
+P 1550 6100
+F 0 "R7" V 1700 5950 50  0000 L CNN
+F 1 "DNP" V 1600 5900 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1550 6100 50  0001 C CNN
+F 3 "~" H 1550 6100 50  0001 C CNN
+	1    1550 6100
 	0    -1   1    0   
 $EndComp
 Wire Wire Line
@@ -415,21 +402,8 @@ Wire Wire Line
 Wire Wire Line
 	1750 6100 1750 6000
 Connection ~ 1750 6000
-Wire Wire Line
-	1500 6100 1450 6100
 $Comp
-L power:GND #PWR022
-U 1 1 5CC65F21
-P 1450 6150
-F 0 "#PWR022" H 1450 5900 50  0001 C CNN
-F 1 "GND" H 1455 5977 50  0000 C CNN
-F 2 "" H 1450 6150 50  0001 C CNN
-F 3 "" H 1450 6150 50  0001 C CNN
-	1    1450 6150
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR023
+L zephyrus_iaq:GND #PWR023
 U 1 1 5CC6FF0F
 P 2400 6200
 F 0 "#PWR023" H 2400 5950 50  0001 C CNN
@@ -440,7 +414,7 @@ F 3 "" H 2400 6200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR021
+L zephyrus_iaq:GND #PWR021
 U 1 1 5CC73786
 P 2300 5700
 F 0 "#PWR021" H 2300 5450 50  0001 C CNN
@@ -473,7 +447,7 @@ F 3 "" H 2050 4150 50  0001 L BNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:Polyfuse F1
+L zephyrus_iaq:Polyfuse F1
 U 1 1 5CC8DF81
 P 1400 3850
 F 0 "F1" V 1600 4000 50  0000 L CNN
@@ -486,7 +460,7 @@ $EndComp
 Wire Wire Line
 	1650 3850 1550 3850
 $Comp
-L power:GND #PWR017
+L zephyrus_iaq:GND #PWR017
 U 1 1 5CC964DE
 P 2550 4400
 F 0 "#PWR017" H 2550 4150 50  0001 C CNN
@@ -519,7 +493,7 @@ NoConn ~ 1650 3950
 NoConn ~ 1650 4050
 NoConn ~ 1650 4150
 $Comp
-L power:GND #PWR016
+L zephyrus_iaq:GND #PWR016
 U 1 1 5CCC195C
 P 1600 4300
 F 0 "#PWR016" H 1600 4050 50  0001 C CNN
@@ -534,7 +508,7 @@ Wire Wire Line
 Wire Wire Line
 	1600 4250 1650 4250
 $Comp
-L Device:C C1
+L zephyrus_iaq:C C1
 U 1 1 5CCDA710
 P 850 4050
 F 0 "C1" H 650 4050 50  0000 L CNN
@@ -567,7 +541,7 @@ NoConn ~ 1250 2700
 NoConn ~ 1250 1400
 NoConn ~ 3950 2100
 $Comp
-L power:GND #PWR010
+L zephyrus_iaq:GND #PWR010
 U 1 1 5CD6B8BE
 P 2300 3150
 F 0 "#PWR010" H 2300 2900 50  0001 C CNN
@@ -578,7 +552,7 @@ F 3 "" H 2300 3150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3.3V #PWR019
+L zephyrus_iaq:+3.3V #PWR019
 U 1 1 5CD71797
 P 2250 5250
 F 0 "#PWR019" H 2250 5100 50  0001 C CNN
@@ -591,20 +565,18 @@ $EndComp
 Wire Wire Line
 	1750 6000 2400 6000
 $Comp
-L power:+3.3V #PWR020
+L zephyrus_iaq:+3.3V #PWR020
 U 1 1 5CD88507
-P 1750 5750
-F 0 "#PWR020" H 1750 5600 50  0001 C CNN
-F 1 "+3.3V" H 1750 5900 50  0000 C CNN
-F 2 "" H 1750 5750 50  0001 C CNN
-F 3 "" H 1750 5750 50  0001 C CNN
-	1    1750 5750
+P 1750 5650
+F 0 "#PWR020" H 1750 5500 50  0001 C CNN
+F 1 "+3.3V" H 1750 5800 50  0000 C CNN
+F 2 "" H 1750 5650 50  0001 C CNN
+F 3 "" H 1750 5650 50  0001 C CNN
+	1    1750 5650
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	1750 5750 1750 5800
 $Comp
-L power:+3.3V #PWR04
+L zephyrus_iaq:+3.3V #PWR04
 U 1 1 5CDC7C3C
 P 9350 2450
 F 0 "#PWR04" H 9350 2300 50  0001 C CNN
@@ -677,7 +649,7 @@ RXD0
 Text GLabel 5050 2500 0    50   Input ~ 0
 TXD0
 $Comp
-L Device:C C2
+L zephyrus_iaq:C C2
 U 1 1 5D99C02F
 P 2250 5450
 F 0 "C2" H 2000 5450 50  0000 L CNN
@@ -688,7 +660,7 @@ F 3 "~" H 2250 5450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector:Conn_01x01_Female J3
+L zephyrus_iaq:Conn_01x01_Female J3
 U 1 1 5D909C2F
 P 6550 2550
 F 0 "J3" H 6150 2800 50  0000 L CNN
@@ -703,7 +675,7 @@ GPS_PPS
 Text Notes 5100 1800 0    50   ~ 10
 SDS011 Nova PM
 $Comp
-L power:+5V #PWR02
+L zephyrus_iaq:+5V #PWR02
 U 1 1 5D962D6F
 P 4950 2150
 F 0 "#PWR02" H 4950 2000 50  0001 C CNN
@@ -718,7 +690,7 @@ Wire Wire Line
 Wire Wire Line
 	4950 2200 5050 2200
 $Comp
-L power:GND #PWR03
+L zephyrus_iaq:GND #PWR03
 U 1 1 5D9762B1
 P 4650 2350
 F 0 "#PWR03" H 4650 2100 50  0001 C CNN
@@ -791,25 +763,25 @@ SDA
 Text Label 1250 1300 2    50   ~ 0
 SCL
 $Comp
-L Device:R_Small_US R4
+L zephyrus_iaq:R_US R4
 U 1 1 5D936F8B
-P 3800 4200
-F 0 "R4" V 3900 4050 50  0000 L CNN
-F 1 "10k" V 3900 4200 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3800 4200 50  0001 C CNN
-F 3 "~" H 3800 4200 50  0001 C CNN
-	1    3800 4200
+P 3750 4200
+F 0 "R4" V 3850 4050 50  0000 L CNN
+F 1 "10k" V 3850 4200 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3750 4200 50  0001 C CNN
+F 3 "~" H 3750 4200 50  0001 C CNN
+	1    3750 4200
 	0    1    -1   0   
 $EndComp
 $Comp
-L Device:R_Small_US R5
+L zephyrus_iaq:R_US R5
 U 1 1 5D936F92
-P 3800 4450
-F 0 "R5" V 3900 4300 50  0000 L CNN
-F 1 "10k" V 3900 4450 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3800 4450 50  0001 C CNN
-F 3 "~" H 3800 4450 50  0001 C CNN
-	1    3800 4450
+P 3750 4450
+F 0 "R5" V 3850 4300 50  0000 L CNN
+F 1 "10k" V 3850 4450 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3750 4450 50  0001 C CNN
+F 3 "~" H 3750 4450 50  0001 C CNN
+	1    3750 4450
 	0    1    -1   0   
 $EndComp
 Wire Wire Line
@@ -819,7 +791,7 @@ Wire Wire Line
 Wire Wire Line
 	4100 4450 3900 4450
 $Comp
-L power:+3.3V #PWR014
+L zephyrus_iaq:+3.3V #PWR014
 U 1 1 5D936F9C
 P 4100 4150
 F 0 "#PWR014" H 4100 4000 50  0001 C CNN
@@ -830,34 +802,32 @@ F 3 "" H 4100 4150 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3700 4200 3600 4200
+	3600 4200 3500 4200
 Wire Wire Line
-	3600 4450 3700 4450
-Text Label 3600 4200 2    50   ~ 0
+	3500 4450 3600 4450
+Text Label 3500 4200 2    50   ~ 0
 SDA
-Text Label 3600 4450 2    50   ~ 0
+Text Label 3500 4450 2    50   ~ 0
 SCL
 Wire Wire Line
 	4100 4150 4100 4200
 Connection ~ 4100 4200
-Text Label 3550 3650 2    50   ~ 0
+Text Label 3450 3650 2    50   ~ 0
 ID_SD_EEPROM
 Wire Wire Line
-	3550 3650 3700 3650
-Wire Wire Line
-	3550 3900 3700 3900
-Text Label 3550 3900 2    50   ~ 0
+	3450 3650 3600 3650
+Text Label 3500 3900 2    50   ~ 0
 ID_SC_EEPROM
 Text Label 3800 5300 0    50   ~ 0
 ID_SC_EEPROM
-Text Label 2400 5900 2    50   ~ 0
+Text Label 2400 5850 2    50   ~ 0
 ID_SD_EEPROM
 Text Label 3950 2400 0    50   ~ 0
 ID_SC_EEPROM
 Wire Wire Line
 	4650 2300 4650 2350
 $Comp
-L Connector:Conn_01x02_Female J?
+L zephyrus_iaq:Conn_01x02_Female J?
 U 1 1 5D9C61F7
 P 8000 5450
 AR Path="/5DA09389/5D9C61F7" Ref="J?"  Part="1" 
@@ -870,7 +840,7 @@ F 3 "~" H 8000 5450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:D_Zener D?
+L zephyrus_iaq:D_Zener D?
 U 1 1 5D9C61FF
 P 7600 5650
 AR Path="/5DA09389/5D9C61FF" Ref="D?"  Part="1" 
@@ -883,7 +853,7 @@ F 3 "~" H 7600 5650 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:GND #PWR015
+L zephyrus_iaq:GND #PWR015
 U 1 1 5D9C6206
 P 7600 5850
 AR Path="/5D9C6206" Ref="#PWR015"  Part="1" 
@@ -901,7 +871,6 @@ Wire Wire Line
 	7600 5850 7800 5850
 Wire Wire Line
 	7800 5850 7800 5550
-Connection ~ 7600 5850
 Wire Wire Line
 	7600 5500 7600 5450
 Wire Wire Line
@@ -925,51 +894,51 @@ NoConn ~ 1250 2900
 $Comp
 L zephyrus_iaq:Mounting-Hole-Mechanical MK4
 U 1 1 5CBF4467
-P 5650 5850
-F 0 "MK4" H 5750 5796 50  0000 L CNN
-F 1 "M2.5" H 5750 5705 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 5650 5850 50  0001 C CNN
-F 3 "" H 5650 5850 50  0001 C CNN
-	1    5650 5850
+P 5550 5900
+F 0 "MK4" H 5650 5846 50  0000 L CNN
+F 1 "M2.5" H 5650 5755 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 5550 5900 50  0001 C CNN
+F 3 "" H 5550 5900 50  0001 C CNN
+	1    5550 5900
 	1    0    0    -1  
 $EndComp
 $Comp
 L zephyrus_iaq:Mounting-Hole-Mechanical MK2
 U 1 1 5CBEEC83
-P 5650 5600
-F 0 "MK2" H 5750 5546 50  0000 L CNN
-F 1 "M2.5" H 5750 5455 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 5650 5600 50  0001 C CNN
-F 3 "" H 5650 5600 50  0001 C CNN
-	1    5650 5600
+P 5550 5650
+F 0 "MK2" H 5650 5596 50  0000 L CNN
+F 1 "M2.5" H 5650 5505 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 5550 5650 50  0001 C CNN
+F 3 "" H 5550 5650 50  0001 C CNN
+	1    5550 5650
 	1    0    0    -1  
 $EndComp
 $Comp
 L zephyrus_iaq:Mounting-Hole-Mechanical MK3
 U 1 1 5CBE9499
-P 5200 5850
-F 0 "MK3" H 5300 5796 50  0000 L CNN
-F 1 "M2.5" H 5300 5705 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 5200 5850 50  0001 C CNN
-F 3 "" H 5200 5850 50  0001 C CNN
-	1    5200 5850
+P 5100 5900
+F 0 "MK3" H 5200 5846 50  0000 L CNN
+F 1 "M2.5" H 5200 5755 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 5100 5900 50  0001 C CNN
+F 3 "" H 5100 5900 50  0001 C CNN
+	1    5100 5900
 	1    0    0    -1  
 $EndComp
 $Comp
 L zephyrus_iaq:Mounting-Hole-Mechanical MK1
 U 1 1 5CBCD8C7
-P 5200 5600
-F 0 "MK1" H 5300 5546 50  0000 L CNN
-F 1 "M2.5" H 5300 5455 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 5200 5600 50  0001 C CNN
-F 3 "" H 5200 5600 50  0001 C CNN
-	1    5200 5600
+P 5100 5650
+F 0 "MK1" H 5200 5596 50  0000 L CNN
+F 1 "M2.5" H 5200 5505 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 5100 5650 50  0001 C CNN
+F 3 "" H 5100 5650 50  0001 C CNN
+	1    5100 5650
 	1    0    0    -1  
 $EndComp
-Text Notes 5200 5550 0    50   ~ 0
+Text Notes 5100 5600 0    50   ~ 0
 Mounting Holes
 $Comp
-L Device:LED D?
+L zephyrus_iaq:LED D?
 U 1 1 5D936A47
 P 8600 5500
 AR Path="/5DA09389/5D936A47" Ref="D?"  Part="1" 
@@ -984,7 +953,7 @@ $EndComp
 Text Label 8600 5350 2    50   ~ 0
 Vfan
 $Comp
-L Device:R_US R?
+L zephyrus_iaq:R_US R?
 U 1 1 5D936A4F
 P 8600 5900
 AR Path="/5DA09389/5D936A4F" Ref="R?"  Part="1" 
@@ -997,7 +966,7 @@ F 3 "~" H 8600 5900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR018
+L zephyrus_iaq:GND #PWR018
 U 1 1 5D936A56
 P 8600 6150
 AR Path="/5D936A56" Ref="#PWR018"  Part="1" 
@@ -1047,13 +1016,39 @@ Wire Wire Line
 	2250 5600 2300 5600
 Wire Wire Line
 	2250 5250 2250 5300
-Connection ~ 2250 5300
-Connection ~ 2300 5700
 Wire Wire Line
-	1400 6000 1750 6000
+	1750 5650 1750 5700
+$Comp
+L zephyrus_iaq:Conn_01x02_Male J9
+U 1 1 5CC4F1F8
+P 1100 6000
+F 0 "J9" H 1000 6000 50  0000 C CNN
+F 1 "Jumper" H 950 5900 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical" H 1100 6000 50  0001 C CNN
+F 3 "~" H 1100 6000 50  0001 C CNN
+	1    1100 6000
+	1    0    0    -1  
+$EndComp
+$Comp
+L zephyrus_iaq:GND #PWR022
+U 1 1 5CC65F21
+P 1350 6150
+F 0 "#PWR022" H 1350 5900 50  0001 C CNN
+F 1 "GND" H 1355 5977 50  0000 C CNN
+F 2 "" H 1350 6150 50  0001 C CNN
+F 3 "" H 1350 6150 50  0001 C CNN
+	1    1350 6150
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	1450 6150 1450 6100
-Connection ~ 1450 6100
+	1300 6100 1350 6100
 Wire Wire Line
-	1450 6100 1400 6100
+	1350 6150 1350 6100
+Connection ~ 1350 6100
+Wire Wire Line
+	1350 6100 1400 6100
+Wire Wire Line
+	1300 6000 1750 6000
+Wire Wire Line
+	3500 3900 3600 3900
 $EndSCHEMATC

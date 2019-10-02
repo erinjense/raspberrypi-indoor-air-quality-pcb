@@ -537,7 +537,7 @@ F 3 "" H 8150 4650 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	8150 4650 8200 4650
-Text Notes 8700 5600 0    50   ~ 0
+Text Notes 9050 6050 0    50   ~ 0
 If 'S' is 0V and 'B1' is 0V then 'A' outputs 0V.\nIf 'S' is 0V and 'B1' is 5V  then 'A' outputs 5V.\nIf 'S' is 5V then 'A' outputs '1.4V from NCP699.
 Text HLabel 5300 5200 2    50   Input ~ 0
 Vfan
@@ -985,8 +985,8 @@ F 3 "None" H 8600 4750 50  0001 L BNN
 	1    8600 4750
 	1    0    0    -1  
 $EndComp
-Text Notes 3750 3300 0    50   ~ 10
-Analog Connector Ports (MQ Gas Sesnors)
+Text Notes 4200 3500 0    50   ~ 10
+Analog Sensor Switch
 Text Notes 1700 3450 0    50   ~ 10
 I2C Port Expander (8 IO)
 Text Notes 9600 4250 0    50   ~ 10
@@ -1065,4 +1065,10 @@ NoConn ~ 6600 4850
 NoConn ~ 6600 4950
 NoConn ~ 8200 4950
 NoConn ~ 8200 4850
+Text Notes 3450 6650 0    50   ~ 0
+ISO1H811G has 8 channels (D0-D7) for switching (OUT0-OUT7)\nMQ Gas Sensors:  resitive loads (MQ gas sensors)\nDC Fan: inductive load \n
+Text Notes 1300 6000 0    50   ~ 0
+Allows the Raspberry Pi to use I2C to transmits\nthe 8-bits to the Analog Sensor Switch.\nThis saves GPIO lines for other projects.
+Text Notes 9050 5700 0    50   ~ 0
+The MQ7 gas sensor needs periodic\npower switching from 1.4V to 5V\nThis 2:1 multiplexor, 1.4V regulator and\nAnalog Sensor switch are used to control\n0V, 1.4V, and 5V\n
 $EndSCHEMATC

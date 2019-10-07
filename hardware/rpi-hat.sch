@@ -407,36 +407,6 @@ F 3 "~" H 1400 3850 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1650 3850 1550 3850
-$Comp
-L zephyrus_iaq:GND #PWR016
-U 1 1 5CC964DE
-P 2550 4400
-F 0 "#PWR016" H 2550 4150 50  0001 C CNN
-F 1 "GND" H 2555 4227 50  0000 C CNN
-F 2 "" H 2550 4400 50  0001 C CNN
-F 3 "" H 2550 4400 50  0001 C CNN
-	1    2550 4400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2550 4400 2550 4350
-Wire Wire Line
-	2450 4050 2550 4050
-Wire Wire Line
-	2450 4150 2550 4150
-Connection ~ 2550 4150
-Wire Wire Line
-	2550 4150 2550 4050
-Wire Wire Line
-	2450 4250 2550 4250
-Connection ~ 2550 4250
-Wire Wire Line
-	2550 4250 2550 4150
-Wire Wire Line
-	2450 4350 2550 4350
-Connection ~ 2550 4350
-Wire Wire Line
-	2550 4350 2550 4250
 NoConn ~ 1650 3950
 NoConn ~ 1650 4050
 NoConn ~ 1650 4150
@@ -1334,4 +1304,8 @@ F 4 "SM02B-SRSS-TB_LF__SN_" H 10450 6850 50  0001 L BNN "Field8"
 	1    10200 6250
 	1    0    0    -1  
 $EndComp
+NoConn ~ 2450 4050
+NoConn ~ 2450 4150
+NoConn ~ 2450 4250
+NoConn ~ 2450 4350
 $EndSCHEMATC

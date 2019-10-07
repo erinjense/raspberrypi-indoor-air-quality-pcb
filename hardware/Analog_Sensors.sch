@@ -1176,4 +1176,18 @@ F 6 "BSS138" H 2000 3350 50  0001 L BNN "Field7"
 	1    1550 2750
 	0    1    1    0   
 $EndComp
+$Comp
+L zephyrus_iaq:GND #PWR?
+U 1 1 5DB0AABC
+P 6200 6500
+AR Path="/5DB0AABC" Ref="#PWR?"  Part="1" 
+AR Path="/5D9BB3B6/5DB0AABC" Ref="#PWR?"  Part="1" 
+AR Path="/5DA09389/5DB0AABC" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 6200 6250 50  0001 C CNN
+F 1 "GND" H 6300 6400 50  0000 C CNN
+F 2 "" H 6200 6500 50  0001 C CNN
+F 3 "" H 6200 6500 50  0001 C CNN
+	1    6200 6500
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

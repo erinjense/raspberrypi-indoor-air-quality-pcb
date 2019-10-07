@@ -704,7 +704,7 @@ Wire Wire Line
 Wire Wire Line
 	6850 3150 7200 3150
 Text HLabel 8200 2350 0    50   Input ~ 0
-ADC1
+ADC2
 $Comp
 L zephyrus_iaq:GND #PWR?
 U 1 1 5D9C129B
@@ -750,7 +750,7 @@ Wire Wire Line
 Wire Wire Line
 	8200 1450 8650 1450
 Text HLabel 8200 3250 0    50   Input ~ 0
-ADC2
+ADC4
 $Comp
 L zephyrus_iaq:GND #PWR?
 U 1 1 5D9ED780
@@ -796,7 +796,7 @@ Wire Wire Line
 Wire Wire Line
 	9800 3250 10250 3250
 Text HLabel 9800 2350 0    50   Input ~ 0
-ADC4
+ADC3
 $Comp
 L zephyrus_iaq:GND #PWR?
 U 1 1 5D9F22DB
@@ -819,7 +819,7 @@ Wire Wire Line
 Wire Wire Line
 	9800 2350 10250 2350
 Text HLabel 9800 1450 0    50   Input ~ 0
-ADC3
+ADC1
 $Comp
 L zephyrus_iaq:GND #PWR?
 U 1 1 5D9F49BF
@@ -857,7 +857,7 @@ Wire Wire Line
 	5500 2500 5050 2500
 Wire Wire Line
 	5050 2500 5050 2300
-Text Label 7150 1300 2    50   ~ 0
+Text Label 7150 2300 2    50   ~ 0
 BUF_OUT_2
 Wire Wire Line
 	7150 1500 6700 1500
@@ -865,7 +865,7 @@ Wire Wire Line
 	6700 1300 7150 1300
 Wire Wire Line
 	7150 1300 7150 1500
-Text Label 7150 2300 2    50   ~ 0
+Text Label 7150 1300 2    50   ~ 0
 BUF_OUT_3
 Wire Wire Line
 	7150 2500 6700 2500
@@ -889,9 +889,9 @@ Text Label 5050 1700 0    50   ~ 0
 DAC_OUT_B
 Text Label 5050 2100 0    50   ~ 0
 DAC_OUT_A
-Text Label 7150 2100 2    50   ~ 0
-DAC_OUT_D
 Text Label 7150 1700 2    50   ~ 0
+DAC_OUT_D
+Text Label 7150 2100 2    50   ~ 0
 DAC_OUT_C
 Text Label 5050 1900 0    50   ~ 0
 BUF_V+_0

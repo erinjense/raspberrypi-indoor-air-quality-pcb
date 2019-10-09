@@ -1,0 +1,335 @@
+EESchema Schematic File Version 4
+LIBS:rpi-hat-cache
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 4 4
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L zephyrus_iaq:10103594-0001LF J7
+U 1 1 5DB5FC63
+P 6350 2550
+F 0 "J7" H 6350 3117 50  0000 C CNN
+F 1 "10103594-0001LF" H 6350 3026 50  0001 C CNN
+F 2 "zephyrus-iaq:FCI_10103594-0001LF" H 6350 2550 50  0001 L BNN
+F 3 "" H 6350 2550 50  0001 L BNN
+	1    6350 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L zephyrus_iaq:Polyfuse F1
+U 1 1 5DB5FC69
+P 5700 2250
+F 0 "F1" H 5650 2050 50  0000 L CNN
+F 1 "MF-MSMF250/X" H 5400 2150 50  0000 L CNN
+F 2 "Fuse:Fuse_1812_4532Metric" H 5750 2050 50  0001 L CNN
+F 3 "~" H 5700 2250 50  0001 C CNN
+	1    5700 2250
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	5950 2250 5850 2250
+NoConn ~ 5950 2350
+NoConn ~ 5950 2450
+NoConn ~ 5950 2550
+Wire Wire Line
+	5900 2650 5950 2650
+Text Notes 5750 1950 0    50   ~ 10
+5V Power:  Micro USB Input
+NoConn ~ 6750 2350
+NoConn ~ 6750 2250
+Wire Wire Line
+	5400 2250 5550 2250
+$Comp
+L zephyrus_iaq:SMBJ5.0A D10
+U 1 1 5DB5FC83
+P 5350 2700
+F 0 "D10" V 5446 2571 50  0000 R CNN
+F 1 "SMBJ5.0A" V 5355 2571 50  0001 R CNN
+F 2 "zephyrus-iaq:SMBJ5.0A" V 5200 2550 50  0001 L BNN
+F 3 "" V 5200 2550 50  0001 L BNN
+	1    5350 2700
+	0    -1   -1   0   
+$EndComp
+NoConn ~ 6750 2450
+NoConn ~ 6750 2550
+NoConn ~ 6750 2650
+NoConn ~ 6750 2750
+Wire Wire Line
+	4800 2250 5400 2250
+Connection ~ 5400 2250
+$Comp
+L zephyrus_iaq:C C?
+U 1 1 5DB686FF
+P 4250 2550
+AR Path="/5DB686FF" Ref="C?"  Part="1" 
+AR Path="/5DB4C8BA/5DB686FF" Ref="C1"  Part="1" 
+F 0 "C1" H 4050 2550 50  0000 L CNN
+F 1 "47uF" H 4000 2450 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 4288 2400 50  0001 C CNN
+F 3 "~" H 4250 2550 50  0001 C CNN
+	1    4250 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L zephyrus_iaq:GND #PWR?
+U 1 1 5DB68706
+P 4250 3100
+AR Path="/5DB68706" Ref="#PWR?"  Part="1" 
+AR Path="/5DB4C8BA/5DB68706" Ref="#PWR0104"  Part="1" 
+F 0 "#PWR0104" H 4250 2850 50  0001 C CNN
+F 1 "GND" H 4255 2927 50  0000 C CNN
+F 2 "" H 4250 3100 50  0001 C CNN
+F 3 "" H 4250 3100 50  0001 C CNN
+	1    4250 3100
+	1    0    0    -1  
+$EndComp
+Text Label 4700 2250 2    50   ~ 0
+VREG_IN_5V
+Wire Wire Line
+	4250 2250 4800 2250
+Wire Wire Line
+	4250 2250 4250 2400
+Wire Wire Line
+	7800 4250 8400 4250
+Wire Wire Line
+	7800 4000 8400 4000
+Wire Wire Line
+	7800 4750 8400 4750
+Text Label 8400 4750 2    50   ~ 0
+VREG_IN_5V
+Text Label 7850 4000 0    50   ~ 0
+VREG_IN_5V
+$Comp
+L zephyrus_iaq:ISL80102 U?
+U 1 1 5DB747BE
+P 7350 3800
+AR Path="/5DB747BE" Ref="U?"  Part="1" 
+AR Path="/5DB4C8BA/5DB747BE" Ref="U10"  Part="1" 
+F 0 "U10" H 7350 3865 50  0000 C CNN
+F 1 "Vreg" H 7350 3774 50  0000 C CNB
+F 2 "zephyrus-iaq:REG_EY1501DI-ADJ" H 7350 3800 50  0001 C CNN
+F 3 "" H 7350 3800 50  0001 C CNN
+	1    7350 3800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8400 4250 8400 4000
+$Comp
+L zephyrus_iaq:R_US R?
+U 1 1 5DB81F40
+P 4800 2850
+AR Path="/5DA09389/5DB81F40" Ref="R?"  Part="1" 
+AR Path="/5DB81F40" Ref="R?"  Part="1" 
+AR Path="/5DB4C8BA/5DB81F40" Ref="R3"  Part="1" 
+F 0 "R3" H 4868 2896 50  0000 L CNN
+F 1 "330" H 4868 2805 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 4840 2840 50  0001 C CNN
+F 3 "~" H 4800 2850 50  0001 C CNN
+	1    4800 2850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4800 2600 4800 2700
+Text Notes 6400 3600 0    50   ~ 10
+5V Regulator Output/ 0.125V drop @ 2A
+Wire Wire Line
+	4800 2250 4800 2300
+Wire Wire Line
+	4800 3000 4800 3050
+Text Label 6150 4500 0    50   ~ 0
+VREG_SENSE
+Wire Wire Line
+	6150 4500 6900 4500
+$Comp
+L zephyrus_iaq:R_US R23
+U 1 1 5DBB231C
+P 5950 4500
+F 0 "R23" H 5700 4550 50  0000 L CNN
+F 1 "100k" H 5700 4450 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 5990 4490 50  0001 C CNN
+F 3 "" H 5950 4500 50  0001 C CNN
+	1    5950 4500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5950 4650 5950 4750
+Wire Wire Line
+	5950 4750 6900 4750
+Wire Wire Line
+	5950 4350 5950 4250
+Wire Wire Line
+	5950 4750 5950 5000
+Wire Wire Line
+	5950 5000 6900 5000
+Connection ~ 5950 4750
+$Comp
+L zephyrus_iaq:GND #PWR?
+U 1 1 5DBB603E
+P 5950 5100
+AR Path="/5DBB603E" Ref="#PWR?"  Part="1" 
+AR Path="/5DB4C8BA/5DBB603E" Ref="#PWR0105"  Part="1" 
+F 0 "#PWR0105" H 5950 4850 50  0001 C CNN
+F 1 "GND" H 5955 4927 50  0000 C CNN
+F 2 "" H 5950 5100 50  0001 C CNN
+F 3 "" H 5950 5100 50  0001 C CNN
+	1    5950 5100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5950 5000 5950 5100
+Connection ~ 5950 5000
+NoConn ~ 7800 5000
+Connection ~ 4800 2250
+Wire Wire Line
+	5900 3050 5900 2650
+Wire Wire Line
+	4250 3050 4800 3050
+Wire Wire Line
+	4250 2700 4250 3050
+Connection ~ 4800 3050
+Wire Wire Line
+	4250 3050 4250 3100
+Connection ~ 4250 3050
+$Comp
+L zephyrus_iaq:C C?
+U 1 1 5DB6870F
+P 4250 4300
+AR Path="/5DB6870F" Ref="C?"  Part="1" 
+AR Path="/5DB4C8BA/5DB6870F" Ref="C13"  Part="1" 
+F 0 "C13" H 3950 4300 50  0000 L CNN
+F 1 "47uF" H 3950 4200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 4288 4150 50  0001 C CNN
+F 3 "~" H 4250 4300 50  0001 C CNN
+	1    4250 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L zephyrus_iaq:+5V #PWR?
+U 1 1 5DB68715
+P 4250 3850
+AR Path="/5DB68715" Ref="#PWR?"  Part="1" 
+AR Path="/5DB4C8BA/5DB68715" Ref="#PWR0106"  Part="1" 
+F 0 "#PWR0106" H 4250 3700 50  0001 C CNN
+F 1 "+5V" H 4250 3990 50  0000 C CNN
+F 2 "" H 4250 3850 50  0000 C CNN
+F 3 "" H 4250 3850 50  0000 C CNN
+	1    4250 3850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4250 3850 4250 4000
+Wire Wire Line
+	4250 4450 4250 4600
+$Comp
+L zephyrus_iaq:GND #PWR?
+U 1 1 5DB6871D
+P 4250 4600
+AR Path="/5DB6871D" Ref="#PWR?"  Part="1" 
+AR Path="/5DB4C8BA/5DB6871D" Ref="#PWR0107"  Part="1" 
+F 0 "#PWR0107" H 4250 4350 50  0001 C CNN
+F 1 "GND" H 4255 4427 50  0000 C CNN
+F 2 "" H 4250 4600 50  0001 C CNN
+F 3 "" H 4250 4600 50  0001 C CNN
+	1    4250 4600
+	1    0    0    -1  
+$EndComp
+Connection ~ 4250 4000
+Wire Wire Line
+	4250 4000 4250 4150
+$Comp
+L zephyrus_iaq:R_US R4
+U 1 1 5DB95547
+P 5000 4250
+F 0 "R4" H 5068 4296 50  0000 L CNN
+F 1 "2.61k" H 5068 4205 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 5040 4240 50  0001 C CNN
+F 3 "" H 5000 4250 50  0001 C CNN
+	1    5000 4250
+	1    0    0    -1  
+$EndComp
+Text Label 5500 4600 2    50   ~ 0
+VREG_SENSE
+$Comp
+L zephyrus_iaq:GND #PWR?
+U 1 1 5DB97E83
+P 5000 5200
+AR Path="/5DB97E83" Ref="#PWR?"  Part="1" 
+AR Path="/5DB4C8BA/5DB97E83" Ref="#PWR0108"  Part="1" 
+F 0 "#PWR0108" H 5000 4950 50  0001 C CNN
+F 1 "GND" H 5005 5027 50  0000 C CNN
+F 2 "" H 5000 5200 50  0001 C CNN
+F 3 "" H 5000 5200 50  0001 C CNN
+	1    5000 5200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5000 4100 5000 4000
+$Comp
+L zephyrus_iaq:R_US R24
+U 1 1 5DBA047F
+P 5000 4900
+F 0 "R24" H 5068 4946 50  0000 L CNN
+F 1 "1k" H 5068 4855 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 5040 4890 50  0001 C CNN
+F 3 "" H 5000 4900 50  0001 C CNN
+	1    5000 4900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5000 5050 5000 5200
+Wire Wire Line
+	4250 4000 5000 4000
+Wire Wire Line
+	5000 4400 5000 4600
+Wire Wire Line
+	5000 4600 5500 4600
+Connection ~ 5000 4600
+Wire Wire Line
+	5000 4600 5000 4750
+Wire Wire Line
+	5000 4000 5950 4000
+Connection ~ 5000 4000
+Wire Wire Line
+	5950 4250 5950 4000
+Connection ~ 5950 4250
+Connection ~ 5950 4000
+Wire Wire Line
+	5950 4250 6900 4250
+Wire Wire Line
+	5950 4000 6900 4000
+Wire Wire Line
+	4800 3050 5400 3050
+Wire Wire Line
+	5400 2250 5400 2500
+Wire Wire Line
+	5400 2800 5400 3050
+Connection ~ 5400 3050
+Wire Wire Line
+	5400 3050 5900 3050
+$Comp
+L zephyrus_iaq:LED D?
+U 1 1 5DB81F39
+P 4800 2450
+AR Path="/5DA09389/5DB81F39" Ref="D?"  Part="1" 
+AR Path="/5DB81F39" Ref="D?"  Part="1" 
+AR Path="/5DB4C8BA/5DB81F39" Ref="D1"  Part="1" 
+F 0 "D1" V 4800 2550 50  0000 C CNN
+F 1 "PWR" V 4700 2550 50  0000 C CNN
+F 2 "Diode_SMD:D_0805_2012Metric" H 4800 2450 50  0001 C CNN
+F 3 "~" H 4800 2450 50  0001 C CNN
+	1    4800 2450
+	0    -1   -1   0   
+$EndComp
+Text Label 4400 4000 0    50   ~ 0
+VREG_OUT_5V
+$EndSCHEMATC

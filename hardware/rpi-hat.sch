@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 3
+Sheet 1 4
 Title ""
 Date "15 nov 2012"
 Rev ""
@@ -14,17 +14,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L zephyrus_iaq:+5V #PWR012
-U 1 1 580C1B61
-P 850 3600
-F 0 "#PWR012" H 850 3450 50  0001 C CNN
-F 1 "+5V" H 850 3740 50  0000 C CNN
-F 2 "" H 850 3600 50  0000 C CNN
-F 3 "" H 850 3600 50  0000 C CNN
-	1    850  3600
-	1    0    0    -1  
-$EndComp
 $Comp
 L zephyrus_iaq:GND #PWR011
 U 1 1 580C1D11
@@ -274,43 +263,43 @@ Text Notes 10500 1850 0    50   ~ 10
 $Comp
 L zephyrus_iaq:R_US R1
 U 1 1 5CBF6130
-P 3750 3650
-F 0 "R1" V 3850 3500 50  0000 L CNN
-F 1 "3.9k" V 3850 3650 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3750 3650 50  0001 C CNN
-F 3 "~" H 3750 3650 50  0001 C CNN
-	1    3750 3650
+P 1500 6800
+F 0 "R1" V 1600 6650 50  0000 L CNN
+F 1 "3.9k" V 1600 6800 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1500 6800 50  0001 C CNN
+F 3 "~" H 1500 6800 50  0001 C CNN
+	1    1500 6800
 	0    1    -1   0   
 $EndComp
 $Comp
 L zephyrus_iaq:R_US R2
 U 1 1 5CBF7E94
-P 3750 3900
-F 0 "R2" V 3850 3750 50  0000 L CNN
-F 1 "3.9k" V 3850 3900 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3750 3900 50  0001 C CNN
-F 3 "~" H 3750 3900 50  0001 C CNN
-	1    3750 3900
+P 1500 7050
+F 0 "R2" V 1600 6900 50  0000 L CNN
+F 1 "3.9k" V 1600 7050 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1500 7050 50  0001 C CNN
+F 3 "~" H 1500 7050 50  0001 C CNN
+	1    1500 7050
 	0    1    -1   0   
 $EndComp
 Wire Wire Line
-	3900 3650 4100 3650
+	1650 6800 1850 6800
 Wire Wire Line
-	4100 3650 4100 3900
+	1850 6800 1850 7050
 Wire Wire Line
-	4100 3900 3900 3900
+	1850 7050 1650 7050
 $Comp
 L zephyrus_iaq:+3.3V #PWR013
 U 1 1 5CC006CD
-P 4100 3650
-F 0 "#PWR013" H 4100 3500 50  0001 C CNN
-F 1 "+3.3V" H 4250 3750 50  0000 C CNN
-F 2 "" H 4100 3650 50  0000 C CNN
-F 3 "" H 4100 3650 50  0000 C CNN
-	1    4100 3650
+P 1850 6800
+F 0 "#PWR013" H 1850 6650 50  0001 C CNN
+F 1 "+3.3V" H 2000 6900 50  0000 C CNN
+F 2 "" H 1850 6800 50  0000 C CNN
+F 3 "" H 1850 6800 50  0000 C CNN
+	1    1850 6800
 	1    0    0    -1  
 $EndComp
-Text Notes 3550 3500 0    50   ~ 10
+Text Notes 1300 6650 0    50   ~ 10
 Pullup Resistors
 $Comp
 L zephyrus_iaq:CAT24C32WI-GT3 U2
@@ -383,70 +372,8 @@ Wire Wire Line
 	2300 5600 2300 5500
 Text Notes 2950 4850 0    50   ~ 10
 EEPROM
-$Comp
-L zephyrus_iaq:10103594-0001LF J7
-U 1 1 5CC8DD13
-P 2050 4150
-F 0 "J7" H 2050 4717 50  0000 C CNN
-F 1 "10103594-0001LF" H 2050 4626 50  0000 C CNN
-F 2 "10103594-0001LF:FCI_10103594-0001LF" H 2050 4150 50  0001 L BNN
-F 3 "" H 2050 4150 50  0001 L BNN
-	1    2050 4150
-	1    0    0    -1  
-$EndComp
-$Comp
-L zephyrus_iaq:Polyfuse F1
-U 1 1 5CC8DF81
-P 1400 3850
-F 0 "F1" H 1350 3650 50  0000 L CNN
-F 1 "MF-MSMF250/X" H 1100 3750 50  0000 L CNN
-F 2 "Fuse:Fuse_1812_4532Metric" H 1450 3650 50  0001 L CNN
-F 3 "~" H 1400 3850 50  0001 C CNN
-	1    1400 3850
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	1650 3850 1550 3850
-NoConn ~ 1650 3950
-NoConn ~ 1650 4050
-NoConn ~ 1650 4150
-$Comp
-L zephyrus_iaq:GND #PWR015
-U 1 1 5CCC195C
-P 1600 4300
-F 0 "#PWR015" H 1600 4050 50  0001 C CNN
-F 1 "GND" H 1605 4127 50  0000 C CNN
-F 2 "" H 1600 4300 50  0001 C CNN
-F 3 "" H 1600 4300 50  0001 C CNN
-	1    1600 4300
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1600 4300 1600 4250
-Wire Wire Line
-	1600 4250 1650 4250
-$Comp
-L zephyrus_iaq:C C1
-U 1 1 5CCDA710
-P 850 4050
-F 0 "C1" H 650 4050 50  0000 L CNN
-F 1 "47uF" H 600 3950 50  0000 L CNN
-F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 888 3900 50  0001 C CNN
-F 3 "~" H 850 4050 50  0001 C CNN
-	1    850  4050
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	850  3850 850  3900
-Wire Wire Line
-	850  4200 850  4250
-Connection ~ 1600 4250
 NoConn ~ 2900 1100
 NoConn ~ 2900 1200
-Text Notes 1450 3550 0    50   ~ 10
-5V Power:  Micro USB Input
-NoConn ~ 2450 3950
-NoConn ~ 2450 3850
 NoConn ~ 3950 2300
 NoConn ~ 3950 2800
 NoConn ~ 3950 2900
@@ -499,43 +426,15 @@ F 3 "" H 2650 1000 50  0001 C CNN
 	1    2650 1000
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	850  3850 1100 3850
-Wire Wire Line
-	850  4250 1100 4250
-Wire Wire Line
-	1100 3900 1100 3850
-Connection ~ 1100 3850
-Wire Wire Line
-	1100 3850 1250 3850
-Wire Wire Line
-	1100 4200 1100 4250
-Connection ~ 1100 4250
-Wire Wire Line
-	1100 4250 1600 4250
-$Comp
-L zephyrus_iaq:SMBJ5.0A D1
-U 1 1 5CBCBDEE
-P 1050 4100
-F 0 "D1" V 1146 3971 50  0000 R CNN
-F 1 "SMBJ5.0A" V 1055 3971 50  0000 R CNN
-F 2 "zephyrus-iaq:SMBJ5.0A" V 900 3950 50  0001 L BNN
-F 3 "" V 900 3950 50  0001 L BNN
-	1    1050 4100
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	850  3600 850  3850
-Connection ~ 850  3850
 $Comp
 L zephyrus_iaq:SM04B-SRSS-TB(LF)(SN)_USART J2
 U 1 1 5D996B28
-P 5350 2400
-F 0 "J2" H 5400 2900 50  0000 L CNN
-F 1 "USART 3.3V/5V" H 5200 2800 50  0000 L CNN
-F 2 "zephyrus-iaq:JST_SM04B-SRSS-TB(LF)(SN)" H 5400 2500 50  0001 C CNN
-F 3 "" H 5400 2500 50  0001 C CNN
-	1    5350 2400
+P 5550 2250
+F 0 "J2" H 5600 2700 50  0000 L CNN
+F 1 "USART" H 5300 2600 50  0000 L CNN
+F 2 "zephyrus-iaq:JST_SM04B-SRSS-TB(LF)(SN)" H 5600 2350 50  0001 C CNN
+F 3 "" H 5600 2350 50  0001 C CNN
+	1    5550 2250
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -560,7 +459,7 @@ F 3 "~" H 6550 2450 50  0001 C CNN
 	1    6550 2450
 	1    0    0    -1  
 $EndComp
-Text Notes 5050 1800 0    50   ~ 10
+Text Notes 5050 1750 0    50   ~ 10
 SDS011 Nova PM
 Text Label 8750 3850 0    50   ~ 0
 ADC0
@@ -588,67 +487,15 @@ Text Label 8150 3250 2    50   ~ 0
 ADC0
 Text Label 5700 3250 0    50   ~ 0
 SDA_3.3
-Text Label 5700 3400 0    50   ~ 0
-SCL_3.3
 Text Label 1250 1200 2    50   ~ 0
 SDA_3.3
 Text Label 1250 1300 2    50   ~ 0
 SCL_3.3
-$Comp
-L zephyrus_iaq:R_US R3
-U 1 1 5D936F8B
-P 3750 4200
-F 0 "R3" V 3850 4050 50  0000 L CNN
-F 1 "10k" V 3850 4200 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3750 4200 50  0001 C CNN
-F 3 "~" H 3750 4200 50  0001 C CNN
-	1    3750 4200
-	0    1    -1   0   
-$EndComp
-$Comp
-L zephyrus_iaq:R_US R4
-U 1 1 5D936F92
-P 3750 4450
-F 0 "R4" V 3850 4300 50  0000 L CNN
-F 1 "10k" V 3850 4450 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3750 4450 50  0001 C CNN
-F 3 "~" H 3750 4450 50  0001 C CNN
-	1    3750 4450
-	0    1    -1   0   
-$EndComp
-Wire Wire Line
-	3900 4200 4100 4200
-Wire Wire Line
-	4100 4200 4100 4450
-Wire Wire Line
-	4100 4450 3900 4450
-$Comp
-L zephyrus_iaq:+3.3V #PWR014
-U 1 1 5D936F9C
-P 4100 4150
-F 0 "#PWR014" H 4100 4000 50  0001 C CNN
-F 1 "+3.3V" H 4250 4250 50  0000 C CNN
-F 2 "" H 4100 4150 50  0000 C CNN
-F 3 "" H 4100 4150 50  0000 C CNN
-	1    4100 4150
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3600 4200 3500 4200
-Wire Wire Line
-	3500 4450 3600 4450
-Text Label 3500 4200 2    50   ~ 0
-SDA_3.3
-Text Label 3500 4450 2    50   ~ 0
-SCL_3.3
-Wire Wire Line
-	4100 4150 4100 4200
-Connection ~ 4100 4200
-Text Label 3450 3650 2    50   ~ 0
+Text Label 1200 6800 2    50   ~ 0
 ID_SD_EEPROM
 Wire Wire Line
-	3450 3650 3600 3650
-Text Label 3500 3900 2    50   ~ 0
+	1200 6800 1350 6800
+Text Label 1250 7050 2    50   ~ 0
 ID_SC_EEPROM
 Text Label 3800 5300 0    50   ~ 0
 ID_SC_EEPROM
@@ -797,7 +644,7 @@ Wire Wire Line
 Wire Wire Line
 	1300 6000 1750 6000
 Wire Wire Line
-	3500 3900 3600 3900
+	1250 7050 1350 7050
 $Sheet
 S 6200 3100 1450 1750
 U 5DA09389
@@ -818,36 +665,32 @@ $EndSheet
 $Comp
 L zephyrus_iaq:+5V #PWR09
 U 1 1 5D96FDD5
-P 5000 2500
-F 0 "#PWR09" H 5000 2350 50  0001 C CNN
-F 1 "+5V" V 5000 2700 50  0000 C CNN
-F 2 "" H 5000 2500 50  0001 C CNN
-F 3 "" H 5000 2500 50  0001 C CNN
-	1    5000 2500
+P 4850 2350
+F 0 "#PWR09" H 4850 2200 50  0001 C CNN
+F 1 "+5V" V 4850 2550 50  0000 C CNN
+F 2 "" H 4850 2350 50  0001 C CNN
+F 3 "" H 4850 2350 50  0001 C CNN
+	1    4850 2350
 	0    -1   -1   0   
 $EndComp
 $Comp
 L zephyrus_iaq:GND #PWR08
 U 1 1 5D9839C0
-P 5000 2400
-F 0 "#PWR08" H 5000 2150 50  0001 C CNN
-F 1 "GND" V 5000 2200 50  0000 C CNN
-F 2 "" H 5000 2400 50  0001 C CNN
-F 3 "" H 5000 2400 50  0001 C CNN
-	1    5000 2400
+P 4850 2250
+F 0 "#PWR08" H 4850 2000 50  0001 C CNN
+F 1 "GND" V 4850 2050 50  0000 C CNN
+F 2 "" H 4850 2250 50  0001 C CNN
+F 3 "" H 4850 2250 50  0001 C CNN
+	1    4850 2250
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	5000 2400 5050 2400
-Wire Wire Line
-	5000 2500 5050 2500
 Text Label 3950 1400 0    50   ~ 0
 TXD0
 Text Label 3950 1500 0    50   ~ 0
 RXD0
-Text Label 5050 2200 2    50   ~ 0
+Text Label 4850 2050 0    50   ~ 0
 RXD0
-Text Label 5050 2300 2    50   ~ 0
+Text Label 4850 2150 0    50   ~ 0
 TXD0
 Wire Wire Line
 	2400 1500 2300 1500
@@ -856,7 +699,7 @@ Wire Wire Line
 Connection ~ 2300 2300
 Text Notes 4950 3150 0    50   ~ 0
 SDS011 has 5V input, \nbut datasheet says \nUSART is at 3.3V
-Text Notes 5900 2050 0    50   ~ 0
+Text Notes 5900 2650 0    50   ~ 0
 Pulse Per Second\nBreakout for Sparkfun GPS
 NoConn ~ 3950 2200
 NoConn ~ 1250 2000
@@ -889,8 +732,6 @@ Wire Wire Line
 	7650 3850 8150 3850
 Wire Wire Line
 	7650 4000 8150 4000
-Wire Wire Line
-	6200 3400 5700 3400
 Wire Wire Line
 	6200 3250 5700 3250
 $Sheet
@@ -1026,7 +867,7 @@ L zephyrus_iaq:DRV8837C U1
 U 1 1 5D9C38A4
 P 6950 5300
 F 0 "U1" H 6950 5415 50  0000 C CNN
-F 1 "DRV8837C" H 6950 5324 50  0000 C CNN
+F 1 "Fan Driver" H 6950 5324 50  0000 C CNN
 F 2 "zephyrus-iaq:SON50P200X200X80-9N" H 6950 5300 50  0001 C CNN
 F 3 "" H 6950 5300 50  0001 C CNN
 	1    6950 5300
@@ -1285,7 +1126,7 @@ L zephyrus_iaq:SM02B-SRSS-TB(LF)(SN) J17
 U 1 1 5D9B0FC0
 P 10200 5700
 F 0 "J17" H 10500 6150 50  0000 L CNN
-F 1 "SM02B-SRSS-TB(LF)(SN)" H 10100 6050 50  0000 L CNN
+F 1 "SM02B-SRSS-TB(LF)(SN)" H 10100 6050 50  0001 L CNN
 F 2 "SM02B-SRSS-TB(LF)(SN)" H 10450 6100 50  0001 L BNN
 F 3 "SH Series 2 Position 1 mm Pitch Surface Mount Side Entry Shrouded Header" H 10450 6200 50  0001 L BNN
 F 4 "SM02B-SRSS-TB_LF__SN_" H 10450 6300 50  0001 L BNN "Field8"
@@ -1297,15 +1138,30 @@ L zephyrus_iaq:SM02B-SRSS-TB(LF)(SN) J18
 U 1 1 5D9B24B2
 P 10200 6250
 F 0 "J18" H 10500 6700 50  0000 L CNN
-F 1 "SM02B-SRSS-TB(LF)(SN)" H 10100 6600 50  0000 L CNN
+F 1 "SM02B-SRSS-TB(LF)(SN)" H 10100 6600 50  0001 L CNN
 F 2 "SM02B-SRSS-TB(LF)(SN)" H 10450 6650 50  0001 L BNN
 F 3 "SH Series 2 Position 1 mm Pitch Surface Mount Side Entry Shrouded Header" H 10450 6750 50  0001 L BNN
 F 4 "SM02B-SRSS-TB_LF__SN_" H 10450 6850 50  0001 L BNN "Field8"
 	1    10200 6250
 	1    0    0    -1  
 $EndComp
-NoConn ~ 2450 4050
-NoConn ~ 2450 4150
-NoConn ~ 2450 4250
-NoConn ~ 2450 4350
+Wire Wire Line
+	5250 2050 4850 2050
+Wire Wire Line
+	5250 2150 4850 2150
+Wire Wire Line
+	4850 2250 5250 2250
+Wire Wire Line
+	4850 2350 5250 2350
+Connection ~ 1850 6800
+$Sheet
+S 4400 3600 1000 1050
+U 5DB4C8BA
+F0 "PowerManagement" 50
+F1 "PowerManagement.sch" 50
+$EndSheet
+Text Label 5700 3400 0    50   ~ 0
+SCL_3.3
+Wire Wire Line
+	6200 3400 5700 3400
 $EndSCHEMATC

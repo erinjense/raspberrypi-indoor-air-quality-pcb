@@ -537,17 +537,6 @@ DAC_OUT_F
 Text Label 7250 6300 2    50   ~ 0
 DAC_OUT_E
 $Comp
-L zephyrus_iaq:R_US R19
-U 1 1 5DA5255A
-P 4000 5900
-F 0 "R19" H 3750 5950 50  0000 L CNN
-F 1 "10K" H 3750 5850 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 4040 5890 50  0001 C CNN
-F 3 "~" H 4000 5900 50  0001 C CNN
-	1    4000 5900
-	1    0    0    -1  
-$EndComp
-$Comp
 L zephyrus_iaq:GND #PWR?
 U 1 1 5DA6AECF
 P 7250 5300
@@ -622,19 +611,6 @@ F 3 "" H 5150 6300 50  0001 C CNN
 	1    5150 6300
 	1    0    0    -1  
 $EndComp
-$Comp
-L zephyrus_iaq:+5V #PWR057
-U 1 1 5DA9481D
-P 4000 5600
-F 0 "#PWR057" H 4000 5450 50  0001 C CNN
-F 1 "+5V" H 4015 5773 50  0000 C CNN
-F 2 "" H 4000 5600 50  0001 C CNN
-F 3 "" H 4000 5600 50  0001 C CNN
-	1    4000 5600
-	1    0    0    -1  
-$EndComp
-Text HLabel 4000 6150 2    50   Input ~ 0
-DAC_CLR_pu
 Text Label 5100 3150 0    50   ~ 0
 BUF_OUT_4
 Text Label 7200 3400 2    50   ~ 0
@@ -883,10 +859,6 @@ Wire Wire Line
 	7250 6100 6800 6100
 Wire Wire Line
 	7250 6300 6800 6300
-Wire Wire Line
-	4000 5600 4000 5750
-Wire Wire Line
-	4000 6050 4000 6150
 Connection ~ 2050 3900
 Wire Wire Line
 	2050 3900 2450 3900
@@ -963,9 +935,6 @@ Text HLabel 3600 2850 2    50   Input ~ 0
 SCL_5
 Text HLabel 3000 2850 0    50   Input ~ 0
 SCL_3.3
-Connection ~ 3000 2400
-Wire Wire Line
-	3000 2350 3000 2400
 Wire Wire Line
 	3600 2350 3600 2450
 $Comp
@@ -982,48 +951,29 @@ $EndComp
 $Comp
 L zephyrus_iaq:+3.3V #PWR043
 U 1 1 5D9AAAB9
-P 3000 2350
-F 0 "#PWR043" H 3000 2200 50  0001 C CNN
-F 1 "+3.3V" H 3015 2523 50  0000 C CNN
-F 2 "" H 3000 2350 50  0001 C CNN
-F 3 "" H 3000 2350 50  0001 C CNN
-	1    3000 2350
+P 3200 2550
+F 0 "#PWR043" H 3200 2400 50  0001 C CNN
+F 1 "+3.3V" H 3215 2723 50  0000 C CNN
+F 2 "" H 3200 2550 50  0001 C CNN
+F 3 "" H 3200 2550 50  0001 C CNN
+	1    3200 2550
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3200 2400 3200 2650
-Wire Wire Line
-	3000 2400 3200 2400
-Wire Wire Line
-	3000 2450 3000 2400
 Wire Wire Line
 	3600 2850 3600 2750
 Wire Wire Line
 	3500 2850 3600 2850
 Wire Wire Line
 	3000 2850 3100 2850
-Wire Wire Line
-	3000 2750 3000 2850
 $Comp
 L zephyrus_iaq:R_US R18
 U 1 1 5D9AAAAC
 P 3600 2600
 F 0 "R18" H 3700 2650 50  0000 L CNN
-F 1 "10k" H 3700 2550 50  0000 L CNN
+F 1 "1.8k" H 3700 2550 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 3640 2590 50  0001 C CNN
 F 3 "~" H 3600 2600 50  0001 C CNN
 	1    3600 2600
-	1    0    0    -1  
-$EndComp
-$Comp
-L zephyrus_iaq:R_US R17
-U 1 1 5D9AAAA6
-P 3000 2600
-F 0 "R17" H 2800 2650 50  0000 L CNN
-F 1 "10k" H 2800 2550 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 3040 2590 50  0001 C CNN
-F 3 "~" H 3000 2600 50  0001 C CNN
-	1    3000 2600
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1044,9 +994,6 @@ Text HLabel 1850 2850 2    50   Input ~ 0
 SDA_5
 Text HLabel 1250 2850 0    50   Input ~ 0
 SDA_3.3
-Connection ~ 1250 2400
-Wire Wire Line
-	1250 2350 1250 2400
 Wire Wire Line
 	1850 2350 1850 2450
 $Comp
@@ -1063,48 +1010,29 @@ $EndComp
 $Comp
 L zephyrus_iaq:+3.3V #PWR041
 U 1 1 5D9A45AD
-P 1250 2350
-F 0 "#PWR041" H 1250 2200 50  0001 C CNN
-F 1 "+3.3V" H 1265 2523 50  0000 C CNN
-F 2 "" H 1250 2350 50  0001 C CNN
-F 3 "" H 1250 2350 50  0001 C CNN
-	1    1250 2350
+P 1450 2550
+F 0 "#PWR041" H 1450 2400 50  0001 C CNN
+F 1 "+3.3V" H 1465 2723 50  0000 C CNN
+F 2 "" H 1450 2550 50  0001 C CNN
+F 3 "" H 1450 2550 50  0001 C CNN
+	1    1450 2550
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	1450 2400 1450 2650
-Wire Wire Line
-	1250 2400 1450 2400
-Wire Wire Line
-	1250 2450 1250 2400
 Wire Wire Line
 	1850 2850 1850 2750
 Wire Wire Line
 	1750 2850 1850 2850
 Wire Wire Line
 	1250 2850 1350 2850
-Wire Wire Line
-	1250 2750 1250 2850
 $Comp
 L zephyrus_iaq:R_US R16
 U 1 1 5D9A0678
 P 1850 2600
 F 0 "R16" H 1950 2650 50  0000 L CNN
-F 1 "10k" H 1950 2550 50  0000 L CNN
+F 1 "1.8k" H 1950 2550 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 1890 2590 50  0001 C CNN
 F 3 "~" H 1850 2600 50  0001 C CNN
 	1    1850 2600
-	1    0    0    -1  
-$EndComp
-$Comp
-L zephyrus_iaq:R_US R15
-U 1 1 5D99D713
-P 1250 2600
-F 0 "R15" H 1050 2650 50  0000 L CNN
-F 1 "10k" H 1050 2550 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 1290 2590 50  0001 C CNN
-F 3 "~" H 1250 2600 50  0001 C CNN
-	1    1250 2600
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1190,4 +1118,12 @@ F 3 "None" H 10650 2350 50  0001 L BNN
 	1    10650 2350
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	1450 2550 1450 2650
+Text Notes 550  2200 0    50   ~ 0
+SDA_3.3 has a 1.8k fixed pull up\ninternal to the Raspberry Pi
+Wire Wire Line
+	3200 2550 3200 2650
+Text Notes 7950 5250 0    50   ~ 0
+Raspberry Pi has internal pull up\nresistor on DAC_CLR_pu.\n3.3V is within the range of VIH\nwhen DAC is at 5V
 $EndSCHEMATC

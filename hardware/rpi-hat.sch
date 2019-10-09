@@ -317,7 +317,7 @@ L zephyrus_iaq:R_US R5
 U 1 1 5CC471B3
 P 1750 5850
 F 0 "R5" H 1850 5850 50  0000 L CNN
-F 1 "10k" H 1850 5950 50  0000 L CNN
+F 1 "1k" H 1850 5950 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1750 5850 50  0001 C CNN
 F 3 "~" H 1750 5850 50  0001 C CNN
 	1    1750 5850
@@ -498,9 +498,9 @@ Wire Wire Line
 Text Label 1250 7050 2    50   ~ 0
 ID_SC_EEPROM
 Text Label 3800 5300 0    50   ~ 0
-ID_SC_EEPROM
-Text Label 2400 5900 2    50   ~ 0
 ID_SD_EEPROM
+Text Label 2400 5900 2    50   ~ 0
+ID_SC_EEPROM
 Text Label 3950 2400 0    50   ~ 0
 ID_SC_EEPROM
 NoConn ~ 1250 2500
@@ -688,9 +688,9 @@ Text Label 3950 1400 0    50   ~ 0
 TXD0
 Text Label 3950 1500 0    50   ~ 0
 RXD0
-Text Label 4850 2050 0    50   ~ 0
-RXD0
 Text Label 4850 2150 0    50   ~ 0
+RXD0
+Text Label 4850 2050 0    50   ~ 0
 TXD0
 Wire Wire Line
 	2400 1500 2300 1500

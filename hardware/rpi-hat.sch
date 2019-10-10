@@ -188,7 +188,7 @@ Wire Wire Line
 	2300 2300 2300 3000
 Wire Wire Line
 	3000 1700 3000 2000
-Text Notes 6300 1800 0    50   ~ 10
+Text Notes 6700 1850 0    50   ~ 10
 SparkFun GPS Breakout - XA1110 (Qwiic) 
 $Comp
 L zephyrus_iaq:SM04B-SRSS-TB(LF)(SN) J3
@@ -306,7 +306,7 @@ L zephyrus_iaq:CAT24C32WI-GT3 U2
 U 1 1 5CC23B46
 P 3100 5600
 F 0 "U2" H 3100 6270 50  0000 C CNN
-F 1 "CAT24C32WI-GT3" H 3100 6179 50  0000 C CNN
+F 1 "EEPROM" H 3100 6179 50  0000 C CNN
 F 2 "CAT24C32WI-GT3:SOIC127P600X175-8N" H 3100 5600 50  0001 L BNN
 F 3 "" H 3100 5600 50  0001 L BNN
 	1    3100 5600
@@ -658,9 +658,8 @@ F6 "ADC4" O R 7650 3850 50
 F7 "ADC5" O R 7650 4000 50 
 F8 "SDA_3.3" I L 6200 3250 50 
 F9 "SCL_3.3" I L 6200 3400 50 
-F10 "DAC_CLR_pu" I R 7650 4400 50 
-F11 "SDA_5" I R 7650 4600 50 
-F12 "SCL_5" I R 7650 4750 50 
+F10 "SDA_5" I R 7650 4600 50 
+F11 "SCL_5" I R 7650 4750 50 
 $EndSheet
 $Comp
 L zephyrus_iaq:+5V #PWR09
@@ -716,10 +715,6 @@ F 3 "" H 9850 2300 50  0001 C CNN
 	1    9850 2300
 	0    -1   -1   0   
 $EndComp
-Text Label 8150 4400 2    50   ~ 0
-DAC_CLR_pu
-Wire Wire Line
-	7650 4400 8150 4400
 Wire Wire Line
 	7650 3250 8150 3250
 Wire Wire Line
@@ -858,8 +853,6 @@ Text Label 1250 1700 2    50   ~ 0
 MUL_B
 Text Label 1250 1800 2    50   ~ 0
 MUL_C
-Text Label 3950 1800 0    50   ~ 0
-DAC_CLR_pu
 Text Label 3950 1900 0    50   ~ 0
 MUL_INH_pu
 $Comp
@@ -1121,30 +1114,6 @@ F 3 "" H 9800 6150 50  0001 C CNN
 	1    9800 6150
 	0    1    1    0   
 $EndComp
-$Comp
-L zephyrus_iaq:SM02B-SRSS-TB(LF)(SN) J17
-U 1 1 5D9B0FC0
-P 10200 5700
-F 0 "J17" H 10500 6150 50  0000 L CNN
-F 1 "SM02B-SRSS-TB(LF)(SN)" H 10100 6050 50  0001 L CNN
-F 2 "SM02B-SRSS-TB(LF)(SN)" H 10450 6100 50  0001 L BNN
-F 3 "SH Series 2 Position 1 mm Pitch Surface Mount Side Entry Shrouded Header" H 10450 6200 50  0001 L BNN
-F 4 "SM02B-SRSS-TB_LF__SN_" H 10450 6300 50  0001 L BNN "Field8"
-	1    10200 5700
-	1    0    0    -1  
-$EndComp
-$Comp
-L zephyrus_iaq:SM02B-SRSS-TB(LF)(SN) J18
-U 1 1 5D9B24B2
-P 10200 6250
-F 0 "J18" H 10500 6700 50  0000 L CNN
-F 1 "SM02B-SRSS-TB(LF)(SN)" H 10100 6600 50  0001 L CNN
-F 2 "SM02B-SRSS-TB(LF)(SN)" H 10450 6650 50  0001 L BNN
-F 3 "SH Series 2 Position 1 mm Pitch Surface Mount Side Entry Shrouded Header" H 10450 6750 50  0001 L BNN
-F 4 "SM02B-SRSS-TB_LF__SN_" H 10450 6850 50  0001 L BNN "Field8"
-	1    10200 6250
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5250 2050 4850 2050
 Wire Wire Line
@@ -1164,4 +1133,29 @@ Text Label 5700 3400 0    50   ~ 0
 SCL_3.3
 Wire Wire Line
 	6200 3400 5700 3400
+$Comp
+L zephyrus_iaq:SM02B-SRSS-TB(LF)(SN) J17
+U 1 1 5D9B0FC0
+P 10200 5700
+F 0 "J17" H 10500 6150 50  0000 L CNN
+F 1 "Fan 1" H 10100 6050 50  0000 L CNN
+F 2 "SM02B-SRSS-TB(LF)(SN)" H 10450 6100 50  0001 L BNN
+F 3 "SH Series 2 Position 1 mm Pitch Surface Mount Side Entry Shrouded Header" H 10450 6200 50  0001 L BNN
+F 4 "SM02B-SRSS-TB_LF__SN_" H 10450 6300 50  0001 L BNN "Field8"
+	1    10200 5700
+	1    0    0    -1  
+$EndComp
+$Comp
+L zephyrus_iaq:SM02B-SRSS-TB(LF)(SN) J18
+U 1 1 5D9B24B2
+P 10200 6250
+F 0 "J18" H 10500 6700 50  0000 L CNN
+F 1 "Fan 2" H 10100 6600 50  0000 L CNN
+F 2 "SM02B-SRSS-TB(LF)(SN)" H 10450 6650 50  0001 L BNN
+F 3 "SH Series 2 Position 1 mm Pitch Surface Mount Side Entry Shrouded Header" H 10450 6750 50  0001 L BNN
+F 4 "SM02B-SRSS-TB_LF__SN_" H 10450 6850 50  0001 L BNN "Field8"
+	1    10200 6250
+	1    0    0    -1  
+$EndComp
+NoConn ~ 3950 1800
 $EndSCHEMATC

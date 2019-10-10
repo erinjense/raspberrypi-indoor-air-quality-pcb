@@ -170,7 +170,7 @@ Wire Wire Line
 Wire Wire Line
 	5950 4750 5950 5000
 Wire Wire Line
-	5950 5000 6900 5000
+	5950 5000 6750 5000
 Connection ~ 5950 4750
 $Comp
 L zephyrus_iaq:GND #PWR?
@@ -332,4 +332,13 @@ F 3 "~" H 4800 2450 50  0001 C CNN
 $EndComp
 Text Label 4400 4000 0    50   ~ 0
 VREG_OUT_5V
+Connection ~ 6750 5000
+Wire Wire Line
+	6750 5000 6900 5000
+Wire Wire Line
+	6750 5300 7350 5300
+Wire Wire Line
+	7350 5300 7350 5200
+Wire Wire Line
+	6750 5000 6750 5300
 $EndSCHEMATC

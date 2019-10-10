@@ -1,0 +1,1695 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>C:\Users\Hyperion\Documents\GitHub\zephyrus-iaq\hardware\rpi-hat.sch</source>
+    <date>10/10/2019 12:52:54 AM</date>
+    <tool>Eeschema (5.1.4)-1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date>15 nov 2012</date>
+        <source>rpi-hat.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="2" name="/Analog_Sensors/" tstamps="/5DA09389/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>Analog_Sensors.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="3" name="/ADC_Subsystem/" tstamps="/5D9BB3B6/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>ADC_Subsystem.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="4" name="/PowerManagement/" tstamps="/5DB4C8BA/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>PowerManagement.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="J3">
+      <value>I2C 3.3V</value>
+      <footprint>zephyrus-iaq:JST_SM04B-SRSS-TB(LF)(SN)</footprint>
+      <libsource lib="zephyrus_iaq" part="SM04B-SRSS-TB(LF)(SN)" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5CB96535</tstamp>
+    </comp>
+    <comp ref="J4">
+      <value>I2C 3.3V</value>
+      <footprint>zephyrus-iaq:JST_SM04B-SRSS-TB(LF)(SN)</footprint>
+      <libsource lib="zephyrus_iaq" part="SM04B-SRSS-TB(LF)(SN)" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5CB96851</tstamp>
+    </comp>
+    <comp ref="J5">
+      <value>I2C 5V</value>
+      <footprint>SM04B-SRSS-TB_LF__SN_:JST_SM04B-SRSS-TB(LF)(SN)</footprint>
+      <libsource lib="zephyrus_iaq" part="SM04B-SRSS-TB(LF)(SN)" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5CBA5963</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>3.9k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5CBF6130</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>3.9k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5CBF7E94</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>EEPROM</value>
+      <footprint>CAT24C32WI-GT3:SOIC127P600X175-8N</footprint>
+      <libsource lib="zephyrus_iaq" part="CAT24C32WI-GT3" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5CC23B46</tstamp>
+    </comp>
+    <comp ref="R5">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5CC471B3</tstamp>
+    </comp>
+    <comp ref="R8">
+      <value>DNP</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5CC574D3</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>Conn_02x20_Odd_Even__Rpi</value>
+      <footprint>Connector_PinSocket_2.54mm:PinSocket_2x20_P2.54mm_Vertical</footprint>
+      <libsource lib="zephyrus_iaq" part="Conn_02x20_Odd_Even__Rpi" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5CDDF295</tstamp>
+    </comp>
+    <comp ref="J2">
+      <value>USART</value>
+      <footprint>zephyrus-iaq:JST_SM04B-SRSS-TB(LF)(SN)</footprint>
+      <libsource lib="zephyrus_iaq" part="SM04B-SRSS-TB(LF)(SN)_USART" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D996B28</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D99C02F</tstamp>
+    </comp>
+    <comp ref="J6">
+      <value>PPS</value>
+      <footprint>Connector_PinSocket_2.54mm:PinSocket_1x01_P2.54mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="Conn_01x01_Female" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D909C2F</tstamp>
+    </comp>
+    <comp ref="MK4">
+      <value>M2.5</value>
+      <footprint>MountingHole:MountingHole_2.7mm_M2.5</footprint>
+      <libsource lib="zephyrus_iaq" part="Mounting-Hole-Mechanical" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5CBF4467</tstamp>
+    </comp>
+    <comp ref="MK2">
+      <value>M2.5</value>
+      <footprint>MountingHole:MountingHole_2.7mm_M2.5</footprint>
+      <libsource lib="zephyrus_iaq" part="Mounting-Hole-Mechanical" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5CBEEC83</tstamp>
+    </comp>
+    <comp ref="MK3">
+      <value>M2.5</value>
+      <footprint>MountingHole:MountingHole_2.7mm_M2.5</footprint>
+      <libsource lib="zephyrus_iaq" part="Mounting-Hole-Mechanical" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5CBE9499</tstamp>
+    </comp>
+    <comp ref="MK1">
+      <value>M2.5</value>
+      <footprint>MountingHole:MountingHole_2.7mm_M2.5</footprint>
+      <libsource lib="zephyrus_iaq" part="Mounting-Hole-Mechanical" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5CBCD8C7</tstamp>
+    </comp>
+    <comp ref="D2">
+      <value>LED</value>
+      <footprint>Diode_SMD:D_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="LED" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D936A47</tstamp>
+    </comp>
+    <comp ref="R6">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D936A4F</tstamp>
+    </comp>
+    <comp ref="J8">
+      <value>Jumper</value>
+      <footprint>Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="Conn_01x02_Male" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5CC4F1F8</tstamp>
+    </comp>
+    <comp ref="U1">
+      <value>Fan Driver</value>
+      <footprint>zephyrus-iaq:SON50P200X200X80-9N</footprint>
+      <libsource lib="zephyrus_iaq" part="DRV8837C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9C38A4</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9CBBCA</tstamp>
+    </comp>
+    <comp ref="C4">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9CBBE1</tstamp>
+    </comp>
+    <comp ref="D3">
+      <value>LED</value>
+      <footprint>Diode_SMD:D_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="LED" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DA2E0F9</tstamp>
+    </comp>
+    <comp ref="R7">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DA2E100</tstamp>
+    </comp>
+    <comp ref="J17">
+      <value>Fan 1</value>
+      <footprint>SM02B-SRSS-TB(LF)(SN)</footprint>
+      <datasheet>SH Series 2 Position 1 mm Pitch Surface Mount Side Entry Shrouded Header</datasheet>
+      <fields>
+        <field name="Field8">SM02B-SRSS-TB_LF__SN_</field>
+      </fields>
+      <libsource lib="zephyrus_iaq" part="SM02B-SRSS-TB(LF)(SN)" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9B0FC0</tstamp>
+    </comp>
+    <comp ref="J18">
+      <value>Fan 2</value>
+      <footprint>SM02B-SRSS-TB(LF)(SN)</footprint>
+      <datasheet>SH Series 2 Position 1 mm Pitch Surface Mount Side Entry Shrouded Header</datasheet>
+      <fields>
+        <field name="Field8">SM02B-SRSS-TB_LF__SN_</field>
+      </fields>
+      <libsource lib="zephyrus_iaq" part="SM02B-SRSS-TB(LF)(SN)" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9B24B2</tstamp>
+    </comp>
+    <comp ref="D4">
+      <value>LED</value>
+      <footprint>Diode_SMD:D_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="LED" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D92EBDF</tstamp>
+    </comp>
+    <comp ref="D5">
+      <value>LED</value>
+      <footprint>Diode_SMD:D_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="LED" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D92EC86</tstamp>
+    </comp>
+    <comp ref="D6">
+      <value>LED</value>
+      <footprint>Diode_SMD:D_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="LED" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D931031</tstamp>
+    </comp>
+    <comp ref="D7">
+      <value>LED</value>
+      <footprint>Diode_SMD:D_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="LED" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D9333DE</tstamp>
+    </comp>
+    <comp ref="D8">
+      <value>LED</value>
+      <footprint>Diode_SMD:D_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="LED" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D93578F</tstamp>
+    </comp>
+    <comp ref="D9">
+      <value>LED</value>
+      <footprint>Diode_SMD:D_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="LED" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D937B3E</tstamp>
+    </comp>
+    <comp ref="R9">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D948632</tstamp>
+    </comp>
+    <comp ref="R10">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D9486C9</tstamp>
+    </comp>
+    <comp ref="R11">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D94AA74</tstamp>
+    </comp>
+    <comp ref="R12">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D94CE21</tstamp>
+    </comp>
+    <comp ref="R13">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D94F1CE</tstamp>
+    </comp>
+    <comp ref="R14">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D95157F</tstamp>
+    </comp>
+    <comp ref="J9">
+      <value>A0</value>
+      <footprint>zephyrus-iaq:JST_SM03B-SRSS-TB(LF)(SN)</footprint>
+      <datasheet>None</datasheet>
+      <libsource lib="zephyrus_iaq" part="SM03B-SRSS-TB(LF)(SN)" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D9618EA</tstamp>
+    </comp>
+    <comp ref="J11">
+      <value>A3</value>
+      <footprint>zephyrus-iaq:JST_SM03B-SRSS-TB(LF)(SN)</footprint>
+      <datasheet>None</datasheet>
+      <libsource lib="zephyrus_iaq" part="SM03B-SRSS-TB(LF)(SN)" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D9703C7</tstamp>
+    </comp>
+    <comp ref="U7">
+      <value>DAC</value>
+      <footprint>zephyrus-iaq:QFN50P300X300X80-17N</footprint>
+      <libsource lib="zephyrus_iaq" part="DAC43608" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D9B2770</tstamp>
+    </comp>
+    <comp ref="U6">
+      <value>Buffer</value>
+      <footprint>zephyrus-iaq:SOIC127P600X175-8N</footprint>
+      <fields>
+        <field name="Field4">MSOP-8 Analog Devices</field>
+        <field name="Field5">OP Amp Dual GP R-R I/O 6V Automotive 8-Pin MSOP T/R</field>
+        <field name="Field6">Analog Devices</field>
+        <field name="Field7">AD8532ARMZ-REEL</field>
+      </fields>
+      <libsource lib="zephyrus_iaq" part="AD8532ARMZ-REEL" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5DA13A72</tstamp>
+    </comp>
+    <comp ref="C10">
+      <value>10uF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="C" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D9DE373</tstamp>
+    </comp>
+    <comp ref="C9">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="C" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D9DE36D</tstamp>
+    </comp>
+    <comp ref="C8">
+      <value>10uF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="C" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D9CE171</tstamp>
+    </comp>
+    <comp ref="C7">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="C" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D9CE16B</tstamp>
+    </comp>
+    <comp ref="C5">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="C" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5DA7D442</tstamp>
+    </comp>
+    <comp ref="C6">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="C" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5DABF776</tstamp>
+    </comp>
+    <comp ref="R18">
+      <value>1.8k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D9AAAAC</tstamp>
+    </comp>
+    <comp ref="U5">
+      <value>BSS138</value>
+      <footprint>zephyrus-iaq:BSS138</footprint>
+      <datasheet>TO-236-3 Micross</datasheet>
+      <fields>
+        <field name="Field4">MICROSS/On Semiconductor</field>
+        <field name="Field5">Mosfet n-Ch 50v 220ma Die</field>
+        <field name="Field7">BSS138</field>
+      </fields>
+      <libsource lib="zephyrus_iaq" part="BSS138" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D9AAAA0</tstamp>
+    </comp>
+    <comp ref="R16">
+      <value>1.8k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D9A0678</tstamp>
+    </comp>
+    <comp ref="U4">
+      <value>BSS138</value>
+      <footprint>zephyrus-iaq:BSS138</footprint>
+      <datasheet>TO-236-3 Micross</datasheet>
+      <fields>
+        <field name="Field4">MICROSS/On Semiconductor</field>
+        <field name="Field5">Mosfet n-Ch 50v 220ma Die</field>
+        <field name="Field7">BSS138</field>
+      </fields>
+      <libsource lib="zephyrus_iaq" part="BSS138" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D99ACAA</tstamp>
+    </comp>
+    <comp ref="U3">
+      <value>Buffer</value>
+      <footprint>zephyrus-iaq:SOP65P640X120-14N</footprint>
+      <libsource lib="zephyrus_iaq" part="AD8534" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D9C1715</tstamp>
+    </comp>
+    <comp ref="J13">
+      <value>A5</value>
+      <footprint>zephyrus-iaq:JST_SM03B-SRSS-TB(LF)(SN)</footprint>
+      <datasheet>None</datasheet>
+      <libsource lib="zephyrus_iaq" part="SM03B-SRSS-TB(LF)(SN)" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D97926D</tstamp>
+    </comp>
+    <comp ref="J10">
+      <value>A1</value>
+      <footprint>zephyrus-iaq:JST_SM03B-SRSS-TB(LF)(SN)</footprint>
+      <datasheet>None</datasheet>
+      <libsource lib="zephyrus_iaq" part="SM03B-SRSS-TB(LF)(SN)" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D96A86F</tstamp>
+    </comp>
+    <comp ref="J14">
+      <value>A6</value>
+      <footprint>zephyrus-iaq:JST_SM03B-SRSS-TB(LF)(SN)</footprint>
+      <datasheet>None</datasheet>
+      <libsource lib="zephyrus_iaq" part="SM03B-SRSS-TB(LF)(SN)" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D97927E</tstamp>
+    </comp>
+    <comp ref="J12">
+      <value>A4</value>
+      <footprint>zephyrus-iaq:JST_SM03B-SRSS-TB(LF)(SN)</footprint>
+      <datasheet>None</datasheet>
+      <libsource lib="zephyrus_iaq" part="SM03B-SRSS-TB(LF)(SN)" description=""/>
+      <sheetpath names="/Analog_Sensors/" tstamps="/5DA09389/"/>
+      <tstamp>5D9731F7</tstamp>
+    </comp>
+    <comp ref="U9">
+      <value>ADC</value>
+      <footprint>zephyrus-iaq:SOP50P490X110-10N</footprint>
+      <datasheet>MSOP-10 Texas Instruments</datasheet>
+      <fields>
+        <field name="Field4">Texas Instruments</field>
+        <field name="Field5">16-Bit ADC with Integrated MUX, PGA, Comparator, Oscillator, and Reference 10-VSSOP -40 to 125</field>
+        <field name="Field7">ADS1115IDGSR</field>
+      </fields>
+      <libsource lib="zephyrus_iaq" part="ADS1115IDGSR" description=""/>
+      <sheetpath names="/ADC_Subsystem/" tstamps="/5D9BB3B6/"/>
+      <tstamp>5DAF67B5</tstamp>
+    </comp>
+    <comp ref="C11">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="C" description=""/>
+      <sheetpath names="/ADC_Subsystem/" tstamps="/5D9BB3B6/"/>
+      <tstamp>5DAF9FBB</tstamp>
+    </comp>
+    <comp ref="U8">
+      <value>Multiplexer</value>
+      <footprint>zephyrus-iaq:SOP65P640X120-16N</footprint>
+      <libsource lib="zephyrus_iaq" part="SN74lV4051A" description=""/>
+      <sheetpath names="/ADC_Subsystem/" tstamps="/5D9BB3B6/"/>
+      <tstamp>5DB1D523</tstamp>
+    </comp>
+    <comp ref="C12">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="C" description=""/>
+      <sheetpath names="/ADC_Subsystem/" tstamps="/5D9BB3B6/"/>
+      <tstamp>5DB367C6</tstamp>
+    </comp>
+    <comp ref="R22">
+      <value>10K</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/ADC_Subsystem/" tstamps="/5D9BB3B6/"/>
+      <tstamp>5DB37CB5</tstamp>
+    </comp>
+    <comp ref="R20">
+      <value>10K</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/ADC_Subsystem/" tstamps="/5D9BB3B6/"/>
+      <tstamp>5DB7485C</tstamp>
+    </comp>
+    <comp ref="J15">
+      <value>Conn_01x01_Male</value>
+      <footprint>zephyrus-iaq:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="zephyrus_iaq" part="Conn_01x01_Male" description=""/>
+      <sheetpath names="/ADC_Subsystem/" tstamps="/5D9BB3B6/"/>
+      <tstamp>5DB74FAD</tstamp>
+    </comp>
+    <comp ref="R21">
+      <value>10K</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/ADC_Subsystem/" tstamps="/5D9BB3B6/"/>
+      <tstamp>5DB93A1B</tstamp>
+    </comp>
+    <comp ref="J16">
+      <value>Conn_01x02_Male</value>
+      <footprint>zephyrus-iaq:PinHeader_1x02_P2.54mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="Conn_01x02_Male" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/ADC_Subsystem/" tstamps="/5D9BB3B6/"/>
+      <tstamp>5DB95937</tstamp>
+    </comp>
+    <comp ref="U11">
+      <value>V Shift</value>
+      <footprint>zephyrus-iaq:SOP65P640X120-14N</footprint>
+      <libsource lib="zephyrus_iaq" part="SN74LV4T125PWR" description=""/>
+      <sheetpath names="/ADC_Subsystem/" tstamps="/5D9BB3B6/"/>
+      <tstamp>5D9F68B4</tstamp>
+    </comp>
+    <comp ref="C14">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="C" description=""/>
+      <sheetpath names="/ADC_Subsystem/" tstamps="/5D9BB3B6/"/>
+      <tstamp>5DA18797</tstamp>
+    </comp>
+    <comp ref="J7">
+      <value>10103594-0001LF</value>
+      <footprint>zephyrus-iaq:FCI_10103594-0001LF</footprint>
+      <libsource lib="zephyrus_iaq" part="10103594-0001LF" description=""/>
+      <sheetpath names="/PowerManagement/" tstamps="/5DB4C8BA/"/>
+      <tstamp>5DB5FC63</tstamp>
+    </comp>
+    <comp ref="F1">
+      <value>MF-MSMF250/X</value>
+      <footprint>Fuse:Fuse_1812_4532Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="Polyfuse" description=""/>
+      <sheetpath names="/PowerManagement/" tstamps="/5DB4C8BA/"/>
+      <tstamp>5DB5FC69</tstamp>
+    </comp>
+    <comp ref="D10">
+      <value>SMBJ5.0A</value>
+      <footprint>zephyrus-iaq:SMBJ5.0A</footprint>
+      <libsource lib="zephyrus_iaq" part="SMBJ5.0A" description=""/>
+      <sheetpath names="/PowerManagement/" tstamps="/5DB4C8BA/"/>
+      <tstamp>5DB5FC83</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>47uF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="C" description=""/>
+      <sheetpath names="/PowerManagement/" tstamps="/5DB4C8BA/"/>
+      <tstamp>5DB686FF</tstamp>
+    </comp>
+    <comp ref="U10">
+      <value>Vreg</value>
+      <footprint>zephyrus-iaq:REG_EY1501DI-ADJ</footprint>
+      <libsource lib="zephyrus_iaq" part="ISL80102" description=""/>
+      <sheetpath names="/PowerManagement/" tstamps="/5DB4C8BA/"/>
+      <tstamp>5DB747BE</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/PowerManagement/" tstamps="/5DB4C8BA/"/>
+      <tstamp>5DB81F40</tstamp>
+    </comp>
+    <comp ref="R23">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/PowerManagement/" tstamps="/5DB4C8BA/"/>
+      <tstamp>5DBB231C</tstamp>
+    </comp>
+    <comp ref="C13">
+      <value>47uF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="C" description=""/>
+      <sheetpath names="/PowerManagement/" tstamps="/5DB4C8BA/"/>
+      <tstamp>5DB6870F</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>2.61k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/PowerManagement/" tstamps="/5DB4C8BA/"/>
+      <tstamp>5DB95547</tstamp>
+    </comp>
+    <comp ref="R24">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <libsource lib="zephyrus_iaq" part="R_US" description=""/>
+      <sheetpath names="/PowerManagement/" tstamps="/5DB4C8BA/"/>
+      <tstamp>5DBA047F</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>PWR</value>
+      <footprint>Diode_SMD:D_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="zephyrus_iaq" part="LED" description=""/>
+      <sheetpath names="/PowerManagement/" tstamps="/5DB4C8BA/"/>
+      <tstamp>5DB81F39</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Connector" part="Conn_01x02_Male">
+      <description>Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x02_Male</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="10103594-0001LF">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">10103594-0001LF</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="power_out"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+        <pin num="5" name="5" type="power_in"/>
+        <pin num="S1" name="SHIELD" type="passive"/>
+        <pin num="S2" name="SHIELD" type="passive"/>
+        <pin num="S3" name="SHIELD" type="passive"/>
+        <pin num="S4" name="SHIELD" type="passive"/>
+        <pin num="S5" name="SHIELD" type="passive"/>
+        <pin num="S6" name="SHIELD" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="AD8532ARMZ-REEL">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">AD8532ARMZ-REEL</field>
+        <field name="Footprint">SOP65P490X110-8N</field>
+        <field name="Field4">MSOP-8 Analog Devices</field>
+        <field name="Field5">OP Amp Dual GP R-R I/O 6V Automotive 8-Pin MSOP T/R</field>
+        <field name="Field6">Analog Devices</field>
+        <field name="Field7">AD8532ARMZ-REEL</field>
+      </fields>
+      <pins>
+        <pin num="1" name="OUTA" type="output"/>
+        <pin num="2" name="-INA" type="input"/>
+        <pin num="3" name="+INA" type="input"/>
+        <pin num="4" name="V-" type="power_in"/>
+        <pin num="5" name="+INB" type="input"/>
+        <pin num="6" name="-INB" type="input"/>
+        <pin num="7" name="OUTB" type="output"/>
+        <pin num="8" name="V+" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="AD8534">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">AD8534</field>
+      </fields>
+      <pins>
+        <pin num="1" name="OutA" type="output"/>
+        <pin num="2" name="-InA" type="input"/>
+        <pin num="3" name="+InA" type="input"/>
+        <pin num="4" name="V+" type="power_in"/>
+        <pin num="5" name="+InB" type="input"/>
+        <pin num="6" name="-InB" type="input"/>
+        <pin num="7" name="OutB" type="output"/>
+        <pin num="8" name="OutC" type="output"/>
+        <pin num="9" name="-InC" type="input"/>
+        <pin num="10" name="+InC" type="input"/>
+        <pin num="11" name="V-" type="power_in"/>
+        <pin num="12" name="+InD" type="input"/>
+        <pin num="13" name="-InD" type="input"/>
+        <pin num="14" name="OutD" type="output"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="ADS1115IDGSR">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">ADS1115IDGSR</field>
+        <field name="Footprint">SOP50P490X110-10N</field>
+        <field name="Datasheet">MSOP-10 Texas Instruments</field>
+        <field name="Field4">Texas Instruments</field>
+        <field name="Field5">16-Bit ADC with Integrated MUX, PGA, Comparator, Oscillator, and Reference 10-VSSOP -40 to 125</field>
+        <field name="Field7">ADS1115IDGSR</field>
+      </fields>
+      <pins>
+        <pin num="1" name="ADDR" type="input"/>
+        <pin num="2" name="ALERT/RDY" type="output"/>
+        <pin num="3" name="GND" type="power_in"/>
+        <pin num="4" name="AIN0" type="input"/>
+        <pin num="5" name="AIN1" type="input"/>
+        <pin num="6" name="AIN2" type="input"/>
+        <pin num="7" name="AIN3" type="input"/>
+        <pin num="8" name="VDD" type="power_in"/>
+        <pin num="9" name="SDA" type="BiDi"/>
+        <pin num="10" name="SCL" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="BSS138">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">BSS138</field>
+        <field name="Footprint">BSS138</field>
+        <field name="Datasheet">TO-236-3 Micross</field>
+        <field name="Field4">MICROSS/On Semiconductor</field>
+        <field name="Field5">Mosfet n-Ch 50v 220ma Die</field>
+        <field name="Field7">BSS138</field>
+      </fields>
+      <pins>
+        <pin num="D" name="D" type="passive"/>
+        <pin num="G" name="G" type="passive"/>
+        <pin num="S" name="S" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="C">
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="CAT24C32WI-GT3">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">CAT24C32WI-GT3</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A0" type="input"/>
+        <pin num="2" name="A1" type="input"/>
+        <pin num="3" name="A2" type="input"/>
+        <pin num="4" name="VSS" type="power_in"/>
+        <pin num="5" name="SDA" type="BiDi"/>
+        <pin num="6" name="SCL" type="input"/>
+        <pin num="7" name="WP" type="input"/>
+        <pin num="8" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="Conn_01x01_Female">
+      <footprints>
+        <fp>Connector*:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x01_Female</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="Conn_01x01_Male">
+      <footprints>
+        <fp>Connector*:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x01_Male</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="Conn_01x02_Male">
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x02_Male</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="Conn_02x20_Odd_Even__Rpi">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_02x20_Odd_Even__Rpi</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="power_out"/>
+        <pin num="2" name="~" type="power_out"/>
+        <pin num="3" name="~" type="passive"/>
+        <pin num="4" name="~" type="passive"/>
+        <pin num="5" name="~" type="passive"/>
+        <pin num="6" name="~" type="power_in"/>
+        <pin num="7" name="~" type="passive"/>
+        <pin num="8" name="~" type="passive"/>
+        <pin num="9" name="~" type="power_out"/>
+        <pin num="10" name="~" type="passive"/>
+        <pin num="11" name="~" type="passive"/>
+        <pin num="12" name="~" type="passive"/>
+        <pin num="13" name="~" type="passive"/>
+        <pin num="14" name="~" type="power_in"/>
+        <pin num="15" name="~" type="passive"/>
+        <pin num="16" name="~" type="passive"/>
+        <pin num="17" name="~" type="passive"/>
+        <pin num="18" name="~" type="passive"/>
+        <pin num="19" name="~" type="passive"/>
+        <pin num="20" name="~" type="power_in"/>
+        <pin num="21" name="~" type="passive"/>
+        <pin num="22" name="~" type="passive"/>
+        <pin num="23" name="~" type="passive"/>
+        <pin num="24" name="~" type="passive"/>
+        <pin num="25" name="~" type="power_in"/>
+        <pin num="26" name="~" type="passive"/>
+        <pin num="27" name="~" type="passive"/>
+        <pin num="28" name="~" type="passive"/>
+        <pin num="29" name="~" type="passive"/>
+        <pin num="30" name="~" type="power_in"/>
+        <pin num="31" name="~" type="passive"/>
+        <pin num="32" name="~" type="passive"/>
+        <pin num="33" name="~" type="passive"/>
+        <pin num="34" name="~" type="power_in"/>
+        <pin num="35" name="~" type="passive"/>
+        <pin num="36" name="~" type="passive"/>
+        <pin num="37" name="~" type="passive"/>
+        <pin num="38" name="~" type="passive"/>
+        <pin num="39" name="~" type="power_in"/>
+        <pin num="40" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="DAC43608">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">DAC43608</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VoutA" type="output"/>
+        <pin num="2" name="VoutB" type="output"/>
+        <pin num="3" name="VoutC" type="output"/>
+        <pin num="4" name="VoutD" type="output"/>
+        <pin num="5" name="SDA" type="BiDi"/>
+        <pin num="6" name="SCL" type="BiDi"/>
+        <pin num="7" name="AO" type="input"/>
+        <pin num="8" name="~LDAC~" type="input"/>
+        <pin num="9" name="VoutE" type="output"/>
+        <pin num="10" name="VoutF" type="output"/>
+        <pin num="11" name="VoutG" type="output"/>
+        <pin num="12" name="VoutH" type="output"/>
+        <pin num="13" name="VDD" type="power_in"/>
+        <pin num="14" name="Agnd" type="power_in"/>
+        <pin num="15" name="Vref" type="input"/>
+        <pin num="16" name="~CLR~" type="input"/>
+        <pin num="17" name="Thermal" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="DRV8837C">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">DRV8837C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VM" type="power_in"/>
+        <pin num="2" name="OUT1" type="output"/>
+        <pin num="3" name="OUT2" type="output"/>
+        <pin num="4" name="GND" type="power_in"/>
+        <pin num="5" name="IN2" type="input"/>
+        <pin num="6" name="IN1" type="input"/>
+        <pin num="7" name="nSLEEP" type="input"/>
+        <pin num="8" name="VCC" type="power_in"/>
+        <pin num="9" name="Thermal" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="ISL80102">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">ISL80102</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Vout" type="power_out"/>
+        <pin num="2" name="Vout" type="passive"/>
+        <pin num="3" name="SENSE" type="input"/>
+        <pin num="4" name="PG" type="input"/>
+        <pin num="5" name="GND" type="power_in"/>
+        <pin num="6" name="SS" type="input"/>
+        <pin num="7" name="ENABLE" type="input"/>
+        <pin num="8" name="NC" type="NotConnected"/>
+        <pin num="9" name="Vin" type="power_in"/>
+        <pin num="10" name="Vin" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="LED">
+      <footprints>
+        <fp>LED*</fp>
+        <fp>LED_SMD:*</fp>
+        <fp>LED_THT:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="Mounting-Hole-Mechanical">
+      <fields>
+        <field name="Reference">MK</field>
+        <field name="Value">Mounting-Hole-Mechanical</field>
+      </fields>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="Polyfuse">
+      <footprints>
+        <fp>*polyfuse*</fp>
+        <fp>*PTC*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">F</field>
+        <field name="Value">Polyfuse</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="R_US">
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_US</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="SM02B-SRSS-TB(LF)(SN)">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">SM02B-SRSS-TB(LF)(SN)</field>
+        <field name="Footprint">SM02B-SRSS-TB(LF)(SN)</field>
+        <field name="Datasheet">SH Series 2 Position 1 mm Pitch Surface Mount Side Entry Shrouded Header</field>
+        <field name="Field8">SM02B-SRSS-TB_LF__SN_</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="input"/>
+        <pin num="2" name="2" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="SM03B-SRSS-TB(LF)(SN)">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">SM03B-SRSS-TB(LF)(SN)</field>
+        <field name="Datasheet">None</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="S1" name="SHIELD" type="passive"/>
+        <pin num="S2" name="SHIELD" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="SM04B-SRSS-TB(LF)(SN)">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">SM04B-SRSS-TB(LF)(SN)</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in"/>
+        <pin num="2" name="VDD" type="power_in"/>
+        <pin num="3" name="SDA" type="BiDi"/>
+        <pin num="4" name="SCL" type="BiDi"/>
+        <pin num="S1" name="SHIELD" type="NotConnected"/>
+        <pin num="S2" name="SHIELD" type="NotConnected"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="SM04B-SRSS-TB(LF)(SN)_USART">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">SM04B-SRSS-TB(LF)(SN)_USART</field>
+      </fields>
+      <pins>
+        <pin num="1" name="TX" type="input"/>
+        <pin num="2" name="RX" type="output"/>
+        <pin num="3" name="GND" type="power_in"/>
+        <pin num="4" name="VCC" type="power_in"/>
+        <pin num="S1" name="SHIELD" type="NotConnected"/>
+        <pin num="S2" name="SHIELD" type="NotConnected"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="SMBJ5.0A">
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">SMBJ5.0A</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="SN74LV4T125PWR">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">SN74LV4T125PWR</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1!OE" type="input"/>
+        <pin num="2" name="1A" type="input"/>
+        <pin num="3" name="1Y" type="output"/>
+        <pin num="4" name="2!OE" type="input"/>
+        <pin num="5" name="2A" type="input"/>
+        <pin num="6" name="2Y" type="output"/>
+        <pin num="7" name="GND" type="passive"/>
+        <pin num="8" name="3Y" type="output"/>
+        <pin num="9" name="3A" type="input"/>
+        <pin num="10" name="3!OE" type="input"/>
+        <pin num="11" name="4Y" type="output"/>
+        <pin num="12" name="4A" type="input"/>
+        <pin num="13" name="4!OE" type="input"/>
+        <pin num="14" name="VCC" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="zephyrus_iaq" part="SN74lV4051A">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">SN74lV4051A</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Y4" type="BiDi"/>
+        <pin num="2" name="Y6" type="BiDi"/>
+        <pin num="3" name="COM" type="BiDi"/>
+        <pin num="4" name="Y7" type="BiDi"/>
+        <pin num="5" name="Y5" type="BiDi"/>
+        <pin num="6" name="~INH~" type="input"/>
+        <pin num="7" name="GND" type="power_in"/>
+        <pin num="8" name="GND" type="power_in"/>
+        <pin num="9" name="C" type="input"/>
+        <pin num="10" name="B" type="input"/>
+        <pin num="11" name="A" type="output"/>
+        <pin num="12" name="Y3" type="BiDi"/>
+        <pin num="13" name="Y0" type="BiDi"/>
+        <pin num="14" name="Y1" type="BiDi"/>
+        <pin num="15" name="Y2" type="BiDi"/>
+        <pin num="16" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector">
+      <uri>C:\Program Files\KiCad\share\kicad\library/Connector.lib</uri>
+    </library>
+    <library logical="zephyrus_iaq">
+      <uri>C:\Users\Hyperion\Documents\GitHub\zephyrus-iaq\hardware/lib/zephyrus_iaq.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="/ADC4">
+      <node ref="U8" pin="1"/>
+      <node ref="J13" pin="3"/>
+    </net>
+    <net code="2" name="/GPIO17(GEN0)">
+      <node ref="J1" pin="11"/>
+      <node ref="U11" pin="2"/>
+    </net>
+    <net code="3" name="/ADC0">
+      <node ref="J9" pin="3"/>
+      <node ref="U8" pin="13"/>
+    </net>
+    <net code="4" name="/ADC5">
+      <node ref="U8" pin="5"/>
+      <node ref="J14" pin="3"/>
+    </net>
+    <net code="5" name="/ADC3">
+      <node ref="U8" pin="12"/>
+      <node ref="J12" pin="3"/>
+    </net>
+    <net code="6" name="/ADC2">
+      <node ref="U8" pin="15"/>
+      <node ref="J11" pin="3"/>
+    </net>
+    <net code="7" name="/ADC1">
+      <node ref="U8" pin="14"/>
+      <node ref="J10" pin="3"/>
+    </net>
+    <net code="8" name="/DAC_CLR_pu">
+      <node ref="U7" pin="16"/>
+      <node ref="J1" pin="16"/>
+    </net>
+    <net code="9" name="/SDA_5">
+      <node ref="U9" pin="9"/>
+      <node ref="R16" pin="2"/>
+      <node ref="U4" pin="D"/>
+      <node ref="J5" pin="3"/>
+      <node ref="U7" pin="5"/>
+    </net>
+    <net code="10" name="/SCL_5">
+      <node ref="U9" pin="10"/>
+      <node ref="U5" pin="D"/>
+      <node ref="U7" pin="6"/>
+      <node ref="R18" pin="2"/>
+      <node ref="J5" pin="4"/>
+    </net>
+    <net code="11" name="/GPIO24(GEN5)">
+      <node ref="J1" pin="18"/>
+      <node ref="U11" pin="13"/>
+      <node ref="R22" pin="2"/>
+    </net>
+    <net code="12" name="/GPIO22(GEN3)">
+      <node ref="J1" pin="15"/>
+      <node ref="U11" pin="9"/>
+    </net>
+    <net code="13" name="/GPIO27(GEN2)">
+      <node ref="J1" pin="13"/>
+      <node ref="U11" pin="5"/>
+    </net>
+    <net code="14" name="GND">
+      <node ref="C14" pin="2"/>
+      <node ref="C1" pin="2"/>
+      <node ref="J16" pin="1"/>
+      <node ref="R8" pin="1"/>
+      <node ref="U2" pin="4"/>
+      <node ref="U11" pin="1"/>
+      <node ref="U11" pin="10"/>
+      <node ref="U11" pin="12"/>
+      <node ref="U11" pin="4"/>
+      <node ref="U11" pin="7"/>
+      <node ref="U9" pin="3"/>
+      <node ref="U9" pin="5"/>
+      <node ref="U9" pin="6"/>
+      <node ref="U9" pin="7"/>
+      <node ref="C11" pin="2"/>
+      <node ref="C12" pin="2"/>
+      <node ref="U8" pin="7"/>
+      <node ref="U2" pin="3"/>
+      <node ref="U8" pin="8"/>
+      <node ref="U2" pin="2"/>
+      <node ref="U2" pin="1"/>
+      <node ref="J1" pin="14"/>
+      <node ref="C5" pin="2"/>
+      <node ref="C8" pin="2"/>
+      <node ref="C7" pin="2"/>
+      <node ref="R24" pin="2"/>
+      <node ref="D10" pin="2"/>
+      <node ref="J7" pin="5"/>
+      <node ref="R3" pin="2"/>
+      <node ref="U10" pin="5"/>
+      <node ref="U10" pin="4"/>
+      <node ref="C13" pin="2"/>
+      <node ref="R23" pin="2"/>
+      <node ref="U7" pin="17"/>
+      <node ref="C10" pin="2"/>
+      <node ref="C9" pin="2"/>
+      <node ref="U7" pin="14"/>
+      <node ref="U6" pin="4"/>
+      <node ref="R12" pin="2"/>
+      <node ref="R9" pin="2"/>
+      <node ref="R10" pin="2"/>
+      <node ref="R11" pin="2"/>
+      <node ref="J10" pin="2"/>
+      <node ref="J14" pin="2"/>
+      <node ref="J12" pin="2"/>
+      <node ref="R13" pin="2"/>
+      <node ref="U3" pin="11"/>
+      <node ref="J13" pin="2"/>
+      <node ref="U7" pin="7"/>
+      <node ref="U7" pin="8"/>
+      <node ref="C6" pin="2"/>
+      <node ref="J9" pin="2"/>
+      <node ref="R14" pin="2"/>
+      <node ref="J11" pin="2"/>
+      <node ref="J18" pin="2"/>
+      <node ref="J17" pin="2"/>
+      <node ref="U1" pin="4"/>
+      <node ref="J1" pin="34"/>
+      <node ref="J1" pin="6"/>
+      <node ref="J1" pin="30"/>
+      <node ref="R7" pin="2"/>
+      <node ref="J1" pin="39"/>
+      <node ref="U1" pin="9"/>
+      <node ref="J4" pin="1"/>
+      <node ref="J5" pin="1"/>
+      <node ref="J3" pin="1"/>
+      <node ref="C3" pin="2"/>
+      <node ref="C4" pin="2"/>
+      <node ref="J1" pin="25"/>
+      <node ref="R6" pin="2"/>
+      <node ref="J8" pin="2"/>
+      <node ref="J2" pin="3"/>
+      <node ref="J1" pin="9"/>
+      <node ref="J1" pin="20"/>
+      <node ref="C2" pin="2"/>
+    </net>
+    <net code="15" name="/ID_SD_EEPROM">
+      <node ref="R1" pin="2"/>
+      <node ref="U2" pin="5"/>
+      <node ref="J1" pin="27"/>
+    </net>
+    <net code="16" name="Net-(D2-Pad1)">
+      <node ref="D2" pin="1"/>
+      <node ref="R6" pin="1"/>
+    </net>
+    <net code="17" name="/FAN_OUT1">
+      <node ref="J17" pin="1"/>
+      <node ref="U1" pin="2"/>
+      <node ref="D2" pin="2"/>
+    </net>
+    <net code="18" name="/ID_SC_EEPROM">
+      <node ref="R2" pin="2"/>
+      <node ref="U2" pin="6"/>
+      <node ref="J1" pin="28"/>
+    </net>
+    <net code="19" name="/GPIO14(TXD0)">
+      <node ref="J1" pin="8"/>
+      <node ref="J2" pin="1"/>
+    </net>
+    <net code="20" name="/GPIO15(RXD0)">
+      <node ref="J1" pin="10"/>
+      <node ref="J2" pin="2"/>
+    </net>
+    <net code="21" name="/GPIO3(SCL1)">
+      <node ref="J1" pin="5"/>
+      <node ref="U5" pin="S"/>
+      <node ref="J3" pin="4"/>
+      <node ref="J4" pin="3"/>
+    </net>
+    <net code="22" name="/FAN_OUT2">
+      <node ref="U1" pin="3"/>
+      <node ref="J18" pin="1"/>
+      <node ref="D3" pin="2"/>
+    </net>
+    <net code="23" name="Net-(D3-Pad1)">
+      <node ref="D3" pin="1"/>
+      <node ref="R7" pin="1"/>
+    </net>
+    <net code="24" name="+3V3">
+      <node ref="U1" pin="8"/>
+      <node ref="U5" pin="G"/>
+      <node ref="U2" pin="8"/>
+      <node ref="J4" pin="2"/>
+      <node ref="J1" pin="17"/>
+      <node ref="R5" pin="1"/>
+      <node ref="U4" pin="G"/>
+      <node ref="R1" pin="1"/>
+      <node ref="R2" pin="1"/>
+      <node ref="J1" pin="1"/>
+      <node ref="R22" pin="1"/>
+      <node ref="C4" pin="1"/>
+      <node ref="J3" pin="2"/>
+      <node ref="C2" pin="1"/>
+    </net>
+    <net code="25" name="/GPIO2(SDA1)">
+      <node ref="U4" pin="S"/>
+      <node ref="J3" pin="3"/>
+      <node ref="J4" pin="4"/>
+      <node ref="J1" pin="3"/>
+    </net>
+    <net code="26" name="/GPIO21(SPI1_SCK)">
+      <node ref="J1" pin="40"/>
+    </net>
+    <net code="27" name="/FAN_nSLEEP">
+      <node ref="J1" pin="22"/>
+      <node ref="U1" pin="7"/>
+    </net>
+    <net code="28" name="/GPIO8(SPI0_CE_N)">
+      <node ref="J1" pin="24"/>
+    </net>
+    <net code="29" name="/GPIO7(SPI1_CE_N)">
+      <node ref="J1" pin="26"/>
+    </net>
+    <net code="30" name="/FAN_PWM0">
+      <node ref="U1" pin="6"/>
+      <node ref="J1" pin="32"/>
+    </net>
+    <net code="31" name="/GPIO16">
+      <node ref="J1" pin="36"/>
+    </net>
+    <net code="32" name="/GPIO20(SPI1_MOSI)">
+      <node ref="J1" pin="38"/>
+    </net>
+    <net code="33" name="/GPIO26">
+      <node ref="J1" pin="37"/>
+    </net>
+    <net code="34" name="/GPIO19(SPI1_MISO)">
+      <node ref="J1" pin="35"/>
+    </net>
+    <net code="35" name="/FAN_PWM1">
+      <node ref="J1" pin="33"/>
+      <node ref="U1" pin="5"/>
+    </net>
+    <net code="36" name="/GPIO6">
+      <node ref="J1" pin="31"/>
+    </net>
+    <net code="37" name="/GPIO5">
+      <node ref="J1" pin="29"/>
+    </net>
+    <net code="38" name="Net-(J5-PadS2)">
+      <node ref="J5" pin="S2"/>
+    </net>
+    <net code="39" name="Net-(J5-PadS1)">
+      <node ref="J5" pin="S1"/>
+    </net>
+    <net code="40" name="/GPIO11(SPI0_SCK)">
+      <node ref="J1" pin="23"/>
+    </net>
+    <net code="41" name="Net-(J4-PadS2)">
+      <node ref="J4" pin="S2"/>
+    </net>
+    <net code="42" name="Net-(J4-PadS1)">
+      <node ref="J4" pin="S1"/>
+    </net>
+    <net code="43" name="Net-(J3-PadS2)">
+      <node ref="J3" pin="S2"/>
+    </net>
+    <net code="44" name="Net-(J3-PadS1)">
+      <node ref="J3" pin="S1"/>
+    </net>
+    <net code="45" name="/GPIO9(SPI0_MISO)">
+      <node ref="J1" pin="21"/>
+    </net>
+    <net code="46" name="/GPIO10(SPI0_MOSI)">
+      <node ref="J1" pin="19"/>
+    </net>
+    <net code="47" name="/GPIO4(GCLK)">
+      <node ref="J1" pin="7"/>
+    </net>
+    <net code="48" name="Net-(J1-Pad4)">
+      <node ref="J1" pin="4"/>
+    </net>
+    <net code="49" name="Net-(J1-Pad2)">
+      <node ref="J1" pin="2"/>
+    </net>
+    <net code="50" name="/GPIO18(GEN1)(PWM0)">
+      <node ref="J1" pin="12"/>
+      <node ref="J6" pin="1"/>
+    </net>
+    <net code="51" name="Net-(J2-PadS2)">
+      <node ref="J2" pin="S2"/>
+    </net>
+    <net code="52" name="Net-(J2-PadS1)">
+      <node ref="J2" pin="S1"/>
+    </net>
+    <net code="53" name="Net-(J8-Pad1)">
+      <node ref="U2" pin="7"/>
+      <node ref="R5" pin="2"/>
+      <node ref="R8" pin="2"/>
+      <node ref="J8" pin="1"/>
+    </net>
+    <net code="54" name="/ADC_Subsystem/MUL_COM">
+      <node ref="U9" pin="4"/>
+      <node ref="U8" pin="3"/>
+    </net>
+    <net code="55" name="Net-(U8-Pad4)">
+      <node ref="U8" pin="4"/>
+    </net>
+    <net code="56" name="Net-(U8-Pad2)">
+      <node ref="U8" pin="2"/>
+    </net>
+    <net code="57" name="/ADC_Subsystem/MUL_INH_5V">
+      <node ref="U8" pin="6"/>
+      <node ref="U11" pin="11"/>
+    </net>
+    <net code="58" name="/ADC_Subsystem/MUL_C_5V">
+      <node ref="U8" pin="9"/>
+      <node ref="U11" pin="8"/>
+    </net>
+    <net code="59" name="/ADC_Subsystem/MUL_B_5V">
+      <node ref="U11" pin="6"/>
+      <node ref="U8" pin="10"/>
+    </net>
+    <net code="60" name="/ADC_Subsystem/MUL_A_5V">
+      <node ref="U11" pin="3"/>
+      <node ref="U8" pin="11"/>
+    </net>
+    <net code="61" name="/ADC_Subsystem/ADC_ALERT">
+      <node ref="U9" pin="2"/>
+      <node ref="R20" pin="2"/>
+      <node ref="J15" pin="1"/>
+    </net>
+    <net code="62" name="/ADC_Subsystem/ADC_ADDR">
+      <node ref="U9" pin="1"/>
+      <node ref="J16" pin="2"/>
+      <node ref="R21" pin="2"/>
+    </net>
+    <net code="63" name="Net-(J14-PadS1)">
+      <node ref="J14" pin="S1"/>
+    </net>
+    <net code="64" name="Net-(J13-PadS2)">
+      <node ref="J13" pin="S2"/>
+    </net>
+    <net code="65" name="Net-(J10-PadS1)">
+      <node ref="J10" pin="S1"/>
+    </net>
+    <net code="66" name="Net-(J10-PadS2)">
+      <node ref="J10" pin="S2"/>
+    </net>
+    <net code="67" name="Net-(J13-PadS1)">
+      <node ref="J13" pin="S1"/>
+    </net>
+    <net code="68" name="Net-(J14-PadS2)">
+      <node ref="J14" pin="S2"/>
+    </net>
+    <net code="69" name="Net-(J12-PadS1)">
+      <node ref="J12" pin="S1"/>
+    </net>
+    <net code="70" name="Net-(J12-PadS2)">
+      <node ref="J12" pin="S2"/>
+    </net>
+    <net code="71" name="/Analog_Sensors/DAC_OUT_E">
+      <node ref="U7" pin="9"/>
+      <node ref="U6" pin="5"/>
+    </net>
+    <net code="72" name="/Analog_Sensors/DAC_OUT_B">
+      <node ref="U7" pin="2"/>
+      <node ref="U3" pin="3"/>
+    </net>
+    <net code="73" name="/Analog_Sensors/DAC_OUT_C">
+      <node ref="U7" pin="3"/>
+      <node ref="U3" pin="10"/>
+    </net>
+    <net code="74" name="/Analog_Sensors/DAC_OUT_D">
+      <node ref="U3" pin="12"/>
+      <node ref="U7" pin="4"/>
+    </net>
+    <net code="75" name="/Analog_Sensors/DAC_OUT_F">
+      <node ref="U7" pin="10"/>
+      <node ref="U6" pin="3"/>
+    </net>
+    <net code="76" name="Net-(J11-PadS2)">
+      <node ref="J11" pin="S2"/>
+    </net>
+    <net code="77" name="Net-(J11-PadS1)">
+      <node ref="J11" pin="S1"/>
+    </net>
+    <net code="78" name="/Analog_Sensors/DAC_OUT_A">
+      <node ref="U3" pin="5"/>
+      <node ref="U7" pin="1"/>
+    </net>
+    <net code="79" name="Net-(U7-Pad11)">
+      <node ref="U7" pin="11"/>
+    </net>
+    <net code="80" name="Net-(U7-Pad12)">
+      <node ref="U7" pin="12"/>
+    </net>
+    <net code="81" name="+5V">
+      <node ref="R20" pin="1"/>
+      <node ref="C5" pin="1"/>
+      <node ref="C7" pin="1"/>
+      <node ref="C8" pin="1"/>
+      <node ref="U10" pin="1"/>
+      <node ref="U10" pin="2"/>
+      <node ref="J5" pin="2"/>
+      <node ref="U11" pin="14"/>
+      <node ref="C3" pin="1"/>
+      <node ref="R4" pin="1"/>
+      <node ref="R21" pin="1"/>
+      <node ref="C14" pin="1"/>
+      <node ref="R16" pin="1"/>
+      <node ref="C13" pin="1"/>
+      <node ref="J2" pin="4"/>
+      <node ref="R18" pin="1"/>
+      <node ref="R23" pin="1"/>
+      <node ref="C11" pin="1"/>
+      <node ref="C6" pin="1"/>
+      <node ref="U9" pin="8"/>
+      <node ref="U1" pin="1"/>
+      <node ref="U8" pin="16"/>
+      <node ref="U6" pin="8"/>
+      <node ref="U7" pin="13"/>
+      <node ref="C9" pin="1"/>
+      <node ref="U7" pin="15"/>
+      <node ref="C10" pin="1"/>
+      <node ref="C12" pin="1"/>
+      <node ref="U3" pin="4"/>
+    </net>
+    <net code="82" name="Net-(D8-Pad1)">
+      <node ref="R13" pin="1"/>
+      <node ref="D8" pin="1"/>
+    </net>
+    <net code="83" name="Net-(D4-Pad1)">
+      <node ref="R9" pin="1"/>
+      <node ref="D4" pin="1"/>
+    </net>
+    <net code="84" name="/Analog_Sensors/BUF_OUT_0">
+      <node ref="U3" pin="6"/>
+      <node ref="J9" pin="1"/>
+      <node ref="D4" pin="2"/>
+      <node ref="U3" pin="7"/>
+    </net>
+    <net code="85" name="Net-(D5-Pad1)">
+      <node ref="D5" pin="1"/>
+      <node ref="R10" pin="1"/>
+    </net>
+    <net code="86" name="/Analog_Sensors/BUF_OUT_1">
+      <node ref="D5" pin="2"/>
+      <node ref="J10" pin="1"/>
+      <node ref="U3" pin="1"/>
+      <node ref="U3" pin="2"/>
+    </net>
+    <net code="87" name="Net-(D6-Pad1)">
+      <node ref="R11" pin="1"/>
+      <node ref="D6" pin="1"/>
+    </net>
+    <net code="88" name="/Analog_Sensors/BUF_OUT_2">
+      <node ref="D6" pin="2"/>
+      <node ref="U3" pin="8"/>
+      <node ref="J11" pin="1"/>
+      <node ref="U3" pin="9"/>
+    </net>
+    <net code="89" name="Net-(D7-Pad1)">
+      <node ref="D7" pin="1"/>
+      <node ref="R12" pin="1"/>
+    </net>
+    <net code="90" name="/Analog_Sensors/BUF_OUT_3">
+      <node ref="U3" pin="14"/>
+      <node ref="U3" pin="13"/>
+      <node ref="D7" pin="2"/>
+      <node ref="J12" pin="1"/>
+    </net>
+    <net code="91" name="/Analog_Sensors/BUF_OUT_4">
+      <node ref="U6" pin="2"/>
+      <node ref="U6" pin="1"/>
+      <node ref="D8" pin="2"/>
+      <node ref="J13" pin="1"/>
+    </net>
+    <net code="92" name="Net-(D9-Pad1)">
+      <node ref="D9" pin="1"/>
+      <node ref="R14" pin="1"/>
+    </net>
+    <net code="93" name="/Analog_Sensors/BUF_OUT_5">
+      <node ref="J14" pin="1"/>
+      <node ref="U6" pin="6"/>
+      <node ref="U6" pin="7"/>
+      <node ref="D9" pin="2"/>
+    </net>
+    <net code="94" name="Net-(J9-PadS1)">
+      <node ref="J9" pin="S1"/>
+    </net>
+    <net code="95" name="Net-(J9-PadS2)">
+      <node ref="J9" pin="S2"/>
+    </net>
+    <net code="96" name="Net-(U10-Pad6)">
+      <node ref="U10" pin="6"/>
+    </net>
+    <net code="97" name="Net-(D1-Pad1)">
+      <node ref="R3" pin="1"/>
+      <node ref="D1" pin="1"/>
+    </net>
+    <net code="98" name="/PowerManagement/VREG_SENSE">
+      <node ref="U10" pin="3"/>
+      <node ref="R24" pin="1"/>
+      <node ref="R4" pin="2"/>
+    </net>
+    <net code="99" name="Net-(J7-Pad2)">
+      <node ref="J7" pin="2"/>
+    </net>
+    <net code="100" name="Net-(J7-PadS6)">
+      <node ref="J7" pin="S6"/>
+    </net>
+    <net code="101" name="Net-(J7-PadS5)">
+      <node ref="J7" pin="S5"/>
+    </net>
+    <net code="102" name="Net-(J7-PadS4)">
+      <node ref="J7" pin="S4"/>
+    </net>
+    <net code="103" name="Net-(J7-PadS3)">
+      <node ref="J7" pin="S3"/>
+    </net>
+    <net code="104" name="Net-(J7-PadS1)">
+      <node ref="J7" pin="S1"/>
+    </net>
+    <net code="105" name="Net-(J7-PadS2)">
+      <node ref="J7" pin="S2"/>
+    </net>
+    <net code="106" name="Net-(J7-Pad4)">
+      <node ref="J7" pin="4"/>
+    </net>
+    <net code="107" name="Net-(J7-Pad3)">
+      <node ref="J7" pin="3"/>
+    </net>
+    <net code="108" name="Net-(F1-Pad1)">
+      <node ref="F1" pin="1"/>
+      <node ref="J7" pin="1"/>
+    </net>
+    <net code="109" name="Net-(U10-Pad8)">
+      <node ref="U10" pin="8"/>
+    </net>
+    <net code="110" name="/PowerManagement/VREG_IN_5V">
+      <node ref="D1" pin="2"/>
+      <node ref="F1" pin="2"/>
+      <node ref="U10" pin="10"/>
+      <node ref="D10" pin="1"/>
+      <node ref="C1" pin="1"/>
+      <node ref="U10" pin="7"/>
+      <node ref="U10" pin="9"/>
+    </net>
+  </nets>
+</export>

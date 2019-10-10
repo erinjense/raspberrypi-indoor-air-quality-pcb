@@ -109,7 +109,7 @@ Wire Wire Line
 Wire Wire Line
 	4500 3000 4900 3000
 Wire Wire Line
-	4500 3200 4900 3200
+	2100 5850 1700 5850
 Wire Wire Line
 	3300 3000 2900 3000
 Wire Wire Line
@@ -244,27 +244,12 @@ F 3 "" H 7050 4650 50  0001 C CNN
 	1    7050 4650
 	1    0    0    -1  
 $EndComp
-$Comp
-L zephyrus_iaq:+5V #PWR?
-U 1 1 5DB38ACA
-P 7050 4400
-AR Path="/5DA09389/5DB38ACA" Ref="#PWR?"  Part="1" 
-AR Path="/5D9BB3B6/5DB38ACA" Ref="#PWR064"  Part="1" 
-F 0 "#PWR064" H 7050 4250 50  0001 C CNN
-F 1 "+5V" H 7065 4573 50  0000 C CNN
-F 2 "" H 7050 4400 50  0001 C CNN
-F 3 "" H 7050 4400 50  0001 C CNN
-	1    7050 4400
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	7050 4400 7050 4500
 Wire Wire Line
 	7050 4800 7050 5000
 Text HLabel 7050 5000 2    50   Input ~ 0
 MUL_INH_pu
-Wire Wire Line
-	2900 3200 3300 3200
 Wire Wire Line
 	6000 3350 6400 3350
 Wire Wire Line
@@ -383,14 +368,14 @@ ADC_ALERT
 Text Label 3600 4800 0    50   ~ 0
 ADC_ALERT
 Wire Wire Line
-	4500 3400 4900 3400
+	2100 6150 1700 6150
 Wire Wire Line
-	4500 3600 4900 3600
-Text HLabel 4900 3200 2    50   Input ~ 0
+	2100 6450 1700 6450
+Text HLabel 1700 5850 0    50   Input ~ 0
 MUL_A
-Text HLabel 4900 3400 2    50   Input ~ 0
+Text HLabel 1700 6150 0    50   Input ~ 0
 MUL_B
-Text HLabel 4900 3600 2    50   Input ~ 0
+Text HLabel 1700 6450 0    50   Input ~ 0
 MUL_C
 Text Label 8200 2650 2    50   ~ 0
 ADC_VDD
@@ -406,6 +391,183 @@ Text HLabel 2900 3000 0    50   Input ~ 0
 ADC5
 Text HLabel 2900 2200 0    50   Input ~ 0
 ADC4
-Text HLabel 2900 3200 0    50   Input ~ 0
+$Comp
+L zephyrus_iaq:SN74LV4T125PWR U11
+U 1 1 5D9F68B4
+P 2700 6250
+F 0 "U11" H 2700 7217 50  0000 C CNN
+F 1 "V Shift" H 2700 7126 50  0000 C CNN
+F 2 "zephyrus-iaq:SOP65P640X120-14N" H 2700 6250 50  0001 L BNN
+F 3 "" H 2700 6250 50  0001 L BNN
+	1    2700 6250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3700 5850 3300 5850
+Wire Wire Line
+	3700 6150 3300 6150
+Wire Wire Line
+	3700 6450 3300 6450
+Wire Wire Line
+	2100 5750 1700 5750
+Wire Wire Line
+	2100 6050 1700 6050
+Wire Wire Line
+	2100 6350 1700 6350
+Wire Wire Line
+	2100 6750 1700 6750
+Wire Wire Line
+	3700 6950 3300 6950
+Wire Wire Line
+	3700 5550 3300 5550
+$Comp
+L zephyrus_iaq:GND #PWR0109
+U 1 1 5DA06364
+P 1700 5750
+F 0 "#PWR0109" H 1700 5500 50  0001 C CNN
+F 1 "GND" V 1705 5577 50  0000 C CNN
+F 2 "" H 1700 5750 50  0001 C CNN
+F 3 "" H 1700 5750 50  0001 C CNN
+	1    1700 5750
+	0    1    1    0   
+$EndComp
+$Comp
+L zephyrus_iaq:GND #PWR0110
+U 1 1 5DA0782E
+P 1700 6050
+F 0 "#PWR0110" H 1700 5800 50  0001 C CNN
+F 1 "GND" V 1705 5877 50  0000 C CNN
+F 2 "" H 1700 6050 50  0001 C CNN
+F 3 "" H 1700 6050 50  0001 C CNN
+	1    1700 6050
+	0    1    1    0   
+$EndComp
+$Comp
+L zephyrus_iaq:GND #PWR0111
+U 1 1 5DA08CD6
+P 1700 6350
+F 0 "#PWR0111" H 1700 6100 50  0001 C CNN
+F 1 "GND" V 1705 6177 50  0000 C CNN
+F 2 "" H 1700 6350 50  0001 C CNN
+F 3 "" H 1700 6350 50  0001 C CNN
+	1    1700 6350
+	0    1    1    0   
+$EndComp
+$Comp
+L zephyrus_iaq:GND #PWR0112
+U 1 1 5DA0A516
+P 1700 6750
+F 0 "#PWR0112" H 1700 6500 50  0001 C CNN
+F 1 "GND" V 1705 6577 50  0000 C CNN
+F 2 "" H 1700 6750 50  0001 C CNN
+F 3 "" H 1700 6750 50  0001 C CNN
+	1    1700 6750
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4500 3200 4900 3200
+Wire Wire Line
+	4500 3600 4900 3600
+$Comp
+L zephyrus_iaq:GND #PWR0113
+U 1 1 5DA136A6
+P 3700 6950
+F 0 "#PWR0113" H 3700 6700 50  0001 C CNN
+F 1 "GND" V 3705 6777 50  0000 C CNN
+F 2 "" H 3700 6950 50  0001 C CNN
+F 3 "" H 3700 6950 50  0001 C CNN
+	1    3700 6950
+	0    -1   -1   0   
+$EndComp
+Text Label 3700 5850 2    50   ~ 0
+MUL_A_5V
+Text Label 3700 6150 2    50   ~ 0
+MUL_B_5V
+Text Label 3700 6450 2    50   ~ 0
+MUL_C_5V
+Wire Wire Line
+	9400 4850 9400 4900
+$Comp
+L zephyrus_iaq:C C?
+U 1 1 5DA18797
+P 9400 4700
+AR Path="/5DA18797" Ref="C?"  Part="1" 
+AR Path="/5D9BB3B6/5DA18797" Ref="C14"  Part="1" 
+AR Path="/5DA09389/5DA18797" Ref="C?"  Part="1" 
+F 0 "C14" H 9650 4700 50  0000 L CNN
+F 1 "100nF" H 9600 4600 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 9438 4550 50  0001 C CNN
+F 3 "~" H 9400 4700 50  0001 C CNN
+	1    9400 4700
+	1    0    0    -1  
+$EndComp
+$Comp
+L zephyrus_iaq:GND #PWR?
+U 1 1 5DA1879D
+P 9400 4900
+AR Path="/5DA1879D" Ref="#PWR?"  Part="1" 
+AR Path="/5D9BB3B6/5DA1879D" Ref="#PWR0114"  Part="1" 
+AR Path="/5DA09389/5DA1879D" Ref="#PWR?"  Part="1" 
+F 0 "#PWR0114" H 9400 4650 50  0001 C CNN
+F 1 "GND" H 9500 4800 50  0000 C CNN
+F 2 "" H 9400 4900 50  0001 C CNN
+F 3 "" H 9400 4900 50  0001 C CNN
+	1    9400 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L zephyrus_iaq:+5V #PWR?
+U 1 1 5DA187A3
+P 9400 4450
+AR Path="/5DA09389/5DA187A3" Ref="#PWR?"  Part="1" 
+AR Path="/5D9BB3B6/5DA187A3" Ref="#PWR0115"  Part="1" 
+F 0 "#PWR0115" H 9400 4300 50  0001 C CNN
+F 1 "+5V" H 9415 4623 50  0000 C CNN
+F 2 "" H 9400 4450 50  0001 C CNN
+F 3 "" H 9400 4450 50  0001 C CNN
+	1    9400 4450
+	1    0    0    -1  
+$EndComp
+Text Label 9850 4500 2    50   ~ 0
+VSHIFT_VCC
+Wire Wire Line
+	9400 4450 9400 4500
+Connection ~ 9400 4500
+Wire Wire Line
+	9400 4500 9400 4550
+Wire Wire Line
+	9400 4500 9850 4500
+Text Label 3700 5550 2    50   ~ 0
+VSHIFT_VCC
+Text HLabel 1700 6650 0    50   Input ~ 0
 MUL_INH_pu
+Text Label 3800 6750 2    50   ~ 0
+MUL_INH_5V
+Wire Wire Line
+	1700 6650 2100 6650
+Wire Wire Line
+	3300 6750 3800 6750
+Text Label 2850 3200 0    50   ~ 0
+MUL_INH_5V
+Wire Wire Line
+	2850 3200 3300 3200
+$Comp
+L zephyrus_iaq:+3.3V #PWR0116
+U 1 1 5DA3289E
+P 7050 4400
+F 0 "#PWR0116" H 7050 4250 50  0001 C CNN
+F 1 "+3.3V" H 7065 4573 50  0000 C CNN
+F 2 "" H 7050 4400 50  0001 C CNN
+F 3 "" H 7050 4400 50  0001 C CNN
+	1    7050 4400
+	1    0    0    -1  
+$EndComp
+Text Label 4900 3200 2    50   ~ 0
+MUL_A_5V
+Text Label 4900 3600 2    50   ~ 0
+MUL_C_5V
+Wire Wire Line
+	4500 3400 4900 3400
+Text Label 4900 3400 2    50   ~ 0
+MUL_B_5V
 $EndSCHEMATC

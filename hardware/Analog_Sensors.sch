@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 4
+Sheet 2 7
 Title ""
 Date ""
 Rev ""
@@ -14,8 +14,8 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Notes 8950 800  0    50   ~ 10
-Analog Connector Ports (MQ Gas Sesnors)
+Text Notes 9250 850  0    50   ~ 10
+Analog Connector Ports (MQ Gas Sesnors)\n0 - 5 [V] from DAC\nUp to 250 mA from Buffers
 $Comp
 L zephyrus_iaq:LED D4
 U 1 1 5D92EBDF
@@ -284,7 +284,7 @@ L zephyrus_iaq:SM03B-SRSS-TB(LF)(SN) J11
 U 1 1 5D9703C7
 P 9050 2350
 F 0 "J11" H 8950 2850 50  0000 L CNN
-F 1 "A3" H 9000 2750 50  0000 L CNN
+F 1 "A2" H 9000 2750 50  0000 L CNN
 F 2 "zephyrus-iaq:JST_SM03B-SRSS-TB(LF)(SN)" H 8550 2850 50  0001 L BNN
 F 3 "None" H 9050 2350 50  0001 L BNN
 	1    9050 2350
@@ -917,7 +917,7 @@ DAC_VREF
 Text Notes 2100 2000 0    50   ~ 10
 3.3V/5V I2C Compatibility
 Text Notes 5450 4500 0    50   ~ 10
-Digital to Analog Converter\nAllows variable voltage levels for gas sensors\n
+Digital to Analog Converter\nAllows 0 to 5 V to Analog channels A0 to A5
 Text Notes 1700 4650 0    50   ~ 10
 AD8534
 Text Notes 2300 3550 0    50   ~ 10
@@ -1027,7 +1027,7 @@ L zephyrus_iaq:R_US R16
 U 1 1 5D9A0678
 P 1850 2600
 F 0 "R16" H 1950 2650 50  0000 L CNN
-F 1 "1.8k" H 1950 2550 50  0000 L CNN
+F 1 "3.3k" H 1950 2550 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 1890 2590 50  0001 C CNN
 F 3 "~" H 1850 2600 50  0001 C CNN
 	1    1850 2600
@@ -1077,7 +1077,7 @@ L zephyrus_iaq:SM03B-SRSS-TB(LF)(SN) J13
 U 1 1 5D97926D
 P 9050 3250
 F 0 "J13" H 8950 3750 50  0000 L CNN
-F 1 "A5" H 9000 3650 50  0000 L CNN
+F 1 "A4" H 9000 3650 50  0000 L CNN
 F 2 "zephyrus-iaq:JST_SM03B-SRSS-TB(LF)(SN)" H 8550 3750 50  0001 L BNN
 F 3 "None" H 9050 3250 50  0001 L BNN
 	1    9050 3250
@@ -1099,7 +1099,7 @@ L zephyrus_iaq:SM03B-SRSS-TB(LF)(SN) J14
 U 1 1 5D97927E
 P 10650 3250
 F 0 "J14" H 10550 3750 50  0000 L CNN
-F 1 "A6" H 10600 3650 50  0000 L CNN
+F 1 "A5" H 10600 3650 50  0000 L CNN
 F 2 "zephyrus-iaq:JST_SM03B-SRSS-TB(LF)(SN)" H 10150 3750 50  0001 L BNN
 F 3 "None" H 10650 3250 50  0001 L BNN
 	1    10650 3250
@@ -1110,7 +1110,7 @@ L zephyrus_iaq:SM03B-SRSS-TB(LF)(SN) J12
 U 1 1 5D9731F7
 P 10650 2350
 F 0 "J12" H 10550 2850 50  0000 L CNN
-F 1 "A4" H 10600 2750 50  0000 L CNN
+F 1 "A3" H 10600 2750 50  0000 L CNN
 F 2 "zephyrus-iaq:JST_SM03B-SRSS-TB(LF)(SN)" H 10150 2850 50  0001 L BNN
 F 3 "None" H 10650 2350 50  0001 L BNN
 	1    10650 2350
@@ -1122,8 +1122,6 @@ Text Notes 550  2200 0    50   ~ 0
 SDA_3.3 has a 1.8k fixed pull up\ninternal to the Raspberry Pi
 Wire Wire Line
 	3200 2550 3200 2650
-Text Notes 7950 5250 0    50   ~ 0
-Raspberry Pi has internal pull up\nresistor on DAC_CLR_pu.\n3.3V is within the range of VIH\nwhen DAC is at 5V
 Wire Wire Line
 	4000 4600 4000 4700
 $Comp
@@ -1152,4 +1150,6 @@ Text Label 4000 5000 0    50   ~ 0
 DAC_CLR
 Text Label 7250 4900 2    50   ~ 0
 DAC_CLR
+Text Notes 7650 4900 0    50   ~ 0
+~CLR~ always high.  Logic low\nclears the DAC buffers to zero.
 $EndSCHEMATC

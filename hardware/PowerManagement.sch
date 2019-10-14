@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 4 4
+Sheet 4 7
 Title ""
 Date ""
 Rev ""
@@ -103,11 +103,9 @@ Wire Wire Line
 	7800 4250 8400 4250
 Wire Wire Line
 	7800 4000 8400 4000
-Wire Wire Line
-	7800 4750 8400 4750
-Text Label 8400 4750 2    50   ~ 0
+Text Label 8600 4750 2    50   ~ 0
 VREG_IN_5V
-Text Label 7850 4000 0    50   ~ 0
+Text Label 8600 4000 2    50   ~ 0
 VREG_IN_5V
 $Comp
 L zephyrus_iaq:ISL80102 U?
@@ -279,7 +277,7 @@ L zephyrus_iaq:R_US R24
 U 1 1 5DBA047F
 P 5000 4900
 F 0 "R24" H 5068 4946 50  0000 L CNN
-F 1 "1k" H 5068 4855 50  0000 L CNN
+F 1 "287" H 5068 4855 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 5040 4890 50  0001 C CNN
 F 3 "" H 5000 4900 50  0001 C CNN
 	1    5000 4900
@@ -341,4 +339,9 @@ Wire Wire Line
 	7350 5300 7350 5200
 Wire Wire Line
 	6750 5000 6750 5300
+Wire Wire Line
+	8400 4000 8600 4000
+Connection ~ 8400 4000
+Wire Wire Line
+	7800 4750 8600 4750
 $EndSCHEMATC

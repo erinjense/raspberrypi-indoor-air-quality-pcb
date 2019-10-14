@@ -190,4 +190,130 @@ Text Notes 2600 3250 0    50   ~ 0
 Pulse Per Second\nBreakout for Sparkfun GPS
 Text HLabel 3200 3000 0    50   Input ~ 10
 GPS_PPS
+Text Notes 5600 4050 0    50   ~ 10
+3.3V/5V I2C Compatibility
+Text HLabel 7100 4900 2    50   Input ~ 0
+SCL_5
+Text HLabel 6500 4900 0    50   Input ~ 0
+SCL_3.3
+Wire Wire Line
+	7100 4400 7100 4500
+$Comp
+L zephyrus_iaq:+5V #PWR?
+U 1 1 5DC58BDA
+P 7100 4400
+F 0 "#PWR?" H 7100 4250 50  0001 C CNN
+F 1 "+5V" H 7115 4573 50  0000 C CNN
+F 2 "" H 7100 4400 50  0001 C CNN
+F 3 "" H 7100 4400 50  0001 C CNN
+	1    7100 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L zephyrus_iaq:+3.3V #PWR?
+U 1 1 5DC58BE0
+P 6700 4600
+F 0 "#PWR?" H 6700 4450 50  0001 C CNN
+F 1 "+3.3V" H 6715 4773 50  0000 C CNN
+F 2 "" H 6700 4600 50  0001 C CNN
+F 3 "" H 6700 4600 50  0001 C CNN
+	1    6700 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7100 4900 7100 4800
+Wire Wire Line
+	7000 4900 7100 4900
+Wire Wire Line
+	6500 4900 6600 4900
+$Comp
+L zephyrus_iaq:R_US R?
+U 1 1 5DC58BE9
+P 7100 4650
+F 0 "R?" H 7200 4700 50  0000 L CNN
+F 1 "3.3k" H 7200 4600 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 7140 4640 50  0001 C CNN
+F 3 "~" H 7100 4650 50  0001 C CNN
+	1    7100 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L zephyrus_iaq:BSS138 U?
+U 1 1 5DC58BF2
+P 6800 4800
+F 0 "U?" V 7043 4800 50  0000 C CNN
+F 1 "BSS138" V 7134 4800 50  0001 C CNN
+F 2 "zephyrus-iaq:BSS138" H 7250 5500 50  0001 L BNN
+F 3 "TO-236-3 Micross" H 7250 5300 50  0001 L BNN
+F 4 "MICROSS/On Semiconductor" H 7250 5200 50  0001 L BNN "Field4"
+F 5 "Mosfet n-Ch 50v 220ma Die" H 7250 5050 50  0001 L BNN "Field5"
+F 6 "BSS138" H 7250 5400 50  0001 L BNN "Field7"
+	1    6800 4800
+	0    1    1    0   
+$EndComp
+Text HLabel 5350 4900 2    50   Input ~ 0
+SDA_5
+Text HLabel 4750 4900 0    50   Input ~ 0
+SDA_3.3
+Wire Wire Line
+	5350 4400 5350 4500
+$Comp
+L zephyrus_iaq:+5V #PWR?
+U 1 1 5DC58BFB
+P 5350 4400
+F 0 "#PWR?" H 5350 4250 50  0001 C CNN
+F 1 "+5V" H 5365 4573 50  0000 C CNN
+F 2 "" H 5350 4400 50  0001 C CNN
+F 3 "" H 5350 4400 50  0001 C CNN
+	1    5350 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L zephyrus_iaq:+3.3V #PWR?
+U 1 1 5DC58C01
+P 4950 4600
+F 0 "#PWR?" H 4950 4450 50  0001 C CNN
+F 1 "+3.3V" H 4965 4773 50  0000 C CNN
+F 2 "" H 4950 4600 50  0001 C CNN
+F 3 "" H 4950 4600 50  0001 C CNN
+	1    4950 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5350 4900 5350 4800
+Wire Wire Line
+	5250 4900 5350 4900
+Wire Wire Line
+	4750 4900 4850 4900
+$Comp
+L zephyrus_iaq:R_US R?
+U 1 1 5DC58C0A
+P 5350 4650
+F 0 "R?" H 5450 4700 50  0000 L CNN
+F 1 "3.3k" H 5450 4600 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 5390 4640 50  0001 C CNN
+F 3 "~" H 5350 4650 50  0001 C CNN
+	1    5350 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L zephyrus_iaq:BSS138 U?
+U 1 1 5DC58C13
+P 5050 4800
+F 0 "U?" V 5293 4800 50  0000 C CNN
+F 1 "BSS138" V 5384 4800 50  0001 C CNN
+F 2 "zephyrus-iaq:BSS138" H 5500 5500 50  0001 L BNN
+F 3 "TO-236-3 Micross" H 5500 5300 50  0001 L BNN
+F 4 "MICROSS/On Semiconductor" H 5500 5200 50  0001 L BNN "Field4"
+F 5 "Mosfet n-Ch 50v 220ma Die" H 5500 5050 50  0001 L BNN "Field5"
+F 6 "BSS138" H 5500 5400 50  0001 L BNN "Field7"
+	1    5050 4800
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4950 4600 4950 4700
+Text Notes 4050 4250 0    50   ~ 0
+SDA_3.3 has a 1.8k fixed pull up\ninternal to the Raspberry Pi
+Wire Wire Line
+	6700 4600 6700 4700
 $EndSCHEMATC

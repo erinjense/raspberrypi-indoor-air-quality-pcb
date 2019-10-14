@@ -223,8 +223,8 @@ F 3 "" H 6650 1800 50  0001 C CNN
 	1    6600 1700
 	1    0    0    -1  
 $EndComp
-Text Notes 6300 1100 0    50   ~ 10
-SDS011 Nova PM
+Text Notes 5550 1150 0    79   ~ 16
+USART (5 [V],VDD / 3.3 [V],TX/RX)
 Text Label 7150 4550 0    50   ~ 0
 ADC0
 Text Label 7150 4700 0    50   ~ 0
@@ -342,11 +342,11 @@ Text Label 2000 1800 2    50   ~ 0
 MUL_B
 Text Label 2000 1900 2    50   ~ 0
 MUL_C
-Text Label 9100 2350 2    50   ~ 0
+Text Label 9150 3100 2    50   ~ 0
 FAN_PWM0
-Text Label 9100 2500 2    50   ~ 0
+Text Label 9150 3250 2    50   ~ 0
 FAN_PWM1
-Text Label 9100 2700 2    50   ~ 0
+Text Label 9150 3450 2    50   ~ 0
 FAN_nSLEEP
 Text Label 4700 2200 0    50   ~ 0
 FAN_nSLEEP
@@ -369,36 +369,36 @@ $EndSheet
 Text Label 4550 4700 2    50   ~ 0
 SCL_3.3
 NoConn ~ 4700 1900
-Text Notes 1000 4800 0    98   ~ 20
+Text Notes 1150 4150 0    79   ~ 16
 Power Mgmt.
-Text Notes 6300 5050 2    79   ~ 16
+Text Notes 6300 4250 2    79   ~ 16
 Analog Output\n\n
 Text Notes 6300 5150 2    39   ~ 8
 A0 - A5: Analog Channels\nBuffers (250 [mA] to A0 - A5)\nDAC     (0 - 5 [V] to Buffers)
 $Sheet
-S 9100 1050 1200 750 
+S 9700 1350 1200 750 
 U 5DAFB35B
 F0 "HAT_spec" 59
 F1 "HAT_Spec.sch" 59
-F2 "ID_SC_EEPROM" I L 9100 1200 59 
-F3 "ID_SD_EEPROM" I L 9100 1400 59 
+F2 "ID_SC_EEPROM" I L 9700 1500 59 
+F3 "ID_SD_EEPROM" I L 9700 1700 59 
 $EndSheet
-Text Label 9100 1400 2    50   ~ 0
+Text Label 9200 1700 2    50   ~ 0
 ID_SD_EEPROM
-Text Label 9100 1200 2    50   ~ 0
+Text Label 9200 1500 2    50   ~ 0
 ID_SC_EEPROM
-Text Notes 9650 1550 2    59   ~ 12
+Text Notes 10400 1900 2    59   ~ 12
 EEPROM
-Text Notes 9750 1700 2    59   ~ 12
+Text Notes 10500 2000 2    59   ~ 12
 Mnt. Holes
 $Sheet
-S 9100 2200 1150 1350
+S 9700 2950 1150 1350
 U 5DB33F6F
 F0 "Fan_Control" 59
 F1 "Fan_Control.sch" 59
-F2 "FAN_PWM0" I L 9100 2350 59 
-F3 "FAN_PWM1" I L 9100 2500 59 
-F4 "FAN_nSLEEP" I L 9100 2700 59 
+F2 "FAN_PWM0" I L 9700 3100 59 
+F3 "FAN_PWM1" I L 9700 3250 59 
+F4 "FAN_nSLEEP" I L 9700 3450 59 
 $EndSheet
 Wire Wire Line
 	6650 4550 7650 4550
@@ -462,8 +462,28 @@ Wire Wire Line
 Connection ~ 7050 5650
 Wire Wire Line
 	7050 5650 7650 5650
-Text Notes 9850 3050 2    50   ~ 10
+Text Notes 10450 3800 2    50   ~ 10
 Two Fans, \nUnidirectional
 Text Notes 8800 4700 2    50   ~ 10
 6:1\nMultiplexed\nADC\n (0 - 5 [V])
+Text Notes 3850 5200 2    50   ~ 0
+3.3V to 5V I2C\nI2C Connectors
+Text Notes 8850 3700 2    79   ~ 16
+Analog to Digital
+Text Notes 4400 4050 2    79   ~ 16
+I2C Connectors\nI2C Logic Level Conversion
+Text Notes 10900 2800 2    79   ~ 16
+Fan 1: PWM controlled\nFan 2: PWM controlled
+Wire Wire Line
+	9200 1500 9700 1500
+Wire Wire Line
+	9200 1700 9700 1700
+Wire Wire Line
+	9150 3100 9700 3100
+Wire Wire Line
+	9700 3250 9150 3250
+Wire Wire Line
+	9700 3450 9150 3450
+Text Notes 10850 1200 2    79   ~ 16
+Raspberry Pi HAT\nRequirements:\nEEPROM\n\n
 $EndSCHEMATC

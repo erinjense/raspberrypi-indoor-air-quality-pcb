@@ -237,7 +237,7 @@ Text Label 7150 5150 0    50   ~ 0
 ADC4
 Text Label 7150 5300 0    50   ~ 0
 ADC5
-Text Label 4550 4550 2    50   ~ 0
+Text Label 3200 4550 0    50   ~ 0
 SDA_3.3
 Text Label 2000 1300 2    50   ~ 0
 SDA_3.3
@@ -250,22 +250,6 @@ NoConn ~ 2000 2700
 NoConn ~ 2000 3000
 Text Label 2000 2500 2    50   ~ 0
 ID_SD_EEPROM
-$Sheet
-S 5200 4400 1450 1400
-U 5DA09389
-F0 "Analog_Sensors" 50
-F1 "Analog_Sensors.sch" 50
-F2 "ADC0" O R 6650 4550 50 
-F3 "ADC1" O R 6650 4700 50 
-F4 "ADC2" O R 6650 4850 50 
-F5 "ADC3" O R 6650 5000 50 
-F6 "ADC4" O R 6650 5150 50 
-F7 "ADC5" O R 6650 5300 50 
-F8 "SDA_3.3" I L 5200 4550 50 
-F9 "SCL_3.3" I L 5200 4700 50 
-F10 "SDA_5" I R 6650 5500 50 
-F11 "SCL_5" I R 6650 5650 50 
-$EndSheet
 $Comp
 L zephyrus_iaq:+5V #PWR09
 U 1 1 5D96FDD5
@@ -366,7 +350,7 @@ U 5DB4C8BA
 F0 "PowerManagement" 50
 F1 "PowerManagement.sch" 50
 $EndSheet
-Text Label 4550 4700 2    50   ~ 0
+Text Label 3200 4700 0    50   ~ 0
 SCL_3.3
 NoConn ~ 4700 1900
 Text Notes 1150 4150 0    79   ~ 16
@@ -412,65 +396,35 @@ Wire Wire Line
 	6650 5150 7650 5150
 Wire Wire Line
 	6650 5300 7650 5300
-Wire Wire Line
-	6650 5500 6750 5500
 $Sheet
-S 3150 4400 1000 1050
+S 3600 4400 1000 1050
 U 5DB861AF
 F0 "I2C" 59
 F1 "I2C.sch" 59
-F2 "SDA_3.3" I R 4150 4550 59 
-F3 "SCL_3.3" I R 4150 4700 59 
-F4 "SDA_5" O L 3150 4550 59 
-F5 "SCL_5" O L 3150 4700 59 
-F6 "GPS_PPS" O R 4150 4900 59 
+F2 "SDA_3.3" I L 3600 4550 59 
+F3 "SCL_3.3" I L 3600 4700 59 
+F4 "SDA_5" O R 4600 4550 59 
+F5 "SCL_5" O R 4600 4700 59 
+F6 "GPS_PPS" O L 3600 4900 59 
 $EndSheet
-Text Label 4600 4900 2    50   ~ 0
+Text Label 3150 4900 0    50   ~ 0
 GPS_PPS
 NoConn ~ 4700 2000
 Wire Wire Line
-	4150 4550 5200 4550
-Wire Wire Line
-	4150 4700 5200 4700
-Wire Wire Line
-	4150 4900 4600 4900
+	3600 4900 3150 4900
 Wire Wire Line
 	3650 1600 6300 1600
 Wire Wire Line
 	3650 1500 6300 1500
-Wire Wire Line
-	3150 4700 3000 4700
-Wire Wire Line
-	6650 5650 7050 5650
-Wire Wire Line
-	3150 4550 2850 4550
-Wire Wire Line
-	2850 4550 2850 6100
-Wire Wire Line
-	2850 6100 6750 6100
-Wire Wire Line
-	6750 6100 6750 5500
-Connection ~ 6750 5500
-Wire Wire Line
-	6750 5500 7650 5500
-Wire Wire Line
-	3000 4700 3000 6300
-Wire Wire Line
-	7050 6300 7050 5650
-Wire Wire Line
-	3000 6300 7050 6300
-Connection ~ 7050 5650
-Wire Wire Line
-	7050 5650 7650 5650
 Text Notes 10450 3800 2    50   ~ 10
 Two Fans, \nUnidirectional
 Text Notes 8800 4700 2    50   ~ 10
 6:1\nMultiplexed\nADC\n (0 - 5 [V])
-Text Notes 3850 5200 2    50   ~ 0
+Text Notes 3900 5200 0    50   ~ 0
 3.3V to 5V I2C\nI2C Connectors
 Text Notes 8850 3700 2    79   ~ 16
 Analog to Digital
-Text Notes 4400 4050 2    79   ~ 16
+Text Notes 4900 4050 2    79   ~ 16
 I2C Connectors\nI2C Logic Level Conversion
 Text Notes 10900 2800 2    79   ~ 16
 Fan 1: PWM controlled\nFan 2: PWM controlled
@@ -486,4 +440,32 @@ Wire Wire Line
 	9700 3450 9150 3450
 Text Notes 10850 1200 2    79   ~ 16
 Raspberry Pi HAT\nRequirements:\nEEPROM\n\n
+Wire Wire Line
+	6650 5500 7650 5500
+Wire Wire Line
+	6650 5650 7650 5650
+Wire Wire Line
+	3200 4550 3600 4550
+Wire Wire Line
+	3200 4700 3600 4700
+$Sheet
+S 5200 4400 1450 1400
+U 5DA09389
+F0 "Analog_Sensors" 50
+F1 "Analog_Sensors.sch" 50
+F2 "ADC0" O R 6650 4550 50 
+F3 "ADC1" O R 6650 4700 50 
+F4 "ADC2" O R 6650 4850 50 
+F5 "ADC3" O R 6650 5000 50 
+F6 "ADC4" O R 6650 5150 50 
+F7 "ADC5" O R 6650 5300 50 
+F8 "SDA_5" I L 5200 4550 50 
+F9 "SCL_5" I L 5200 4700 50 
+F10 "SDA_5" I R 6650 5500 50 
+F11 "SCL_5" I R 6650 5650 50 
+$EndSheet
+Wire Wire Line
+	4600 4550 5200 4550
+Wire Wire Line
+	4600 4700 5200 4700
 $EndSCHEMATC

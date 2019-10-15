@@ -291,17 +291,17 @@ $EndComp
 Connection ~ 4400 3500
 Connection ~ 4800 2000
 Connection ~ 4850 2400
-Text HLabel 3750 3500 0    59   Input ~ 12
+Text HLabel 3750 3500 0    59   Input ~ 0
 ID_SD_EEPROM
-Text HLabel 3800 3750 0    59   Input ~ 12
+Text HLabel 3800 3750 0    59   Input ~ 0
 ID_SC_EEPROM
-Text HLabel 4950 2600 0    59   Input ~ 12
+Text HLabel 4950 2600 0    59   Input ~ 0
 ID_SC_EEPROM
 Wire Wire Line
 	3900 2600 3900 2700
 Connection ~ 3900 2700
 Wire Wire Line
 	3900 2700 4300 2700
-Text HLabel 6350 2000 2    59   Input ~ 12
-ID_SC_EEPROM
+Text HLabel 6350 2000 2    59   Input ~ 0
+ID_SD_EEPROM
 $EndSCHEMATC

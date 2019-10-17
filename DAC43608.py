@@ -18,6 +18,14 @@ import smbus
 # +-----------------+-----+-----------------+-----+-----------------+-----+-----------------+-----+
 #
 
+# Vout = (DACn_DATA / (2^N)) * Vref
+#   N = resolution in bits (8 for DAC43608)
+#   DACn_DATA decimal equivalent to binary code loaded into DAC reg
+#   DACn_DATA ranges from 0 to 2^N - 1
+
+
+# CLR / LDAC not on Zephyrus IAQ rev a
+
 # DAC43608 Command Byte
 # Controls which command is executed and which is being accessed.
 # TI 8.5.4 pg 27
@@ -47,21 +55,14 @@ class DAC43608:
 
     # TODO: Add ~LDAC~ 0V pull down for synchronous mode.
     def syncLDAC(void):
+        return
 
     # TODO: Add ~CLR~ 0V pull down for clearing DAC buffers.
     def clrBuffer(void):
+        return
 
+    # TODO: add generic write register.
     def writeRegister(code, data):
+        return
 
-
-
-
-
-
-# Vout = (DACn_DATA / (2^N)) * Vref
-#   N = resolution in bits (8 for DAC43608)
-#   DACn_DATA decimal equivalent to binary code loaded into DAC reg
-#   DACn_DATA ranges from 0 to 2^N - 1
-
-
-# CLR / LDAC not on Zephyrus IAQ rev a
+    # TODO: add write for DACn_DATA A-H

@@ -14,8 +14,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Notes 4000 2350 0    50   ~ 10
-SparkFun GPS Breakout - XA1110 (Qwiic) 
 $Comp
 L zephyrus_iaq:SM04B-SRSS-TB(LF)(SN) J?
 U 1 1 5DB91D7C
@@ -94,10 +92,10 @@ F 3 "" H 7650 2700 50  0001 C CNN
 	1    7650 2700
 	0    1    -1   0   
 $EndComp
-Text Notes 6500 2350 0    50   ~ 10
-3.3V I2C
-Text Notes 8300 2350 0    50   ~ 10
-5V I2C
+Text Notes 4850 2250 0    50   ~ 10
+3.3V I2C Connectors\nCompatible with Sparkfun's Qwiic system.
+Text Notes 8250 2350 0    50   ~ 10
+5V I2C Connectors\n
 $Comp
 L zephyrus_iaq:Conn_01x01_Female J?
 U 1 1 5DB91DA2
@@ -316,4 +314,6 @@ Text Notes 4050 4250 0    50   ~ 0
 SDA_3.3 has a 1.8k fixed pull up\ninternal to the Raspberry Pi
 Wire Wire Line
 	6700 4600 6700 4700
+Text Notes 4950 1500 0    118  ~ 24
+I2C Sensors/Connectors
 $EndSCHEMATC

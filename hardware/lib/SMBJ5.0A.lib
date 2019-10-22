@@ -1,0 +1,29 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#(c) SnapEDA 2016 (snapeda.com)
+#This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA) with Design Exception 1.0
+#
+# SMBJ5.0A
+#
+DEF SMBJ5.0A TZ 0 40 N N 1 L N
+F0 "TZ" 200 19 50 H V L BNN
+F1 "SMBJ5.0A" 201 -91 50 H V L BNN
+F2 "SMB" 0 0 50 H I L BNN
+F3 "Unavailable" 0 0 50 H I L BNN
+F4 "SMBJ5.0A" 0 0 50 H I L BNN
+F5 "None" 0 0 50 H I L BNN
+F6 "DO-214 Bourns" 0 0 50 H I L BNN
+F7 "Diode TVS Single Uni-Dir 5V 600W 2-Pin SMB" 0 0 50 H I L BNN
+F8 "Littelfuse" 0 0 50 H I L BNN
+DRAW
+P 2 0 0 10 50 -50 150 0 N
+P 2 0 0 10 150 0 50 50 N
+P 2 0 0 10 150 50 150 0 N
+P 2 0 0 10 50 50 50 -50 N
+P 2 0 0 10 150 0 150 -50 N
+X A A 0 0 100 R 40 40 0 0 P 
+X C C 200 0 100 L 40 40 0 0 P 
+ENDDRAW
+ENDDEF
+#
+# End Library

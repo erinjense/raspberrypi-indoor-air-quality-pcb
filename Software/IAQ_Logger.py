@@ -1,5 +1,8 @@
 #!/usr/bin/python
-
+from DataHandler import *
+from Bme680 import *
+import datetime
+import geocoder
 
 # TODO: Create main loop for Logger
 
@@ -34,3 +37,24 @@
 # GPS Routine (3.3V I2C)
 
 # Nova PM SDS011 Routine (3.3V USART):
+
+"""
+    Init CSV File
+"""
+csv = DataHandler("./config/logger_setup.csv")
+csv.setupNewFile()
+data = csv.getDataDict()
+"""
+    Init Sensors
+"""
+temp = Bme680()
+temp.init_sensor()
+
+while True:
+    data['Date-Time'] = str(datetime.datetime.now())
+    data['Temp']      = temp.get_temp()
+    data['Pressure']  = temp.get_pressure()
+    data['Humidity']  = temp.get_humidity()
+    data['Location']  = "ECE Conference"
+    csv.writeData(data)
+    print data

@@ -62,8 +62,15 @@ class Csv:
                 d = {rows[0]:rows[1:] for rows in reader}
         return d
 
+    def getDataDict(self):
+        return dict.fromkeys(self.header,None)
+
     def writeData(self,data):
-        with open(self.filename,'a') as csvfile:
-            writer = csv.DictWriter(csvfile,fieldnames=self.header)
-            for key,val in data.items():
-                writer.writerow([key, value])
+        sd = set(data.keys())
+        sh = set(self.header)
+        b = sd.difference(sh)
+
+        if len(b) == 0:
+            with open(self.filename,'a') as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerow(list(reversed(data.values())))

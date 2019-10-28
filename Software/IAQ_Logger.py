@@ -1,8 +1,7 @@
 #!/usr/bin/python
-from DataHandler import *
-from Bme680 import *
-import datetime
-import geocoder
+from IAQ_AnalogGasSensors import *
+import time
+#from IAQ_AnalogGasSensors import MQSensorsList
 
 # TODO: Create main loop for Logger
 
@@ -19,42 +18,37 @@ import geocoder
 # Stop Logger after user presses "Stop"
 # Load config file that lists all sensors and their hardware port number
 
-# MQ Gas Sensor Routine (A0 - A5):
-#    DAC: Ensure Sensor on A0 has correct voltage supply
-#    Multiplexer: Set channel A0 to ADC input
-#    ADC: Read data
-#    Temp,Humidity,etc: Read data from peripheral sensors
-#    Store all data in CSV
-#    Repeat for A1 - A5
-
-# BME680 Sensor Routine (3.3V I2C):
-#    Wait for "Primary" Sensor to get data. (Primary are MQ sensors, SCD30, particulate, etc.)
-#    Poll I2C for temp., humidity, VOC, etc.
-#    Store BME680 data in primary sensor CSV file
-
-# SCD30 Sensor Routine (3.3V I2C):
-
-# GPS Routine (3.3V I2C)
-
-# Nova PM SDS011 Routine (3.3V USART):
-
 """
     Init CSV File
 """
-csv = DataHandler("./config/logger_setup.csv")
-csv.setupNewFile()
-data = csv.getDataDict()
+# csv = DataHandler("./config/logger_setup.csv")
+# csv.setupNewFile()
+# data = csv.getDataDict()
 """
     Init Sensors
 """
-temp = Bme680()
-temp.init_sensor()
+# temp = Bme680()
+# temp.init_sensor()
 
+# while True:
+#     data['Date-Time'] = str(datetime.datetime.now())
+#     data['Temp']      = temp.get_temp()
+#     data['Pressure']  = temp.get_pressure()
+#     data['Humidity']  = temp.get_humidity()
+#     data['Location']  = "ECE Conference"
+#     csv.writeData(data)
+#     print data
+
+A0 = MQSensorsList.MQ2.name
+A1 = MQSensorsList.MQ3.name
+A2 = MQSensorsList.MQ6.name
+A3 = MQSensorsList.MQ7.name
+analogGas = AnalogGasSensors([A0,A1,A2,A3]) 
 while True:
-    data['Date-Time'] = str(datetime.datetime.now())
-    data['Temp']      = temp.get_temp()
-    data['Pressure']  = temp.get_pressure()
-    data['Humidity']  = temp.get_humidity()
-    data['Location']  = "ECE Conference"
-    csv.writeData(data)
-    print data
+    value = 0
+    value = analogGas.readA0()
+    print ('A0: ',value)
+    value = 0
+    time.sleep(10)
+    value = analogGas.readA1()
+    print ('A1: ',value)

@@ -1,4 +1,5 @@
 import Tkinter as tk
+import tkinter.scrolledtext as tkst
 import time
 import csv
 
@@ -11,8 +12,14 @@ class Main(tk.Tk):
         self.title('TESTER')
         self.resizable(0, 0)
 
-        localtime = time.asctime(time.localtime(time.time()))
-        labelt = tk.Label(self, text=localtime).pack()
+        Readfile = open('guru99.txt', 'w+')
+        Readfile.write("This is a file that I am trying to read")
+
+        gmtime = time.asctime(time.gmtime(time.time()))
+        labelinfo = tk.Label(self, text="Time is displayed in UTC")
+        labelinfo.pack()
+        labelt = tk.Label(self, text=gmtime)
+        labelt.pack()
 
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
@@ -33,35 +40,58 @@ class Main(tk.Tk):
         frame.tkraise()
 
 
+#    f = open("guru99.txt", "r")
+#    if f.mode == 'r':
+#        contents = f.read()
+#        print(contents)
+
+
 class StartPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is the start page").grid(row=0, column=5)
+        #        label = tk.Label(self, text="Main Page")
+        #        label.grid(row=0, column=0, columnspan=4)
 
-        button1 = tk.Button(self, text="Button 1", height=2, width=10,
-                            command=lambda: controller.show_frame("Button1")).grid(row=1, column=0)
-        button2 = tk.Button(self, text="Button 2", height=2, width=10,
-                            command=lambda: controller.show_frame("Button2")).grid(row=1, column=1)
-        button3 = tk.Button(self, text="Button 3", height=2, width=10,
-                            command=lambda: controller.show_frame("Button3")).grid(row=2, column=0)
-        button4 = tk.Button(self, text="Button 4", height=2, width=10,
-                            command=lambda: controller.show_frame("Button4")).grid(row=2, column=1)
-        button5 = tk.Button(self, text="Button 5", height=2, width=10,
-                            command=lambda: controller.show_frame("Button5")).grid(row=3, column=0)
-        button6 = tk.Button(self, text="Button 6", height=2, width=10,
-                            command=lambda: controller.show_frame("Button6")).grid(row=3, column=1)
-        button7 = tk.Button(self, text="Button 7", height=2, width=10,
-                            command=lambda: controller.show_frame("Button7")).grid(row=4, column=0)
-        button8 = tk.Button(self, text="Button 8", height=2, width=10,
-                            command=lambda: controller.show_frame("Button8")).grid(row=4, column=1)
-        button9 = tk.Button(self, text="Button 9", height=2, width=10,
-                            command=lambda: controller.show_frame("Button9")).grid(row=5, column=0)
-        button10 = tk.Button(self, text="Button 10", height=2, width=10,
-                             command=lambda: controller.show_frame("Button10")).grid(row=5, column=1)
-        button10 = tk.Button(self, text="Button Info", height=2, width=15,
-                             command=lambda: controller.show_frame("ButtonInfo")).grid(row=0, column=0)
+        button1 = tk.Button(self, text="BME 680", height=2, width=15, command=lambda: controller.show_frame("Button1"))
+        button1.grid(row=1, column=0)
+        button2 = tk.Button(self, text="Carbon Dioxide", height=2, width=15,
+                            command=lambda: controller.show_frame("Button2"))
+        button2.grid(row=1, column=1)
+        button3 = tk.Button(self, text="Combustible Gas", height=2, width=15,
+                            command=lambda: controller.show_frame("Button3"))
+        button3.grid(row=2, column=0)
+        button4 = tk.Button(self, text="Methane", height=2, width=15, command=lambda: controller.show_frame("Button4"))
+        button4.grid(row=2, column=1)
+        button5 = tk.Button(self, text="Natural Gas", height=2, width=15,
+                            command=lambda: controller.show_frame("Button5"))
+        button5.grid(row=3, column=0)
+        button6 = tk.Button(self, text="Propane-Butane", height=2, width=15,
+                            command=lambda: controller.show_frame("Button6"))
+        button6.grid(row=3, column=1)
+        button7 = tk.Button(self, text="Carbon Monoxide", height=2, width=15,
+                            command=lambda: controller.show_frame("Button7"))
+        button7.grid(row=4, column=0)
+        button8 = tk.Button(self, text="Alcohol", height=2, width=15,
+                            command=lambda: controller.show_frame("Button8"))
+        button8.grid(row=4, column=1)
+        button9 = tk.Button(self, text="Particulate", height=2, width=15,
+                            command=lambda: controller.show_frame("Button9"))
+        button9.grid(row=5, column=0)
+        button10 = tk.Button(self, text="GPS", height=2, width=15, command=lambda: controller.show_frame("Button10"))
+        button10.grid(row=5, column=1)
+        buttoninfo = tk.Button(self, text="Sensor System Info", height=2, width=15,
+                               command=lambda: controller.show_frame("ButtonInfo"))
+        buttoninfo.grid(row=6, column=0)
+
+        buttonexit = tk.Button(self, text="Exit", command=exit)
+        buttonexit.grid(row=6, column=1)
+
+        text_box = tkst.ScrolledText(self)
+        s = tk.Scrollbar(self)
+        s.grid(row=1, column=4, rowspan=6)
+        text_box.grid(row=1, column=3, rowspan=6)
 
 
 class Button1(tk.Frame):
@@ -69,8 +99,37 @@ class Button1(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is Button 1").pack()
-        button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage")).pack()
+        label = tk.Label(self, text="This is the BME 680 Sensor")
+        label.grid(row=0, column=0)
+        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
+        button.grid(row=1, column=0)
+
+        def retrieve_input():
+            data1w = open('dataBME680.txt', 'w+')
+            inputValue1 = entry1.get()
+            data1w.write(inputValue1)
+            data1w.write(',')
+            data1w.close()
+            entry1.delete(0, tk.END)
+
+        entry1 = tk.Entry(self)
+        entry1.grid(row=2, column=1)
+        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
+        buttonEnter.grid(row=3, column=1)
+        label1 = tk.Label(self, text="Entry line 1")
+        label1.grid(row=2, column=0)
+
+        text_box = tkst.ScrolledText(self)
+        s = tk.Scrollbar(self)
+        s.grid(row=1, column=4, rowspan=6)
+        text_box.grid(row=1, column=3, rowspan=6)
+
+
+#        with open("guru99.txt") as text:
+#            text1 = text.read()
+#            print text1
+#        file1 = open("guru99.txt","r")
+#        print file1.read()
 
 
 class Button2(tk.Frame):
@@ -78,8 +137,25 @@ class Button2(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is Button 2").pack()
-        button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage")).pack()
+        label = tk.Label(self, text="This is the Carbon Dioxide Sensor")
+        label.grid(row=0, column=0)
+        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
+        button.grid(row=1, column=0)
+
+        def retrieve_input():
+            data1w = open('dataCarbonDioxide.txt', 'w+')
+            inputValue1 = entry1.get()
+            data1w.write(inputValue1)
+            data1w.write(',')
+            data1w.close()
+            entry1.delete(0, tk.END)
+
+        entry1 = tk.Entry(self)
+        entry1.grid(row=2, column=1)
+        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
+        buttonEnter.grid(row=3, column=1)
+        label1 = tk.Label(self, text="Entry line 1")
+        label1.grid(row=2, column=0)
 
 
 class Button3(tk.Frame):
@@ -87,8 +163,25 @@ class Button3(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is Button 3").pack()
-        button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage")).pack()
+        label = tk.Label(self, text="This is the Combustible Gas Sensor")
+        label.grid(row=0, column=0)
+        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
+        button.grid(row=1, column=0)
+
+        def retrieve_input():
+            data1w = open('dataCombustibleGas.txt', 'w+')
+            inputValue1 = entry1.get()
+            data1w.write(inputValue1)
+            data1w.write(',')
+            data1w.close()
+            entry1.delete(0, tk.END)
+
+        entry1 = tk.Entry(self)
+        entry1.grid(row=2, column=1)
+        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
+        buttonEnter.grid(row=3, column=1)
+        label1 = tk.Label(self, text="Entry line 1")
+        label1.grid(row=2, column=0)
 
 
 class Button4(tk.Frame):
@@ -96,8 +189,25 @@ class Button4(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is Button 4").pack()
-        button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage")).pack()
+        label = tk.Label(self, text="This is the Methane Sensor")
+        label.grid(row=0, column=0)
+        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
+        button.grid(row=1, column=0)
+
+        def retrieve_input():
+            data1w = open('dataMethane.txt', 'w+')
+            inputValue1 = entry1.get()
+            data1w.write(inputValue1)
+            data1w.write(',')
+            data1w.close()
+            entry1.delete(0, tk.END)
+
+        entry1 = tk.Entry(self)
+        entry1.grid(row=2, column=1)
+        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
+        buttonEnter.grid(row=3, column=1)
+        label1 = tk.Label(self, text="Entry line 1")
+        label1.grid(row=2, column=0)
 
 
 class Button5(tk.Frame):
@@ -105,8 +215,25 @@ class Button5(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is Button 5").pack()
-        button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage")).pack()
+        label = tk.Label(self, text="This is the Natural Gas Sensor")
+        label.grid(row=0, column=0)
+        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
+        button.grid(row=1, column=0)
+
+        def retrieve_input():
+            data1w = open('dataNaturalGas.txt', 'w+')
+            inputValue1 = entry1.get()
+            data1w.write(inputValue1)
+            data1w.write(',')
+            data1w.close()
+            entry1.delete(0, tk.END)
+
+        entry1 = tk.Entry(self)
+        entry1.grid(row=2, column=1)
+        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
+        buttonEnter.grid(row=3, column=1)
+        label1 = tk.Label(self, text="Entry line 1")
+        label1.grid(row=2, column=0)
 
 
 class Button6(tk.Frame):
@@ -114,8 +241,25 @@ class Button6(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is Button 6").pack()
-        button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage")).pack()
+        label = tk.Label(self, text="This is the Propane-Butane Sensor")
+        label.grid(row=0, column=0)
+        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
+        button.grid(row=1, column=0)
+
+        def retrieve_input():
+            data1w = open('dataPro-But.txt', 'w+')
+            inputValue1 = entry1.get()
+            data1w.write(inputValue1)
+            data1w.write(',')
+            data1w.close()
+            entry1.delete(0, tk.END)
+
+        entry1 = tk.Entry(self)
+        entry1.grid(row=2, column=1)
+        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
+        buttonEnter.grid(row=3, column=1)
+        label1 = tk.Label(self, text="Entry line 1")
+        label1.grid(row=2, column=0)
 
 
 class Button7(tk.Frame):
@@ -123,8 +267,25 @@ class Button7(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is Button 7").pack()
-        button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage")).pack()
+        label = tk.Label(self, text="This is the Carbon Monoxide Sensor")
+        label.grid(row=0, column=0)
+        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
+        button.grid(row=1, column=0)
+
+        def retrieve_input():
+            data1w = open('dataCarbonMonoxide.txt', 'w+')
+            inputValue1 = entry1.get()
+            data1w.write(inputValue1)
+            data1w.write(',')
+            data1w.close()
+            entry1.delete(0, tk.END)
+
+        entry1 = tk.Entry(self)
+        entry1.grid(row=2, column=1)
+        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
+        buttonEnter.grid(row=3, column=1)
+        label1 = tk.Label(self, text="Entry line 1")
+        label1.grid(row=2, column=0)
 
 
 class Button8(tk.Frame):
@@ -132,8 +293,25 @@ class Button8(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is Button 8").pack()
-        button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage")).pack()
+        label = tk.Label(self, text="This is the Alcohol Gas Sensor")
+        label.grid(row=0, column=0)
+        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
+        button.grid(row=1, column=0)
+
+        def retrieve_input():
+            data1w = open('dataAlcohol.txt', 'w+')
+            inputValue1 = entry1.get()
+            data1w.write(inputValue1)
+            data1w.write(',')
+            data1w.close()
+            entry1.delete(0, tk.END)
+
+        entry1 = tk.Entry(self)
+        entry1.grid(row=2, column=1)
+        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
+        buttonEnter.grid(row=3, column=1)
+        label1 = tk.Label(self, text="Entry line 1")
+        label1.grid(row=2, column=0)
 
 
 class Button9(tk.Frame):
@@ -141,9 +319,25 @@ class Button9(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is Button 9")
-        label.pack()
-        button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage")).pack()
+        label = tk.Label(self, text="This is the Particulate Sensor")
+        label.grid(row=0, column=0)
+        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
+        button.grid(row=1, column=0)
+
+        def retrieve_input():
+            data1w = open('dataParticulate.txt', 'w+')
+            inputValue1 = entry1.get()
+            data1w.write(inputValue1)
+            data1w.write(',')
+            data1w.close()
+            entry1.delete(0, tk.END)
+
+        entry1 = tk.Entry(self)
+        entry1.grid(row=2, column=1)
+        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
+        buttonEnter.grid(row=3, column=1)
+        label1 = tk.Label(self, text="Entry line 1")
+        label1.grid(row=2, column=0)
 
 
 class Button10(tk.Frame):
@@ -151,8 +345,25 @@ class Button10(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is Button 10").pack()
-        button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage")).pack()
+        label = tk.Label(self, text="This is the GPS Sensor")
+        label.grid(row=0, column=0)
+        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
+        button.grid(row=1, column=0)
+
+        def retrieve_input():
+            data1w = open('dataGPS.txt', 'w+')
+            inputValue1 = entry1.get()
+            data1w.write(inputValue1)
+            data1w.write(',')
+            data1w.close()
+            entry1.delete(0, tk.END)
+
+        entry1 = tk.Entry(self)
+        entry1.grid(row=2, column=1)
+        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
+        buttonEnter.grid(row=3, column=1)
+        label1 = tk.Label(self, text="Entry line 1")
+        label1.grid(row=2, column=0)
 
 
 class ButtonInfo(tk.Frame):
@@ -160,29 +371,66 @@ class ButtonInfo(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is Button Info").grid(row=0, column=0)
-        button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage")).grid(
-            row=6, column=0)
+        label = tk.Label(self, text="Sensor System Info")
+        label.grid(row=0, column=0)
+        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
+        button.grid(row=1, column=0)
 
-        label1 = tk.Label(self, text="Enter Information").grid(row=2, column=0)
-        input1 = tk.StringVar()
-        entry1 = tk.Entry(self, textvar=input1).grid(row=2, column=1)
-        button1 = tk.Button(self, text="Enter").grid(row=2, column=2)
+        def retrieve_input():
+            data1w = open('dataBInfo.txt', 'w+')
 
-        label2 = tk.Label(self, text="Enter Information").grid(row=3, column=0)
-        input2 = tk.StringVar()
-        entry2 = tk.Entry(self, textvar=input2).grid(row=3, column=1)
-        button2 = tk.Button(self, text="Enter").grid(row=3, column=2)
+            inputValue1 = entry1.get()
+            inputValue2 = entry2.get()
+            inputValue3 = entry3.get()
+            inputValue4 = entry4.get()
+            inputValue5 = entry5.get()
 
-        label3 = tk.Label(self, text="Enter Information").grid(row=4, column=0)
-        input3 = tk.StringVar()
-        entry3 = tk.Entry(self, textvar=input3).grid(row=4, column=1)
-        button3 = tk.Button(self, text="Enter").grid(row=4, column=2)
+            data1w.write(inputValue1)
+            data1w.write(',')
+            data1w.write(inputValue2)
+            data1w.write(',')
+            data1w.write(inputValue3)
+            data1w.write(',')
+            data1w.write(inputValue4)
+            data1w.write(',')
+            data1w.write(inputValue5)
+            data1w.write('')
 
-        label4 = tk.Label(self, text="Enter Information").grid(row=5, column=0)
-        input4 = tk.StringVar()
-        entry4 = tk.Entry(self, textvar=input4).grid(row=5, column=1)
-        button4 = tk.Button(self, text="Enter").grid(row=5, column=2)
+            data1w.close()
+
+            entry1.delete(0, tk.END)
+            entry2.delete(0, tk.END)
+            entry3.delete(0, tk.END)
+            entry4.delete(0, tk.END)
+            entry5.delete(0, tk.END)
+
+        entry1 = tk.Entry(self)
+        entry1.grid(row=2, column=1)
+        entry2 = tk.Entry(self)
+        entry2.grid(row=3, column=1)
+        entry3 = tk.Entry(self)
+        entry3.grid(row=4, column=1)
+        entry4 = tk.Entry(self)
+        entry4.grid(row=5, column=1)
+        entry5 = tk.Entry(self)
+        entry5.grid(row=6, column=1)
+
+        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
+        buttonEnter.grid(row=7, column=1)
+
+        label1 = tk.Label(self, text="Entry line 1")
+        label1.grid(row=2, column=0)
+        label2 = tk.Label(self, text="Entry line 2")
+        label2.grid(row=3, column=0)
+        label3 = tk.Label(self, text="Entry line 3")
+        label3.grid(row=4, column=0)
+        label4 = tk.Label(self, text="Entry line 4")
+        label4.grid(row=5, column=0)
+        label5 = tk.Label(self, text="Entry line 5")
+        label5.grid(row=6, column=0)
+
+        buttonexit = tk.Button(self, text="EXIT", command=exit)
+        buttonexit.grid(row=7, column=0)
 
 
 if __name__ == "__main__":

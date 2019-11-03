@@ -6,44 +6,51 @@ from enum import Enum
 
 class IAQ_GUI(tk.Tk):
 
-    FramesList = ["ViewCO2", "ViewCombustible", "ViewMethane", "ViewNaturalGas",
-                  "ViewPropane", "ViewCO", "ViewAlcohol", "ViewParticulate",
-                  "ViewSystemInfo"]
+    SensorFrames = ["ViewCO2", "ViewCombustible", "ViewMethane", "ViewNaturalGas",
+                    "ViewPropane", "ViewCO", "ViewAlcohol", "ViewParticulate"]
+
+    FramesList = SensorFrames + ["ViewSystemInfo"]
 
     ButtonNames = ["Carbon Dioxide", "Combustible Gas", "Methane", "Natural Gas",
                    "Propane", "Carbon Monoxide", "Alcohol", "Particulate",
                    "System Info"]
 
-    frames = None
+    container = None
+
+    frames = {}
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
         self.geometry('800x480')
-        self.title('TESTER')
+        self.title('Indoor Air Quality Logger')
         self.resizable(0, 0)
 
         gmtime = time.asctime(time.gmtime(time.time()))
-        labelinfo = tk.Label(self, text="Time is displayed in UTC")
-        labelinfo.pack()
-        labelt = tk.Label(self, text=gmtime)
-        labelt.pack()
+        tk.Label(self, text=gmtime).pack()
 
-        container = tk.Frame(self)
-        container.pack(side="top", fill="both", expand=True)
-
-        self.frames = {}
-        for F in (StartPage,ViewCO2,ViewCombustible,ViewMethane,ViewNaturalGas,
-                  ViewPropane,ViewCO,ViewAlcohol,ViewParticulate,ViewSystemInfo):
-            page_name = F.__name__
-            frame = F(parent=container, controller=self)
-            self.frames[page_name] = frame
-
-            frame.grid(row=0, column=0, sticky="nsew")
-
+        self.container = tk.Frame(self)
+        self.container.pack(side="top", fill="both", expand=True)
+        self._init_frames()
         self.show_frame("StartPage")
 
-    def StartPage_Output_Message(self,msg=None):
-        frame = self.frames[StartPage.__name__]
+    def _init_frames(self):
+        frame = StartPage(parent=self.container,controller=self)
+        self.frames["StartPage"] = frame
+        frame.grid(row=0, column=0, sticky="nsew")
+        for f,n in zip(self.SensorFrames,self.ButtonNames):
+            frame = SensorView(parent=self.container, controller=self,name=n)
+            self.frames[f] = frame
+            frame.grid(row=0, column=0, sticky="nsew")
+        frame = ViewSystemInfo(parent=self.container,controller=self)
+        self.frames["ViewSystemInfo"] = frame
+        frame.grid(row=0, column=0, sticky="nsew")
+
+    def output_message(self,msg=None,frame=None):
+        if (msg == None or frame == None):
+            msg = "Output Error: Invalid frame or message"
+            frame = self.frames[StartPage.__name__]
+            frame.printScrolledText(msg)
+        frame = self.frames[frame]
         frame.printScrolledText(msg)
 
     def show_frame(self, page_name):
@@ -85,212 +92,27 @@ class StartPage(tk.Frame):
         if (msg != None):
             self.scrolledText.insert(tk.INSERT,msg + "\n")
 
-class ViewCO2(tk.Frame):
+class SensorView(tk.Frame):
 
-    def __init__(self, parent, controller):
+    scrolledText = None
+    def __init__(self, parent, controller, name):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is the Carbon Dioxide Sensor")
+        label = tk.Label(self, text="This is the " + name + " Sensor")
         label.grid(row=0, column=0)
         button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
         button.grid(row=1, column=0)
 
-        def retrieve_input():
-            data1w = open('dataCarbonDioxide.txt', 'w+')
-            inputValue1 = entry1.get()
-            data1w.write(inputValue1)
-            data1w.write(',')
-            data1w.close()
-            entry1.delete(0, tk.END)
+        if (self.scrolledText == None):
+            self.scrolledText = tkst.ScrolledText(self)
+            self.scrolledText.grid(row=1, column=3, rowspan=6)
 
-        entry1 = tk.Entry(self)
-        entry1.grid(row=2, column=1)
-        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
-        buttonEnter.grid(row=3, column=1)
-        label1 = tk.Label(self, text="Entry line 1")
-        label1.grid(row=2, column=0)
+        s = tk.Scrollbar(self)
+        s.grid(row=1, column=4, rowspan=6)
 
-
-class ViewCombustible(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        label = tk.Label(self, text="This is the Combustible Gas Sensor")
-        label.grid(row=0, column=0)
-        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
-        button.grid(row=1, column=0)
-
-        def retrieve_input():
-            data1w = open('dataCombustibleGas.txt', 'w+')
-            inputValue1 = entry1.get()
-            data1w.write(inputValue1)
-            data1w.write(',')
-            data1w.close()
-            entry1.delete(0, tk.END)
-
-        entry1 = tk.Entry(self)
-        entry1.grid(row=2, column=1)
-        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
-        buttonEnter.grid(row=3, column=1)
-        label1 = tk.Label(self, text="Entry line 1")
-        label1.grid(row=2, column=0)
-
-
-class ViewMethane(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        label = tk.Label(self, text="This is the Methane Sensor")
-        label.grid(row=0, column=0)
-        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
-        button.grid(row=1, column=0)
-
-        def retrieve_input():
-            data1w = open('dataMethane.txt', 'w+')
-            inputValue1 = entry1.get()
-            data1w.write(inputValue1)
-            data1w.write(',')
-            data1w.close()
-            entry1.delete(0, tk.END)
-
-        entry1 = tk.Entry(self)
-        entry1.grid(row=2, column=1)
-        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
-        buttonEnter.grid(row=3, column=1)
-        label1 = tk.Label(self, text="Entry line 1")
-        label1.grid(row=2, column=0)
-
-
-class ViewNaturalGas(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        label = tk.Label(self, text="This is the Natural Gas Sensor")
-        label.grid(row=0, column=0)
-        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
-        button.grid(row=1, column=0)
-
-        def retrieve_input():
-            data1w = open('dataNaturalGas.txt', 'w+')
-            inputValue1 = entry1.get()
-            data1w.write(inputValue1)
-            data1w.write(',')
-            data1w.close()
-            entry1.delete(0, tk.END)
-
-        entry1 = tk.Entry(self)
-        entry1.grid(row=2, column=1)
-        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
-        buttonEnter.grid(row=3, column=1)
-        label1 = tk.Label(self, text="Entry line 1")
-        label1.grid(row=2, column=0)
-
-
-class ViewPropane(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        label = tk.Label(self, text="This is the Propane-Butane Sensor")
-        label.grid(row=0, column=0)
-        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
-        button.grid(row=1, column=0)
-
-        def retrieve_input():
-            data1w = open('dataPro-But.txt', 'w+')
-            inputValue1 = entry1.get()
-            data1w.write(inputValue1)
-            data1w.write(',')
-            data1w.close()
-            entry1.delete(0, tk.END)
-
-        entry1 = tk.Entry(self)
-        entry1.grid(row=2, column=1)
-        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
-        buttonEnter.grid(row=3, column=1)
-        label1 = tk.Label(self, text="Entry line 1")
-        label1.grid(row=2, column=0)
-
-
-class ViewCO(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        label = tk.Label(self, text="This is the Carbon Monoxide Sensor")
-        label.grid(row=0, column=0)
-        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
-        button.grid(row=1, column=0)
-
-        def retrieve_input():
-            data1w = open('dataCarbonMonoxide.txt', 'w+')
-            inputValue1 = entry1.get()
-            data1w.write(inputValue1)
-            data1w.write(',')
-            data1w.close()
-            entry1.delete(0, tk.END)
-
-        entry1 = tk.Entry(self)
-        entry1.grid(row=2, column=1)
-        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
-        buttonEnter.grid(row=3, column=1)
-        label1 = tk.Label(self, text="Entry line 1")
-        label1.grid(row=2, column=0)
-
-
-class ViewAlcohol(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        label = tk.Label(self, text="This is the Alcohol Gas Sensor")
-        label.grid(row=0, column=0)
-        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
-        button.grid(row=1, column=0)
-
-        def retrieve_input():
-            data1w = open('dataAlcohol.txt', 'w+')
-            inputValue1 = entry1.get()
-            data1w.write(inputValue1)
-            data1w.write(',')
-            data1w.close()
-            entry1.delete(0, tk.END)
-
-        entry1 = tk.Entry(self)
-        entry1.grid(row=2, column=1)
-        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
-        buttonEnter.grid(row=3, column=1)
-        label1 = tk.Label(self, text="Entry line 1")
-        label1.grid(row=2, column=0)
-
-
-class ViewParticulate(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        label = tk.Label(self, text="This is the Particulate Sensor")
-        label.grid(row=0, column=0)
-        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
-        button.grid(row=1, column=0)
-
-        def retrieve_input():
-            data1w = open('dataParticulate.txt', 'w+')
-            inputValue1 = entry1.get()
-            data1w.write(inputValue1)
-            data1w.write(',')
-            data1w.close()
-            entry1.delete(0, tk.END)
-
-        entry1 = tk.Entry(self)
-        entry1.grid(row=2, column=1)
-        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
-        buttonEnter.grid(row=3, column=1)
-        label1 = tk.Label(self, text="Entry line 1")
-        label1.grid(row=2, column=0)
+    def printScrolledText(self,msg=None):
+        if (msg != None):
+            self.scrolledText.insert(tk.INSERT,msg + "\n")
 
 
 class ViewSystemInfo(tk.Frame):
@@ -366,5 +188,13 @@ while True:
     gui.update()
     end = time.time()
     if ((end - start) >= 1):
-        gui.StartPage_Output_Message("Hello")
+        gui.output_message("Hello StartPage","StartPage")
+        gui.output_message("Hello CO2","ViewCO2")
+        gui.output_message("Hello Combustible","ViewCombustible")
+        gui.output_message("Hello Methane","ViewMethane")
+        gui.output_message("Hello Natural Gas","ViewNaturalGas")
+        gui.output_message("Hello Propane","ViewPropane")
+        gui.output_message("Hello Carbon Monoxide","ViewCO")
+        gui.output_message("Hello Alcohol","ViewAlcohol")
+        gui.output_message("Hello Particulate","ViewParticulate")
         start = time.time()

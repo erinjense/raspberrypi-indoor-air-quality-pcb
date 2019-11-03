@@ -1,10 +1,10 @@
 #!/usr/bin/python
 
-from third_party import Adafruit_ADS1x15
 from HAT import IAQ_DAC43608
-import IAQ_Mux
-import time
+from HAT import IAQ_Mux
+from third_party import Adafruit_ADS1x15
 from enum import Enum
+import time
 
 # The following Sensor list was provided at:
 # https://www.strawdogs.co/2018/06/MQ-Gas-Sensors-List

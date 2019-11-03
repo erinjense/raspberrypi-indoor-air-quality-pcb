@@ -1,4 +1,4 @@
 #!/bin/sh
 
-./Logger.py
+./IAQ_Logger.py
 ./clean.sh

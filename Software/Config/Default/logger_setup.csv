@@ -1,5 +1,5 @@
 Logger Type,IAQ
-Id,IAQ_0
+Id,IAQ_MSU_2019
 Software Version,Alpha
 Headers,Date(YYYY/MM/DD),Time(HH:MM:SS),Location(degrees),Temp(C),Humidity(RH)
 Sensors,./config/sensors/bme680.csv,./config/sensors/mq_gas.csv

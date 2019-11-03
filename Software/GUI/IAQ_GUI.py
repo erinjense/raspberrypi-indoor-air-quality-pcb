@@ -6,9 +6,13 @@ from enum import Enum
 
 class IAQ_GUI(tk.Tk):
 
-    FramesList = ["Button1", "Button2", "Button3", "Button4",
-                  "Button5", "Button6", "Button7", "Button8",
-                  "Button9", "Button10","ButtonInfo"]
+    FramesList = ["ViewCO2", "ViewCombustible", "ViewMethane", "ViewNaturalGas",
+                  "ViewPropane", "ViewCO", "ViewAlcohol", "ViewParticulate",
+                  "ViewSystemInfo"]
+
+    ButtonNames = ["Carbon Dioxide", "Combustible Gas", "Methane", "Natural Gas",
+                   "Propane", "Carbon Monoxide", "Alcohol", "Particulate",
+                   "System Info"]
 
     frames = None
 
@@ -28,8 +32,8 @@ class IAQ_GUI(tk.Tk):
         container.pack(side="top", fill="both", expand=True)
 
         self.frames = {}
-        for F in (StartPage, Button1, Button2, Button3, Button4, Button5, Button6, Button7, Button8, Button9, Button10,
-                  ButtonInfo):
+        for F in (StartPage,ViewCO2,ViewCombustible,ViewMethane,ViewNaturalGas,
+                  ViewPropane,ViewCO,ViewAlcohol,ViewParticulate,ViewSystemInfo):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -57,13 +61,13 @@ class StartPage(tk.Frame):
         row = 1
         col = 0
         # Add a button for each frame to StartPage
-        for frame in controller.FramesList:
+        for frame,name in zip(controller.FramesList,controller.ButtonNames):
             # increment row after previous row has two buttons
             if (buttonCount == 2):
                 row += 1
                 buttonCount = 0
             # Place Button
-            button = tk.Button(self,text=frame,height=2,width=15,command=lambda frame=frame: controller.show_frame(frame))
+            button = tk.Button(self,text=name,height=2,width=15,command=lambda frame=frame: controller.show_frame(frame))
             button.grid(row=row,column=col)
             self.buttonList.append(button)
             buttonCount += 1
@@ -81,45 +85,7 @@ class StartPage(tk.Frame):
         if (msg != None):
             self.scrolledText.insert(tk.INSERT,msg + "\n")
 
-class Button1(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        label = tk.Label(self, text="This is the BME 680 Sensor")
-        label.grid(row=0, column=0)
-        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
-        button.grid(row=1, column=0)
-
-        def retrieve_input():
-            data1w = open('dataBME680.txt', 'w+')
-            inputValue1 = entry1.get()
-            data1w.write(inputValue1)
-            data1w.write(',')
-            data1w.close()
-            entry1.delete(0, tk.END)
-
-        entry1 = tk.Entry(self)
-        entry1.grid(row=2, column=1)
-        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
-        buttonEnter.grid(row=3, column=1)
-        label1 = tk.Label(self, text="Entry line 1")
-        label1.grid(row=2, column=0)
-
-        text_box = tkst.ScrolledText(self)
-        s = tk.Scrollbar(self)
-        s.grid(row=1, column=4, rowspan=6)
-        text_box.grid(row=1, column=3, rowspan=6)
-
-
-#        with open("guru99.txt") as text:
-#            text1 = text.read()
-#            print text1
-#        file1 = open("guru99.txt","r")
-#        print file1.read()
-
-
-class Button2(tk.Frame):
+class ViewCO2(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -145,7 +111,7 @@ class Button2(tk.Frame):
         label1.grid(row=2, column=0)
 
 
-class Button3(tk.Frame):
+class ViewCombustible(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -171,7 +137,7 @@ class Button3(tk.Frame):
         label1.grid(row=2, column=0)
 
 
-class Button4(tk.Frame):
+class ViewMethane(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -197,7 +163,7 @@ class Button4(tk.Frame):
         label1.grid(row=2, column=0)
 
 
-class Button5(tk.Frame):
+class ViewNaturalGas(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -223,7 +189,7 @@ class Button5(tk.Frame):
         label1.grid(row=2, column=0)
 
 
-class Button6(tk.Frame):
+class ViewPropane(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -249,7 +215,7 @@ class Button6(tk.Frame):
         label1.grid(row=2, column=0)
 
 
-class Button7(tk.Frame):
+class ViewCO(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -275,7 +241,7 @@ class Button7(tk.Frame):
         label1.grid(row=2, column=0)
 
 
-class Button8(tk.Frame):
+class ViewAlcohol(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -301,7 +267,7 @@ class Button8(tk.Frame):
         label1.grid(row=2, column=0)
 
 
-class Button9(tk.Frame):
+class ViewParticulate(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -327,33 +293,7 @@ class Button9(tk.Frame):
         label1.grid(row=2, column=0)
 
 
-class Button10(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        label = tk.Label(self, text="This is the GPS Sensor")
-        label.grid(row=0, column=0)
-        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
-        button.grid(row=1, column=0)
-
-        def retrieve_input():
-            data1w = open('dataGPS.txt', 'w+')
-            inputValue1 = entry1.get()
-            data1w.write(inputValue1)
-            data1w.write(',')
-            data1w.close()
-            entry1.delete(0, tk.END)
-
-        entry1 = tk.Entry(self)
-        entry1.grid(row=2, column=1)
-        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
-        buttonEnter.grid(row=3, column=1)
-        label1 = tk.Label(self, text="Entry line 1")
-        label1.grid(row=2, column=0)
-
-
-class ButtonInfo(tk.Frame):
+class ViewSystemInfo(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)

@@ -1,19 +1,22 @@
 import Tkinter as tk
-import tkinter.scrolledtext as tkst
+import ScrolledText as tkst
 import time
 import csv
+from enum import Enum
 
+class IAQ_GUI(tk.Tk):
 
-class Main(tk.Tk):
+    FramesList = ["Button1", "Button2", "Button3", "Button4",
+                  "Button5", "Button6", "Button7", "Button8",
+                  "Button9", "Button10","ButtonInfo"]
+
+    frames = None
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
         self.geometry('800x480')
         self.title('TESTER')
         self.resizable(0, 0)
-
-        Readfile = open('guru99.txt', 'w+')
-        Readfile.write("This is a file that I am trying to read")
 
         gmtime = time.asctime(time.gmtime(time.time()))
         labelinfo = tk.Label(self, text="Time is displayed in UTC")
@@ -35,64 +38,48 @@ class Main(tk.Tk):
 
         self.show_frame("StartPage")
 
+    def StartPage_Output_Message(self,msg=None):
+        frame = self.frames[StartPage.__name__]
+        frame.printScrolledText(msg)
+
     def show_frame(self, page_name):
         frame = self.frames[page_name]
         frame.tkraise()
 
-
-#    f = open("guru99.txt", "r")
-#    if f.mode == 'r':
-#        contents = f.read()
-#        print(contents)
-
-
 class StartPage(tk.Frame):
+    scrolledText = None
+    buttonList = []
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        #        label = tk.Label(self, text="Main Page")
-        #        label.grid(row=0, column=0, columnspan=4)
+        buttonCount = 0
+        row = 1
+        col = 0
+        # Add a button for each frame to StartPage
+        for frame in controller.FramesList:
+            # increment row after previous row has two buttons
+            if (buttonCount == 2):
+                row += 1
+                buttonCount = 0
+            # Place Button
+            button = tk.Button(self,text=frame,height=2,width=15,command=lambda frame=frame: controller.show_frame(frame))
+            button.grid(row=row,column=col)
+            self.buttonList.append(button)
+            buttonCount += 1
+            # toggle column position
+            col = 1 if (col == 0) else 0
 
-        button1 = tk.Button(self, text="BME 680", height=2, width=15, command=lambda: controller.show_frame("Button1"))
-        button1.grid(row=1, column=0)
-        button2 = tk.Button(self, text="Carbon Dioxide", height=2, width=15,
-                            command=lambda: controller.show_frame("Button2"))
-        button2.grid(row=1, column=1)
-        button3 = tk.Button(self, text="Combustible Gas", height=2, width=15,
-                            command=lambda: controller.show_frame("Button3"))
-        button3.grid(row=2, column=0)
-        button4 = tk.Button(self, text="Methane", height=2, width=15, command=lambda: controller.show_frame("Button4"))
-        button4.grid(row=2, column=1)
-        button5 = tk.Button(self, text="Natural Gas", height=2, width=15,
-                            command=lambda: controller.show_frame("Button5"))
-        button5.grid(row=3, column=0)
-        button6 = tk.Button(self, text="Propane-Butane", height=2, width=15,
-                            command=lambda: controller.show_frame("Button6"))
-        button6.grid(row=3, column=1)
-        button7 = tk.Button(self, text="Carbon Monoxide", height=2, width=15,
-                            command=lambda: controller.show_frame("Button7"))
-        button7.grid(row=4, column=0)
-        button8 = tk.Button(self, text="Alcohol", height=2, width=15,
-                            command=lambda: controller.show_frame("Button8"))
-        button8.grid(row=4, column=1)
-        button9 = tk.Button(self, text="Particulate", height=2, width=15,
-                            command=lambda: controller.show_frame("Button9"))
-        button9.grid(row=5, column=0)
-        button10 = tk.Button(self, text="GPS", height=2, width=15, command=lambda: controller.show_frame("Button10"))
-        button10.grid(row=5, column=1)
-        buttoninfo = tk.Button(self, text="Sensor System Info", height=2, width=15,
-                               command=lambda: controller.show_frame("ButtonInfo"))
-        buttoninfo.grid(row=6, column=0)
+        if (self.scrolledText == None):
+            self.scrolledText = tkst.ScrolledText(self)
+            self.scrolledText.grid(row=1, column=3, rowspan=6)
 
-        buttonexit = tk.Button(self, text="Exit", command=exit)
-        buttonexit.grid(row=6, column=1)
-
-        text_box = tkst.ScrolledText(self)
         s = tk.Scrollbar(self)
         s.grid(row=1, column=4, rowspan=6)
-        text_box.grid(row=1, column=3, rowspan=6)
 
+    def printScrolledText(self,msg=None):
+        if (msg != None):
+            self.scrolledText.insert(tk.INSERT,msg + "\n")
 
 class Button1(tk.Frame):
 
@@ -431,8 +418,3 @@ class ButtonInfo(tk.Frame):
 
         buttonexit = tk.Button(self, text="EXIT", command=exit)
         buttonexit.grid(row=7, column=0)
-
-
-if __name__ == "__main__":
-    app = Main()
-    app.mainloop()

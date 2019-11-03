@@ -418,3 +418,13 @@ class ButtonInfo(tk.Frame):
 
         buttonexit = tk.Button(self, text="EXIT", command=exit)
         buttonexit.grid(row=7, column=0)
+
+gui = IAQ_GUI()
+start = time.time()
+while True:
+    gui.update_idletasks()
+    gui.update()
+    end = time.time()
+    if ((end - start) >= 1):
+        gui.StartPage_Output_Message("Hello")
+        start = time.time()

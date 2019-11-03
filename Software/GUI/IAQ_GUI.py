@@ -4,7 +4,7 @@ import time
 import csv
 from enum import Enum
 
-class IAQ_GUI(tk.Tk):
+class GUI(tk.Tk):
 
     SensorFrames = ["ViewCO2", "ViewCombustible", "ViewMethane", "ViewNaturalGas",
                     "ViewPropane", "ViewCO", "ViewAlcohol", "ViewParticulate"]
@@ -179,21 +179,3 @@ class ViewSystemInfo(tk.Frame):
         tk.Label(self, text="Entry line 4").grid(row=5, column=0)
         tk.Label(self, text="Entry line 5").grid(row=6, column=0)
 
-
-gui = IAQ_GUI()
-start = time.time()
-while True:
-    gui.update_idletasks()
-    gui.update()
-    end = time.time()
-    if ((end - start) >= 1):
-        gui.startpage_output("Hello StartPage")
-        gui.co2_output("Hello CO2")
-        gui.combustible_output("Hello Combustible")
-        gui.methane_output("Hello Methane")
-        gui.naturalgas_output("Hello Natural Gas")
-        gui.propane_output("Hello Propane")
-        gui.co_output("Hello Carbon Monoxide")
-        gui.alcohol_output("Hello Alcohol")
-        gui.particulate_output("Hello Particulate")
-        start = time.time()

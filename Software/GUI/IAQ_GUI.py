@@ -45,13 +45,24 @@ class IAQ_GUI(tk.Tk):
         self.frames["ViewSystemInfo"] = frame
         frame.grid(row=0, column=0, sticky="nsew")
 
-    def output_message(self,msg=None,frame=None):
-        if (msg == None or frame == None):
-            msg = "Output Error: Invalid frame or message"
-            frame = self.frames[StartPage.__name__]
-            frame.printScrolledText(msg)
+    def _output(self,msg=None,frame=None):
+        if (msg == None):
+            msg = "Output Error: Invalid message"
+        if (frame == None):
+            frame = "StartPage"
+            msg = "Output Error: Invalid frame"
         frame = self.frames[frame]
         frame.printScrolledText(msg)
+
+    def startpage_output(self,msg=None): return self._output(msg,"StartPage")
+    def co2_output(self,msg=None): return self._output(msg,"ViewCO2")
+    def combustible_output(self,msg=None): return self._output(msg,"ViewCombustible")
+    def methane_output(self,msg=None): return self._output(msg,"ViewMethane")
+    def naturalgas_output(self,msg=None): return self._output(msg,"ViewNaturalGas")
+    def propane_output(self,msg=None): return self._output(msg,"ViewPropane")
+    def co_output(self,msg=None): return self._output(msg,"ViewCO")
+    def alcohol_output(self,msg=None): return self._output(msg,"ViewAlcohol")
+    def particulate_output(self,msg=None): return self._output(msg,"ViewParticulate")
 
     def show_frame(self, page_name):
         frame = self.frames[page_name]
@@ -153,33 +164,21 @@ class ViewSystemInfo(tk.Frame):
             entry4.delete(0, tk.END)
             entry5.delete(0, tk.END)
 
-        entry1 = tk.Entry(self)
-        entry1.grid(row=2, column=1)
-        entry2 = tk.Entry(self)
-        entry2.grid(row=3, column=1)
-        entry3 = tk.Entry(self)
-        entry3.grid(row=4, column=1)
-        entry4 = tk.Entry(self)
-        entry4.grid(row=5, column=1)
-        entry5 = tk.Entry(self)
-        entry5.grid(row=6, column=1)
+        tk.Entry(self).grid(row=2, column=1)
+        tk.Entry(self).grid(row=3, column=1)
+        tk.Entry(self).grid(row=4, column=1)
+        tk.Entry(self).grid(row=5, column=1)
+        tk.Entry(self).grid(row=6, column=1)
 
         buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
         buttonEnter.grid(row=7, column=1)
 
-        label1 = tk.Label(self, text="Entry line 1")
-        label1.grid(row=2, column=0)
-        label2 = tk.Label(self, text="Entry line 2")
-        label2.grid(row=3, column=0)
-        label3 = tk.Label(self, text="Entry line 3")
-        label3.grid(row=4, column=0)
-        label4 = tk.Label(self, text="Entry line 4")
-        label4.grid(row=5, column=0)
-        label5 = tk.Label(self, text="Entry line 5")
-        label5.grid(row=6, column=0)
+        tk.Label(self, text="Logger Id: ").grid(row=2, column=0)
+        tk.Label(self, text="Entry line 2").grid(row=3, column=0)
+        tk.Label(self, text="Entry line 3").grid(row=4, column=0)
+        tk.Label(self, text="Entry line 4").grid(row=5, column=0)
+        tk.Label(self, text="Entry line 5").grid(row=6, column=0)
 
-        buttonexit = tk.Button(self, text="EXIT", command=exit)
-        buttonexit.grid(row=7, column=0)
 
 gui = IAQ_GUI()
 start = time.time()
@@ -188,13 +187,13 @@ while True:
     gui.update()
     end = time.time()
     if ((end - start) >= 1):
-        gui.output_message("Hello StartPage","StartPage")
-        gui.output_message("Hello CO2","ViewCO2")
-        gui.output_message("Hello Combustible","ViewCombustible")
-        gui.output_message("Hello Methane","ViewMethane")
-        gui.output_message("Hello Natural Gas","ViewNaturalGas")
-        gui.output_message("Hello Propane","ViewPropane")
-        gui.output_message("Hello Carbon Monoxide","ViewCO")
-        gui.output_message("Hello Alcohol","ViewAlcohol")
-        gui.output_message("Hello Particulate","ViewParticulate")
+        gui.startpage_output("Hello StartPage")
+        gui.co2_output("Hello CO2")
+        gui.combustible_output("Hello Combustible")
+        gui.methane_output("Hello Methane")
+        gui.naturalgas_output("Hello Natural Gas")
+        gui.propane_output("Hello Propane")
+        gui.co_output("Hello Carbon Monoxide")
+        gui.alcohol_output("Hello Alcohol")
+        gui.particulate_output("Hello Particulate")
         start = time.time()

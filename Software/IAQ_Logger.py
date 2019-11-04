@@ -1,6 +1,8 @@
 #!/usr/bin/python
-#from IAQ_AnalogPortController import *
+from IAQ_AnalogPortController import *
 from GUI.IAQ_GUI import GUI
+from Sensors.IAQ_Sensor import SensorIdEnum
+from Sensors.IAQ_MqGas import MqGas
 from IAQ_FileHandler import FileHandler
 import time
 import logging
@@ -34,25 +36,27 @@ import sys
 class Logger:
 
     shutdown = False
-    gui = None
-    csv = None
+    gui = None          # GUI
+    csv = None          # FileHandler
+    analogPorts = None  # AnalogPortController
     setup_path = None
     softwareVersion = None
     sensor_names = []
     setup_info = []
     logger_id = None
     logger_type = None
+    mq_sensors = []
     setup_header = ["Logger Type","Logger ID",
                     "Software Version","Setup Path","Sensors"]
     DEFAULT_PATH="./Config/Default/logger_setup.csv"
 
     # Analog Ports
-    A0 = None
-    A1 = None
-    A2 = None
-    A3 = None
-    A4 = None
-    A5 = None
+    A0 = SensorIdEnum.MQ2.name
+    A1 = SensorIdEnum.MQ3.name
+    A2 = SensorIdEnum.MQ6.name
+    A3 = SensorIdEnum.MQ7.name
+    A4 = SensorIdEnum.MQ135.name
+    A5 = SensorIdEnum.MQ9.name
 
     def __init__(self,setup_path=None):
         # Initialize All Sub-Subsystems 
@@ -70,9 +74,16 @@ class Logger:
         else:
             self._printBanner("Setup FAILURE")
 
+    def log(self):
+        data = self.mq_sensors[0].getData()
+
     def _powerOn(self):
         self.gui = GUI()
         self.csv = FileHandler()
+        portList = [self.A0,self.A1,self.A2,self.A3,self.A4,self.A5]
+        self.analogPorts = AnalogPortController(portList) 
+        for port in portList:
+            self.mq_sensors.append(MqGas(port,self.analogPorts))
         return True
 
     def _powerOff(self):
@@ -152,7 +163,8 @@ class Logger:
 logger = Logger()
 start = time.time()
 while logger.On():
-    logger.updateGui()
+#    logger.updateGui()
+    logger.log()
     end = time.time()
     if ((end - start) >= 1):
         start = time.time()

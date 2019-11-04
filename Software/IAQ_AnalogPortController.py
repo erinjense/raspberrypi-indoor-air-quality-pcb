@@ -2,15 +2,15 @@
 
 from HAT import IAQ_DAC43608
 from HAT import IAQ_Mux
+from Sensors.IAQ_Sensor import SensorIdEnum
 from third_party import Adafruit_ADS1x15
-from enum import Enum
 import time
-
 
 class AnalogPortController:
     adc = None
     dac = None
     mux = None
+    channel = None
     A0  = 0 
     A1  = 0 
     A2  = 0 
@@ -30,11 +30,11 @@ class AnalogPortController:
         ch = [self.A0,self.A1,self.A2,self.A3,self.A4,self.A5]
         for sensor,i in zip(sensorsByChannel,range(len(ch))):
             try:
-                if not hasattr(MQSensorsList,sensor):
-                    print('sensor must have attribute of MQSensorsList(Enum)')
+                if not hasattr(SensorIdEnum,sensor):
+                    print('sensor must have attribute of SensorIdEnum(Enum)')
                     continue
             except TypeError:
-                print('sensor must be of type MQSensorsList(Enum)')
+                print('sensor must be of type SensorIdEnum(Enum)')
                 continue
             ch[i] = sensor
         self.A0 = ch[0]
@@ -45,9 +45,10 @@ class AnalogPortController:
         self.A3 = ch[5]
 
     def readChannel(self,channel):
-        self.mux.switchChannel(channel)
-        time.sleep(.010)  # Wait 10 milliseconds
-        value = self.adc.read_adc(3, gain=self.GAIN)
+        if not (channel == self.channel):
+            self.mux.switchChannel(channel)
+            time.sleep(.010)  # Wait 10 milliseconds
+        value = self.adc.read_adc(0, gain=self.GAIN)
         return value
 
     def checkChannel(self,channel):

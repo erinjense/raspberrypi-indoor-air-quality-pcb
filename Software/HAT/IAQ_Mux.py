@@ -24,7 +24,7 @@ class Mux:
         GPIO.setup(self.pinC,GPIO.OUT)
         self.setMuxOutput(False,False,False)
 
-    def setMuxOutput(self,A=False,B=False,C=False):
+    def setMuxOutput(self,C=False,B=False,A=False):
         GPIO.output(self.pinA,A)
         GPIO.output(self.pinB,B)
         GPIO.output(self.pinC,C)

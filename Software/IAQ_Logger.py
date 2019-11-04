@@ -32,6 +32,8 @@ import sys
 #     print data
 
 class Logger:
+
+    shutdown = False
     gui = None
     csv = None
     setup_path = None
@@ -43,6 +45,7 @@ class Logger:
     setup_header = ["Logger Type","Logger ID",
                     "Software Version","Setup Path","Sensors"]
     DEFAULT_PATH="./Config/Default/logger_setup.csv"
+
     # Analog Ports
     A0 = None
     A1 = None
@@ -50,8 +53,6 @@ class Logger:
     A3 = None
     A4 = None
     A5 = None
-
-    shutdown = False
 
     def __init__(self,setup_path=None):
         # Initialize All Sub-Subsystems 
@@ -108,6 +109,29 @@ class Logger:
 
         return self._printSetupStatus()
 
+    def _printSetupStatus(self):
+        try:
+            for info,text in zip(self.setup_info,self.setup_header):
+                if info == None:
+                    self.printSystem(text + " is Empty")
+                    continue
+                info = text + ": " + str(info)
+                self.printSystem(info)
+        except TypeError:
+            if self.setup_info == None:
+                self.printSystem("Error: Invalid Setup Info.")
+            elif self.setup_header == None:
+                self.printSystem("Error: Invalid Setup Header.")
+            return False
+        return True
+
+    def _printBanner(self,midText=None):
+        hashes = "##################################################\n"
+        spaces = (len(hashes) + len(midText))/2
+        midText = midText.rjust(spaces) + "\n"
+        banner = hashes + midText + hashes
+        self.printSystem(banner)
+
     def updateGui(self):
         self.gui.update_idletasks()
         self.gui.update()
@@ -119,28 +143,6 @@ class Logger:
         except AttributeError:
             print("Fatal Error: GUI failed to load.")
             return False
-
-    def _printBanner(self,midText=None):
-        hashes = "##################################################\n"
-        spaces = (len(hashes) + len(midText))/2
-        midText = midText.rjust(spaces) + "\n"
-        banner = hashes + midText + hashes
-        self.printSystem(banner)
-
-    def _printSetupStatus(self):
-        try:
-            for info,text in zip(self.setup_info,self.setup_header):
-                if info == None:
-                    return False
-                info = text + ": " + str(info)
-                self.printSystem(info)
-        except TypeError:
-            if self.setup_info == None:
-                self.printSystem("Error: Invalid Setup Info.")
-            elif self.setup_header == None:
-                self.printSystem("Error: Invalid Setup Header.")
-            return False
-        return True
 
     def On(self):
         if self.shutdown == True:

@@ -128,6 +128,11 @@ class SensorView(tk.Frame):
 
 class ViewSystemInfo(tk.Frame):
 
+    entries = []
+    labelNames = ["Logger Id","Label 1", "Label 2","Label 3","Label 4","Label 5"]
+    ROWSTART = 2
+    ROWSTOP  = 6
+
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
@@ -136,46 +141,19 @@ class ViewSystemInfo(tk.Frame):
         button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
         button.grid(row=1, column=0)
 
-        def retrieve_input():
-            data1w = open('dataBInfo.txt', 'w+')
+        for row,label in zip(range(self.ROWSTART,self.ROWSTOP),self.labelNames):
+            entry = tk.Entry(self)
+            entry.grid(row=row, column=1)
+            self.entries.append(entry)
+            tk.Label(self, text=label).grid(row=row, column=0)
 
-            inputValue1 = entry1.get()
-            inputValue2 = entry2.get()
-            inputValue3 = entry3.get()
-            inputValue4 = entry4.get()
-            inputValue5 = entry5.get()
-
-            data1w.write(inputValue1)
-            data1w.write(',')
-            data1w.write(inputValue2)
-            data1w.write(',')
-            data1w.write(inputValue3)
-            data1w.write(',')
-            data1w.write(inputValue4)
-            data1w.write(',')
-            data1w.write(inputValue5)
-            data1w.write('')
-
-            data1w.close()
-
-            entry1.delete(0, tk.END)
-            entry2.delete(0, tk.END)
-            entry3.delete(0, tk.END)
-            entry4.delete(0, tk.END)
-            entry5.delete(0, tk.END)
-
-        tk.Entry(self).grid(row=2, column=1)
-        tk.Entry(self).grid(row=3, column=1)
-        tk.Entry(self).grid(row=4, column=1)
-        tk.Entry(self).grid(row=5, column=1)
-        tk.Entry(self).grid(row=6, column=1)
-
-        buttonEnter = tk.Button(self, text="Enter", command=lambda: retrieve_input())
+        buttonEnter = tk.Button(self, text="Enter", command=lambda: self.retrieve_input())
         buttonEnter.grid(row=7, column=1)
 
-        tk.Label(self, text="Logger Id: ").grid(row=2, column=0)
-        tk.Label(self, text="Entry line 2").grid(row=3, column=0)
-        tk.Label(self, text="Entry line 3").grid(row=4, column=0)
-        tk.Label(self, text="Entry line 4").grid(row=5, column=0)
-        tk.Label(self, text="Entry line 5").grid(row=6, column=0)
+    def retrieve_input(self):
+        data = open('dataBInfo.txt', 'w+')
 
+        for entry in self.entries:
+            data.write(entry.get())
+            data.write(',')
+            entry.delete(0, tk.END)

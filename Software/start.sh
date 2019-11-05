@@ -9,3 +9,4 @@ cleanup()
 }
 
 ./IAQ_Logger.py
+cleanup

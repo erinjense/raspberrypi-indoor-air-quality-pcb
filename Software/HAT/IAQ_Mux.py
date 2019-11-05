@@ -10,12 +10,12 @@ class Mux:
     pinC = 22
 
     class Channel(Enum):
-        A0 = 1
-        A1 = 2
-        A2 = 3
-        A3 = 4
-        A4 = 5
-        A5 = 6
+        A0 = 0
+        A1 = 1
+        A2 = 2
+        A3 = 3
+        A4 = 4
+        A5 = 5
 
     def __init__(self):
         GPIO.setmode(GPIO.BCM)

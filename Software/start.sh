@@ -8,5 +8,5 @@ cleanup()
     exit 0
 }
 
-./IAQ_Logger.py
+python IAQ_Logger.py
 cleanup

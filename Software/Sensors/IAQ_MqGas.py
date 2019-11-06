@@ -26,5 +26,8 @@ class MqGas(Sensor):
 
     def getData(self):
         if self.portController is None: return -1
-        data = self.portController.readPort(self.analog_port)
+        try:
+            data = self.portController.readPort(self.analog_port)
+        except IOError:
+            raise SensorReadError('Could not get MQ Sensor data from ADC.')
         return data

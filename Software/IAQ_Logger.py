@@ -104,7 +104,12 @@ class Logger:
     # External API
     #################################################################
     def log(self):
-        data = self.mq_sensors[0].getData()
+        i = 0
+        try:
+            data = self.mq_sensors[0].getData()
+        except SensorReadError:
+            self.printSystem("Could not read sensor: "+self.mq_sensors[i].sid)
+            return
         print data
 
     def updateGui(self):

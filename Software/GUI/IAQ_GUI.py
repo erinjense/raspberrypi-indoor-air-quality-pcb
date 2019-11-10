@@ -5,6 +5,7 @@ import csv
 from enum import Enum
 
 class GUI(tk.Tk):
+    MAX_PORTS = 6
 
     SensorFrames = ["ViewCO2", "ViewCombustible", "ViewMethane", "ViewNaturalGas",
                     "ViewPropane", "ViewCO", "ViewAlcohol", "ViewParticulate"]
@@ -13,14 +14,15 @@ class GUI(tk.Tk):
 
     ButtonNames = ["A0", "A1", "A2", "A3","A4", "A5", 
                    "CO2", "Particulate","System Info"]
-
+    portStatus = None
     container = None
-
     frames = {}
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, portStatus=None, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
-        self.geometry('800x480')
+        self.portStatus = portStatus
+        geometry = str(self.winfo_screenwidth()) + 'x'+str(self.winfo_screenheight())
+        self.geometry(geometry)
         self.title('Indoor Air Quality Logger')
         self.resizable(0, 0)
 
@@ -36,7 +38,14 @@ class GUI(tk.Tk):
         frame = StartPage(parent=self.container,controller=self)
         self.frames["StartPage"] = frame
         frame.grid(row=0, column=0, sticky="nsew")
-        for f,n in zip(self.SensorFrames,self.ButtonNames):
+        
+        # If there is no sensor assigned to a port, then skip creating SensorView
+        # TODO: Give alternative View for setting up sensor on the port
+        for f,n,i in zip(self.SensorFrames,self.ButtonNames,range(len(self.SensorFrames))):
+            if i < self.MAX_PORTS:
+                n = self.portStatus.get(self.ButtonNames[i])
+                if n == None: continue
+
             frame = SensorView(parent=self.container, controller=self,name=n)
             self.frames[f] = frame
             frame.grid(row=0, column=0, sticky="nsew")
@@ -52,6 +61,9 @@ class GUI(tk.Tk):
             msg = "Output Error: Invalid frame"
         frame = self.frames[frame]
         frame.printScrolledText(msg)
+
+    def updatePortStatus(self,portStatus=None):
+        self.portStatus = portStatus
 
     def startpage_output(self,msg=None): return self._output(msg,"StartPage")
     def co2_output(self,msg=None): return self._output(msg,"ViewCO2")
@@ -78,12 +90,22 @@ class StartPage(tk.Frame):
         row = 1
         col = 0
         # Add a button for each frame to StartPage
+        i = 0
         for frame,name in zip(controller.FramesList,controller.ButtonNames):
             # increment row after previous row has two buttons
             if (buttonCount == 2):
                 row += 1
                 buttonCount = 0
+
+            # Change the name of button to the name of the sensor
+            # If there is no sensor at the port then assign button the port name
+            if i < controller.MAX_PORTS:
+                n = controller.portStatus.get(controller.ButtonNames[i])
+                if n != None: name = n
+            i+=1
+
             # Place Button
+            # TODO: Add button colors to reflect if port/sensor is on or off
             button = tk.Button(self,text=name,height=2,width=15,command=lambda frame=frame: controller.show_frame(frame))
             button.grid(row=row,column=col)
             self.buttonList.append(button)

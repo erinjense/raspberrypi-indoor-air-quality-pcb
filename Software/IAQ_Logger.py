@@ -62,7 +62,8 @@ class Logger:
     #################################################################
     # Analog Port Enum based ID
     #################################################################
-    A0 = {'A0':SensorIdEnum.MQ2.name}
+    #A0 = {'A0':SensorIdEnum.MQ2.name}
+    A0 = {'A0':None}
     A1 = {'A1':SensorIdEnum.MQ3.name} 
     A2 = {'A2':SensorIdEnum.MQ4.name}
     A3 = {'A3':SensorIdEnum.MQ5.name}
@@ -74,7 +75,7 @@ class Logger:
 
     def __init__(self):
         # Init: GUI
-        self.gui = GUI()
+        self.gui = GUI(portStatus=self.portDict)
         # Initialize logger based on setup_path specifications
         self._printBanner("Setting Up Logger...")
         # Init: FileHandler

@@ -28,7 +28,6 @@ class AnalogPortController:
     #########################################
  
     def __init__(self,sensorPortDict=None):
-
         self.portIdDict = sensorPortDict
         for sensor in self.portIdDict.values():
             try:
@@ -42,9 +41,7 @@ class AnalogPortController:
         self.adc = Adafruit_ADS1x15.ADS1115()
         self.dac = IAQ_DAC43608.DAC43608()
         self.mux = IAQ_Mux.Mux()
-
-        self.dac.writeConfig(0x0000)
-        self.turnPortsOn()
+        self.setPortVoltage()
 
     def getPortNumById(self,sensor_id):
         for key,val in self.portIdDict.items():
@@ -60,32 +57,35 @@ class AnalogPortController:
         value = self.adc.read_adc(self.IAQ_ADS1115_CH, gain=self.GAIN)
         return value
 
-    def turnPortsOn(self):
+    def setPortVoltage(self):
+        self.dac.writeConfig(0x0000)
         for key,val in self.portIdDict.items():
-            if key is self.mux.Channel.A0.name and val != None:
-                self.dac.writeDacA(0xFFFF)
-            elif key is self.mux.Channel.A1.name and val != None:
-                self.dac.writeDacB(0xFFFF)
-            elif key is self.mux.Channel.A2.name and val != None:
-                self.dac.writeDacC(0xFFFF)
-            elif key is self.mux.Channel.A3.name and val != None:
-                self.dac.writeDacD(0xFFFF)
-#            elif key is self.mux.Channel.A4.name and val != None:
-#                self.dac.writeDacE(0xFFFF)
-#            elif key is self.mux.Channel.A5.name and val != None:
-#                self.dac.writeDacF(0xFFFF)
+            if (val != None):
+                self.turnOn(key)
+            else:
+                self.turnOff(key)
 
-    def turnPortsOff(self):
-        for key,val in self.portIdDict.items():
-            if key is self.mux.Channel.A0.name and val == None:
-                self.dac.writeDacA(0x0000)
-            elif key is self.mux.Channel.A1.name and val == None:
-                self.dac.writeDacB(0x0000)
-            elif key is self.mux.Channel.A2.name and val == None:
-                self.dac.writeDacC(0x0000)
-            elif key is self.mux.Channel.A3.name and val == None:
-                self.dac.writeDacD(0x0000)
-#            elif key is self.mux.Channel.A4.name and val == None:
-#                self.dac.writeDacE(0x0000)
-#            elif key is self.mux.Channel.A5.name and val == None:
-#                self.dac.writeDacF(0x0000)
+    def turnOn(self,port):
+        self.setVoltage(port,0xFFFF)
+
+    def turnOff(self,port):
+        self.setVoltage(port,0x0000)
+
+    def setVoltage(self,port,voltage):
+        try: self.checkPortInput(port)
+        except TypeError: raise TypeError('Error setVoltage')
+        if port is self.mux.Channel.A0.name:
+            self.dac.writeDacA(voltage)
+        elif port is self.mux.Channel.A1.name:
+            self.dac.writeDacB(voltage)
+        elif port is self.mux.Channel.A2.name:
+            self.dac.writeDacC(voltage)
+        elif port is self.mux.Channel.A3.name:
+            self.dac.writeDacD(voltage)
+
+    def checkPortInput(self,port):
+        try:
+            if not hasattr(self.mux.Channel,port):
+                print('port must have attribute of Mux.Channel(Enum)')
+        except TypeError:
+            raise TypeError('port must be of type Mux.Channel(Enum)')

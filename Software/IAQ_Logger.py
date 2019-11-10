@@ -9,6 +9,7 @@ from IAQ_Exceptions import *
 import time
 import logging
 import sys
+import datetime
 
 class Logger:
     # Main Loop polls to check if Logger shutdown
@@ -63,10 +64,10 @@ class Logger:
     #################################################################
     A0 = SensorIdEnum.MQ2.name
     A1 = SensorIdEnum.MQ3.name
-    A2 = SensorIdEnum.MQ6.name
-    A3 = SensorIdEnum.MQ7.name
-    A4 = SensorIdEnum.MQ135.name
-    A5 = SensorIdEnum.MQ9.name
+    A2 = SensorIdEnum.MQ4.name
+    A3 = SensorIdEnum.MQ5.name
+    A4 = SensorIdEnum.MQ6.name
+    A5 = SensorIdEnum.MQ7.name
     #################################################################
 
     def __init__(self):
@@ -92,10 +93,23 @@ class Logger:
     def log(self):
         # Log data routine for every MQ Sensor
         for sensor in self.sensorsList:
-            data = None
             try:
+                dataList = []
+                date = str(datetime.datetime.now().date())
+                time = str(datetime.datetime.now().time())
+                loc  = 0
+                temp = 0
+                humidity = 0
                 data = sensor.getData()
-                if data != None: print data
+
+                dataList.append(date)
+                dataList.append(time)
+                dataList.append(loc)
+                dataList.append(temp)
+                dataList.append(humidity)
+                dataList.append(data)
+                if dataList != None: print dataList
+                self.csv.writeSensorData(dataList,sensor.sid)
             except SensorReadError:
                 self.printSystem("Could not read sensor: "+sensor.sid.name)
                 continue
@@ -107,7 +121,7 @@ class Logger:
         self.gui.update_idletasks()
         self.gui.update()
 
-    def printSystem(self,msg):
+    def printSystem(self,msg,sensorId=None):
         try:
             self.gui.startpage_output(msg)
             return True

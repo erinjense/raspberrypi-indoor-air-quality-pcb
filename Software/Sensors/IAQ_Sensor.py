@@ -20,7 +20,7 @@ class SensorInfo:
             {4} TEXT, {5} TEXT, {6} TEXT, {7} TEXT)
             '''.format(*SETUP_KEYS)
 
-    DATA_KEYS = ['Methane,Butane,LPG,Smoke',
+    MQ_DATA_KEYS = ['Methane,Butane,LPG,Smoke',
                  'Alcohol,Ethanol,Smoke',
                  'Methane, CNG Gas',
                  'Natural Gas, LPG',
@@ -36,14 +36,14 @@ class SensorInfo:
         path = SensorInfo.DEFAULT_DB
         setupList = []
 
-        for sid,i in zip(SensorIdEnum,range(len(SensorInfo.DATA_KEYS))):
+        for sid,i in zip(SensorIdEnum,range(len(SensorInfo.MQ_DATA_KEYS))):
             name = sid.name
             status="OFF"
             port = None
             if i < 6:
                 status="ON"
                 port = ports[i]
-            key = SensorInfo.DATA_KEYS[i]
+            key = SensorInfo.MQ_DATA_KEYS[i]
             calibration=None
 
             setup =\
@@ -59,19 +59,29 @@ class SensorInfo:
     ##########################################################################################################
     # Default Sensor Storage
     ##########################################################################################################
+    STORAGE_KEYS = ["Date(YYYY/MM/DD)","Time(HH:MM:SS)","Location(Deg)","Temp(C)","Humidity(RH)"]
+    STORAGE_FMT = ''' ("{0}" TEXT,"{1}" TEXT,"{2}" REAL,"{3}" REAL,"{4}" REAL,"{5}" REAL)'''
+    STORAGE_INSERT_FMT = ''' ("{0}","{1}",{2},{3},{4},{5})'''
     @staticmethod
     def getStorageSetup():
         setupList = []
-        for sid,dkey in zip(SensorIdEnum,SensorInfo.DATA_KEYS):
+        for sid,dkey in zip(SensorIdEnum,SensorInfo.MQ_DATA_KEYS):
             if "MQ" in sid.name:
                 dkey = dkey+"(PPM)"
-            table_info = ["Date(YYYY/MM/DD)","Time(HH:MM:SS)","Location(Deg)","Temp(C)","Humidity(RH)",dkey]
-            data_header=''' ("{0}" TEXT,"{1}" TEXT,"{2}" REAL,"{3}" REAL,
-                             "{4}" REAL,"{5}" REAL)'''.format(*table_info)
-
+            table_info = SensorInfo.STORAGE_KEYS
+            table_info.append(dkey)
+            data_header = SensorInfo.STORAGE_FMT.format(*table_info)
             sensor_table = "CREATE TABLE {0}".format(sid.name)+data_header
             setupList.append(sensor_table)
         return setupList
+
+    @staticmethod
+    def getInsertCmd(sensor_id):
+        insertCmd = "INSERT INTO {0} VALUES".format(sensor_id.name)\
+                        + SensorInfo.STORAGE_INSERT_FMT
+        return insertCmd
+
+
     ##########################################################################################################
 
 class SensorIdEnum(Enum):

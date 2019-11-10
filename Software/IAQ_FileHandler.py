@@ -73,6 +73,17 @@ class FileHandler:
                 configList.append(dict(zip(keys,row)))
         return configList
 
+    def writeSensorData(self,dataList=None,sensor_id=None):
+        if dataList == None or sensor_id == None:
+            raise InvalidArguement('InvalidArguement(writeSensorData): Data or Sensor Id.')
+        with closing (sqlite3.connect(SensorInfo.DEFAULT_DB))\
+                as con, con, closing(con.cursor()) as c:
+            
+            transaction = SensorInfo.getInsertCmd(sensor_id).format(*dataList)
+            print transaction
+            c.execute(transaction)
+            con.commit()
+
     def _fileExists(self,f=None):
         try: open(f, 'r') 
         except IOError: return False

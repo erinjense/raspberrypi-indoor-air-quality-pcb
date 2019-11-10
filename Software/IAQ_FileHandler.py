@@ -1,6 +1,11 @@
 #!/usr/bin/python
 
 import csv
+import sqlite3
+from GUI.IAQ_GUI import *
+from contextlib import closing
+from IAQ_Exceptions import *
+from Sensors.IAQ_Sensor import SensorInfo
 
 class FileHandler:
 
@@ -41,3 +46,34 @@ class FileHandler:
             with open(filename,'a') as csvfile:
                 writer = csv.writer(csvfile)
                 writer.writerow(list(reversed(data.values())))
+
+    def createDefaultDatabase(self):
+        if (self._fileExists(SensorInfo.DEFAULT_DB) == True): return
+
+        with closing (sqlite3.connect(SensorInfo.DEFAULT_DB))\
+                as con, con, closing(con.cursor()) as c:
+            try:
+                c.execute(SensorInfo.SENSORS_TABLE)
+                for table in SensorInfo.getStorageSetup():
+                    c.execute(table)
+                con.commit()
+            except sqlite3.OperationalError:
+                raise sqlite3.OperationalError('Invalid SQLite Input')
+            for i in SensorInfo.getSensorSetup():
+                c.execute(i)
+
+    def getSensorConfig(self):
+        configList = []
+        with closing (sqlite3.connect(SensorInfo.DEFAULT_DB))\
+                as con, con, closing(con.cursor()) as c:
+            con.row_factory = sqlite3.Row
+            c.execute("select * from Sensors")
+            keys = [description[0] for description in c.description]
+            for row in c:
+                configList.append(dict(zip(keys,row)))
+        return configList
+
+    def _fileExists(self,f=None):
+        try: open(f, 'r') 
+        except IOError: return False
+        return True

@@ -3,20 +3,12 @@ from IAQ_AnalogPortController import *
 from GUI.IAQ_GUI import GUI
 from Sensors.IAQ_Sensor import SensorIdEnum
 from Sensors.IAQ_MqGas import MqGas
+from Sensors.IAQ_Sensor import Sensor
 from IAQ_FileHandler import FileHandler
 from IAQ_Exceptions import *
 import time
 import logging
 import sys
-
-# while True:
-#     data['Date-Time'] = str(datetime.datetime.now())
-#     data['Temp']      = temp.get_temp()
-#     data['Pressure']  = temp.get_pressure()
-#     data['Humidity']  = temp.get_humidity()
-#     data['Location']  = "ECE Conference"
-#     csv.writeData(data)
-#     print data
 
 class Logger:
     # Main Loop polls to check if Logger shutdown
@@ -36,6 +28,9 @@ class Logger:
     ############################
     # Sensor Control
     ############################
+    # List of dictionaries
+    sensorConfigList = []
+    sensorsList = []
     mq_sensors = []
     ############################
 
@@ -74,43 +69,39 @@ class Logger:
     A5 = SensorIdEnum.MQ9.name
     #################################################################
 
-    def __init__(self,setup_path=None):
+    def __init__(self):
         # Init: GUI
         self.gui = GUI()
-        # Verify that file exists from path given
-        try:
-            self._verifySetupFile(setup_path)
-        except FileNotFoundError:
-            self._powerOff()
         # Initialize logger based on setup_path specifications
         self._printBanner("Setting Up Logger...")
         # Init: FileHandler
         self.csv = FileHandler()
-        try:
-            status = self._initFromFile(self.setup_path)
-        except SetupFileError:
-            self._printBanner("Setup FAILURE")
-            self._powerOff()
         # Init: AnalogPortController
-        # TODO: Get portList based on setup file
         portList = [self.A0,self.A1,self.A2,self.A3,self.A4,self.A5]
         self.analogPorts = AnalogPortController(portList) 
-        # Sensor Init: Create all MQ Sensors and store in list
-        for port in portList:
-            self.mq_sensors.append(MqGas(port,self.analogPorts))
+        try:
+            status = self._initFromDb(self.setup_path)
+        except SetupFileError:
+            self._printBanner("Setup FAILURE")
+            raise LoggerSetupError('LoggerSetupError: Could not initialize database and sensors')
         self._printBanner("Setup SUCCESS")
  
     #################################################################
     # External API
     #################################################################
     def log(self):
-        i = 0
-        try:
-            data = self.mq_sensors[0].getData()
-        except SensorReadError:
-            self.printSystem("Could not read sensor: "+self.mq_sensors[i].sid)
-            return
-        print data
+        # Log data routine for every MQ Sensor
+        for sensor in self.sensorsList:
+            data = None
+            try:
+                data = sensor.getData()
+                if data != None: print data
+            except SensorReadError:
+                self.printSystem("Could not read sensor: "+sensor.sid.name)
+                continue
+            except SensorSetupError:
+                self.printSystem("Could not setup sensor: "+sensor.sid.name)
+                continue
 
     def updateGui(self):
         self.gui.update_idletasks()
@@ -124,62 +115,18 @@ class Logger:
             print("Fatal Error: GUI failed to load.")
             return False
 
-    def On(self):
-        if self.shutdown == True:
-            return False
-        return True
-
     #################################################################
     # Internal Functions
     #################################################################
-    def _powerOff(self):
-        raise LoggerSetupError('Logger Setup Failed. Powering off.')
-        self.shutdown = True
-        return
-
-    def _verifySetupFile(self,setup_path=None):
-        if (setup_path == None):
-            setup_path = self.DEFAULT_PATH
-        self.setup_path = setup_path
-        try:
-            open(self.setup_path, 'r')
-        except FileNotFoundError:
-            self._printBanner("Error: Setup File Not Found.")
-            return False
-        return True
-
-    def _initFromFile(self,filepath=None):
-        try:
-            setup_config = self.csv.csvToDict(filepath)
-            self.logger_id   = str(setup_config.get('Id',None)[0])
-        except TypeError:
-            self._printBanner("Unknown Setup File Headers")
-            raise SetupFileError("Can't find Logger Id in Setup File")
-        self.logger_type = str(setup_config.get('Logger Type',None)[0])
-        self.softwareVersion = str(setup_config.get('Software Version',None)[0])
-        sensor_path  = setup_config.get('Sensors',None)
-        sensors = self.csv.csvToDict(sensor_path)
-        for s in sensors:
-            self.sensor_names.append(s.get("Name",None))
-            self.setup_info = [self.logger_type,self.logger_id,
-                    self.softwareVersion,self.setup_path,self.sensor_names]
-        return self._printSetupStatus()
-
-    def _printSetupStatus(self):
-        try:
-            for info,text in zip(self.setup_info,self.setup_header):
-                if info == None:
-                    self.printSystem(text + " is Empty")
-                    continue
-                info = text + ": " + str(info)
-                self.printSystem(info)
-        except TypeError:
-            if self.setup_info == None:
-                self.printSystem("Error: Invalid Setup Info.")
-            elif self.setup_header == None:
-                self.printSystem("Error: Invalid Setup Header.")
-            return False
-        return True
+    def _initFromDb(self,filepath=None):
+        self.csv.createDefaultDatabase()
+        self.sensorConfigList = self.csv.getSensorConfig()
+        for config in self.sensorConfigList:
+            try:
+                sensor = Sensor(config,self.analogPorts)
+            except SensorIsOff:
+                continue
+            self.sensorsList.append(sensor)
 
     def _printBanner(self,midText=None):
         hashes = "##################################################\n"
@@ -190,9 +137,18 @@ class Logger:
 ################################################################################
 # Main Loop
 ################################################################################
-logger = Logger()
+logger = None
 start = time.time()
-while logger.On():
+while True:
+    # TODO: There needs to be a safe mode where the logger boots up into
+    # default settings mode if some configuration causes a LoggerSetupError
+    if logger == None:
+        try:
+            logger = Logger()
+        except LoggerSetupError:
+            logger = None
+            continue
+
     logger.updateGui()
     end = time.time()
     if ((end - start) >= 1):

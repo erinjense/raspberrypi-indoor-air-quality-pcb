@@ -11,9 +11,8 @@ class GUI(tk.Tk):
 
     FramesList = SensorFrames + ["ViewSystemInfo"]
 
-    ButtonNames = ["Carbon Dioxide", "Combustible Gas", "Methane", "Natural Gas",
-                   "Propane", "Carbon Monoxide", "Alcohol", "Particulate",
-                   "System Info"]
+    ButtonNames = ["A0", "A1", "A2", "A3","A4", "A5", 
+                   "CO2", "Particulate","System Info"]
 
     container = None
 

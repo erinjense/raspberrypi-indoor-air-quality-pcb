@@ -62,12 +62,14 @@ class Logger:
     #################################################################
     # Analog Port Enum based ID
     #################################################################
-    A0 = SensorIdEnum.MQ2.name
-    A1 = SensorIdEnum.MQ3.name
-    A2 = SensorIdEnum.MQ4.name
-    A3 = SensorIdEnum.MQ5.name
-    A4 = SensorIdEnum.MQ6.name
-    A5 = SensorIdEnum.MQ7.name
+    A0 = {'A0':SensorIdEnum.MQ2.name}
+    A1 = {'A1':SensorIdEnum.MQ3.name} 
+    A2 = {'A2':SensorIdEnum.MQ4.name}
+    A3 = {'A3':SensorIdEnum.MQ5.name}
+    A4 = {'A4':SensorIdEnum.MQ6.name}
+    A5 = {'A5':SensorIdEnum.MQ7.name}
+    portDict = dict(A0.items() + A1.items() + A2.items() +
+                    A3.items() + A4.items() + A5.items())
     #################################################################
 
     def __init__(self):
@@ -78,8 +80,7 @@ class Logger:
         # Init: FileHandler
         self.csv = FileHandler()
         # Init: AnalogPortController
-        portList = [self.A0,self.A1,self.A2,self.A3,self.A4,self.A5]
-        self.analogPorts = AnalogPortController(portList) 
+        self.analogPorts = AnalogPortController(self.portDict) 
         try:
             status = self._initFromDb(self.setup_path)
         except SetupFileError:

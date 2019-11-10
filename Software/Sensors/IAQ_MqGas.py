@@ -14,7 +14,7 @@ class MqGas():
         self.sid = sensor_id
         self.portController = portController
         try:
-            self.analog_port = self.portController.getPortNumById(self.sid.name)
+            self.analog_port = self.portController.getPortNumById(self.sid)
         except ValueError:
             raise SensorSetupError('Error retrieving MQ Gas Sensor Port Number')
 

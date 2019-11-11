@@ -16,3 +16,9 @@ class CsvReadError(Error):
     pass
 class LoggerSetupError(Error):
     pass
+class FileNotFoundError(Error):
+    pass
+class SensorIsOff(Error):
+    pass
+class InvalidArguement(Error):
+    pass

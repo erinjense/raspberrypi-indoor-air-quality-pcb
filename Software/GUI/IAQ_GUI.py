@@ -7,18 +7,18 @@ from enum import Enum
 class GUI(tk.Tk):
     MAX_PORTS = 6
 
-    SensorFrames = ["ViewCO2", "ViewCombustible", "ViewMethane", "ViewNaturalGas",
-                    "ViewPropane", "ViewCO", "ViewAlcohol", "ViewParticulate"]
+    AnalogFrames = ["A0", "A1", "A2", "A3","A4", "A5"]
+    SensorFrames = AnalogFrames + ["SDC30", "SDS011"]
+    FramesList   = SensorFrames + ["System Info"]
+    ButtonNames  = FramesList
 
-    FramesList = SensorFrames + ["ViewSystemInfo"]
-
-    ButtonNames = ["A0", "A1", "A2", "A3","A4", "A5", 
-                   "CO2", "Particulate","System Info"]
+    _sensor_update_flag = True
+    sensorList = None
     portStatus = None
     container = None
     frames = {}
 
-    def __init__(self, portStatus=None, *args, **kwargs):
+    def __init__(self, portStatus=None,*args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
         self.portStatus = portStatus
         geometry = str(self.winfo_screenwidth()) + 'x'+str(self.winfo_screenheight())
@@ -38,19 +38,13 @@ class GUI(tk.Tk):
         frame = StartPage(parent=self.container,controller=self)
         self.frames["StartPage"] = frame
         frame.grid(row=0, column=0, sticky="nsew")
-        
-        # If there is no sensor assigned to a port, then skip creating SensorView
-        # TODO: Give alternative View for setting up sensor on the port
-        for f,n,i in zip(self.SensorFrames,self.ButtonNames,range(len(self.SensorFrames))):
-            if i < self.MAX_PORTS:
-                n = self.portStatus.get(self.ButtonNames[i])
-                if n == None: continue
 
-            frame = SensorView(parent=self.container, controller=self,name=n)
-            self.frames[f] = frame
+        for name in self.SensorFrames:
+            frame = SensorView(parent=self.container, controller=self, name=name)
+            self.frames[name] = frame
             frame.grid(row=0, column=0, sticky="nsew")
         frame = ViewSystemInfo(parent=self.container,controller=self)
-        self.frames["ViewSystemInfo"] = frame
+        self.frames["System Info"] = frame
         frame.grid(row=0, column=0, sticky="nsew")
 
     def _output(self,msg=None,frame=None):
@@ -65,14 +59,13 @@ class GUI(tk.Tk):
     def updatePortStatus(self,portStatus=None):
         self.portStatus = portStatus
 
+    def updatedSensors(self):
+        flag = self._sensor_update_flag
+        self._sensor_update_flag = False
+        return flag
+
     def startpage_output(self,msg=None): return self._output(msg,"StartPage")
-    def co2_output(self,msg=None): return self._output(msg,"ViewCO2")
-    def combustible_output(self,msg=None): return self._output(msg,"ViewCombustible")
-    def methane_output(self,msg=None): return self._output(msg,"ViewMethane")
-    def naturalgas_output(self,msg=None): return self._output(msg,"ViewNaturalGas")
-    def propane_output(self,msg=None): return self._output(msg,"ViewPropane")
-    def co_output(self,msg=None): return self._output(msg,"ViewCO")
-    def alcohol_output(self,msg=None): return self._output(msg,"ViewAlcohol")
+    def A0_output(self,msg=None): return self._output(msg,"A0");
     def particulate_output(self,msg=None): return self._output(msg,"ViewParticulate")
 
     def show_frame(self, page_name):
@@ -85,7 +78,6 @@ class StartPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        self.controller = controller
         buttonCount = 0
         row = 1
         col = 0
@@ -125,26 +117,65 @@ class StartPage(tk.Frame):
             self.scrolledText.insert(tk.INSERT,msg + "\n")
 
 class SensorView(tk.Frame):
+    SENSOR = 0
+    SETUP  = 1
 
     scrolledText = None
-    def __init__(self, parent, controller, name):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        label = tk.Label(self, text="This is the " + name + " Sensor")
-        label.grid(row=0, column=0)
-        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
-        button.grid(row=1, column=0)
+    parent = None
+    controller = None
+    name = None
+    currentView = SETUP
 
+    def __init__(self, parent, controller, name):
+        self.parent = parent
+        self.controller = controller
+        self.name = name
+        self.vCurrent()
+
+    def vCurrent(self):
+        if self.currentView == self.SENSOR:
+            return self.vSensor()
+        elif self.currentView == self.SETUP:
+            return self.vSetup()
+
+    def vSensor(self):
+        self.vShared()
+        txt = "Port: "+self.name
+        label = tk.Label(self, text=txt)
+        label.grid(row=0, column=0)
         if (self.scrolledText == None):
             self.scrolledText = tkst.ScrolledText(self)
             self.scrolledText.grid(row=1, column=3, rowspan=6)
-
         s = tk.Scrollbar(self)
         s.grid(row=1, column=4, rowspan=6)
 
+    def vSetup(self):
+        self.vShared()
+        ctrl_var = tk.StringVar(self)
+        OPTIONS = ("Option 1","Option 2")
+        opt_menu = tk.OptionMenu(self,ctrl_var, *OPTIONS)
+        opt_menu.grid(row=1, column=1)
+
+    def vShared(self):
+        tk.Frame.__init__(self, self.parent)
+        button = tk.Button(self, text="Go to the Main Page", command=lambda: self.controller.show_frame("StartPage"))
+        button.grid(row=1, column=0)
+        
     def printScrolledText(self,msg=None):
         if (msg != None):
             self.scrolledText.insert(tk.INSERT,msg + "\n")
+
+class SensorSetupView(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        button = tk.Button(self, text="Go to the Main Page", command=lambda: controller.show_frame("StartPage"))
+        #button.grid(row=1, column=0)
+        button.pack()
+
+        ctrl_var = tk.StringVar(self)
+        OPTIONS = ("Option 1","Option 2")
+        opt_menu = tk.OptionMenu(self,ctrl_var, *OPTIONS)
+        opt_menu.pack()
 
 
 class ViewSystemInfo(tk.Frame):

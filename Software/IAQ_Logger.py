@@ -33,6 +33,7 @@ class Logger:
     sensorConfigList = []
     sensorsList = []
     mq_sensors = []
+    sensorNeedsInit = True
     ############################
 
     #############################
@@ -47,28 +48,14 @@ class Logger:
     #############################
 
     #################################################################
-    # Default Setup Settings
-    # setup_header should correspond to headers in logger_setup.csv
-    #################################################################
-    setup_header = ["Logger Type","Logger ID",
-                    "Software Version","Setup Path","Sensors"]
-
-    #################################################################
-    # Default settings are currently based off of the following file
-    # TODO: Hard code default settings, but create a custom_setup.csv
-    #################################################################
-    DEFAULT_PATH="./Config/Default/logger_setup.csv"
-
-    #################################################################
     # Analog Port Enum based ID
     #################################################################
-    #A0 = {'A0':SensorIdEnum.MQ2.name}
-    A0 = {'A0':None}
+    A0 = {'A0':SensorIdEnum.MQ2.name}
     A1 = {'A1':SensorIdEnum.MQ3.name} 
     A2 = {'A2':SensorIdEnum.MQ4.name}
     A3 = {'A3':SensorIdEnum.MQ5.name}
-    A4 = {'A4':SensorIdEnum.MQ6.name}
-    A5 = {'A5':SensorIdEnum.MQ7.name}
+    A4 = {'A4':None}
+    A5 = {'A5':None}
     portDict = dict(A0.items() + A1.items() + A2.items() +
                     A3.items() + A4.items() + A5.items())
     #################################################################
@@ -97,20 +84,20 @@ class Logger:
         for sensor in self.sensorsList:
             try:
                 dataList = []
+                # Date/Time is System clock
+                # System clock is updated from a GPS if available.
                 date = str(datetime.datetime.now().date())
                 time = str(datetime.datetime.now().time())
                 loc  = 0
+                # TODO: Add BME680 for humidity and temp.
                 temp = 0
                 humidity = 0
+                # Get sensor data
                 data = sensor.getData()
-
-                dataList.append(date)
-                dataList.append(time)
-                dataList.append(loc)
-                dataList.append(temp)
-                dataList.append(humidity)
-                dataList.append(data)
-                if dataList != None: print dataList
+                # Create list in order of database storage
+                for item in (date,time,loc,temp,humidity,data):
+                    dataList.append(item)
+                # Write to database
                 self.csv.writeSensorData(dataList,sensor.sid)
             except SensorReadError:
                 self.printSystem("Could not read sensor: "+sensor.sid.name)
@@ -122,6 +109,8 @@ class Logger:
     def updateGui(self):
         self.gui.update_idletasks()
         self.gui.update()
+        self.sensorNeedsInit = self.gui.updatedSensors()
+        self._initSensors()
 
     def printSystem(self,msg,sensorId=None):
         try:
@@ -136,6 +125,10 @@ class Logger:
     #################################################################
     def _initFromDb(self,filepath=None):
         self.csv.createDefaultDatabase()
+        self._initSensors()
+
+    def _initSensors(self):
+        if (False == self.sensorNeedsInit):return
         self.sensorConfigList = self.csv.getSensorConfig()
         for config in self.sensorConfigList:
             try:

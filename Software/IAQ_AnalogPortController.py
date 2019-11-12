@@ -35,11 +35,10 @@ class AnalogPortController:
         self.setPortVoltage()
 
     def getPortNumById(self,sensor_id):
-        for port,entry in self.portIdDict.items():
-            entry = dict(entry)
-            name = entry["Name"]
-            if sensor_id.name == name:
-                return port
+        for sensorName,config in self.portIdDict.items():
+            config = dict(config)
+            if sensor_id.name == sensorName:
+                return config["port"]
         raise ValueError('Sensor, '+sensor_id.name+' ,is not assigned to a port.')
 
     def readPort(self,portNum):
@@ -52,9 +51,12 @@ class AnalogPortController:
 
     def setPortVoltage(self):
         self.dac.writeConfig(0x0000)
-        for port,entry in self.portIdDict.items():
-            entry = dict(entry)
-            status = entry["Status"]
+        for sensorName,config in self.portIdDict.items():
+            config = dict(config)
+            status = config["status"]
+            port   = config["port"]
+            # port status could be "None" in the database
+            if port == str(None): continue
             if (status == "ON"):
                 self.turnOn(port)
             elif (status == "OFF"):

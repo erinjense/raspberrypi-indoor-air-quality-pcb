@@ -41,7 +41,7 @@ class GUI(tk.Tk):
         for name in self.SensorFrames:
             sframe = SensorView(parent=self.container, controller=self, name=name)
             self.frames[name] = sframe
-            frame.grid(row=0, column=0, sticky="nsew")
+            sframe.grid(row=0, column=0, sticky="nsew")
         # SystemInfo frame
         frame = ViewSystemInfo(parent=self.container,controller=self)
         self.frames["System Info"] = frame
@@ -58,8 +58,9 @@ class GUI(tk.Tk):
 
     def updatePortStatus(self,portStatus=None):
         self.portStatus = portStatus
-        for port in self.portStatus:
-            self.update_SensorView_Button(port=port,portStatus=portStatus)
+        for sensorName,sensorConfig in self.portStatus.items():
+            sensorConfig = dict(sensorConfig)
+            self.update_SensorView_Button(configDict=sensorConfig)
 
     def updatedSensors(self):
         flag = self._sensor_update_flag
@@ -75,12 +76,12 @@ class GUI(tk.Tk):
         frame = self.frames[page_name]
         frame.tkraise()
 
-    def update_SensorView_Button(self,port,portStatus):
+    def update_SensorView_Button(self,configDict):
         startpage = self.frames["StartPage"]
+        port = configDict["port"]
         if port not in startpage.buttons.keys(): return
-        entry = dict(portStatus[port])
-        status = entry["Status"]
-        name = entry["Name"]
+        status = configDict["status"]
+        name   = configDict["name"]
         if status == "OFF":
             color = "grey"
         elif status == "ON":
@@ -103,21 +104,19 @@ class StartPage(tk.Frame):
         buttonCount = 0
         row = 1
         col = 0
-        # Add a button for each frame to StartPage
-        i = 0
-        for frame,idx in zip(self.ctrl.FramesList,range(len(self.ctrl.FramesList))):
-            # increment row after previous row has two buttons
+        #for frame,idx in zip(self.ctrl.FramesList,range(len(self.ctrl.FramesList))):
+        for frameName in controller.FramesList:
             if (buttonCount == 2):
                 row += 1
                 buttonCount = 0
 
             # Place Button
             # TODO: Add button colors to reflect if port/sensor is on or off
-            self.btn_names[frame] = frame
-            button = tk.Button(self,text=self.btn_names[frame],height=2,width=15,
-                    command=lambda frame=frame: controller.show_frame(frame))
+            self.btn_names[frameName] = frameName
+            button = tk.Button(self,text=self.btn_names[frameName],height=2,width=15,
+                    command=lambda frame=frameName: controller.show_frame(frame))
             button.grid(row=row,column=col)
-            self.buttons[frame] = button
+            self.buttons[frameName] = button
 
             buttonCount += 1
             # toggle column position

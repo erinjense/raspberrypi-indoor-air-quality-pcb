@@ -12,8 +12,6 @@ import sys
 import datetime
 
 class Logger:
-    # Main Loop polls to check if Logger shutdown
-    shutdown = False
     ############################
     # GUI Control
     ############################
@@ -27,12 +25,12 @@ class Logger:
     ############################
     analogPorts = None
     ############################
+
+    ############################
     # Sensor Control
     ############################
-    # List of dictionaries
-    sensorConfigList = []
-    sensorsList = []
-    mq_sensors = []
+    sensorConfigDict = {}
+    sensorsDict = {}
     sensorNeedsInit = True
     ############################
 
@@ -47,30 +45,18 @@ class Logger:
     setup_info = []
     #############################
 
-    #################################################################
-    # Analog Port Enum based ID
-    #################################################################
-    A0 = {"Name":SensorIdEnum.MQ2.name,'Status':"ON"}
-    A1 = {"Name":SensorIdEnum.MQ3.name,'Status':"ON"} 
-    A2 = {"Name":SensorIdEnum.MQ4.name,'Status':"ON"} 
-    A3 = {"Name":SensorIdEnum.MQ5.name,'Status':"ON"}
-    A4 = {"Name":None,'Status':"OFF"}
-    A5 = {"Name":None,'Status':"OFF"}
-
-    portDict = {"A0":A0.items(),"A1":A1.items(),"A2":A2.items(),
-                "A3":A3.items(),"A4":A4.items(),"A5":A5.items()}
-    #################################################################
-
     def __init__(self):
         # Init: FileHandler
         self.csv = FileHandler()
-        # Init: AnalogPortController
-        self.analogPorts = AnalogPortController(self.portDict) 
         try:
             status = self._initFromDb(self.setup_path)
         except SetupFileError:
             self._printBanner("Setup FAILURE")
-            raise LoggerSetupError('LoggerSetupError: Could not initialize database and sensors')
+            raise LoggerSetupError('LoggerSetupError: Could not get sensor configuration.')
+        # Init: AnalogPortController
+        self.analogPorts = AnalogPortController(self.sensorConfigDict) 
+        # Init: Sensors
+        self._initSensors()
         # Init: GUI
         self.gui = GUI()
         self._printBanner("Setup SUCCESS")
@@ -80,7 +66,7 @@ class Logger:
     #################################################################
     def log(self):
         # Log data routine for every MQ Sensor
-        for sensor in self.sensorsList:
+        for name,sensor in self.sensorsDict.items():
             try:
                 dataList = []
                 # Date/Time is System clock
@@ -99,17 +85,17 @@ class Logger:
                 # Write to database
                 self.csv.writeSensorData(dataList,sensor.sid)
             except SensorReadError:
-                self.printSystem("Could not read sensor: "+sensor.sid.name)
+                self.printSystem("Could not read sensor: "+name)
                 continue
             except SensorSetupError:
-                self.printSystem("Could not setup sensor: "+sensor.sid.name)
+                self.printSystem("Could not setup sensor: "+name)
                 continue
 
     def updateGui(self):
         self.sensorNeedsInit = self.gui.updatedSensors()
         if (True == self.sensorNeedsInit):
             self._initSensors()
-            self.gui.updatePortStatus(portStatus=self.portDict)
+            self.gui.updatePortStatus(portStatus=self.sensorConfigDict)
         self.gui.update()
         self.gui.update_idletasks()
 
@@ -126,16 +112,16 @@ class Logger:
     #################################################################
     def _initFromDb(self,filepath=None):
         self.csv.createDefaultDatabase()
-        self._initSensors()
+        self.sensorConfigDict = self.csv.getSensorConfig()
 
     def _initSensors(self):
-        self.sensorConfigList = self.csv.getSensorConfig()
-        for config in self.sensorConfigList:
+        for name,config in self.sensorConfigDict.items():
+            config = dict(config)
             try:
-                sensor = Sensor(config,self.analogPorts)
+                sensor = Sensor(config, self.analogPorts)
             except SensorIsOff:
                 continue
-            self.sensorsList.append(sensor)
+            self.sensorsDict[name] = sensor
 
     def _printBanner(self,midText=None):
         hashes = "##################################################\n"

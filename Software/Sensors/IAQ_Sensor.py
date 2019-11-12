@@ -134,13 +134,13 @@ class Sensor:
     portController = None
 
     def __init__(self, setupDictionary=None, portController=None):
-        self.name        = setupDictionary.get(SensorInfo.SETUP_KEYS[0])
-        self.type        = setupDictionary.get(SensorInfo.SETUP_KEYS[1])
-        self.port        = setupDictionary.get(SensorInfo.SETUP_KEYS[2])
-        self.status      = setupDictionary.get(SensorInfo.SETUP_KEYS[3])
-        self.maker       = setupDictionary.get(SensorInfo.SETUP_KEYS[4])
-        self.calibration = setupDictionary.get(SensorInfo.SETUP_KEYS[5])
-        self.setupDb     = setupDictionary.get(SensorInfo.SETUP_KEYS[6])
+        self.name        = setupDictionary[SensorInfo.SETUP_KEYS[0]]
+        self.type        = setupDictionary[SensorInfo.SETUP_KEYS[1]]
+        self.port        = setupDictionary[SensorInfo.SETUP_KEYS[2]]
+        self.status      = setupDictionary[SensorInfo.SETUP_KEYS[3]]
+        self.maker       = setupDictionary[SensorInfo.SETUP_KEYS[4]]
+        self.calibration = setupDictionary[SensorInfo.SETUP_KEYS[5]]
+        self.setupDb     = setupDictionary[SensorInfo.SETUP_KEYS[6]]
         self.sid         = SensorIdEnum[self.name]
         self.portController = portController
         if self.status == "OFF": raise SensorIsOff(self.name)

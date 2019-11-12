@@ -63,15 +63,16 @@ class FileHandler:
                 c.execute(i)
 
     def getSensorConfig(self):
-        configList = []
+        configDict = {}
         with closing (sqlite3.connect(SensorInfo.DEFAULT_DB))\
                 as con, con, closing(con.cursor()) as c:
             con.row_factory = sqlite3.Row
             c.execute("select * from Sensors")
             keys = [description[0] for description in c.description]
             for row in c:
-                configList.append(dict(zip(keys,row)))
-        return configList
+                config = dict(zip(keys,row))
+                configDict[config["name"]] = config.items()
+        return configDict
 
     def writeSensorData(self,dataList=None,sensor_id=None):
         if dataList == None or sensor_id == None:

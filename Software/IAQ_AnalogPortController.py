@@ -29,24 +29,17 @@ class AnalogPortController:
  
     def __init__(self,sensorPortDict=None):
         self.portIdDict = sensorPortDict
-        for sensor in self.portIdDict.values():
-            try:
-                if not hasattr(SensorIdEnum,sensor):
-                    print('sensor must have attribute of SensorIdEnum(Enum)')
-                    continue
-            except TypeError:
-                print('sensor must be of type SensorIdEnum(Enum)')
-                continue
-
         self.adc = Adafruit_ADS1x15.ADS1115()
         self.dac = IAQ_DAC43608.DAC43608()
         self.mux = IAQ_Mux.Mux()
         self.setPortVoltage()
 
     def getPortNumById(self,sensor_id):
-        for key,val in self.portIdDict.items():
-            if sensor_id.name == val:
-                return key
+        for port,entry in self.portIdDict.items():
+            entry = dict(entry)
+            name = entry["Name"]
+            if sensor_id.name == name:
+                return port
         raise ValueError('Sensor, '+sensor_id.name+' ,is not assigned to a port.')
 
     def readPort(self,portNum):
@@ -59,11 +52,13 @@ class AnalogPortController:
 
     def setPortVoltage(self):
         self.dac.writeConfig(0x0000)
-        for key,val in self.portIdDict.items():
-            if (val != None):
-                self.turnOn(key)
-            else:
-                self.turnOff(key)
+        for port,entry in self.portIdDict.items():
+            entry = dict(entry)
+            status = entry["Status"]
+            if (status == "ON"):
+                self.turnOn(port)
+            elif (status == "OFF"):
+                self.turnOff(port)
 
     def turnOn(self,port):
         self.setVoltage(port,0xFFFF)

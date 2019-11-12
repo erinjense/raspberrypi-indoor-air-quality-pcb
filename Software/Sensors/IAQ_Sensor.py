@@ -28,6 +28,8 @@ class SensorInfo:
                  'Carbon Monoxide,Flammable',
                  'Hydrogen Gas',
                  'Carbon Monoxide']
+
+    DATA_KEYS = MQ_DATA_KEYS + ['CO2','Particulate']
  
     @staticmethod
     def getSensorSetup():
@@ -36,14 +38,23 @@ class SensorInfo:
         path = SensorInfo.DEFAULT_DB
         setupList = []
 
-        for sid,i in zip(SensorIdEnum,range(len(SensorInfo.MQ_DATA_KEYS))):
+        for sid,i in zip(SensorIdEnum,range(len(SensorInfo.DATA_KEYS))):
             name = sid.name
             status="OFF"
             port = None
+            if "MQ" in name:
+                manufacturer = 'Flying Fish'
+            elif "BME680" is name:
+                manufacturer = 'Sparkfun Module'
+            elif "SDC30" is name:
+                manufacturer = 'Sensiron'
+            else:
+                manufacturer = 'Unavailable'
+            # TEMP!!!: Remove once database can store and setup sensors through GUI
             if i < 6:
                 status="ON"
                 port = ports[i]
-            key = SensorInfo.MQ_DATA_KEYS[i]
+            key = SensorInfo.DATA_KEYS[i]
             calibration=None
 
             setup =\

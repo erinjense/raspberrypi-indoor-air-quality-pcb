@@ -80,7 +80,6 @@ class FileHandler:
                 as con, con, closing(con.cursor()) as c:
             
             transaction = SensorInfo.getInsertCmd(sensor_id).format(*dataList)
-            print transaction
             c.execute(transaction)
             con.commit()
 

@@ -50,21 +50,18 @@ class Logger:
     #################################################################
     # Analog Port Enum based ID
     #################################################################
-    A0 = {'A0':SensorIdEnum.MQ2.name}
-    A1 = {'A1':SensorIdEnum.MQ3.name} 
-    A2 = {'A2':SensorIdEnum.MQ4.name}
-    A3 = {'A3':SensorIdEnum.MQ5.name}
-    A4 = {'A4':None}
-    A5 = {'A5':None}
-    portDict = dict(A0.items() + A1.items() + A2.items() +
-                    A3.items() + A4.items() + A5.items())
+    A0 = {"Name":SensorIdEnum.MQ2.name,'Status':"ON"}
+    A1 = {"Name":SensorIdEnum.MQ3.name,'Status':"ON"} 
+    A2 = {"Name":SensorIdEnum.MQ4.name,'Status':"ON"} 
+    A3 = {"Name":SensorIdEnum.MQ5.name,'Status':"ON"}
+    A4 = {"Name":None,'Status':"OFF"}
+    A5 = {"Name":None,'Status':"OFF"}
+
+    portDict = {"A0":A0.items(),"A1":A1.items(),"A2":A2.items(),
+                "A3":A3.items(),"A4":A4.items(),"A5":A5.items()}
     #################################################################
 
     def __init__(self):
-        # Init: GUI
-        self.gui = GUI(portStatus=self.portDict)
-        # Initialize logger based on setup_path specifications
-        self._printBanner("Setting Up Logger...")
         # Init: FileHandler
         self.csv = FileHandler()
         # Init: AnalogPortController
@@ -74,6 +71,8 @@ class Logger:
         except SetupFileError:
             self._printBanner("Setup FAILURE")
             raise LoggerSetupError('LoggerSetupError: Could not initialize database and sensors')
+        # Init: GUI
+        self.gui = GUI()
         self._printBanner("Setup SUCCESS")
  
     #################################################################
@@ -107,10 +106,12 @@ class Logger:
                 continue
 
     def updateGui(self):
-        self.gui.update_idletasks()
-        self.gui.update()
         self.sensorNeedsInit = self.gui.updatedSensors()
-        self._initSensors()
+        if (True == self.sensorNeedsInit):
+            self._initSensors()
+            self.gui.updatePortStatus(portStatus=self.portDict)
+        self.gui.update()
+        self.gui.update_idletasks()
 
     def printSystem(self,msg,sensorId=None):
         try:
@@ -128,7 +129,6 @@ class Logger:
         self._initSensors()
 
     def _initSensors(self):
-        if (False == self.sensorNeedsInit):return
         self.sensorConfigList = self.csv.getSensorConfig()
         for config in self.sensorConfigList:
             try:

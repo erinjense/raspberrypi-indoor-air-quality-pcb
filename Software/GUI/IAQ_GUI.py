@@ -10,17 +10,15 @@ class GUI(tk.Tk):
     AnalogFrames = ["A0", "A1", "A2", "A3","A4", "A5"]
     SensorFrames = AnalogFrames + ["SDC30", "SDS011"]
     FramesList   = SensorFrames + ["System Info"]
-    ButtonNames  = FramesList
 
     _sensor_update_flag = True
     sensorList = None
-    portStatus = None
+    portStatus = {}
     container = None
     frames = {}
 
-    def __init__(self, portStatus=None,*args, **kwargs):
+    def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
-        self.portStatus = portStatus
         geometry = str(self.winfo_screenwidth()) + 'x'+str(self.winfo_screenheight())
         self.geometry(geometry)
         self.title('Indoor Air Quality Logger')
@@ -35,14 +33,16 @@ class GUI(tk.Tk):
         self.show_frame("StartPage")
 
     def _init_frames(self):
+        # StartPage frame
         frame = StartPage(parent=self.container,controller=self)
         self.frames["StartPage"] = frame
         frame.grid(row=0, column=0, sticky="nsew")
-
+        # SensorView frames
         for name in self.SensorFrames:
-            frame = SensorView(parent=self.container, controller=self, name=name)
-            self.frames[name] = frame
+            sframe = SensorView(parent=self.container, controller=self, name=name)
+            self.frames[name] = sframe
             frame.grid(row=0, column=0, sticky="nsew")
+        # SystemInfo frame
         frame = ViewSystemInfo(parent=self.container,controller=self)
         self.frames["System Info"] = frame
         frame.grid(row=0, column=0, sticky="nsew")
@@ -58,6 +58,8 @@ class GUI(tk.Tk):
 
     def updatePortStatus(self,portStatus=None):
         self.portStatus = portStatus
+        for port in self.portStatus:
+            self.update_SensorView_Button(port=port,portStatus=portStatus)
 
     def updatedSensors(self):
         flag = self._sensor_update_flag
@@ -67,40 +69,56 @@ class GUI(tk.Tk):
     def startpage_output(self,msg=None): return self._output(msg,"StartPage")
     def A0_output(self,msg=None): return self._output(msg,"A0");
     def particulate_output(self,msg=None): return self._output(msg,"ViewParticulate")
-
-    def show_frame(self, page_name):
+    #################################################################################
+    # Callbacks
+    def show_frame(self, page_name=None):
         frame = self.frames[page_name]
         frame.tkraise()
 
+    def update_SensorView_Button(self,port,portStatus):
+        startpage = self.frames["StartPage"]
+        if port not in startpage.buttons.keys(): return
+        entry = dict(portStatus[port])
+        status = entry["Status"]
+        name = entry["Name"]
+        if status == "OFF":
+            color = "grey"
+        elif status == "ON":
+            color = "green"
+        startpage.buttons[port].config(text=name)
+        startpage.buttons[port].config(bg=color)
+        startpage.btn_names[port] = name
+
+    #################################################################################
 class StartPage(tk.Frame):
     scrolledText = None
     buttonList = []
+    ctrl = None
+    buttons = {}
+    btn_names = {}
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
+        self.ctrl = controller
         buttonCount = 0
         row = 1
         col = 0
         # Add a button for each frame to StartPage
         i = 0
-        for frame,name in zip(controller.FramesList,controller.ButtonNames):
+        for frame,idx in zip(self.ctrl.FramesList,range(len(self.ctrl.FramesList))):
             # increment row after previous row has two buttons
             if (buttonCount == 2):
                 row += 1
                 buttonCount = 0
 
-            # Change the name of button to the name of the sensor
-            # If there is no sensor at the port then assign button the port name
-            if i < controller.MAX_PORTS:
-                n = controller.portStatus.get(controller.ButtonNames[i])
-                if n != None: name = n
-            i+=1
-
             # Place Button
             # TODO: Add button colors to reflect if port/sensor is on or off
-            button = tk.Button(self,text=name,height=2,width=15,command=lambda frame=frame: controller.show_frame(frame))
+            self.btn_names[frame] = frame
+            button = tk.Button(self,text=self.btn_names[frame],height=2,width=15,
+                    command=lambda frame=frame: controller.show_frame(frame))
             button.grid(row=row,column=col)
-            self.buttonList.append(button)
+            self.buttons[frame] = button
+
             buttonCount += 1
             # toggle column position
             col = 1 if (col == 0) else 0
@@ -119,14 +137,16 @@ class StartPage(tk.Frame):
 class SensorView(tk.Frame):
     SENSOR = 0
     SETUP  = 1
+    
+    name = None
+    status = None
 
     scrolledText = None
     parent = None
     controller = None
-    name = None
     currentView = SETUP
 
-    def __init__(self, parent, controller, name):
+    def __init__(self, parent,controller,name):
         self.parent = parent
         self.controller = controller
         self.name = name

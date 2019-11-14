@@ -74,9 +74,8 @@ class Logger:
                 date = str(datetime.datetime.now().date())
                 time = str(datetime.datetime.now().time())
                 loc  = 0
-                # TODO: Add BME680 for humidity and temp.
-                temp = 0
-                humidity = 0
+                temp     = self.sensorsDict["BME680"].getTemperature()
+                humidity = self.sensorsDict["BME680"].getHumidity()
                 # Get sensor data
                 data = sensor.getData()
                 # Create list in order of database storage

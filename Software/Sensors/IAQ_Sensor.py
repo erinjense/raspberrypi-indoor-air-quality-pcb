@@ -3,6 +3,7 @@ from enum import Enum
 import sqlite3
 from IAQ_Exceptions import *
 from IAQ_MqGas import MqGas
+from IAQ_BME680 import IAQ_bme680
 
 class SensorInfo:
     DEFAULT_DB=".sqlite/default.db"
@@ -21,20 +22,25 @@ class SensorInfo:
             '''.format(*SETUP_KEYS)
 
     MQ_DATA_KEYS = ['Methane,Butane,LPG,Smoke',
-                 'Alcohol,Ethanol,Smoke',
-                 'Methane, CNG Gas',
-                 'Natural Gas, LPG',
-                 'LPG,Butane Gas',
-                 'Carbon Monoxide,Flammable',
-                 'Hydrogen Gas',
-                 'Carbon Monoxide']
+                    'Alcohol,Ethanol,Smoke',
+                    'Methane, CNG Gas',
+                    'Natural Gas, LPG',
+                    'LPG,Butane Gas',
+                    'Carbon Monoxide,Flammable',
+                    'Hydrogen Gas',
+                    'Carbon Monoxide',
+                    'Ozone',
+                    'Air Quality',
+                    'Temperature, Humidity, Pressure',
+                    'CO2',
+                    'Particulate']
 
     DATA_KEYS = MQ_DATA_KEYS + ['CO2','Particulate']
  
     @staticmethod
     def getSensorSetup():
         ports = ['A0','A1','A2','A3','A4','A5']
-        manufacturer = 'Flying Fish'
+        manufacturer = 'Unavailable'
         path = SensorInfo.DEFAULT_DB
         setupList = []
 
@@ -65,6 +71,7 @@ class SensorInfo:
                     '{6}','{7}')
                     '''.format(name,key,port,status,manufacturer,calibration,path,None)
             setupList.append(setup)
+            print setup
         return setupList
 
     ##########################################################################################################
@@ -76,7 +83,7 @@ class SensorInfo:
     @staticmethod
     def getStorageSetup():
         setupList = []
-        for sid,dkey in zip(SensorIdEnum,SensorInfo.MQ_DATA_KEYS):
+        for sid,dkey in zip(SensorIdEnum,SensorInfo.DATA_KEYS):
             if "MQ" in sid.name:
                 dkey = dkey+"(PPM)"
             table_info = SensorInfo.STORAGE_KEYS
@@ -84,6 +91,7 @@ class SensorInfo:
             data_header = SensorInfo.STORAGE_FMT.format(*table_info)
             sensor_table = "CREATE TABLE {0}".format(sid.name)+data_header
             setupList.append(sensor_table)
+            print sensor_table
         return setupList
 
     @staticmethod
@@ -110,15 +118,10 @@ class SensorIdEnum(Enum):
     MQ9   = 7  # Carbon Monoxide, Flammable Gas
     MQ131 = 8  # Ozone
     MQ135 = 9  # Air Quality (CO, Ammonia, Benzene, Alcohol, Smoke)
-    MQ136 = 10 # Hydrogen Sulfide Gas
-    MQ137 = 11 # Ammonia
-    MQ138 = 12 # Benzene, Toluene, Alcohol, Acetone, Propane, Formaldehyde Gas, Hydrogen
-    MQ214 = 13 # Methane, Natural Gas
-    MQ246 = 14 # Natural Gas, Coal Gas
 
-    BME680 = 15 # Temperature, Humidity, VOCs
-    SDS011 = 16 # Particulates (PM2.5 and PM10)
-    SCD30  = 17 # CO2
+    BME680 = 10 # Temperature, Humidity, VOCs
+    SDS011 = 11 # Particulates (PM2.5 and PM10)
+    SCD30  = 12 # CO2
     ##########################################################################
 
 class Sensor:
@@ -145,11 +148,13 @@ class Sensor:
         self.portController = portController
         try:
             if "MQ" in self.name:
-                self._Sensor = MqGas(self.sid,self.portController);
+                self._Sensor = MqGas(self.sid, self.portController)
                 if self.status == "ON":
                     self.turnOn()
                 elif self.status == "OFF":
                     self.turnOff()
+            if "BME680" in self.name:
+                self._Sensor = IAQ_bme680(self.sid)
         except SensorSetupError:
             raise SensorIsOff('Sensor was labeled ON, but has no assigned port.')
 
@@ -162,6 +167,18 @@ class Sensor:
             raise SensorSetupError('Leaving Sensor.getData()')
         if data == None: raise SensorReadError('Error Reading Senor: '+self.name)
         return data
+
+    def getTemperature(self):
+        if "BME680" in self.name:
+            return self._Sensor.getTemp()
+
+    def getHumidity(self):
+        if "BME680" in self.name:
+            return self._Sensor.getHumidity()
+
+    def getPressure(self):
+        if "BME680" in self.name:
+            return self._Sensor.getPressure()
 
     def turnOff(self):
         self._Sensor.turnOff()

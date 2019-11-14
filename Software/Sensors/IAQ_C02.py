@@ -1,28 +1,28 @@
 #!/usr/bin/python
 
-from IAQ_Exceptions import *
-from C02 import float_C02, float_T, float_rH
+from third_party.Adafruit_I2C import *
+import struct
 
 class C02():
     sid = None
     portController = None
-    i2c_address = None
+	i2c_adress = 0x61
+    
 
     def __init__(self,sensor_id=None,portController=None):
-        if (sensor_id == None or portController == None):
-            print('Invalid Input Error')
-            return
         self.sid = sensor_id
         self.portController = portController
-        try:
-            self.analog_port = self.portController.getPortNumById(self.sid)
-        except ValueError:
-            raise SensorSetupError('Error retrieving MQ Gas Sensor Port Number')
-
+		Adafruit_I2C(self.i2c_adress,debug=True)
+        
     def getData(self):
         try:
-			execfile("C02.py")
-            data = float_C02
+			self.i2c.write8(0x0,0)
+			self.i2c.write8(0x46,2)
+			rawdata = self.i2c.readList(0x03,18)
+			
+			struct_co2 = struct.pack('BBBB',rawdata[0],rawdata[1],rawdata[3],rawdata[4])
+			data = struct.unpack('>f',struct_co2)
+			
         except IOError:
-            raise SensorReadError('Could not get MQ Sensor data from ADC.')
+            pass
         return data

@@ -3,6 +3,8 @@ from enum import Enum
 import sqlite3
 from IAQ_Exceptions import *
 from IAQ_MqGas import MqGas
+from IAQ_C02 import C02
+from IAQ_GPS import GPS
 
 class SensorInfo:
     DEFAULT_DB=".sqlite/default.db"
@@ -108,6 +110,7 @@ class SensorIdEnum(Enum):
     BME680 = 15 # Temperature, Humidity, VOCs
     SDS011 = 16 # Particulates (PM2.5 and PM10)
     SCD30  = 17 # CO2
+	XA1110 = 18 # GPS 
     ##########################################################################
 
 class Sensor:
@@ -136,6 +139,10 @@ class Sensor:
         try:
             if "MQ" in self.name:
                 self._Sensor = MqGas(self.sid,self.portController);
+			if else "SCD30" is self.name:
+				self._Sensor = C02(self.sid,self.portController);
+			if else "XA1110" is self.name:
+				self._Sensor = GPS(self.sid,self.portController);
         except SensorSetupError:
             raise SensorIsOff('Sensor was labeled ON, but has no assigned port.')
 

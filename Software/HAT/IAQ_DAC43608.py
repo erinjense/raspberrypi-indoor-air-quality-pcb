@@ -84,9 +84,6 @@ class DAC43608:
         return
 
     def writeDac(self, command, data_16bits):
-    #def writeDac(self, command, MSDB, LSDB):
-    #    data_bytes = [MSDB, LSDB];
-    #    self.i2c.writeList(command, data_bytes)
         self.i2c.write16(command, data_16bits)
         return
 

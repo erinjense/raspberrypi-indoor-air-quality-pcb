@@ -1,0 +1,5 @@
+Name,MQ Gas
+Calibration,NA
+Manufacturer,TBD
+Status,On
+Headers,Date(YYYY/MM/DD),Time(HH:MM:SS),Location(degrees),Temp(C),Humidity(RH)

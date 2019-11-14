@@ -1,0 +1,4 @@
+Logger Type,Indoor Air Quality
+Id,IAQ_MSU_2019
+Software Version,Alpha
+Sensors,./Config/Sensors/bme680.csv,./Config/Sensors/mq_gas.csv

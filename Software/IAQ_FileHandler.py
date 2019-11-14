@@ -83,6 +83,7 @@ class FileHandler:
             transaction = SensorInfo.getInsertCmd(sensor_id).format(*dataList)
             c.execute(transaction)
             con.commit()
+        return transaction
 
     def _fileExists(self,f=None):
         try: open(f, 'r') 

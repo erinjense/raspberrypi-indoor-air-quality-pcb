@@ -32,7 +32,7 @@ class AnalogPortController:
         self.adc = Adafruit_ADS1x15.ADS1115()
         self.dac = IAQ_DAC43608.DAC43608()
         self.mux = IAQ_Mux.Mux()
-        self.setPortVoltage()
+        self.dac.writeConfig(0x0000)
 
     def getPortNumById(self,sensor_id):
         for sensorName,config in self.portIdDict.items():
@@ -49,19 +49,6 @@ class AnalogPortController:
         value = self.adc.read_adc(self.IAQ_ADS1115_CH, gain=self.GAIN)
         return value
 
-    def setPortVoltage(self):
-        self.dac.writeConfig(0x0000)
-        for sensorName,config in self.portIdDict.items():
-            config = dict(config)
-            status = config["status"]
-            port   = config["port"]
-            # port status could be "None" in the database
-            if port == str(None): continue
-            if (status == "ON"):
-                self.turnOn(port)
-            elif (status == "OFF"):
-                self.turnOff(port)
-
     def turnOn(self,port):
         self.setVoltage(port,0xFFFF)
 
@@ -71,13 +58,13 @@ class AnalogPortController:
     def setVoltage(self,port,voltage):
         try: self.checkPortInput(port)
         except TypeError: raise TypeError('Error setVoltage')
-        if port is self.mux.Channel.A0.name:
+        if port == self.mux.Channel.A0.name:
             self.dac.writeDacA(voltage)
-        elif port is self.mux.Channel.A1.name:
+        elif port == self.mux.Channel.A1.name:
             self.dac.writeDacB(voltage)
-        elif port is self.mux.Channel.A2.name:
+        elif port == self.mux.Channel.A2.name:
             self.dac.writeDacC(voltage)
-        elif port is self.mux.Channel.A3.name:
+        elif port == self.mux.Channel.A3.name:
             self.dac.writeDacD(voltage)
 
     def checkPortInput(self,port):

@@ -143,18 +143,28 @@ class Sensor:
         self.setupDb     = setupDictionary[SensorInfo.SETUP_KEYS[6]]
         self.sid         = SensorIdEnum[self.name]
         self.portController = portController
-        if self.status == "OFF": raise SensorIsOff(self.name)
         try:
             if "MQ" in self.name:
                 self._Sensor = MqGas(self.sid,self.portController);
+                if self.status == "ON":
+                    self.turnOn()
+                elif self.status == "OFF":
+                    self.turnOff()
         except SensorSetupError:
             raise SensorIsOff('Sensor was labeled ON, but has no assigned port.')
 
     def getData(self):
         data = None
         try:
-            data = self._Sensor.getData()
+            if self.status == "ON":
+                data = self._Sensor.getData()
         except SensorSetupError:
             raise SensorSetupError('Leaving Sensor.getData()')
         if data == None: raise SensorReadError('Error Reading Senor: '+self.name)
         return data
+
+    def turnOff(self):
+        self._Sensor.turnOff()
+
+    def turnOn(self):
+        self._Sensor.turnOn()

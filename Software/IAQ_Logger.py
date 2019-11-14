@@ -31,7 +31,6 @@ class Logger:
     ############################
     sensorConfigDict = {}
     sensorsDict = {}
-    sensorNeedsInit = True
     ############################
 
     #############################
@@ -58,7 +57,7 @@ class Logger:
         # Init: Sensors
         self._initSensors()
         # Init: GUI
-        self.gui = GUI()
+        self.gui = GUI(self.sensorConfigDict)
         self._printBanner("Setup SUCCESS")
  
     #################################################################
@@ -68,6 +67,7 @@ class Logger:
         # Log data routine for every MQ Sensor
         for name,sensor in self.sensorsDict.items():
             try:
+                if sensor.status == "OFF": continue
                 dataList = []
                 # Date/Time is System clock
                 # System clock is updated from a GPS if available.
@@ -83,7 +83,8 @@ class Logger:
                 for item in (date,time,loc,temp,humidity,data):
                     dataList.append(item)
                 # Write to database
-                self.csv.writeSensorData(dataList,sensor.sid)
+                data = self.csv.writeSensorData(dataList,sensor.sid)
+                self.gui.displayData(sensor.port, data)
             except SensorReadError:
                 self.printSystem("Could not read sensor: "+name)
                 continue
@@ -92,10 +93,12 @@ class Logger:
                 continue
 
     def updateGui(self):
-        self.sensorNeedsInit = self.gui.updatedSensors()
-        if (True == self.sensorNeedsInit):
+        user_updated_sensors = self.gui.checkUserUpdates()
+        if (True == user_updated_sensors):
+            self.sensorConfigDict = self.gui.get_portStatus()    
+            print self.sensorConfigDict
             self._initSensors()
-            self.gui.updatePortStatus(portStatus=self.sensorConfigDict)
+
         self.gui.update()
         self.gui.update_idletasks()
 

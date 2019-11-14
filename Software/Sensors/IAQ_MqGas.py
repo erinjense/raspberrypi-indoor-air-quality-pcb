@@ -26,3 +26,10 @@ class MqGas():
         except IOError:
             raise SensorReadError('Could not get MQ Sensor data from ADC.')
         return data
+
+    def turnOff(self):
+        self.portController.turnOff(self.analog_port)
+
+
+    def turnOn(self):
+        self.portController.turnOn(self.analog_port)

@@ -1,14 +1,13 @@
 EESchema Schematic File Version 4
-LIBS:rpi-hat-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 7
-Title ""
-Date "15 nov 2012"
+Title "IAQ HAT Top Level"
+Date "2019-11-15"
 Rev ""
-Comp ""
+Comp "Zephyrus, Indoor Air Quality - Raspberry Pi HAT"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -223,21 +222,21 @@ F 3 "" H 6650 1800 50  0001 C CNN
 	1    6600 1700
 	1    0    0    -1  
 $EndComp
-Text Notes 5550 1150 0    79   ~ 16
-USART (5 [V],VDD / 3.3 [V],TX/RX)
-Text Label 7150 4550 0    50   ~ 0
+Text Notes 5950 1150 0    79   ~ 16
+5V USART , 3.3V Pi Compatible
+Text Label 6500 4550 0    50   ~ 0
 ADC0
-Text Label 7150 4700 0    50   ~ 0
+Text Label 6500 4700 0    50   ~ 0
 ADC1
-Text Label 7150 4850 0    50   ~ 0
+Text Label 6500 4850 0    50   ~ 0
 ADC2
-Text Label 7150 5000 0    50   ~ 0
+Text Label 6500 5000 0    50   ~ 0
 ADC3
-Text Label 7150 5150 0    50   ~ 0
+Text Label 6500 5150 0    50   ~ 0
 ADC4
-Text Label 7150 5300 0    50   ~ 0
+Text Label 6500 5300 0    50   ~ 0
 ADC5
-Text Label 3200 4550 0    50   ~ 0
+Text Label 2550 4550 0    50   ~ 0
 SDA_3.3
 Text Label 2000 1300 2    50   ~ 0
 SDA_3.3
@@ -281,44 +280,42 @@ Wire Wire Line
 Wire Wire Line
 	3050 1600 3050 2400
 Connection ~ 3050 2400
-Text Notes 7000 1750 0    50   ~ 0
-SDS011 has 5V input, \nbut datasheet says \nUSART is at 3.3V
 NoConn ~ 4700 2300
 NoConn ~ 2000 2100
 NoConn ~ 2000 2200
 NoConn ~ 2000 2300
 $Sheet
-S 7650 3900 1450 1900
+S 7000 3900 1450 1900
 U 5D9BB3B6
 F0 "ADC_Subsystem" 50
 F1 "ADC_Subsystem.sch" 50
-F2 "ADC0" I L 7650 4550 50 
-F3 "ADC1" I L 7650 4700 50 
-F4 "ADC2" I L 7650 4850 50 
-F5 "ADC3" I L 7650 5000 50 
-F6 "ADC4" I L 7650 5150 50 
-F7 "ADC5" I L 7650 5300 50 
-F8 "MUL_A" I L 7650 4050 50 
-F9 "MUL_B" I L 7650 4200 50 
-F10 "MUL_C" I L 7650 4350 50 
-F11 "SDA_5" I L 7650 5500 50 
-F12 "SCL_5" I L 7650 5650 50 
+F2 "ADC0" I L 7000 4550 50 
+F3 "ADC1" I L 7000 4700 50 
+F4 "ADC2" I L 7000 4850 50 
+F5 "ADC3" I L 7000 5000 50 
+F6 "ADC4" I L 7000 5150 50 
+F7 "ADC5" I L 7000 5300 50 
+F8 "MUL_A" I L 7000 4050 50 
+F9 "MUL_B" I L 7000 4200 50 
+F10 "MUL_C" I L 7000 4350 50 
+F11 "SDA_5" I L 7000 5500 50 
+F12 "SCL_5" I L 7000 5650 50 
 $EndSheet
-Text Label 7150 4050 0    50   ~ 0
+Text Label 6500 4050 0    50   ~ 0
 MUL_A
 Wire Wire Line
-	7650 4050 7150 4050
+	7000 4050 6500 4050
 Wire Wire Line
-	7150 4200 7650 4200
+	6500 4200 7000 4200
 Wire Wire Line
-	7150 4350 7650 4350
-Text Label 7150 5500 0    50   ~ 0
+	6500 4350 7000 4350
+Text Label 6500 5500 0    50   ~ 0
 SDA_5
-Text Label 7150 5650 0    50   ~ 0
+Text Label 6500 5650 0    50   ~ 0
 SCL_5
-Text Label 7150 4200 0    50   ~ 0
+Text Label 6500 4200 0    50   ~ 0
 MUL_B
-Text Label 7150 4350 0    50   ~ 0
+Text Label 6500 4350 0    50   ~ 0
 MUL_C
 Text Label 2000 1700 2    50   ~ 0
 MUL_A
@@ -350,14 +347,14 @@ U 5DB4C8BA
 F0 "PowerManagement" 50
 F1 "PowerManagement.sch" 50
 $EndSheet
-Text Label 3200 4700 0    50   ~ 0
+Text Label 2550 4700 0    50   ~ 0
 SCL_3.3
 NoConn ~ 4700 1900
-Text Notes 1150 4150 0    79   ~ 16
+Text Notes 1150 4250 0    79   ~ 16
 Power Mgmt.
-Text Notes 6300 4250 2    79   ~ 16
-Analog Output\n\n
-Text Notes 6300 5150 2    39   ~ 8
+Text Notes 6150 4350 2    79   ~ 16
+DAC/Buffer power control\n for Analog Sensors\nAnalog Sensor Ports: A0-A5\n\n
+Text Notes 5650 5150 2    39   ~ 8
 A0 - A5: Analog Channels\nBuffers (250 [mA] to A0 - A5)\nDAC     (0 - 5 [V] to Buffers)
 $Sheet
 S 9700 1350 1200 750 
@@ -385,47 +382,47 @@ F3 "FAN_PWM1" I L 9700 3250 59
 F4 "FAN_nSLEEP" I L 9700 3450 59 
 $EndSheet
 Wire Wire Line
-	6650 4550 7650 4550
+	6000 4550 7000 4550
 Wire Wire Line
-	6650 4700 7650 4700
+	6000 4700 7000 4700
 Wire Wire Line
-	6650 4850 7650 4850
+	6000 4850 7000 4850
 Wire Wire Line
-	6650 5000 7650 5000
+	6000 5000 7000 5000
 Wire Wire Line
-	6650 5150 7650 5150
+	6000 5150 7000 5150
 Wire Wire Line
-	6650 5300 7650 5300
+	6000 5300 7000 5300
 $Sheet
-S 3600 4400 1000 1050
+S 2950 4400 1000 1050
 U 5DB861AF
 F0 "I2C" 59
 F1 "I2C.sch" 59
-F2 "SDA_3.3" I L 3600 4550 59 
-F3 "SCL_3.3" I L 3600 4700 59 
-F4 "SDA_5" O R 4600 4550 59 
-F5 "SCL_5" O R 4600 4700 59 
-F6 "GPS_PPS" O L 3600 4900 59 
+F2 "SDA_3.3" I L 2950 4550 59 
+F3 "SCL_3.3" I L 2950 4700 59 
+F4 "SDA_5" O R 3950 4550 59 
+F5 "SCL_5" O R 3950 4700 59 
+F6 "GPS_PPS" O L 2950 4900 59 
 $EndSheet
-Text Label 3150 4900 0    50   ~ 0
+Text Label 2500 4900 0    50   ~ 0
 GPS_PPS
 NoConn ~ 4700 2000
 Wire Wire Line
-	3600 4900 3150 4900
+	2950 4900 2500 4900
 Wire Wire Line
 	3650 1600 6300 1600
 Wire Wire Line
 	3650 1500 6300 1500
 Text Notes 10450 3800 2    50   ~ 10
 Two Fans, \nUnidirectional
-Text Notes 8800 4700 2    50   ~ 10
+Text Notes 8150 4700 2    50   ~ 10
 6:1\nMultiplexed\nADC\n (0 - 5 [V])
-Text Notes 3900 5200 0    50   ~ 0
+Text Notes 3250 5200 0    50   ~ 0
 3.3V to 5V I2C\nI2C Connectors
-Text Notes 8850 3700 2    79   ~ 16
-Analog to Digital
-Text Notes 4900 4050 2    79   ~ 16
-I2C Connectors\nI2C Logic Level Conversion
+Text Notes 8400 3750 2    79   ~ 16
+Multiplexed 16-bit ADC
+Text Notes 4000 4200 2    79   ~ 16
+I2C Connectors\nand\nI2C Logic Level Conversion
 Text Notes 10900 2800 2    79   ~ 16
 Fan 1: PWM controlled\nFan 2: PWM controlled
 Wire Wire Line
@@ -441,31 +438,37 @@ Wire Wire Line
 Text Notes 10850 1200 2    79   ~ 16
 Raspberry Pi HAT\nRequirements:\nEEPROM\n\n
 Wire Wire Line
-	6650 5500 7650 5500
+	6000 5500 7000 5500
 Wire Wire Line
-	6650 5650 7650 5650
+	6000 5650 7000 5650
 Wire Wire Line
-	3200 4550 3600 4550
+	2550 4550 2950 4550
 Wire Wire Line
-	3200 4700 3600 4700
+	2550 4700 2950 4700
 $Sheet
-S 5200 4400 1450 1400
+S 4550 4400 1450 1400
 U 5DA09389
 F0 "Analog_Sensors" 50
 F1 "Analog_Sensors.sch" 50
-F2 "ADC0" O R 6650 4550 50 
-F3 "ADC1" O R 6650 4700 50 
-F4 "ADC2" O R 6650 4850 50 
-F5 "ADC3" O R 6650 5000 50 
-F6 "ADC4" O R 6650 5150 50 
-F7 "ADC5" O R 6650 5300 50 
-F8 "SDA_5" I L 5200 4550 50 
-F9 "SCL_5" I L 5200 4700 50 
-F10 "SDA_5" I R 6650 5500 50 
-F11 "SCL_5" I R 6650 5650 50 
+F2 "ADC0" O R 6000 4550 50 
+F3 "ADC1" O R 6000 4700 50 
+F4 "ADC2" O R 6000 4850 50 
+F5 "ADC3" O R 6000 5000 50 
+F6 "ADC4" O R 6000 5150 50 
+F7 "ADC5" O R 6000 5300 50 
+F8 "SDA_5" I L 4550 4550 50 
+F9 "SCL_5" I L 4550 4700 50 
+F10 "SDA_5" I R 6000 5500 50 
+F11 "SCL_5" I R 6000 5650 50 
 $EndSheet
 Wire Wire Line
-	4600 4550 5200 4550
+	3950 4550 4550 4550
 Wire Wire Line
-	4600 4700 5200 4700
+	3950 4700 4550 4700
+Text Notes 4500 6200 0    50   ~ 0
+Software Driver:\nzephyrus-iaq/Software/HAT/IAQ_DAC43608.py\nzephyrus-iaq/Software/HAT/IAQ_AnalogPortController.py
+Text Notes 7000 6250 0    50   ~ 0
+Software Driver:\nzephyrus-iaq/Software/HAT/IAQ_Mux.py\nzephyrus-iaq/Software/third_party/Adafruit_I2C.py\nzephyrus-iaq/Software/third_party/Adafruit_ADS1x15.py
+Text Notes 2900 800  0    79   ~ 16
+Raspberry Pi Header
 $EndSCHEMATC

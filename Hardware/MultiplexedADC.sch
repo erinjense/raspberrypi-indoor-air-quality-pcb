@@ -1,24 +1,24 @@
 EESchema Schematic File Version 4
-LIBS:rpi-hat-cache
+LIBS:TopLevel-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 2 7
-Title ""
-Date ""
+Title "Multiplexed Analog Input"
+Date "2019-11-15"
 Rev ""
-Comp ""
+Comp "Zephyrus, Indoor Air Quality - Raspberry Pi HAT"
 Comment1 ""
 Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L zephyrus_iaq:ADS1115IDGSR U9
+L zephyrus_iaq:ADS1115IDGSR U?
 U 1 1 5DAF67B5
 P 4100 5250
-F 0 "U9" H 4100 5917 50  0000 C CNN
+F 0 "U?" H 4100 5917 50  0000 C CNN
 F 1 "ADC" H 4100 5826 50  0000 C CNB
 F 2 "zephyrus-iaq:SOP50P490X110-10N" H 3800 6350 50  0001 L BNN
 F 3 "MSOP-10 Texas Instruments" H 3650 6050 50  0001 L BNN
@@ -61,10 +61,10 @@ SCL_5
 Text HLabel 3000 5650 0    50   Input ~ 0
 SDA_5
 $Comp
-L zephyrus_iaq:SN74lV4051A U8
+L zephyrus_iaq:SN74lV4051A U?
 U 1 1 5DB1D523
 P 3900 2100
-F 0 "U8" H 3900 2300 50  0000 C CNN
+F 0 "U?" H 3900 2300 50  0000 C CNN
 F 1 "MUX" H 3900 2200 50  0000 C CNB
 F 2 "zephyrus-iaq:SOP65P640X120-16N" H 3900 2100 50  0001 C CNN
 F 3 "" H 3900 2100 50  0001 C CNN
@@ -72,10 +72,10 @@ F 3 "" H 3900 2100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L zephyrus_iaq:GND #PWR059
+L zephyrus_iaq:GND #PWR?
 U 1 1 5DB2199F
 P 3000 5400
-F 0 "#PWR059" H 3000 5150 50  0001 C CNN
+F 0 "#PWR?" H 3000 5150 50  0001 C CNN
 F 1 "GND" H 3100 5500 50  0000 C CNN
 F 2 "" H 3000 5400 50  0001 C CNN
 F 3 "" H 3000 5400 50  0001 C CNN
@@ -108,10 +108,10 @@ Wire Wire Line
 Wire Wire Line
 	3300 3600 2900 3600
 $Comp
-L zephyrus_iaq:GND #PWR061
+L zephyrus_iaq:GND #PWR?
 U 1 1 5DB26E25
 P 2900 3700
-F 0 "#PWR061" H 2900 3450 50  0001 C CNN
+F 0 "#PWR?" H 2900 3450 50  0001 C CNN
 F 1 "GND" H 2905 3527 50  0000 C CNN
 F 2 "" H 2900 3700 50  0001 C CNN
 F 3 "" H 2900 3700 50  0001 C CNN
@@ -206,10 +206,10 @@ Wire Wire Line
 Wire Wire Line
 	3000 5650 3400 5650
 $Comp
-L zephyrus_iaq:Conn_01x01_Male J15
+L zephyrus_iaq:Conn_01x01_Male J?
 U 1 1 5DB74FAD
 P 6150 5050
-F 0 "J15" V 6200 4950 50  0000 C CNN
+F 0 "J?" V 6200 4950 50  0000 C CNN
 F 1 "Alert" V 6100 5050 50  0000 C CNB
 F 2 "zephyrus-iaq:PinHeader_1x01_P2.54mm_Vertical" H 6150 5050 50  0001 C CNN
 F 3 "" H 6150 5050 50  0001 C CNN
@@ -217,10 +217,10 @@ F 3 "" H 6150 5050 50  0001 C CNN
 	0    -1   1    0   
 $EndComp
 $Comp
-L zephyrus_iaq:R_US R21
+L zephyrus_iaq:R_US R?
 U 1 1 5DB93A1B
 P 2900 4600
-F 0 "R21" H 2968 4646 50  0000 L CNN
+F 0 "R?" H 2968 4646 50  0000 L CNN
 F 1 "10K" H 2968 4555 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 2940 4590 50  0001 C CNN
 F 3 "" H 2900 4600 50  0001 C CNN
@@ -269,10 +269,10 @@ ADC5
 Text HLabel 2900 2200 0    50   Input ~ 0
 ADC4
 $Comp
-L zephyrus_iaq:SN74LV4T125PWR U11
+L zephyrus_iaq:SN74LV4T125PWR U?
 U 1 1 5D9F68B4
 P 7450 2950
-F 0 "U11" H 7450 3917 50  0000 C CNN
+F 0 "U?" H 7450 3917 50  0000 C CNN
 F 1 "V-Shift" H 7450 3826 50  0000 C CNB
 F 2 "zephyrus-iaq:SOP65P640X120-14N" H 7450 2950 50  0001 L BNN
 F 3 "" H 7450 2950 50  0001 L BNN
@@ -294,10 +294,10 @@ Wire Wire Line
 Wire Wire Line
 	8450 3650 8050 3650
 $Comp
-L zephyrus_iaq:GND #PWR0109
+L zephyrus_iaq:GND #PWR?
 U 1 1 5DA06364
 P 6450 2450
-F 0 "#PWR0109" H 6450 2200 50  0001 C CNN
+F 0 "#PWR?" H 6450 2200 50  0001 C CNN
 F 1 "GND" V 6455 2277 50  0000 C CNN
 F 2 "" H 6450 2450 50  0001 C CNN
 F 3 "" H 6450 2450 50  0001 C CNN
@@ -305,10 +305,10 @@ F 3 "" H 6450 2450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L zephyrus_iaq:GND #PWR0110
+L zephyrus_iaq:GND #PWR?
 U 1 1 5DA0782E
 P 6450 2750
-F 0 "#PWR0110" H 6450 2500 50  0001 C CNN
+F 0 "#PWR?" H 6450 2500 50  0001 C CNN
 F 1 "GND" V 6455 2577 50  0000 C CNN
 F 2 "" H 6450 2750 50  0001 C CNN
 F 3 "" H 6450 2750 50  0001 C CNN
@@ -316,10 +316,10 @@ F 3 "" H 6450 2750 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L zephyrus_iaq:GND #PWR0111
+L zephyrus_iaq:GND #PWR?
 U 1 1 5DA08CD6
 P 6450 3050
-F 0 "#PWR0111" H 6450 2800 50  0001 C CNN
+F 0 "#PWR?" H 6450 2800 50  0001 C CNN
 F 1 "GND" V 6455 2877 50  0000 C CNN
 F 2 "" H 6450 3050 50  0001 C CNN
 F 3 "" H 6450 3050 50  0001 C CNN
@@ -331,10 +331,10 @@ Wire Wire Line
 Wire Wire Line
 	4500 3600 4900 3600
 $Comp
-L zephyrus_iaq:GND #PWR0113
+L zephyrus_iaq:GND #PWR?
 U 1 1 5DA136A6
 P 8450 3800
-F 0 "#PWR0113" H 8450 3550 50  0001 C CNN
+F 0 "#PWR?" H 8450 3550 50  0001 C CNN
 F 1 "GND" H 8455 3627 50  0000 C CNN
 F 2 "" H 8450 3800 50  0001 C CNN
 F 3 "" H 8450 3800 50  0001 C CNN
@@ -420,10 +420,10 @@ Wire Wire Line
 Wire Wire Line
 	6950 5250 6150 5250
 $Comp
-L zephyrus_iaq:R_US R20
+L zephyrus_iaq:R_US R?
 U 1 1 5DB7485C
 P 6950 5050
-F 0 "R20" H 6700 5100 50  0000 L CNN
+F 0 "R?" H 6700 5100 50  0000 L CNN
 F 1 "10K" H 6700 5000 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 6990 5040 50  0001 C CNN
 F 3 "" H 6950 5050 50  0001 C CNN
@@ -436,8 +436,8 @@ Wire Wire Line
 	8450 3650 8450 3800
 Text Notes 4200 1750 2    50   ~ 0
 Multiplexer\n6:1 Analog Input to ADC\nChannels: A0 - A5\n
-Text Notes 8400 1900 2    50   ~ 0
-Raspberry Pi 3.3 [V] TTL to Multiplexer 5 [V] CMOS.
+Text Notes 7950 1900 2    50   ~ 0
+Raspberry Pi 3.3 [V] TTL\nShifted To\n Multiplexer 5 [V] CMOS.
 Text Notes 4450 4500 2    50   ~ 0
 ADS1115\n16-bit ADC\n5 [V] I2C Interface
 Wire Wire Line
@@ -463,4 +463,10 @@ Wire Wire Line
 	5550 4850 6950 4850
 Wire Wire Line
 	5550 4850 5550 5300
+Text Notes 2900 6200 0    50   ~ 0
+Software Driver:\nzephyrus-iaq/Software/third_party/Adafruit_I2C.py\nzephyrus-iaq/Software/third_party/Adafruit_ADS1x15.py
+Text Notes 3400 3950 0    50   ~ 0
+Software Driver:\nzephyrus-iaq/Software/HAT/IAQ_Mux.py
+Text Notes 6600 4200 0    50   Italic 0
+TODO: Move V-Shift up to a dedicated voltage conversion schematic.
 $EndSCHEMATC

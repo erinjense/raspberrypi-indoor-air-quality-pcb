@@ -1,26 +1,26 @@
 EESchema Schematic File Version 4
-LIBS:rpi-hat-cache
+LIBS:TopLevel-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 7 7
-Title ""
-Date ""
+Title "Analog Port Control [A0-A5]"
+Date "2019-11-15"
 Rev ""
-Comp ""
+Comp "Zephyrus, Indoor Air Quality - Raspberry Pi HAT"
 Comment1 ""
 Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
 Text Notes 8850 800  0    50   ~ 10
-Analog Connector Ports (MQ Gas Sesnors)\n0 - 5 [V] from DAC\nUp to 250 mA from Buffers
+Analog Connector Ports [A0 - A5]  (MQ Gas Sesnors)\n0 - 5 [V] from DAC\nUp to 250 mA from Buffers
 $Comp
-L zephyrus_iaq:LED D4
+L zephyrus_iaq:LED D?
 U 1 1 5D92EBDF
 P 1150 1750
-F 0 "D4" V 1250 1900 50  0000 C CNN
+F 0 "D?" V 1250 1900 50  0000 C CNN
 F 1 "LED" V 1141 1875 50  0000 C CNN
 F 2 "Diode_SMD:D_0805_2012Metric" H 1150 1750 50  0001 C CNN
 F 3 "~" H 1150 1750 50  0001 C CNN
@@ -28,10 +28,10 @@ F 3 "~" H 1150 1750 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L zephyrus_iaq:LED D5
+L zephyrus_iaq:LED D?
 U 1 1 5D92EC86
 P 1750 1750
-F 0 "D5" V 1850 1900 50  0000 C CNN
+F 0 "D?" V 1850 1900 50  0000 C CNN
 F 1 "LED" V 1741 1875 50  0000 C CNN
 F 2 "Diode_SMD:D_0805_2012Metric" H 1750 1750 50  0001 C CNN
 F 3 "~" H 1750 1750 50  0001 C CNN
@@ -39,10 +39,10 @@ F 3 "~" H 1750 1750 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L zephyrus_iaq:LED D6
+L zephyrus_iaq:LED D?
 U 1 1 5D931031
 P 2350 1750
-F 0 "D6" V 2450 1900 50  0000 C CNN
+F 0 "D?" V 2450 1900 50  0000 C CNN
 F 1 "LED" V 2341 1875 50  0000 C CNN
 F 2 "Diode_SMD:D_0805_2012Metric" H 2350 1750 50  0001 C CNN
 F 3 "~" H 2350 1750 50  0001 C CNN
@@ -50,10 +50,10 @@ F 3 "~" H 2350 1750 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L zephyrus_iaq:LED D7
+L zephyrus_iaq:LED D?
 U 1 1 5D9333DE
 P 2950 1750
-F 0 "D7" V 3050 1900 50  0000 C CNN
+F 0 "D?" V 3050 1900 50  0000 C CNN
 F 1 "LED" V 2941 1875 50  0000 C CNN
 F 2 "Diode_SMD:D_0805_2012Metric" H 2950 1750 50  0001 C CNN
 F 3 "~" H 2950 1750 50  0001 C CNN
@@ -61,10 +61,10 @@ F 3 "~" H 2950 1750 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L zephyrus_iaq:LED D8
+L zephyrus_iaq:LED D?
 U 1 1 5D93578F
 P 3600 1750
-F 0 "D8" V 3700 1900 50  0000 C CNN
+F 0 "D?" V 3700 1900 50  0000 C CNN
 F 1 "LED" V 3591 1875 50  0000 C CNN
 F 2 "Diode_SMD:D_0805_2012Metric" H 3600 1750 50  0001 C CNN
 F 3 "~" H 3600 1750 50  0001 C CNN
@@ -72,10 +72,10 @@ F 3 "~" H 3600 1750 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L zephyrus_iaq:LED D9
+L zephyrus_iaq:LED D?
 U 1 1 5D937B3E
 P 4200 1750
-F 0 "D9" V 4300 1900 50  0000 C CNN
+F 0 "D?" V 4300 1900 50  0000 C CNN
 F 1 "LED" V 4191 1875 50  0000 C CNN
 F 2 "Diode_SMD:D_0805_2012Metric" H 4200 1750 50  0001 C CNN
 F 3 "~" H 4200 1750 50  0001 C CNN
@@ -95,10 +95,10 @@ BUF_OUT_4
 Text Label 4200 1600 2    50   ~ 0
 BUF_OUT_5
 $Comp
-L zephyrus_iaq:R_US R9
+L zephyrus_iaq:R_US R?
 U 1 1 5D948632
 P 1150 2150
-F 0 "R9" H 1218 2196 50  0000 L CNN
+F 0 "R?" H 1218 2196 50  0000 L CNN
 F 1 "330" H 1218 2105 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 1190 2140 50  0001 C CNN
 F 3 "~" H 1150 2150 50  0001 C CNN
@@ -106,10 +106,10 @@ F 3 "~" H 1150 2150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L zephyrus_iaq:R_US R10
+L zephyrus_iaq:R_US R?
 U 1 1 5D9486C9
 P 1750 2150
-F 0 "R10" H 1818 2196 50  0000 L CNN
+F 0 "R?" H 1818 2196 50  0000 L CNN
 F 1 "330" H 1818 2105 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 1790 2140 50  0001 C CNN
 F 3 "~" H 1750 2150 50  0001 C CNN
@@ -117,10 +117,10 @@ F 3 "~" H 1750 2150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L zephyrus_iaq:R_US R11
+L zephyrus_iaq:R_US R?
 U 1 1 5D94AA74
 P 2350 2150
-F 0 "R11" H 2418 2196 50  0000 L CNN
+F 0 "R?" H 2418 2196 50  0000 L CNN
 F 1 "330" H 2418 2105 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 2390 2140 50  0001 C CNN
 F 3 "~" H 2350 2150 50  0001 C CNN
@@ -128,10 +128,10 @@ F 3 "~" H 2350 2150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L zephyrus_iaq:R_US R12
+L zephyrus_iaq:R_US R?
 U 1 1 5D94CE21
 P 2950 2150
-F 0 "R12" H 3018 2196 50  0000 L CNN
+F 0 "R?" H 3018 2196 50  0000 L CNN
 F 1 "330" H 3018 2105 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 2990 2140 50  0001 C CNN
 F 3 "~" H 2950 2150 50  0001 C CNN
@@ -139,10 +139,10 @@ F 3 "~" H 2950 2150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L zephyrus_iaq:R_US R13
+L zephyrus_iaq:R_US R?
 U 1 1 5D94F1CE
 P 3600 2150
-F 0 "R13" H 3668 2196 50  0000 L CNN
+F 0 "R?" H 3668 2196 50  0000 L CNN
 F 1 "330" H 3668 2105 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 3640 2140 50  0001 C CNN
 F 3 "~" H 3600 2150 50  0001 C CNN
@@ -150,10 +150,10 @@ F 3 "~" H 3600 2150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L zephyrus_iaq:R_US R14
+L zephyrus_iaq:R_US R?
 U 1 1 5D95157F
 P 4200 2150
-F 0 "R14" H 4268 2196 50  0000 L CNN
+F 0 "R?" H 4268 2196 50  0000 L CNN
 F 1 "330" H 4268 2105 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 4240 2140 50  0001 C CNN
 F 3 "~" H 4200 2150 50  0001 C CNN
@@ -269,10 +269,10 @@ Wire Wire Line
 Wire Wire Line
 	1150 2300 1150 2400
 $Comp
-L zephyrus_iaq:SM03B-SRSS-TB(LF)(SN) J9
+L zephyrus_iaq:SM03B-SRSS-TB(LF)(SN) J?
 U 1 1 5D9618EA
 P 9050 1450
-F 0 "J9" H 9000 1950 50  0000 L CNN
+F 0 "J?" H 9000 1950 50  0000 L CNN
 F 1 "A0" H 9000 1850 50  0000 L CNB
 F 2 "zephyrus-iaq:JST_SM03B-SRSS-TB(LF)(SN)" H 8550 1950 50  0001 L BNN
 F 3 "None" H 9050 1450 50  0001 L BNN
@@ -280,18 +280,18 @@ F 3 "None" H 9050 1450 50  0001 L BNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L zephyrus_iaq:SM03B-SRSS-TB(LF)(SN) J11
+L zephyrus_iaq:SM03B-SRSS-TB(LF)(SN) J?
 U 1 1 5D9703C7
 P 9050 2350
-F 0 "J11" H 8950 2850 50  0000 L CNN
+F 0 "J?" H 8950 2850 50  0000 L CNN
 F 1 "A2" H 9000 2750 50  0000 L CNB
 F 2 "zephyrus-iaq:JST_SM03B-SRSS-TB(LF)(SN)" H 8550 2850 50  0001 L BNN
 F 3 "None" H 9050 2350 50  0001 L BNN
 	1    9050 2350
 	1    0    0    -1  
 $EndComp
-Text Notes 2200 1450 0    50   ~ 10
-ON/OFF Indication
+Text Notes 2250 1300 0    50   ~ 10
+Power Status LEDs\nPort: A0 - A5
 NoConn ~ 8650 1650
 NoConn ~ 8650 1550
 NoConn ~ 10250 1650
@@ -305,10 +305,10 @@ NoConn ~ 8650 3450
 NoConn ~ 10250 3450
 NoConn ~ 10250 3350
 $Comp
-L zephyrus_iaq:DAC43608 U7
+L zephyrus_iaq:DAC43608 U?
 U 1 1 5D9B2770
 P 6200 4750
-F 0 "U7" H 6200 4900 50  0000 C CNN
+F 0 "U?" H 6200 4900 50  0000 C CNN
 F 1 "DAC" H 6200 4800 50  0000 C CNB
 F 2 "zephyrus-iaq:QFN50P300X300X80-17N" H 6200 4750 50  0001 C CNN
 F 3 "" H 6200 4750 50  0001 C CNN
@@ -345,10 +345,10 @@ Wire Wire Line
 Wire Wire Line
 	7200 3650 7200 3400
 $Comp
-L zephyrus_iaq:AD8532ARMZ-REEL U6
+L zephyrus_iaq:AD8532ARMZ-REEL U?
 U 1 1 5DA13A72
 P 6150 3500
-F 0 "U6" H 6150 4170 50  0000 C CNN
+F 0 "U?" H 6150 4170 50  0000 C CNN
 F 1 "Buffer" H 6150 4079 50  0000 C CNB
 F 2 "zephyrus-iaq:SOP65P490X110-8N" H 5850 4150 50  0001 L BNN
 F 3 "" H 6950 4350 50  0001 L BNN
@@ -359,156 +359,156 @@ F 7 "AD8532ARMZ-REEL" H 5800 4350 50  0001 L BNN "Field7"
 	1    6150 3500
 	1    0    0    -1  
 $EndComp
-Text Label 2950 4950 0    50   ~ 0
+Text Label 3050 5000 0    50   ~ 0
 BUF_V+_1
-Text Label 1900 4950 0    50   ~ 0
+Text Label 2000 5000 0    50   ~ 0
 BUF_V+_0
 Wire Wire Line
-	2900 4950 3050 4950
-Connection ~ 2900 4950
+	3000 5000 3150 5000
+Connection ~ 3000 5000
 Wire Wire Line
-	2900 4900 2900 4950
+	3000 4950 3000 5000
 $Comp
-L zephyrus_iaq:+5V #PWR053
+L zephyrus_iaq:+5V #PWR?
 U 1 1 5D9DE381
-P 2900 4900
-F 0 "#PWR053" H 2900 4750 50  0001 C CNN
-F 1 "+5V" H 2915 5073 50  0000 C CNN
-F 2 "" H 2900 4900 50  0001 C CNN
-F 3 "" H 2900 4900 50  0001 C CNN
-	1    2900 4900
+P 3000 4950
+F 0 "#PWR?" H 3000 4800 50  0001 C CNN
+F 1 "+5V" H 3015 5123 50  0000 C CNN
+F 2 "" H 3000 4950 50  0001 C CNN
+F 3 "" H 3000 4950 50  0001 C CNN
+	1    3000 4950
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2900 5350 3050 5350
-Connection ~ 2900 5350
+	3000 5400 3150 5400
+Connection ~ 3000 5400
 Wire Wire Line
-	2750 4950 2900 4950
+	2850 5000 3000 5000
 Wire Wire Line
-	2750 5350 2900 5350
+	2850 5400 3000 5400
 Wire Wire Line
-	3050 4950 3050 5000
+	3150 5000 3150 5050
 Wire Wire Line
-	2750 5000 2750 4950
+	2850 5050 2850 5000
 Wire Wire Line
-	3050 5350 3050 5300
+	3150 5400 3150 5350
 Wire Wire Line
-	2750 5300 2750 5350
+	2850 5350 2850 5400
 $Comp
 L zephyrus_iaq:C C?
 U 1 1 5D9DE373
-P 3050 5150
+P 3150 5200
 AR Path="/5D9DE373" Ref="C?"  Part="1" 
 AR Path="/5D9BB3B6/5D9DE373" Ref="C?"  Part="1" 
 AR Path="/5DA09389/5D9DE373" Ref="C10"  Part="1" 
-F 0 "C10" H 3250 5250 50  0000 L CNN
-F 1 "10uF" H 3200 5150 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 3088 5000 50  0001 C CNN
-F 3 "~" H 3050 5150 50  0001 C CNN
-	1    3050 5150
+F 0 "C10" H 3350 5300 50  0000 L CNN
+F 1 "10uF" H 3300 5200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 3188 5050 50  0001 C CNN
+F 3 "~" H 3150 5200 50  0001 C CNN
+	1    3150 5200
 	1    0    0    -1  
 $EndComp
 $Comp
 L zephyrus_iaq:C C?
 U 1 1 5D9DE36D
-P 2750 5150
+P 2850 5200
 AR Path="/5D9DE36D" Ref="C?"  Part="1" 
 AR Path="/5D9BB3B6/5D9DE36D" Ref="C?"  Part="1" 
 AR Path="/5DA09389/5D9DE36D" Ref="C9"  Part="1" 
-F 0 "C9" H 2500 5250 50  0000 L CNN
-F 1 "100nF" H 2400 5150 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 2788 5000 50  0001 C CNN
-F 3 "~" H 2750 5150 50  0001 C CNN
-	1    2750 5150
+F 0 "C9" H 2600 5300 50  0000 L CNN
+F 1 "100nF" H 2500 5200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 2888 5050 50  0001 C CNN
+F 3 "~" H 2850 5200 50  0001 C CNN
+	1    2850 5200
 	1    0    0    -1  
 $EndComp
 $Comp
 L zephyrus_iaq:GND #PWR?
 U 1 1 5D9DE367
-P 2900 5350
+P 3000 5400
 AR Path="/5D9DE367" Ref="#PWR?"  Part="1" 
 AR Path="/5D9BB3B6/5D9DE367" Ref="#PWR?"  Part="1" 
 AR Path="/5DA09389/5D9DE367" Ref="#PWR056"  Part="1" 
-F 0 "#PWR056" H 2900 5100 50  0001 C CNN
-F 1 "GND" H 3000 5250 50  0000 C CNN
-F 2 "" H 2900 5350 50  0001 C CNN
-F 3 "" H 2900 5350 50  0001 C CNN
-	1    2900 5350
+F 0 "#PWR056" H 3000 5150 50  0001 C CNN
+F 1 "GND" H 3100 5300 50  0000 C CNN
+F 2 "" H 3000 5400 50  0001 C CNN
+F 3 "" H 3000 5400 50  0001 C CNN
+	1    3000 5400
 	1    0    0    -1  
 $EndComp
-Text Notes 2150 3400 0    50   ~ 10
+Text Notes 2150 3350 0    50   ~ 10
 Bypass Capacitors
 Wire Wire Line
-	1850 4950 2000 4950
-Connection ~ 1850 4950
+	1950 5000 2100 5000
+Connection ~ 1950 5000
 Wire Wire Line
-	1850 4900 1850 4950
+	1950 4950 1950 5000
 $Comp
-L zephyrus_iaq:+5V #PWR052
+L zephyrus_iaq:+5V #PWR?
 U 1 1 5D9D5E3A
-P 1850 4900
-F 0 "#PWR052" H 1850 4750 50  0001 C CNN
-F 1 "+5V" H 1865 5073 50  0000 C CNN
-F 2 "" H 1850 4900 50  0001 C CNN
-F 3 "" H 1850 4900 50  0001 C CNN
-	1    1850 4900
+P 1950 4950
+F 0 "#PWR?" H 1950 4800 50  0001 C CNN
+F 1 "+5V" H 1965 5123 50  0000 C CNN
+F 2 "" H 1950 4950 50  0001 C CNN
+F 3 "" H 1950 4950 50  0001 C CNN
+	1    1950 4950
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1850 5350 2000 5350
-Connection ~ 1850 5350
+	1950 5400 2100 5400
+Connection ~ 1950 5400
 Wire Wire Line
-	1700 4950 1850 4950
+	1800 5000 1950 5000
 Wire Wire Line
-	1700 5350 1850 5350
+	1800 5400 1950 5400
 Wire Wire Line
-	2000 4950 2000 5000
+	2100 5000 2100 5050
 Wire Wire Line
-	1700 5000 1700 4950
+	1800 5050 1800 5000
 Wire Wire Line
-	2000 5350 2000 5300
+	2100 5400 2100 5350
 Wire Wire Line
-	1700 5300 1700 5350
+	1800 5350 1800 5400
 $Comp
 L zephyrus_iaq:C C?
 U 1 1 5D9CE171
-P 2000 5150
+P 2100 5200
 AR Path="/5D9CE171" Ref="C?"  Part="1" 
 AR Path="/5D9BB3B6/5D9CE171" Ref="C?"  Part="1" 
 AR Path="/5DA09389/5D9CE171" Ref="C8"  Part="1" 
-F 0 "C8" H 2200 5250 50  0000 L CNN
-F 1 "10uF" H 2150 5150 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 2038 5000 50  0001 C CNN
-F 3 "~" H 2000 5150 50  0001 C CNN
-	1    2000 5150
+F 0 "C8" H 2300 5300 50  0000 L CNN
+F 1 "10uF" H 2250 5200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 2138 5050 50  0001 C CNN
+F 3 "~" H 2100 5200 50  0001 C CNN
+	1    2100 5200
 	1    0    0    -1  
 $EndComp
 $Comp
 L zephyrus_iaq:C C?
 U 1 1 5D9CE16B
-P 1700 5150
+P 1800 5200
 AR Path="/5D9CE16B" Ref="C?"  Part="1" 
 AR Path="/5D9BB3B6/5D9CE16B" Ref="C?"  Part="1" 
 AR Path="/5DA09389/5D9CE16B" Ref="C7"  Part="1" 
-F 0 "C7" H 1450 5250 50  0000 L CNN
-F 1 "100nF" H 1350 5150 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 1738 5000 50  0001 C CNN
-F 3 "~" H 1700 5150 50  0001 C CNN
-	1    1700 5150
+F 0 "C7" H 1550 5300 50  0000 L CNN
+F 1 "100nF" H 1450 5200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 1838 5050 50  0001 C CNN
+F 3 "~" H 1800 5200 50  0001 C CNN
+	1    1800 5200
 	1    0    0    -1  
 $EndComp
 $Comp
 L zephyrus_iaq:GND #PWR?
 U 1 1 5D9CE165
-P 1850 5350
+P 1950 5400
 AR Path="/5D9CE165" Ref="#PWR?"  Part="1" 
 AR Path="/5D9BB3B6/5D9CE165" Ref="#PWR?"  Part="1" 
 AR Path="/5DA09389/5D9CE165" Ref="#PWR055"  Part="1" 
-F 0 "#PWR055" H 1850 5100 50  0001 C CNN
-F 1 "GND" H 1950 5250 50  0000 C CNN
-F 2 "" H 1850 5350 50  0001 C CNN
-F 3 "" H 1850 5350 50  0001 C CNN
-	1    1850 5350
+F 0 "#PWR055" H 1950 5150 50  0001 C CNN
+F 1 "GND" H 2050 5300 50  0000 C CNN
+F 2 "" H 1950 5400 50  0001 C CNN
+F 3 "" H 1950 5400 50  0001 C CNN
+	1    1950 5400
 	1    0    0    -1  
 $EndComp
 Text Label 5100 3650 0    50   ~ 0
@@ -553,49 +553,49 @@ $EndComp
 Text Notes 4900 6400 2    50   ~ 0
 I2C Address\n1001 000 AGND\n1001 001 VDD\n~LDAC~=0 is asynchronous mode\n(immediate update on DAC after write to register)
 $Comp
-L zephyrus_iaq:+5V #PWR047
+L zephyrus_iaq:+5V #PWR?
 U 1 1 5DA7D43A
-P 2050 3850
-F 0 "#PWR047" H 2050 3700 50  0001 C CNN
-F 1 "+5V" H 2065 4023 50  0000 C CNN
-F 2 "" H 2050 3850 50  0001 C CNN
-F 3 "" H 2050 3850 50  0001 C CNN
-	1    2050 3850
+P 2000 3800
+F 0 "#PWR?" H 2000 3650 50  0001 C CNN
+F 1 "+5V" H 2015 3973 50  0000 C CNN
+F 2 "" H 2000 3800 50  0001 C CNN
+F 3 "" H 2000 3800 50  0001 C CNN
+	1    2000 3800
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2050 3900 2050 3850
+	2000 3850 2000 3800
 Wire Wire Line
-	2050 4200 2050 4250
+	2000 4150 2000 4200
 $Comp
 L zephyrus_iaq:C C?
 U 1 1 5DA7D442
-P 2050 4050
+P 2000 4000
 AR Path="/5DA7D442" Ref="C?"  Part="1" 
 AR Path="/5D9BB3B6/5DA7D442" Ref="C?"  Part="1" 
 AR Path="/5DA09389/5DA7D442" Ref="C5"  Part="1" 
-F 0 "C5" H 1800 4150 50  0000 L CNN
-F 1 "100nF" H 1700 4050 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 2088 3900 50  0001 C CNN
-F 3 "~" H 2050 4050 50  0001 C CNN
-	1    2050 4050
+F 0 "C5" H 1750 4100 50  0000 L CNN
+F 1 "100nF" H 1650 4000 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 2038 3850 50  0001 C CNN
+F 3 "~" H 2000 4000 50  0001 C CNN
+	1    2000 4000
 	1    0    0    -1  
 $EndComp
 $Comp
 L zephyrus_iaq:GND #PWR?
 U 1 1 5DA7D448
-P 2050 4250
+P 2000 4200
 AR Path="/5DA7D448" Ref="#PWR?"  Part="1" 
 AR Path="/5D9BB3B6/5DA7D448" Ref="#PWR?"  Part="1" 
 AR Path="/5DA09389/5DA7D448" Ref="#PWR050"  Part="1" 
-F 0 "#PWR050" H 2050 4000 50  0001 C CNN
-F 1 "GND" H 2150 4150 50  0000 C CNN
-F 2 "" H 2050 4250 50  0001 C CNN
-F 3 "" H 2050 4250 50  0001 C CNN
-	1    2050 4250
+F 0 "#PWR050" H 2000 3950 50  0001 C CNN
+F 1 "GND" H 2100 4100 50  0000 C CNN
+F 2 "" H 2000 4200 50  0001 C CNN
+F 3 "" H 2000 4200 50  0001 C CNN
+	1    2000 4200
 	1    0    0    -1  
 $EndComp
-Text Label 2450 3900 2    50   ~ 0
+Text Label 2400 3850 2    50   ~ 0
 DAC_VDD
 $Comp
 L zephyrus_iaq:GND #PWR?
@@ -853,70 +853,70 @@ Wire Wire Line
 	7250 6100 6800 6100
 Wire Wire Line
 	7250 6300 6800 6300
-Connection ~ 2050 3900
+Connection ~ 2000 3850
 Wire Wire Line
-	2050 3900 2450 3900
+	2000 3850 2400 3850
 Text Label 7250 5500 2    50   ~ 0
 DAC_VDD
 $Comp
-L zephyrus_iaq:+5V #PWR048
+L zephyrus_iaq:+5V #PWR?
 U 1 1 5DABF76E
-P 2800 3850
-F 0 "#PWR048" H 2800 3700 50  0001 C CNN
-F 1 "+5V" H 2815 4023 50  0000 C CNN
-F 2 "" H 2800 3850 50  0001 C CNN
-F 3 "" H 2800 3850 50  0001 C CNN
-	1    2800 3850
+P 3000 3800
+F 0 "#PWR?" H 3000 3650 50  0001 C CNN
+F 1 "+5V" H 3015 3973 50  0000 C CNN
+F 2 "" H 3000 3800 50  0001 C CNN
+F 3 "" H 3000 3800 50  0001 C CNN
+	1    3000 3800
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2800 3900 2800 3850
+	3000 3850 3000 3800
 Wire Wire Line
-	2800 4200 2800 4250
+	3000 4150 3000 4200
 $Comp
 L zephyrus_iaq:C C?
 U 1 1 5DABF776
-P 2800 4050
+P 3000 4000
 AR Path="/5DABF776" Ref="C?"  Part="1" 
 AR Path="/5D9BB3B6/5DABF776" Ref="C?"  Part="1" 
 AR Path="/5DA09389/5DABF776" Ref="C6"  Part="1" 
-F 0 "C6" H 2550 4150 50  0000 L CNN
-F 1 "100nF" H 2450 4050 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 2838 3900 50  0001 C CNN
-F 3 "~" H 2800 4050 50  0001 C CNN
-	1    2800 4050
+F 0 "C6" H 2750 4100 50  0000 L CNN
+F 1 "100nF" H 2650 4000 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 3038 3850 50  0001 C CNN
+F 3 "~" H 3000 4000 50  0001 C CNN
+	1    3000 4000
 	1    0    0    -1  
 $EndComp
 $Comp
 L zephyrus_iaq:GND #PWR?
 U 1 1 5DABF77C
-P 2800 4250
+P 3000 4200
 AR Path="/5DABF77C" Ref="#PWR?"  Part="1" 
 AR Path="/5D9BB3B6/5DABF77C" Ref="#PWR?"  Part="1" 
 AR Path="/5DA09389/5DABF77C" Ref="#PWR051"  Part="1" 
-F 0 "#PWR051" H 2800 4000 50  0001 C CNN
-F 1 "GND" H 2900 4150 50  0000 C CNN
-F 2 "" H 2800 4250 50  0001 C CNN
-F 3 "" H 2800 4250 50  0001 C CNN
-	1    2800 4250
+F 0 "#PWR051" H 3000 3950 50  0001 C CNN
+F 1 "GND" H 3100 4100 50  0000 C CNN
+F 2 "" H 3000 4200 50  0001 C CNN
+F 3 "" H 3000 4200 50  0001 C CNN
+	1    3000 4200
 	1    0    0    -1  
 $EndComp
-Text Label 3200 3900 2    50   ~ 0
+Text Label 3400 3850 2    50   ~ 0
 DAC_VREF
-Connection ~ 2800 3900
+Connection ~ 3000 3850
 Wire Wire Line
-	2800 3900 3200 3900
+	3000 3850 3400 3850
 Text Label 7250 5100 2    50   ~ 0
 DAC_VREF
-Text Notes 5450 4500 0    50   ~ 10
-Digital to Analog Converter\nAllows 0 to 5 V to Analog channels A0 to A5
-Text Notes 1700 4650 0    50   ~ 10
+Text Notes 5600 4550 0    50   ~ 10
+Digital to Analog Converter  (8-bit)\nAllows 0 to 5 V power control\n for Analog channels A0 to A5
+Text Notes 1850 4700 0    50   ~ 10
 AD8534
 Text Notes 2300 3550 0    50   ~ 10
 DAC43608
 Text Label 5150 6100 0    50   ~ 0
 DAC_ADDR
-Text Notes 2900 4600 0    50   ~ 10
+Text Notes 2900 4700 0    50   ~ 10
 AD8532
 Wire Wire Line
 	5150 6300 5150 6100
@@ -936,10 +936,10 @@ F 3 "" H 6200 6550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L zephyrus_iaq:AD8534 U3
+L zephyrus_iaq:AD8534 U?
 U 1 1 5D9C1715
 P 6100 1100
-F 0 "U3" H 6100 1215 50  0000 C CNN
+F 0 "U?" H 6100 1215 50  0000 C CNN
 F 1 "Buffer" H 6100 1124 50  0000 C CNB
 F 2 "zephyrus-iaq:SOP65P640X120-14N" H 6100 1100 50  0001 C CNN
 F 3 "" H 6100 1100 50  0001 C CNN
@@ -947,10 +947,10 @@ F 3 "" H 6100 1100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L zephyrus_iaq:SM03B-SRSS-TB(LF)(SN) J13
+L zephyrus_iaq:SM03B-SRSS-TB(LF)(SN) J?
 U 1 1 5D97926D
 P 9050 3250
-F 0 "J13" H 8950 3750 50  0000 L CNN
+F 0 "J?" H 8950 3750 50  0000 L CNN
 F 1 "A4" H 9000 3650 50  0000 L CNB
 F 2 "zephyrus-iaq:JST_SM03B-SRSS-TB(LF)(SN)" H 8550 3750 50  0001 L BNN
 F 3 "None" H 9050 3250 50  0001 L BNN
@@ -958,10 +958,10 @@ F 3 "None" H 9050 3250 50  0001 L BNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L zephyrus_iaq:SM03B-SRSS-TB(LF)(SN) J10
+L zephyrus_iaq:SM03B-SRSS-TB(LF)(SN) J?
 U 1 1 5D96A86F
 P 10650 1450
-F 0 "J10" H 10550 1950 50  0000 L CNN
+F 0 "J?" H 10550 1950 50  0000 L CNN
 F 1 "A1" H 10600 1850 50  0000 L CNB
 F 2 "zephyrus-iaq:JST_SM03B-SRSS-TB(LF)(SN)" H 10150 1950 50  0001 L BNN
 F 3 "None" H 10650 1450 50  0001 L BNN
@@ -969,10 +969,10 @@ F 3 "None" H 10650 1450 50  0001 L BNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L zephyrus_iaq:SM03B-SRSS-TB(LF)(SN) J14
+L zephyrus_iaq:SM03B-SRSS-TB(LF)(SN) J?
 U 1 1 5D97927E
 P 10650 3250
-F 0 "J14" H 10550 3750 50  0000 L CNN
+F 0 "J?" H 10550 3750 50  0000 L CNN
 F 1 "A5" H 10600 3650 50  0000 L CNB
 F 2 "zephyrus-iaq:JST_SM03B-SRSS-TB(LF)(SN)" H 10150 3750 50  0001 L BNN
 F 3 "None" H 10650 3250 50  0001 L BNN
@@ -980,10 +980,10 @@ F 3 "None" H 10650 3250 50  0001 L BNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L zephyrus_iaq:SM03B-SRSS-TB(LF)(SN) J12
+L zephyrus_iaq:SM03B-SRSS-TB(LF)(SN) J?
 U 1 1 5D9731F7
 P 10650 2350
-F 0 "J12" H 10550 2850 50  0000 L CNN
+F 0 "J?" H 10550 2850 50  0000 L CNN
 F 1 "A3" H 10600 2750 50  0000 L CNB
 F 2 "zephyrus-iaq:JST_SM03B-SRSS-TB(LF)(SN)" H 10150 2850 50  0001 L BNN
 F 3 "None" H 10650 2350 50  0001 L BNN
@@ -993,10 +993,10 @@ $EndComp
 Wire Wire Line
 	7450 4400 7450 4500
 $Comp
-L zephyrus_iaq:+5V #PWR0117
+L zephyrus_iaq:+5V #PWR?
 U 1 1 5DA75AF8
 P 7450 4400
-F 0 "#PWR0117" H 7450 4250 50  0001 C CNN
+F 0 "#PWR?" H 7450 4250 50  0001 C CNN
 F 1 "+5V" H 7465 4573 50  0000 C CNN
 F 2 "" H 7450 4400 50  0001 C CNN
 F 3 "" H 7450 4400 50  0001 C CNN
@@ -1004,10 +1004,10 @@ F 3 "" H 7450 4400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L zephyrus_iaq:R_US R15
+L zephyrus_iaq:R_US R?
 U 1 1 5DA75AFE
 P 7450 4650
-F 0 "R15" H 7550 4700 50  0000 L CNN
+F 0 "R?" H 7550 4700 50  0000 L CNN
 F 1 "10k" H 7500 4600 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 7490 4640 50  0001 C CNN
 F 3 "~" H 7450 4650 50  0001 C CNN
@@ -1016,8 +1016,8 @@ F 3 "~" H 7450 4650 50  0001 C CNN
 $EndComp
 Text Label 7250 4900 2    50   ~ 0
 DAC_CLR
-Text Notes 7650 4850 0    50   ~ 0
-~CLR~ always high.\nA logic low clears the DAC buffers to zero.
+Text Notes 7750 4900 0    50   ~ 0
+~CLR~ always high.\nA logic low clears the \n DAC buffers to zero.
 Wire Wire Line
 	7450 4900 7450 4800
 Wire Wire Line
@@ -1028,4 +1028,8 @@ Text HLabel 5150 5700 0    50   Input ~ 0
 SDA_5
 Text HLabel 5150 5900 0    50   Input ~ 0
 SCL_5
+Text Notes 5150 6850 0    50   ~ 0
+Software Driver:\nzephyrus-iaq/Software/HAT/IAQ_DAC43608.py
+Text Notes 2350 4600 0    50   ~ 10
+Buffers
 $EndSCHEMATC

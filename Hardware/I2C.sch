@@ -1,14 +1,14 @@
 EESchema Schematic File Version 4
-LIBS:rpi-hat-cache
+LIBS:TopLevel-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 6 7
 Title ""
-Date ""
+Date "2019-11-15"
 Rev ""
-Comp ""
+Comp "Zephyrus, Indoor Air Quality - Raspberry Pi HAT"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -316,4 +316,6 @@ Wire Wire Line
 	6700 4600 6700 4700
 Text Notes 4950 1500 0    118  ~ 24
 I2C Sensors/Connectors
+Text Notes 4450 5450 0    50   ~ 0
+The Bi-Directional logic level shift using the BSS138\nwas inspired by reading Sparkfun's schematic\nhttps://cdn.sparkfun.com/datasheets/BreakoutBoards/Logic_Level_Bidirectional.pdf
 $EndSCHEMATC

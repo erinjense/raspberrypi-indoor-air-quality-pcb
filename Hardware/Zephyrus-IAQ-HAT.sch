@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:TopLevel-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -7,7 +6,7 @@ encoding utf-8
 Sheet 1 7
 Title "Top Level"
 Date "2019-11-15"
-Rev ""
+Rev "A"
 Comp "Zephyrus, Indoor Air Quality - Raspberry Pi HAT"
 Comment1 ""
 Comment2 ""
@@ -212,19 +211,6 @@ F 3 "" H 3400 1100 50  0001 C CNN
 	1    3400 1100
 	1    0    0    -1  
 $EndComp
-$Comp
-L zephyrus_iaq:SM04B-SRSS-TB(LF)(SN)_USART J2
-U 1 1 5D996B28
-P 6600 1700
-F 0 "J2" H 6750 2150 50  0000 L CNN
-F 1 "USART" H 6600 2050 50  0000 L CNB
-F 2 "zephyrus-iaq:JST_SM04B-SRSS-TB(LF)(SN)" H 6650 1800 50  0001 C CNN
-F 3 "" H 6650 1800 50  0001 C CNN
-	1    6600 1700
-	1    0    0    -1  
-$EndComp
-Text Notes 5950 1150 0    79   ~ 16
-5V USART , 3.3V Pi Compatible
 Text Label 6500 4550 0    50   ~ 0
 ADC0
 Text Label 6500 4700 0    50   ~ 0
@@ -250,32 +236,6 @@ NoConn ~ 2000 2700
 NoConn ~ 2000 3000
 Text Label 2000 2500 2    50   ~ 0
 ID_SD_EEPROM
-$Comp
-L zephyrus_iaq:+5V #PWR09
-U 1 1 5D96FDD5
-P 5900 1800
-F 0 "#PWR09" H 5900 1650 50  0001 C CNN
-F 1 "+5V" V 5900 2000 50  0000 C CNN
-F 2 "" H 5900 1800 50  0001 C CNN
-F 3 "" H 5900 1800 50  0001 C CNN
-	1    5900 1800
-	0    -1   -1   0   
-$EndComp
-$Comp
-L zephyrus_iaq:GND #PWR08
-U 1 1 5D9839C0
-P 5900 1700
-F 0 "#PWR08" H 5900 1450 50  0001 C CNN
-F 1 "GND" V 5900 1500 50  0000 C CNN
-F 2 "" H 5900 1700 50  0001 C CNN
-F 3 "" H 5900 1700 50  0001 C CNN
-	1    5900 1700
-	0    1    1    0   
-$EndComp
-Text Label 5850 1600 0    50   ~ 0
-RXD0
-Text Label 5850 1500 0    50   ~ 0
-TXD0
 Wire Wire Line
 	3150 1600 3050 1600
 Wire Wire Line
@@ -338,10 +298,6 @@ Text Label 2000 2800 2    50   ~ 0
 FAN_PWM1
 Text Label 4700 1700 0    50   ~ 0
 GPS_PPS
-Wire Wire Line
-	5900 1700 6300 1700
-Wire Wire Line
-	5900 1800 6300 1800
 $Sheet
 S 1000 4400 1000 1050
 U 5DB4C8BA
@@ -410,10 +366,6 @@ GPS_PPS
 NoConn ~ 4700 2000
 Wire Wire Line
 	2950 4900 2500 4900
-Wire Wire Line
-	3650 1600 6300 1600
-Wire Wire Line
-	3650 1500 6300 1500
 Text Notes 10450 3800 2    50   ~ 10
 Two Fans, \nUnidirectional
 Text Notes 8150 4700 2    50   ~ 10
@@ -473,57 +425,170 @@ Software Driver:\nzephyrus-iaq/Software/HAT/IAQ_Mux.py\nzephyrus-iaq/Software/th
 Text Notes 2900 800  0    79   ~ 16
 Raspberry Pi Header
 $Comp
-L zephyrus_iaq:Mounting-Hole-Mechanical MK?
+L zephyrus_iaq:Mounting-Hole-Mechanical MK4
 U 1 1 5DD01D93
-P 1400 7050
-AR Path="/5DD01D93" Ref="MK?"  Part="1" 
+P 1200 6700
+AR Path="/5DD01D93" Ref="MK4"  Part="1" 
 AR Path="/5DAFB35B/5DD01D93" Ref="MK?"  Part="1" 
-F 0 "MK?" H 1500 6996 50  0000 L CNN
-F 1 "M2.5" H 1500 6905 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 1400 7050 50  0001 C CNN
-F 3 "" H 1400 7050 50  0001 C CNN
-	1    1400 7050
+F 0 "MK4" H 1300 6646 50  0001 L CNN
+F 1 "M2.5" H 1300 6555 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 1200 6700 50  0001 C CNN
+F 3 "" H 1200 6700 50  0001 C CNN
+	1    1200 6700
 	1    0    0    -1  
 $EndComp
 $Comp
-L zephyrus_iaq:Mounting-Hole-Mechanical MK?
+L zephyrus_iaq:Mounting-Hole-Mechanical MK2
 U 1 1 5DD01D99
-P 1400 6800
-AR Path="/5DD01D99" Ref="MK?"  Part="1" 
+P 1200 6450
+AR Path="/5DD01D99" Ref="MK2"  Part="1" 
 AR Path="/5DAFB35B/5DD01D99" Ref="MK?"  Part="1" 
-F 0 "MK?" H 1500 6746 50  0000 L CNN
-F 1 "M2.5" H 1500 6655 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 1400 6800 50  0001 C CNN
-F 3 "" H 1400 6800 50  0001 C CNN
-	1    1400 6800
+F 0 "MK2" H 1300 6396 50  0001 L CNN
+F 1 "M2.5" H 1300 6305 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 1200 6450 50  0001 C CNN
+F 3 "" H 1200 6450 50  0001 C CNN
+	1    1200 6450
 	1    0    0    -1  
 $EndComp
 $Comp
-L zephyrus_iaq:Mounting-Hole-Mechanical MK?
+L zephyrus_iaq:Mounting-Hole-Mechanical MK3
 U 1 1 5DD01D9F
-P 950 7050
-AR Path="/5DD01D9F" Ref="MK?"  Part="1" 
+P 1000 6700
+AR Path="/5DD01D9F" Ref="MK3"  Part="1" 
 AR Path="/5DAFB35B/5DD01D9F" Ref="MK?"  Part="1" 
-F 0 "MK?" H 1050 6996 50  0000 L CNN
-F 1 "M2.5" H 1050 6905 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 950 7050 50  0001 C CNN
-F 3 "" H 950 7050 50  0001 C CNN
-	1    950  7050
+F 0 "MK3" H 1100 6646 50  0001 L CNN
+F 1 "M2.5" H 1100 6555 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 1000 6700 50  0001 C CNN
+F 3 "" H 1000 6700 50  0001 C CNN
+	1    1000 6700
 	1    0    0    -1  
 $EndComp
 $Comp
-L zephyrus_iaq:Mounting-Hole-Mechanical MK?
+L zephyrus_iaq:Mounting-Hole-Mechanical MK1
 U 1 1 5DD01DA5
-P 950 6800
-AR Path="/5DD01DA5" Ref="MK?"  Part="1" 
+P 1000 6450
+AR Path="/5DD01DA5" Ref="MK1"  Part="1" 
 AR Path="/5DAFB35B/5DD01DA5" Ref="MK?"  Part="1" 
-F 0 "MK?" H 1050 6746 50  0000 L CNN
-F 1 "M2.5" H 1050 6655 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 950 6800 50  0001 C CNN
-F 3 "" H 950 6800 50  0001 C CNN
-	1    950  6800
+F 0 "MK1" H 1100 6396 50  0001 L CNN
+F 1 "M2.5" H 1100 6305 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 1000 6450 50  0001 C CNN
+F 3 "" H 1000 6450 50  0001 C CNN
+	1    1000 6450
 	1    0    0    -1  
 $EndComp
-Text Notes 950  6750 0    50   ~ 10
+Text Notes 800  6450 0    50   ~ 10
 Mounting Holes
+Wire Wire Line
+	5950 1900 5950 2000
+$Comp
+L zephyrus_iaq:BSS138 U?
+U 1 1 5DE9F97B
+P 6050 2100
+AR Path="/5DB861AF/5DE9F97B" Ref="U?"  Part="1" 
+AR Path="/5DE9F97B" Ref="U3"  Part="1" 
+F 0 "U3" V 6293 2100 50  0000 C CNN
+F 1 "BSS138" V 6384 2100 50  0001 C CNN
+F 2 "zephyrus-iaq:BSS138" H 6500 2800 50  0001 L BNN
+F 3 "TO-236-3 Micross" H 6500 2600 50  0001 L BNN
+F 4 "MICROSS/On Semiconductor" H 6500 2500 50  0001 L BNN "Field4"
+F 5 "Mosfet n-Ch 50v 220ma Die" H 6500 2350 50  0001 L BNN "Field5"
+F 6 "BSS138" H 6500 2700 50  0001 L BNN "Field7"
+	1    6050 2100
+	0    1    1    0   
+$EndComp
+$Comp
+L zephyrus_iaq:R_US R?
+U 1 1 5DE9F972
+P 6350 1950
+AR Path="/5DB861AF/5DE9F972" Ref="R?"  Part="1" 
+AR Path="/5DE9F972" Ref="R9"  Part="1" 
+F 0 "R9" H 6450 2000 50  0000 L CNN
+F 1 "3.3k" H 6450 1900 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 6390 1940 50  0001 C CNN
+F 3 "~" H 6350 1950 50  0001 C CNN
+	1    6350 1950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5750 2200 5850 2200
+Wire Wire Line
+	6250 2200 6350 2200
+Wire Wire Line
+	6350 2200 6350 2100
+$Comp
+L zephyrus_iaq:+3.3V #PWR?
+U 1 1 5DE9F969
+P 5950 1900
+AR Path="/5DB861AF/5DE9F969" Ref="#PWR?"  Part="1" 
+AR Path="/5DE9F969" Ref="#PWR0109"  Part="1" 
+F 0 "#PWR0109" H 5950 1750 50  0001 C CNN
+F 1 "+3.3V" H 5965 2073 50  0000 C CNN
+F 2 "" H 5950 1900 50  0001 C CNN
+F 3 "" H 5950 1900 50  0001 C CNN
+	1    5950 1900
+	1    0    0    -1  
+$EndComp
+Text Label 6900 1500 0    50   ~ 0
+TXD0
+Text Label 6900 1600 0    50   ~ 0
+RXD0
+$Comp
+L zephyrus_iaq:GND #PWR08
+U 1 1 5D9839C0
+P 7200 1950
+F 0 "#PWR08" H 7200 1700 50  0001 C CNN
+F 1 "GND" H 7200 1750 50  0000 C CNN
+F 2 "" H 7200 1950 50  0001 C CNN
+F 3 "" H 7200 1950 50  0001 C CNN
+	1    7200 1950
+	1    0    0    -1  
+$EndComp
+Text Notes 5950 1150 0    79   ~ 16
+5V USART , 3.3V Pi Compatible
+$Comp
+L zephyrus_iaq:SM04B-SRSS-TB(LF)(SN)_USART J2
+U 1 1 5D996B28
+P 7650 1700
+F 0 "J2" H 7800 2150 50  0000 L CNN
+F 1 "USART" H 7650 2050 50  0000 L CNB
+F 2 "zephyrus-iaq:JST_SM04B-SRSS-TB(LF)(SN)" H 7700 1800 50  0001 C CNN
+F 3 "" H 7700 1800 50  0001 C CNN
+	1    7650 1700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6350 2200 6650 2200
+Wire Wire Line
+	6650 2200 6650 1600
+Connection ~ 6350 2200
+Wire Wire Line
+	6650 1600 7350 1600
+Wire Wire Line
+	7350 1700 7200 1700
+Wire Wire Line
+	7200 1700 7200 1950
+Wire Wire Line
+	6350 1800 7350 1800
+$Comp
+L zephyrus_iaq:+5V #PWR?
+U 1 1 5DE9F963
+P 6350 1750
+AR Path="/5DB861AF/5DE9F963" Ref="#PWR?"  Part="1" 
+AR Path="/5DE9F963" Ref="#PWR0110"  Part="1" 
+F 0 "#PWR0110" H 6350 1600 50  0001 C CNN
+F 1 "+5V" H 6350 1900 50  0000 C CNN
+F 2 "" H 6350 1750 50  0001 C CNN
+F 3 "" H 6350 1750 50  0001 C CNN
+	1    6350 1750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6350 1750 6350 1800
+Connection ~ 6350 1800
+Wire Wire Line
+	5750 1600 5750 2200
+Wire Wire Line
+	3650 1600 5750 1600
+Wire Wire Line
+	3650 1500 7350 1500
 $EndSCHEMATC

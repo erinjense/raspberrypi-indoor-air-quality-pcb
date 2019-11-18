@@ -1,9 +1,9 @@
-(module "JST_SM03B-SRSS-TB(LF)(SN)" (layer F.Cu) (tedit 0)
+(module "JST_SM03B-SRSS-TB(LF)(SN)" (layer F.Cu) (tedit 5DD1E7AC)
   (attr smd)
-  (fp_text reference "JST_SM03B-SRSS-TB(LF)(SN)" (at -1.27 -1.905) (layer F.SilkS)
+  (fp_text reference "JST_SM03B-SRSS-TB(LF)(SN)" (at 0 6.35) (layer F.SilkS) hide
     (effects (font (size 1 1) (thickness 0.05)))
   )
-  (fp_text value VAL** (at -0.635 5.715) (layer F.SilkS)
+  (fp_text value VAL** (at 0 -2.54) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.05)))
   )
   (fp_line (start -2.5 0.325) (end 2.5 0.325) (layer Eco2.User) (width 0.127))

@@ -1,8 +1,8 @@
-(module MountingHole_2.7mm_M2.5 (layer F.Cu) (tedit 56D1B4CB)
+(module MountingHole_2.7mm_M2.5 (layer F.Cu) (tedit 5DD1E7CD)
   (descr "Mounting Hole 2.7mm, no annular, M2.5")
   (tags "mounting hole 2.7mm no annular m2.5")
   (attr virtual)
-  (fp_text reference REF** (at 0 -3.7) (layer F.SilkS)
+  (fp_text reference REF** (at 0 -3.7) (layer F.SilkS) hide
     (effects (font (size 1 1) (thickness 0.15)))
   )
   (fp_text value MountingHole_2.7mm_M2.5 (at 0 3.7) (layer F.Fab)

@@ -142,11 +142,11 @@ ENDDEF
 #
 # BSS138
 #
-DEF BSS138 U 0 40 N Y 1 L N
+DEF BSS138 U 0 0 N Y 1 F N
 F0 "U" -451 100 50 H V L BNN
 F1 "BSS138" -451 0 50 H V L BNN
 F2 "BSS138" 450 700 50 H I L BNN
-F3 "TO-236-3 Micross" 450 500 50 H I L BNN
+F3 "" 450 500 50 H I L BNN
 F4 "MICROSS/On Semiconductor" 450 400 50 H I L BNN
 F5 "Mosfet n-Ch 50v 220ma Die" 450 250 50 H I L BNN
 F6 "BSS138" 450 600 50 H I L BNN "Field7"
@@ -644,8 +644,8 @@ ENDDEF
 # Mounting-Hole-Mechanical
 #
 DEF Mounting-Hole-Mechanical MK 0 40 Y Y 1 F N
-F0 "MK" 100 -250 50 H V C CNN
-F1 "Mounting-Hole-Mechanical" 50 50 50 H V C CNN
+F0 "MK" 100 -250 50 H I C CNN
+F1 "Mounting-Hole-Mechanical" 50 50 50 H I C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW

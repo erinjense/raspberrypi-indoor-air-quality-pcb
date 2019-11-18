@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:TopLevel-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -7,7 +6,7 @@ encoding utf-8
 Sheet 5 7
 Title "Motor Driver for Fans"
 Date "2019-11-15"
-Rev ""
+Rev "A"
 Comp "Zephyrus, Indoor Air Quality - Raspberry Pi HAT"
 Comment1 ""
 Comment2 ""

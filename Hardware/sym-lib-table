@@ -1,4 +1,4 @@
 (sym_lib_table
   (lib (name zephyrus_iaq)(type Legacy)(uri ${KIPRJMOD}/lib/zephyrus_iaq.lib)(options "")(descr ""))
-  (lib (name cc-by-sa)(type Legacy)(uri ${KIPRJMOD}/cc-by-sa.lib)(options "")(descr ""))
+  (lib (name cc-by-sa)(type Legacy)(uri ${KIPRJMOD}/lib/cc-by-sa.lib)(options "")(descr ""))
 )

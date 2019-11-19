@@ -1,7 +1,8 @@
 EESchema Schematic File Version 4
+LIBS:Zephyrus-IAQ-HAT-cache
 EELAYER 30 0
 EELAYER END
-$Descr A4 11693 8268
+$Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 7
 Title "Top Level"
@@ -16,579 +17,598 @@ $EndDescr
 $Comp
 L zephyrus_iaq:GND #PWR011
 U 1 1 580C1D11
-P 3750 3250
-F 0 "#PWR011" H 3750 3000 50  0001 C CNN
-F 1 "GND" H 3750 3100 50  0000 C CNN
-F 2 "" H 3750 3250 50  0000 C CNN
-F 3 "" H 3750 3250 50  0000 C CNN
-	1    3750 3250
+P 2850 3200
+F 0 "#PWR011" H 2850 2950 50  0001 C CNN
+F 1 "GND" H 2850 3050 50  0000 C CNN
+F 2 "" H 2850 3200 50  0000 C CNN
+F 3 "" H 2850 3200 50  0000 C CNN
+	1    2850 3200
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3750 1400 3750 1800
+	2850 1350 2850 1750
 Wire Wire Line
-	3750 2800 3650 2800
+	2850 2750 2750 2750
 Wire Wire Line
-	3750 2600 3650 2600
-Connection ~ 3750 2800
+	2850 2550 2750 2550
+Connection ~ 2850 2750
 Wire Wire Line
-	3750 2100 3650 2100
-Connection ~ 3750 2600
+	2850 2050 2750 2050
+Connection ~ 2850 2550
 Wire Wire Line
-	3750 1800 3650 1800
-Connection ~ 3750 2100
+	2850 1750 2750 1750
+Connection ~ 2850 2050
 Wire Wire Line
-	3050 3100 3150 3100
+	2150 3050 2250 3050
 Wire Wire Line
-	3050 2400 3150 2400
-Connection ~ 3050 3100
-Connection ~ 2950 1200
+	2150 2350 2250 2350
+Connection ~ 2150 3050
+Connection ~ 2050 1150
 Wire Wire Line
-	2950 2000 3150 2000
+	2050 1950 2250 1950
 Wire Wire Line
-	2950 1200 3150 1200
+	2050 1150 2250 1150
 Wire Wire Line
-	2950 1050 2950 1200
+	2050 1000 2050 1150
 $Comp
 L zephyrus_iaq:+3.3V #PWR01
 U 1 1 580C1BC1
-P 2950 1050
-F 0 "#PWR01" H 2950 900 50  0001 C CNN
-F 1 "+3.3V" H 2950 1190 50  0000 C CNN
-F 2 "" H 2950 1050 50  0000 C CNN
-F 3 "" H 2950 1050 50  0000 C CNN
-	1    2950 1050
+P 2050 1000
+F 0 "#PWR01" H 2050 850 50  0001 C CNN
+F 1 "+3.3V" H 2050 1140 50  0000 C CNN
+F 2 "" H 2050 1000 50  0000 C CNN
+F 3 "" H 2050 1000 50  0000 C CNN
+	1    2050 1000
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3150 1300 2000 1300
+	2250 1250 1100 1250
 Wire Wire Line
-	2000 1400 3150 1400
+	1100 1350 2250 1350
 Wire Wire Line
-	2000 1500 3150 1500
+	1100 1450 2250 1450
 Wire Wire Line
-	3150 1700 2000 1700
+	2250 1650 1100 1650
 Wire Wire Line
-	2000 1800 3150 1800
+	1100 1750 2250 1750
 Wire Wire Line
-	2000 1900 3150 1900
+	1100 1850 2250 1850
 Wire Wire Line
-	3150 2100 2000 2100
+	2250 2050 1100 2050
 Wire Wire Line
-	2000 2200 3150 2200
+	1100 2150 2250 2150
 Wire Wire Line
-	2000 2300 3150 2300
+	1100 2250 2250 2250
 Wire Wire Line
-	3150 2500 2000 2500
+	2250 2450 1100 2450
 Wire Wire Line
-	2000 2600 3150 2600
+	1100 2550 2250 2550
 Wire Wire Line
-	2000 2700 3150 2700
+	1100 2650 2250 2650
 Wire Wire Line
-	3150 2800 2000 2800
+	2250 2750 1100 2750
 Wire Wire Line
-	2000 2900 3150 2900
+	1100 2850 2250 2850
 Wire Wire Line
-	2000 3000 3150 3000
+	1100 2950 2250 2950
 Wire Wire Line
-	3650 2900 4700 2900
+	2750 2850 3800 2850
 Wire Wire Line
-	3650 3000 4700 3000
+	2750 2950 3800 2950
 Wire Wire Line
-	3650 2400 4700 2400
+	2750 2350 3800 2350
 Wire Wire Line
-	3650 2500 4700 2500
+	2750 2450 3800 2450
 Wire Wire Line
-	3650 2200 4700 2200
+	2750 2150 3800 2150
 Wire Wire Line
-	3650 2300 4700 2300
+	2750 2250 3800 2250
 Wire Wire Line
-	3650 1900 4700 1900
+	2750 1850 3800 1850
 Wire Wire Line
-	3650 2000 4700 2000
+	2750 1950 3800 1950
 Wire Wire Line
-	3650 1700 4700 1700
+	2750 1650 3800 1650
 Wire Wire Line
-	3650 2700 4700 2700
-Text Label 2100 1300 0    50   ~ 0
+	2750 2650 3800 2650
+Text Label 1200 1250 0    50   ~ 0
 GPIO2(SDA1)
-Text Label 2100 1400 0    50   ~ 0
+Text Label 1200 1350 0    50   ~ 0
 GPIO3(SCL1)
-Text Label 2100 1500 0    50   ~ 0
+Text Label 1200 1450 0    50   ~ 0
 GPIO4(GCLK)
-Text Label 2100 1700 0    50   ~ 0
+Text Label 1200 1650 0    50   ~ 0
 GPIO17(GEN0)
-Text Label 2100 1800 0    50   ~ 0
+Text Label 1200 1750 0    50   ~ 0
 GPIO27(GEN2)
-Text Label 2100 1900 0    50   ~ 0
+Text Label 1200 1850 0    50   ~ 0
 GPIO22(GEN3)
-Text Label 2100 2100 0    50   ~ 0
+Text Label 1200 2050 0    50   ~ 0
 GPIO10(SPI0_MOSI)
-Text Label 2100 2200 0    50   ~ 0
+Text Label 1200 2150 0    50   ~ 0
 GPIO9(SPI0_MISO)
-Text Label 2100 2300 0    50   ~ 0
+Text Label 1200 2250 0    50   ~ 0
 GPIO11(SPI0_SCK)
-Text Label 2100 2600 0    50   ~ 0
+Text Label 1200 2550 0    50   ~ 0
 GPIO5
-Text Label 2100 2700 0    50   ~ 0
+Text Label 1200 2650 0    50   ~ 0
 GPIO6
-Text Label 2100 2800 0    50   ~ 0
+Text Label 1200 2750 0    50   ~ 0
 GPIO13(PWM1)
-Text Label 2100 2900 0    50   ~ 0
+Text Label 1200 2850 0    50   ~ 0
 GPIO19(SPI1_MISO)
-Text Label 2100 3000 0    50   ~ 0
+Text Label 1200 2950 0    50   ~ 0
 GPIO26
-Text Label 4600 3000 2    50   ~ 0
+Text Label 3700 2950 2    50   ~ 0
 GPIO20(SPI1_MOSI)
-Text Label 4600 2900 2    50   ~ 0
+Text Label 3700 2850 2    50   ~ 0
 GPIO16
-Text Label 4600 2700 2    50   ~ 0
+Text Label 3700 2650 2    50   ~ 0
 GPIO12(PWM0)
-Text Label 4600 2400 2    50   ~ 0
+Text Label 3700 2350 2    50   ~ 0
 GPIO7(SPI1_CE_N)
-Text Label 4600 2300 2    50   ~ 0
+Text Label 3700 2250 2    50   ~ 0
 GPIO8(SPI0_CE_N)
-Text Label 4600 2200 2    50   ~ 0
+Text Label 3700 2150 2    50   ~ 0
 GPIO25(GEN6)
-Text Label 4600 2000 2    50   ~ 0
+Text Label 3700 1950 2    50   ~ 0
 GPIO24(GEN5)
-Text Label 4600 1900 2    50   ~ 0
+Text Label 3700 1850 2    50   ~ 0
 GPIO23(GEN4)
-Text Label 4600 1700 2    50   ~ 0
+Text Label 3700 1650 2    50   ~ 0
 GPIO18(GEN1)(PWM0)
-Text Label 4600 1600 2    50   ~ 0
+Text Label 3700 1550 2    50   ~ 0
 GPIO15(RXD0)
-Text Label 4600 1500 2    50   ~ 0
+Text Label 3700 1450 2    50   ~ 0
 GPIO14(TXD0)
 Wire Wire Line
-	3750 1400 3650 1400
-Connection ~ 3750 1800
+	2850 1350 2750 1350
+Connection ~ 2850 1750
 Wire Wire Line
-	3650 3100 4700 3100
-Text Label 4600 3100 2    50   ~ 0
+	2750 3050 3800 3050
+Text Label 3700 3050 2    50   ~ 0
 GPIO21(SPI1_SCK)
 Wire Wire Line
-	3750 2800 3750 3250
+	2850 2750 2850 3200
 Wire Wire Line
-	3750 2600 3750 2800
+	2850 2550 2850 2750
 Wire Wire Line
-	3750 2100 3750 2600
+	2850 2050 2850 2550
 Wire Wire Line
-	3050 3100 3050 3250
+	2150 3050 2150 3200
 Wire Wire Line
-	2950 1200 2950 2000
+	2050 1150 2050 1950
 Wire Wire Line
-	3050 2400 3050 3100
+	2150 2350 2150 3050
 Wire Wire Line
-	3750 1800 3750 2100
-NoConn ~ 3650 1200
-NoConn ~ 3650 1300
-NoConn ~ 4700 2400
-NoConn ~ 4700 2900
-NoConn ~ 4700 3000
-NoConn ~ 4700 3100
-NoConn ~ 2000 2900
-NoConn ~ 2000 1500
+	2850 1750 2850 2050
+NoConn ~ 2750 1150
+NoConn ~ 2750 1250
+NoConn ~ 3800 2350
+NoConn ~ 3800 2850
+NoConn ~ 3800 2950
+NoConn ~ 3800 3050
+NoConn ~ 1100 2850
+NoConn ~ 1100 1450
 $Comp
 L zephyrus_iaq:GND #PWR010
 U 1 1 5CD6B8BE
-P 3050 3250
-F 0 "#PWR010" H 3050 3000 50  0001 C CNN
-F 1 "GND" H 3055 3077 50  0000 C CNN
-F 2 "" H 3050 3250 50  0001 C CNN
-F 3 "" H 3050 3250 50  0001 C CNN
-	1    3050 3250
+P 2150 3200
+F 0 "#PWR010" H 2150 2950 50  0001 C CNN
+F 1 "GND" H 2155 3027 50  0000 C CNN
+F 2 "" H 2150 3200 50  0001 C CNN
+F 3 "" H 2150 3200 50  0001 C CNN
+	1    2150 3200
 	1    0    0    -1  
 $EndComp
 $Comp
 L zephyrus_iaq:Conn_02x20_Odd_Even__Rpi J1
 U 1 1 5CDDF295
-P 3400 1100
-F 0 "J1" H 3400 1200 50  0000 C CNN
-F 1 "Conn_02x20_Odd_Even__Rpi" H 3700 1150 50  0001 C CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_2x20_P2.54mm_Vertical" H 3400 1100 50  0001 C CNN
-F 3 "" H 3400 1100 50  0001 C CNN
-	1    3400 1100
+P 2500 1050
+F 0 "J1" H 2500 1150 50  0000 C CNN
+F 1 "Conn_02x20_Odd_Even__Rpi" H 2800 1100 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_2x20_P2.54mm_Vertical" H 2500 1050 50  0001 C CNN
+F 3 "" H 2500 1050 50  0001 C CNN
+	1    2500 1050
 	1    0    0    -1  
 $EndComp
-Text Label 6500 4550 0    50   ~ 0
+Text Label 4950 4450 0    50   ~ 0
 ADC0
-Text Label 6500 4700 0    50   ~ 0
+Text Label 4950 4600 0    50   ~ 0
 ADC1
-Text Label 6500 4850 0    50   ~ 0
+Text Label 4950 4750 0    50   ~ 0
 ADC2
-Text Label 6500 5000 0    50   ~ 0
+Text Label 4950 4900 0    50   ~ 0
 ADC3
-Text Label 6500 5150 0    50   ~ 0
+Text Label 4950 5050 0    50   ~ 0
 ADC4
-Text Label 6500 5300 0    50   ~ 0
+Text Label 4950 5200 0    50   ~ 0
 ADC5
-Text Label 2550 4550 0    50   ~ 0
+Text Label 1000 4450 0    50   ~ 0
 SDA_3.3
-Text Label 2000 1300 2    50   ~ 0
+Text Label 1100 1250 2    50   ~ 0
 SDA_3.3
-Text Label 2000 1400 2    50   ~ 0
+Text Label 1100 1350 2    50   ~ 0
 SCL_3.3
-Text Label 4700 2500 0    50   ~ 0
+Text Label 3800 2450 0    50   ~ 0
 ID_SC_EEPROM
-NoConn ~ 2000 2600
-NoConn ~ 2000 2700
-NoConn ~ 2000 3000
-Text Label 2000 2500 2    50   ~ 0
+NoConn ~ 1100 2550
+NoConn ~ 1100 2650
+NoConn ~ 1100 2950
+Text Label 1100 2450 2    50   ~ 0
 ID_SD_EEPROM
 Wire Wire Line
-	3150 1600 3050 1600
+	2250 1550 2150 1550
 Wire Wire Line
-	3050 1600 3050 2400
-Connection ~ 3050 2400
-NoConn ~ 4700 2300
-NoConn ~ 2000 2100
-NoConn ~ 2000 2200
-NoConn ~ 2000 2300
+	2150 1550 2150 2350
+Connection ~ 2150 2350
+NoConn ~ 3800 2250
+NoConn ~ 1100 2050
+NoConn ~ 1100 2150
+NoConn ~ 1100 2250
 $Sheet
-S 7000 3900 1450 1900
+S 5450 3800 1450 1900
 U 5D9BB3B6
 F0 "Multiplexed ADC" 50
 F1 "MultiplexedADC.sch" 50
-F2 "ADC0" I L 7000 4550 50 
-F3 "ADC1" I L 7000 4700 50 
-F4 "ADC2" I L 7000 4850 50 
-F5 "ADC3" I L 7000 5000 50 
-F6 "ADC4" I L 7000 5150 50 
-F7 "ADC5" I L 7000 5300 50 
-F8 "MUL_A" I L 7000 4050 50 
-F9 "MUL_B" I L 7000 4200 50 
-F10 "MUL_C" I L 7000 4350 50 
-F11 "SDA_5" I L 7000 5500 50 
-F12 "SCL_5" I L 7000 5650 50 
+F2 "ADC0" I L 5450 4450 50 
+F3 "ADC1" I L 5450 4600 50 
+F4 "ADC2" I L 5450 4750 50 
+F5 "ADC3" I L 5450 4900 50 
+F6 "ADC4" I L 5450 5050 50 
+F7 "ADC5" I L 5450 5200 50 
+F8 "MUL_A" I L 5450 3950 50 
+F9 "MUL_B" I L 5450 4100 50 
+F10 "MUL_C" I L 5450 4250 50 
+F11 "SDA_5" I L 5450 5400 50 
+F12 "SCL_5" I L 5450 5550 50 
 $EndSheet
-Text Label 6500 4050 0    50   ~ 0
+Text Label 4950 3950 0    50   ~ 0
 MUL_A
 Wire Wire Line
-	7000 4050 6500 4050
+	5450 3950 4950 3950
 Wire Wire Line
-	6500 4200 7000 4200
+	4950 4100 5450 4100
 Wire Wire Line
-	6500 4350 7000 4350
-Text Label 6500 5500 0    50   ~ 0
+	4950 4250 5450 4250
+Text Label 4950 5400 0    50   ~ 0
 SDA_5
-Text Label 6500 5650 0    50   ~ 0
+Text Label 4950 5550 0    50   ~ 0
 SCL_5
-Text Label 6500 4200 0    50   ~ 0
+Text Label 4950 4100 0    50   ~ 0
 MUL_B
-Text Label 6500 4350 0    50   ~ 0
+Text Label 4950 4250 0    50   ~ 0
 MUL_C
-Text Label 2000 1700 2    50   ~ 0
+Text Label 1100 1650 2    50   ~ 0
 MUL_A
-Text Label 2000 1800 2    50   ~ 0
+Text Label 1100 1750 2    50   ~ 0
 MUL_B
-Text Label 2000 1900 2    50   ~ 0
+Text Label 1100 1850 2    50   ~ 0
 MUL_C
-Text Label 9150 3100 2    50   ~ 0
+Text Label 7900 3150 2    50   ~ 0
 FAN_PWM0
-Text Label 9150 3250 2    50   ~ 0
+Text Label 7900 3300 2    50   ~ 0
 FAN_PWM1
-Text Label 9150 3450 2    50   ~ 0
+Text Label 7900 3500 2    50   ~ 0
 FAN_nSLEEP
-Text Label 4700 2200 0    50   ~ 0
+Text Label 3800 2150 0    50   ~ 0
 FAN_nSLEEP
-Text Label 4700 2700 0    50   ~ 0
+Text Label 3800 2650 0    50   ~ 0
 FAN_PWM0
-Text Label 2000 2800 2    50   ~ 0
+Text Label 1100 2750 2    50   ~ 0
 FAN_PWM1
-Text Label 4700 1700 0    50   ~ 0
+Text Label 3800 1650 0    50   ~ 0
 GPS_PPS
 $Sheet
-S 1000 4400 1000 1050
+S 8400 4950 1000 1050
 U 5DB4C8BA
 F0 "Power Management" 50
 F1 "PowerManagement.sch" 50
 $EndSheet
-Text Label 2550 4700 0    50   ~ 0
+Text Label 1000 4600 0    50   ~ 0
 SCL_3.3
-NoConn ~ 4700 1900
-Text Notes 1150 4250 0    79   ~ 16
+NoConn ~ 3800 1850
+Text Notes 8550 4800 0    79   ~ 16
 Power Mgmt.
-Text Notes 6150 4350 2    79   ~ 16
+Text Notes 4600 4250 2    79   ~ 16
 DAC/Buffer power control\n for Analog Sensors\nAnalog Sensor Ports: A0-A5\n\n
-Text Notes 5650 5150 2    39   ~ 8
+Text Notes 4100 5050 2    39   ~ 8
 A0 - A5: Analog Channels\nBuffers (250 [mA] to A0 - A5)\nDAC     (0 - 5 [V] to Buffers)
 $Sheet
-S 9700 1350 1200 750 
-U 5DAFB35B
-F0 "EEPROM" 59
-F1 "EEPROM.sch" 59
-F2 "ID_SC_EEPROM" I L 9700 1500 59 
-F3 "ID_SD_EEPROM" I L 9700 1700 59 
-$EndSheet
-Text Label 9200 1700 2    50   ~ 0
-ID_SD_EEPROM
-Text Label 9200 1500 2    50   ~ 0
-ID_SC_EEPROM
-Text Notes 10400 1900 2    59   ~ 12
-EEPROM
-Text Notes 10500 2000 2    59   ~ 12
-Mnt. Holes
-$Sheet
-S 9700 2950 1150 1350
+S 8450 3000 1150 1350
 U 5DB33F6F
 F0 "Fan Control" 59
 F1 "FanControl.sch" 59
-F2 "FAN_PWM0" I L 9700 3100 59 
-F3 "FAN_PWM1" I L 9700 3250 59 
-F4 "FAN_nSLEEP" I L 9700 3450 59 
+F2 "FAN_PWM0" I L 8450 3150 59 
+F3 "FAN_PWM1" I L 8450 3300 59 
+F4 "FAN_nSLEEP" I L 8450 3500 59 
 $EndSheet
 Wire Wire Line
-	6000 4550 7000 4550
+	4450 4450 5450 4450
 Wire Wire Line
-	6000 4700 7000 4700
+	4450 4600 5450 4600
 Wire Wire Line
-	6000 4850 7000 4850
+	4450 4750 5450 4750
 Wire Wire Line
-	6000 5000 7000 5000
+	4450 4900 5450 4900
 Wire Wire Line
-	6000 5150 7000 5150
+	4450 5050 5450 5050
 Wire Wire Line
-	6000 5300 7000 5300
+	4450 5200 5450 5200
 $Sheet
-S 2950 4400 1000 1050
+S 1400 4300 1000 1050
 U 5DB861AF
 F0 "I2C" 59
 F1 "I2C.sch" 59
-F2 "SDA_3.3" I L 2950 4550 59 
-F3 "SCL_3.3" I L 2950 4700 59 
-F4 "SDA_5" O R 3950 4550 59 
-F5 "SCL_5" O R 3950 4700 59 
-F6 "GPS_PPS" O L 2950 4900 59 
+F2 "SDA_3.3" I L 1400 4450 59 
+F3 "SCL_3.3" I L 1400 4600 59 
+F4 "SDA_5" O R 2400 4450 59 
+F5 "SCL_5" O R 2400 4600 59 
+F6 "GPS_PPS" O L 1400 4800 59 
 $EndSheet
-Text Label 2500 4900 0    50   ~ 0
+Text Label 950  4800 0    50   ~ 0
 GPS_PPS
-NoConn ~ 4700 2000
+NoConn ~ 3800 1950
 Wire Wire Line
-	2950 4900 2500 4900
-Text Notes 10450 3800 2    50   ~ 10
+	1400 4800 950  4800
+Text Notes 9200 3850 2    50   ~ 10
 Two Fans, \nUnidirectional
-Text Notes 8150 4700 2    50   ~ 10
+Text Notes 6600 4600 2    50   ~ 10
 6:1\nMultiplexed\nADC\n (0 - 5 [V])
-Text Notes 3250 5200 0    50   ~ 0
+Text Notes 1700 5100 0    50   ~ 0
 3.3V to 5V I2C\nI2C Connectors
-Text Notes 8400 3750 2    79   ~ 16
+Text Notes 6850 3650 2    79   ~ 16
 Multiplexed 16-bit ADC
-Text Notes 4000 4200 2    79   ~ 16
+Text Notes 2450 4000 2    79   ~ 16
 I2C Connectors\nand\nI2C Logic Level Conversion
-Text Notes 10900 2800 2    79   ~ 16
+Text Notes 9650 2850 2    79   ~ 16
 Fan 1: PWM controlled\nFan 2: PWM controlled
 Wire Wire Line
-	9200 1500 9700 1500
+	7900 3150 8450 3150
 Wire Wire Line
-	9200 1700 9700 1700
+	8450 3300 7900 3300
 Wire Wire Line
-	9150 3100 9700 3100
+	8450 3500 7900 3500
 Wire Wire Line
-	9700 3250 9150 3250
+	4450 5400 5450 5400
 Wire Wire Line
-	9700 3450 9150 3450
-Text Notes 10850 1200 2    79   ~ 16
-Raspberry Pi HAT\nRequirements:\nEEPROM\n\n
+	4450 5550 5450 5550
 Wire Wire Line
-	6000 5500 7000 5500
+	1000 4450 1400 4450
 Wire Wire Line
-	6000 5650 7000 5650
-Wire Wire Line
-	2550 4550 2950 4550
-Wire Wire Line
-	2550 4700 2950 4700
+	1000 4600 1400 4600
 $Sheet
-S 4550 4400 1450 1400
+S 3000 4300 1450 1400
 U 5DA09389
 F0 "Analog Port Control" 50
 F1 "AnalogPortControl.sch" 50
-F2 "ADC0" O R 6000 4550 50 
-F3 "ADC1" O R 6000 4700 50 
-F4 "ADC2" O R 6000 4850 50 
-F5 "ADC3" O R 6000 5000 50 
-F6 "ADC4" O R 6000 5150 50 
-F7 "ADC5" O R 6000 5300 50 
-F8 "SDA_5" I L 4550 4550 50 
-F9 "SCL_5" I L 4550 4700 50 
-F10 "SDA_5" I R 6000 5500 50 
-F11 "SCL_5" I R 6000 5650 50 
+F2 "ADC0" O R 4450 4450 50 
+F3 "ADC1" O R 4450 4600 50 
+F4 "ADC2" O R 4450 4750 50 
+F5 "ADC3" O R 4450 4900 50 
+F6 "ADC4" O R 4450 5050 50 
+F7 "ADC5" O R 4450 5200 50 
+F8 "SDA_5" I L 3000 4450 50 
+F9 "SCL_5" I L 3000 4600 50 
+F10 "SDA_5" I R 4450 5400 50 
+F11 "SCL_5" I R 4450 5550 50 
 $EndSheet
 Wire Wire Line
-	3950 4550 4550 4550
+	2400 4450 3000 4450
 Wire Wire Line
-	3950 4700 4550 4700
-Text Notes 4500 6200 0    50   ~ 0
+	2400 4600 3000 4600
+Text Notes 2950 6100 0    50   ~ 0
 Software Driver:\nzephyrus-iaq/Software/HAT/IAQ_DAC43608.py\nzephyrus-iaq/Software/HAT/IAQ_AnalogPortController.py
-Text Notes 7000 6250 0    50   ~ 0
+Text Notes 5450 6150 0    50   ~ 0
 Software Driver:\nzephyrus-iaq/Software/HAT/IAQ_Mux.py\nzephyrus-iaq/Software/third_party/Adafruit_I2C.py\nzephyrus-iaq/Software/third_party/Adafruit_ADS1x15.py
-Text Notes 2900 800  0    79   ~ 16
+Text Notes 2000 750  0    79   ~ 16
 Raspberry Pi Header
-$Comp
-L zephyrus_iaq:Mounting-Hole-Mechanical MK4
-U 1 1 5DD01D93
-P 1200 6700
-AR Path="/5DD01D93" Ref="MK4"  Part="1" 
-AR Path="/5DAFB35B/5DD01D93" Ref="MK?"  Part="1" 
-F 0 "MK4" H 1300 6646 50  0001 L CNN
-F 1 "M2.5" H 1300 6555 50  0001 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 1200 6700 50  0001 C CNN
-F 3 "" H 1200 6700 50  0001 C CNN
-	1    1200 6700
-	1    0    0    -1  
-$EndComp
-$Comp
-L zephyrus_iaq:Mounting-Hole-Mechanical MK2
-U 1 1 5DD01D99
-P 1200 6450
-AR Path="/5DD01D99" Ref="MK2"  Part="1" 
-AR Path="/5DAFB35B/5DD01D99" Ref="MK?"  Part="1" 
-F 0 "MK2" H 1300 6396 50  0001 L CNN
-F 1 "M2.5" H 1300 6305 50  0001 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 1200 6450 50  0001 C CNN
-F 3 "" H 1200 6450 50  0001 C CNN
-	1    1200 6450
-	1    0    0    -1  
-$EndComp
-$Comp
-L zephyrus_iaq:Mounting-Hole-Mechanical MK3
-U 1 1 5DD01D9F
-P 1000 6700
-AR Path="/5DD01D9F" Ref="MK3"  Part="1" 
-AR Path="/5DAFB35B/5DD01D9F" Ref="MK?"  Part="1" 
-F 0 "MK3" H 1100 6646 50  0001 L CNN
-F 1 "M2.5" H 1100 6555 50  0001 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 1000 6700 50  0001 C CNN
-F 3 "" H 1000 6700 50  0001 C CNN
-	1    1000 6700
-	1    0    0    -1  
-$EndComp
-$Comp
-L zephyrus_iaq:Mounting-Hole-Mechanical MK1
-U 1 1 5DD01DA5
-P 1000 6450
-AR Path="/5DD01DA5" Ref="MK1"  Part="1" 
-AR Path="/5DAFB35B/5DD01DA5" Ref="MK?"  Part="1" 
-F 0 "MK1" H 1100 6396 50  0001 L CNN
-F 1 "M2.5" H 1100 6305 50  0001 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 1000 6450 50  0001 C CNN
-F 3 "" H 1000 6450 50  0001 C CNN
-	1    1000 6450
-	1    0    0    -1  
-$EndComp
-Text Notes 800  6450 0    50   ~ 10
-Mounting Holes
 Wire Wire Line
-	5950 1900 5950 2000
+	5050 1850 5050 1950
 $Comp
 L zephyrus_iaq:BSS138 U?
 U 1 1 5DE9F97B
-P 6050 2100
+P 5150 2050
 AR Path="/5DB861AF/5DE9F97B" Ref="U?"  Part="1" 
 AR Path="/5DE9F97B" Ref="U3"  Part="1" 
-F 0 "U3" V 6293 2100 50  0000 C CNN
-F 1 "BSS138" V 6384 2100 50  0001 C CNN
-F 2 "zephyrus-iaq:BSS138" H 6500 2800 50  0001 L BNN
-F 3 "TO-236-3 Micross" H 6500 2600 50  0001 L BNN
-F 4 "MICROSS/On Semiconductor" H 6500 2500 50  0001 L BNN "Field4"
-F 5 "Mosfet n-Ch 50v 220ma Die" H 6500 2350 50  0001 L BNN "Field5"
-F 6 "BSS138" H 6500 2700 50  0001 L BNN "Field7"
-	1    6050 2100
+F 0 "U3" V 5393 2050 50  0000 C CNN
+F 1 "BSS138" V 5484 2050 50  0001 C CNN
+F 2 "zephyrus-iaq:BSS138" H 5600 2750 50  0001 L BNN
+F 3 "TO-236-3 Micross" H 5600 2550 50  0001 L BNN
+F 4 "MICROSS/On Semiconductor" H 5600 2450 50  0001 L BNN "Field4"
+F 5 "Mosfet n-Ch 50v 220ma Die" H 5600 2300 50  0001 L BNN "Field5"
+F 6 "BSS138" H 5600 2650 50  0001 L BNN "Field7"
+	1    5150 2050
 	0    1    1    0   
 $EndComp
 $Comp
 L zephyrus_iaq:R_US R?
 U 1 1 5DE9F972
-P 6350 1950
+P 5450 1900
 AR Path="/5DB861AF/5DE9F972" Ref="R?"  Part="1" 
 AR Path="/5DE9F972" Ref="R9"  Part="1" 
-F 0 "R9" H 6450 2000 50  0000 L CNN
-F 1 "3.3k" H 6450 1900 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 6390 1940 50  0001 C CNN
-F 3 "~" H 6350 1950 50  0001 C CNN
-	1    6350 1950
+F 0 "R9" H 5550 1950 50  0000 L CNN
+F 1 "3.3k" H 5550 1850 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 5490 1890 50  0001 C CNN
+F 3 "~" H 5450 1900 50  0001 C CNN
+	1    5450 1900
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5750 2200 5850 2200
+	4850 2150 4950 2150
 Wire Wire Line
-	6250 2200 6350 2200
+	5350 2150 5450 2150
 Wire Wire Line
-	6350 2200 6350 2100
+	5450 2150 5450 2050
 $Comp
 L zephyrus_iaq:+3.3V #PWR?
 U 1 1 5DE9F969
-P 5950 1900
+P 5050 1850
 AR Path="/5DB861AF/5DE9F969" Ref="#PWR?"  Part="1" 
 AR Path="/5DE9F969" Ref="#PWR0109"  Part="1" 
-F 0 "#PWR0109" H 5950 1750 50  0001 C CNN
-F 1 "+3.3V" H 5965 2073 50  0000 C CNN
-F 2 "" H 5950 1900 50  0001 C CNN
-F 3 "" H 5950 1900 50  0001 C CNN
-	1    5950 1900
+F 0 "#PWR0109" H 5050 1700 50  0001 C CNN
+F 1 "+3.3V" H 5065 2023 50  0000 C CNN
+F 2 "" H 5050 1850 50  0001 C CNN
+F 3 "" H 5050 1850 50  0001 C CNN
+	1    5050 1850
 	1    0    0    -1  
 $EndComp
-Text Label 6900 1500 0    50   ~ 0
+Text Label 6000 1450 0    50   ~ 0
 TXD0
-Text Label 6900 1600 0    50   ~ 0
+Text Label 6000 1550 0    50   ~ 0
 RXD0
 $Comp
 L zephyrus_iaq:GND #PWR08
 U 1 1 5D9839C0
-P 7200 1950
-F 0 "#PWR08" H 7200 1700 50  0001 C CNN
-F 1 "GND" H 7200 1750 50  0000 C CNN
-F 2 "" H 7200 1950 50  0001 C CNN
-F 3 "" H 7200 1950 50  0001 C CNN
-	1    7200 1950
+P 6300 1900
+F 0 "#PWR08" H 6300 1650 50  0001 C CNN
+F 1 "GND" H 6300 1700 50  0000 C CNN
+F 2 "" H 6300 1900 50  0001 C CNN
+F 3 "" H 6300 1900 50  0001 C CNN
+	1    6300 1900
 	1    0    0    -1  
 $EndComp
-Text Notes 5950 1150 0    79   ~ 16
+Text Notes 5050 1050 0    79   ~ 16
 5V USART , 3.3V Pi Compatible
 $Comp
 L zephyrus_iaq:SM04B-SRSS-TB(LF)(SN)_USART J2
 U 1 1 5D996B28
-P 7650 1700
-F 0 "J2" H 7800 2150 50  0000 L CNN
-F 1 "USART" H 7650 2050 50  0000 L CNB
-F 2 "zephyrus-iaq:JST_SM04B-SRSS-TB(LF)(SN)" H 7700 1800 50  0001 C CNN
-F 3 "" H 7700 1800 50  0001 C CNN
-	1    7650 1700
+P 6750 1650
+F 0 "J2" H 6900 2100 50  0000 L CNN
+F 1 "USART" H 6750 2000 50  0000 L CNB
+F 2 "zephyrus-iaq:JST_SM04B-SRSS-TB(LF)(SN)" H 6800 1750 50  0001 C CNN
+F 3 "" H 6800 1750 50  0001 C CNN
+	1    6750 1650
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6350 2200 6650 2200
+	5450 2150 5750 2150
 Wire Wire Line
-	6650 2200 6650 1600
-Connection ~ 6350 2200
+	5750 2150 5750 1550
+Connection ~ 5450 2150
 Wire Wire Line
-	6650 1600 7350 1600
+	5750 1550 6450 1550
 Wire Wire Line
-	7350 1700 7200 1700
+	6450 1650 6300 1650
 Wire Wire Line
-	7200 1700 7200 1950
+	6300 1650 6300 1900
 Wire Wire Line
-	6350 1800 7350 1800
+	5450 1750 6450 1750
 $Comp
 L zephyrus_iaq:+5V #PWR?
 U 1 1 5DE9F963
-P 6350 1750
+P 5450 1700
 AR Path="/5DB861AF/5DE9F963" Ref="#PWR?"  Part="1" 
 AR Path="/5DE9F963" Ref="#PWR0110"  Part="1" 
-F 0 "#PWR0110" H 6350 1600 50  0001 C CNN
-F 1 "+5V" H 6350 1900 50  0000 C CNN
-F 2 "" H 6350 1750 50  0001 C CNN
-F 3 "" H 6350 1750 50  0001 C CNN
-	1    6350 1750
+F 0 "#PWR0110" H 5450 1550 50  0001 C CNN
+F 1 "+5V" H 5450 1850 50  0000 C CNN
+F 2 "" H 5450 1700 50  0001 C CNN
+F 3 "" H 5450 1700 50  0001 C CNN
+	1    5450 1700
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6350 1750 6350 1800
-Connection ~ 6350 1800
+	5450 1700 5450 1750
+Connection ~ 5450 1750
 Wire Wire Line
-	5750 1600 5750 2200
+	4850 1550 4850 2150
 Wire Wire Line
-	3650 1600 5750 1600
+	2750 1550 4850 1550
 Wire Wire Line
-	3650 1500 7350 1500
+	2750 1450 6450 1450
+Text Notes 1550 6050 0    50   ~ 10
+Mounting Holes
+$Comp
+L zephyrus_iaq:Mounting-Hole-Mechanical MK1
+U 1 1 5DD01DA5
+P 1600 6300
+AR Path="/5DD01DA5" Ref="MK1"  Part="1" 
+AR Path="/5DAFB35B/5DD01DA5" Ref="MK?"  Part="1" 
+F 0 "MK1" H 1700 6246 50  0001 L CNN
+F 1 "M2.5" H 1700 6155 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 1600 6300 50  0001 C CNN
+F 3 "" H 1600 6300 50  0001 C CNN
+	1    1600 6300
+	1    0    0    -1  
+$EndComp
+$Comp
+L zephyrus_iaq:Mounting-Hole-Mechanical MK3
+U 1 1 5DD01D9F
+P 1600 6800
+AR Path="/5DD01D9F" Ref="MK3"  Part="1" 
+AR Path="/5DAFB35B/5DD01D9F" Ref="MK?"  Part="1" 
+F 0 "MK3" H 1700 6746 50  0001 L CNN
+F 1 "M2.5" H 1700 6655 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 1600 6800 50  0001 C CNN
+F 3 "" H 1600 6800 50  0001 C CNN
+	1    1600 6800
+	1    0    0    -1  
+$EndComp
+$Comp
+L zephyrus_iaq:Mounting-Hole-Mechanical MK2
+U 1 1 5DD01D99
+P 2200 6300
+AR Path="/5DD01D99" Ref="MK2"  Part="1" 
+AR Path="/5DAFB35B/5DD01D99" Ref="MK?"  Part="1" 
+F 0 "MK2" H 2300 6246 50  0001 L CNN
+F 1 "M2.5" H 2300 6155 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 2200 6300 50  0001 C CNN
+F 3 "" H 2200 6300 50  0001 C CNN
+	1    2200 6300
+	1    0    0    -1  
+$EndComp
+$Comp
+L zephyrus_iaq:Mounting-Hole-Mechanical MK4
+U 1 1 5DD01D93
+P 2200 6800
+AR Path="/5DD01D93" Ref="MK4"  Part="1" 
+AR Path="/5DAFB35B/5DD01D93" Ref="MK?"  Part="1" 
+F 0 "MK4" H 2300 6746 50  0001 L CNN
+F 1 "M2.5" H 2300 6655 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 2200 6800 50  0001 C CNN
+F 3 "" H 2200 6800 50  0001 C CNN
+	1    2200 6800
+	1    0    0    -1  
+$EndComp
+Text Notes 9600 1300 2    79   ~ 16
+Raspberry Pi HAT\nRequirements:\nEEPROM\n\n
+Wire Wire Line
+	7950 1800 8450 1800
+Wire Wire Line
+	7950 1600 8450 1600
+Text Notes 9250 2100 2    59   ~ 12
+Mnt. Holes
+Text Notes 9150 2000 2    59   ~ 12
+EEPROM
+Text Label 7950 1600 2    50   ~ 0
+ID_SC_EEPROM
+Text Label 7950 1800 2    50   ~ 0
+ID_SD_EEPROM
+$Sheet
+S 8450 1450 1200 750 
+U 5DAFB35B
+F0 "EEPROM" 59
+F1 "EEPROM.sch" 59
+F2 "ID_SC_EEPROM" I L 8450 1600 59 
+F3 "ID_SD_EEPROM" I L 8450 1800 59 
+$EndSheet
+Text Notes 650  4150 0    50   ~ 0
+SCL/SDA 5V is on the same I2C bus as 3.3V SCL/SDA
+Text Notes 4600 2600 0    50   ~ 0
+Step the TX line from target device \ndown for 3.3V RX on Raspbery line\nSimiliar BSS138 circuit as I2C logic level shifting.
+Text Notes 3800 1300 0    50   ~ 0
+Raspberry Pi 3.3V TX can register HIGH on 5V TTL compatible USART
+$Comp
+L cc-by-sa:LOGO #G?
+U 1 1 5DD3D76A
+P 5350 7600
+AR Path="/5DB861AF/5DD3D76A" Ref="#G?"  Part="1" 
+AR Path="/5DD3D76A" Ref="#G1"  Part="1" 
+F 0 "#G1" H 5350 7337 60  0001 C CNN
+F 1 "LOGO" H 5350 7863 60  0001 C CNN
+F 2 "" H 5350 7600 50  0001 C CNN
+F 3 "" H 5350 7600 50  0001 C CNN
+	1    5350 7600
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

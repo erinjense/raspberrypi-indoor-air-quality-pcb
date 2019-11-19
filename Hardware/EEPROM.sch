@@ -1,9 +1,10 @@
 EESchema Schematic File Version 4
+LIBS:Zephyrus-IAQ-HAT-cache
 EELAYER 30 0
 EELAYER END
-$Descr A4 11693 8268
+$Descr USLetter 11000 8500
 encoding utf-8
-Sheet 4 7
+Sheet 7 7
 Title "Raspberry Pi HAT Specifications"
 Date "2019-11-15"
 Rev "A"
@@ -242,4 +243,17 @@ Connection ~ 4800 4050
 Wire Wire Line
 	7000 3450 7150 3450
 Connection ~ 7000 3450
+$Comp
+L cc-by-sa:LOGO #G?
+U 1 1 5DD4FDD6
+P 5350 7550
+AR Path="/5DB861AF/5DD4FDD6" Ref="#G?"  Part="1" 
+AR Path="/5DAFB35B/5DD4FDD6" Ref="#G7"  Part="1" 
+F 0 "#G7" H 5350 7287 60  0001 C CNN
+F 1 "LOGO" H 5350 7813 60  0001 C CNN
+F 2 "" H 5350 7550 50  0001 C CNN
+F 3 "" H 5350 7550 50  0001 C CNN
+	1    5350 7550
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

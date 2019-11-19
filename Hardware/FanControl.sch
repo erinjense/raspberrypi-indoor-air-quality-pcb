@@ -1,9 +1,10 @@
 EESchema Schematic File Version 4
+LIBS:Zephyrus-IAQ-HAT-cache
 EELAYER 30 0
 EELAYER END
-$Descr A4 11693 8268
+$Descr USLetter 11000 8500
 encoding utf-8
-Sheet 5 7
+Sheet 4 7
 Title "Motor Driver for Fans"
 Date "2019-11-15"
 Rev "A"
@@ -135,37 +136,37 @@ F 3 "" H 4500 4500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7900 3300 7900 3250
+	7550 3300 7550 3250
 Wire Wire Line
-	7900 3600 7900 3650
+	7550 3600 7550 3650
 $Comp
 L zephyrus_iaq:C C?
 U 1 1 5DB4CD50
-P 7900 3450
+P 7550 3450
 AR Path="/5DB4CD50" Ref="C?"  Part="1" 
 AR Path="/5D9BB3B6/5DB4CD50" Ref="C?"  Part="1" 
 AR Path="/5DA09389/5DB4CD50" Ref="C?"  Part="1" 
 AR Path="/5DB33F6F/5DB4CD50" Ref="C4"  Part="1" 
-F 0 "C4" H 7650 3550 50  0000 L CNN
-F 1 "100nF" H 7550 3450 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 7938 3300 50  0001 C CNN
-F 3 "~" H 7900 3450 50  0001 C CNN
-	1    7900 3450
+F 0 "C4" H 7300 3550 50  0000 L CNN
+F 1 "100nF" H 7200 3450 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 7588 3300 50  0001 C CNN
+F 3 "~" H 7550 3450 50  0001 C CNN
+	1    7550 3450
 	-1   0    0    -1  
 $EndComp
 $Comp
 L zephyrus_iaq:GND #PWR?
 U 1 1 5DB4CD56
-P 7900 3650
+P 7550 3650
 AR Path="/5DB4CD56" Ref="#PWR?"  Part="1" 
 AR Path="/5D9BB3B6/5DB4CD56" Ref="#PWR?"  Part="1" 
 AR Path="/5DA09389/5DB4CD56" Ref="#PWR?"  Part="1" 
 AR Path="/5DB33F6F/5DB4CD56" Ref="#PWR0124"  Part="1" 
-F 0 "#PWR0124" H 7900 3400 50  0001 C CNN
-F 1 "GND" H 7900 3500 50  0000 C CNN
-F 2 "" H 7900 3650 50  0001 C CNN
-F 3 "" H 7900 3650 50  0001 C CNN
-	1    7900 3650
+F 0 "#PWR0124" H 7550 3400 50  0001 C CNN
+F 1 "GND" H 7550 3500 50  0000 C CNN
+F 2 "" H 7550 3650 50  0001 C CNN
+F 3 "" H 7550 3650 50  0001 C CNN
+	1    7550 3650
 	-1   0    0    -1  
 $EndComp
 $Comp
@@ -184,20 +185,16 @@ $EndComp
 $Comp
 L zephyrus_iaq:+3.3V #PWR?
 U 1 1 5DB4CD6A
-P 7900 3250
+P 7550 3250
 AR Path="/5DB4CD6A" Ref="#PWR?"  Part="1" 
 AR Path="/5DB33F6F/5DB4CD6A" Ref="#PWR0126"  Part="1" 
-F 0 "#PWR0126" H 7900 3100 50  0001 C CNN
-F 1 "+3.3V" H 8050 3350 50  0000 C CNN
-F 2 "" H 7900 3250 50  0000 C CNN
-F 3 "" H 7900 3250 50  0000 C CNN
-	1    7900 3250
+F 0 "#PWR0126" H 7550 3100 50  0001 C CNN
+F 1 "+3.3V" H 7700 3350 50  0000 C CNN
+F 2 "" H 7550 3250 50  0000 C CNN
+F 3 "" H 7550 3250 50  0000 C CNN
+	1    7550 3250
 	-1   0    0    -1  
 $EndComp
-Text Label 4650 3500 0    50   ~ 0
-FAN_OUT1
-Text Label 6700 3300 2    50   ~ 0
-FAN_VCC
 Wire Wire Line
 	6250 3500 6700 3500
 Wire Wire Line
@@ -324,9 +321,6 @@ Wire Wire Line
 	4100 3500 4100 4200
 Connection ~ 4100 3500
 Wire Wire Line
-	6250 3300 7900 3300
-Connection ~ 7900 3300
-Wire Wire Line
 	4500 3150 4500 3300
 Wire Wire Line
 	4500 3300 5050 3300
@@ -337,6 +331,20 @@ Wire Wire Line
 	5650 4100 5650 4300
 Text Notes 3000 2950 0    50   ~ 0
 Fan 2-Pin Connectors\n(Unidirectional Control)
-Text Label 4650 3700 0    50   ~ 0
-FAN_OUT2
+Wire Wire Line
+	6250 3300 7550 3300
+Connection ~ 7550 3300
+$Comp
+L cc-by-sa:LOGO #G?
+U 1 1 5DD4EE40
+P 5350 7550
+AR Path="/5DB861AF/5DD4EE40" Ref="#G?"  Part="1" 
+AR Path="/5DB33F6F/5DD4EE40" Ref="#G4"  Part="1" 
+F 0 "#G4" H 5350 7287 60  0001 C CNN
+F 1 "LOGO" H 5350 7813 60  0001 C CNN
+F 2 "" H 5350 7550 50  0001 C CNN
+F 3 "" H 5350 7550 50  0001 C CNN
+	1    5350 7550
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

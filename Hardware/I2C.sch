@@ -1,9 +1,10 @@
 EESchema Schematic File Version 4
+LIBS:Zephyrus-IAQ-HAT-cache
 EELAYER 30 0
 EELAYER END
-$Descr A4 11693 8268
+$Descr USLetter 11000 8500
 encoding utf-8
-Sheet 6 7
+Sheet 5 7
 Title "I2C Connectors and Logic Level Conversion"
 Date "2019-11-15"
 Rev "A"
@@ -230,14 +231,12 @@ F 6 "BSS138" H 7250 4000 50  0001 L BNN "Field7"
 $EndComp
 Wire Wire Line
 	6700 3200 6700 3300
-Text Notes 3900 4900 0    50   ~ 0
-SDA_3.3 has a 1.8k fixed pull up\ninternal to the Raspberry Pi
 Wire Wire Line
 	6700 4050 6700 4150
 Text Notes 4600 2000 0    118  ~ 24
 3.3V and 5V I2C Connectors
-Text Notes 6050 5000 0    50   ~ 0
-The Bi-Directional logic level shift using the BSS138\nwas inspired by reading Sparkfun's schematic\nhttps://cdn.sparkfun.com/datasheets/BreakoutBoards/Logic_Level_Bidirectional.pdf
+Text Notes 6300 5550 0    50   ~ 0
+The Bi-Directional logic level shift using the BSS138\nwas inspired by reading Sparkfun's schematic\nhttps://cdn.sparkfun.com/datasheets/BreakoutBoards/Logic_Level_Bidirectional.pdf\n\nLicense:\nhttps://creativecommons.org/licenses/by-sa/3.0/us/\n\nChanges:\nThere is no Pull-Up on the Source, because of the\ninterl Raspberry Pi 1.8k Pull-Ups
 Connection ~ 7100 3050
 Wire Wire Line
 	7100 3050 7100 3100
@@ -341,4 +340,15 @@ Wire Wire Line
 	7850 3900 8100 3900
 Wire Wire Line
 	7100 3500 7850 3500
+$Comp
+L cc-by-sa:LOGO #G5
+U 1 1 5DD3A469
+P 5350 7550
+F 0 "#G5" H 5350 7287 60  0001 C CNN
+F 1 "LOGO" H 5350 7813 60  0001 C CNN
+F 2 "" H 5350 7550 50  0001 C CNN
+F 3 "" H 5350 7550 50  0001 C CNN
+	1    5350 7550
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

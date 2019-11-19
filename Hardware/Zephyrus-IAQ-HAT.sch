@@ -403,8 +403,6 @@ Text Notes 5450 6150 0    50   ~ 0
 Software Driver:\nzephyrus-iaq/Software/HAT/IAQ_Mux.py\nzephyrus-iaq/Software/third_party/Adafruit_I2C.py\nzephyrus-iaq/Software/third_party/Adafruit_ADS1x15.py
 Text Notes 2000 750  0    79   ~ 16
 Raspberry Pi Header
-Wire Wire Line
-	5050 1850 5050 1950
 $Comp
 L zephyrus_iaq:BSS138 U?
 U 1 1 5DE9F97B
@@ -424,33 +422,27 @@ $EndComp
 $Comp
 L zephyrus_iaq:R_US R?
 U 1 1 5DE9F972
-P 5450 1900
+P 5450 1950
 AR Path="/5DB861AF/5DE9F972" Ref="R?"  Part="1" 
 AR Path="/5DE9F972" Ref="R9"  Part="1" 
-F 0 "R9" H 5550 1950 50  0000 L CNN
-F 1 "3.3k" H 5550 1850 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 5490 1890 50  0001 C CNN
-F 3 "~" H 5450 1900 50  0001 C CNN
-	1    5450 1900
+F 0 "R9" H 5550 2000 50  0000 L CNN
+F 1 "10k" H 5550 1900 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 5490 1940 50  0001 C CNN
+F 3 "~" H 5450 1950 50  0001 C CNN
+	1    5450 1950
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4850 2150 4950 2150
-Wire Wire Line
-	5350 2150 5450 2150
-Wire Wire Line
-	5450 2150 5450 2050
 $Comp
 L zephyrus_iaq:+3.3V #PWR?
 U 1 1 5DE9F969
-P 5050 1850
+P 5050 1700
 AR Path="/5DB861AF/5DE9F969" Ref="#PWR?"  Part="1" 
 AR Path="/5DE9F969" Ref="#PWR0109"  Part="1" 
-F 0 "#PWR0109" H 5050 1700 50  0001 C CNN
-F 1 "+3.3V" H 5065 2023 50  0000 C CNN
-F 2 "" H 5050 1850 50  0001 C CNN
-F 3 "" H 5050 1850 50  0001 C CNN
-	1    5050 1850
+F 0 "#PWR0109" H 5050 1550 50  0001 C CNN
+F 1 "+3.3V" H 5050 1850 50  0000 C CNN
+F 2 "" H 5050 1700 50  0001 C CNN
+F 3 "" H 5050 1700 50  0001 C CNN
+	1    5050 1700
 	1    0    0    -1  
 $EndComp
 Text Label 6000 1450 0    50   ~ 0
@@ -482,10 +474,7 @@ F 3 "" H 6800 1750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5450 2150 5750 2150
-Wire Wire Line
 	5750 2150 5750 1550
-Connection ~ 5450 2150
 Wire Wire Line
 	5750 1550 6450 1550
 Wire Wire Line
@@ -509,11 +498,6 @@ F 3 "" H 5450 1700 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	5450 1700 5450 1750
-Connection ~ 5450 1750
-Wire Wire Line
-	4850 1550 4850 2150
-Wire Wire Line
-	2750 1550 4850 1550
 Wire Wire Line
 	2750 1450 6450 1450
 Text Notes 1550 6050 0    50   ~ 10
@@ -611,4 +595,47 @@ F 3 "" H 5350 7600 50  0001 C CNN
 	1    5350 7600
 	1    0    0    -1  
 $EndComp
+$Comp
+L zephyrus_iaq:R_US R?
+U 1 1 5DD3B4E5
+P 4700 1950
+AR Path="/5DB861AF/5DD3B4E5" Ref="R?"  Part="1" 
+AR Path="/5DD3B4E5" Ref="R20"  Part="1" 
+F 0 "R20" H 4800 2000 50  0000 L CNN
+F 1 "10k" H 4800 1900 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 4740 1940 50  0001 C CNN
+F 3 "~" H 4700 1950 50  0001 C CNN
+	1    4700 1950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2750 1550 4550 1550
+Wire Wire Line
+	4550 2150 4550 1550
+Wire Wire Line
+	5050 1700 5050 1750
+Wire Wire Line
+	4700 1750 5050 1750
+Connection ~ 5050 1750
+Wire Wire Line
+	5050 1750 5050 1950
+Wire Wire Line
+	4550 2150 4700 2150
+Wire Wire Line
+	5350 2150 5450 2150
+Wire Wire Line
+	4700 2100 4700 2150
+Connection ~ 4700 2150
+Wire Wire Line
+	4700 2150 4950 2150
+Wire Wire Line
+	4700 1800 4700 1750
+Wire Wire Line
+	5450 1800 5450 1750
+Connection ~ 5450 1750
+Wire Wire Line
+	5450 2100 5450 2150
+Connection ~ 5450 2150
+Wire Wire Line
+	5450 2150 5750 2150
 $EndSCHEMATC

@@ -500,60 +500,6 @@ Wire Wire Line
 	5450 1700 5450 1750
 Wire Wire Line
 	2750 1450 6450 1450
-Text Notes 1550 6050 0    50   ~ 10
-Mounting Holes
-$Comp
-L zephyrus_iaq:Mounting-Hole-Mechanical MK1
-U 1 1 5DD01DA5
-P 1600 6300
-AR Path="/5DD01DA5" Ref="MK1"  Part="1" 
-AR Path="/5DAFB35B/5DD01DA5" Ref="MK?"  Part="1" 
-F 0 "MK1" H 1700 6246 50  0001 L CNN
-F 1 "M2.5" H 1700 6155 50  0001 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 1600 6300 50  0001 C CNN
-F 3 "" H 1600 6300 50  0001 C CNN
-	1    1600 6300
-	1    0    0    -1  
-$EndComp
-$Comp
-L zephyrus_iaq:Mounting-Hole-Mechanical MK3
-U 1 1 5DD01D9F
-P 1600 6800
-AR Path="/5DD01D9F" Ref="MK3"  Part="1" 
-AR Path="/5DAFB35B/5DD01D9F" Ref="MK?"  Part="1" 
-F 0 "MK3" H 1700 6746 50  0001 L CNN
-F 1 "M2.5" H 1700 6655 50  0001 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 1600 6800 50  0001 C CNN
-F 3 "" H 1600 6800 50  0001 C CNN
-	1    1600 6800
-	1    0    0    -1  
-$EndComp
-$Comp
-L zephyrus_iaq:Mounting-Hole-Mechanical MK2
-U 1 1 5DD01D99
-P 2200 6300
-AR Path="/5DD01D99" Ref="MK2"  Part="1" 
-AR Path="/5DAFB35B/5DD01D99" Ref="MK?"  Part="1" 
-F 0 "MK2" H 2300 6246 50  0001 L CNN
-F 1 "M2.5" H 2300 6155 50  0001 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 2200 6300 50  0001 C CNN
-F 3 "" H 2200 6300 50  0001 C CNN
-	1    2200 6300
-	1    0    0    -1  
-$EndComp
-$Comp
-L zephyrus_iaq:Mounting-Hole-Mechanical MK4
-U 1 1 5DD01D93
-P 2200 6800
-AR Path="/5DD01D93" Ref="MK4"  Part="1" 
-AR Path="/5DAFB35B/5DD01D93" Ref="MK?"  Part="1" 
-F 0 "MK4" H 2300 6746 50  0001 L CNN
-F 1 "M2.5" H 2300 6655 50  0001 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 2200 6800 50  0001 C CNN
-F 3 "" H 2200 6800 50  0001 C CNN
-	1    2200 6800
-	1    0    0    -1  
-$EndComp
 Text Notes 9600 1300 2    79   ~ 16
 Raspberry Pi HAT\nRequirements:\nEEPROM\n\n
 Wire Wire Line

@@ -50,7 +50,6 @@ class Logger:
         try:
             status = self._initFromDb(self.setup_path)
         except SetupFileError:
-            self._printBanner("Setup FAILURE")
             raise LoggerSetupError('LoggerSetupError: Could not get sensor configuration.')
         # Init: AnalogPortController
         self.analogPorts = AnalogPortController(self.sensorConfigDict) 
@@ -58,7 +57,6 @@ class Logger:
         self._initSensors()
         # Init: GUI
         self.gui = GUI(self.sensorConfigDict)
-        self._printBanner("Setup SUCCESS")
  
     #################################################################
     # External API
@@ -74,8 +72,12 @@ class Logger:
                 date = str(datetime.datetime.now().date())
                 time = str(datetime.datetime.now().time())
                 loc  = 0
-                temp     = self.sensorsDict["BME680"].getTemperature()
-                humidity = self.sensorsDict["BME680"].getHumidity()
+                temp     = None
+                humidity = None
+                try:
+                    temp     = self.sensorsDict["BME680"].getTemperature()
+                    humidity = self.sensorsDict["BME680"].getHumidity()
+                except KeyError: pass
                 # Get sensor data
                 data = sensor.getData()
                 # Create list in order of database storage
@@ -85,10 +87,10 @@ class Logger:
                 data = self.csv.writeSensorData(dataList,sensor.sid)
                 self.gui.displayData(sensor.port, data)
             except SensorReadError:
-                self.printSystem("Could not read sensor: "+name)
+                print("Could not read sensor: "+name)
                 continue
             except SensorSetupError:
-                self.printSystem("Could not setup sensor: "+name)
+                print("Could not setup sensor: "+name)
                 continue
 
     def updateGui(self):
@@ -101,14 +103,6 @@ class Logger:
         self.gui.update()
         self.gui.update_idletasks()
 
-    def printSystem(self,msg,sensorId=None):
-        try:
-            self.gui.startpage_output(msg)
-            return True
-        except AttributeError:
-            print("Fatal Error: GUI failed to load.")
-            return False
-
     #################################################################
     # Internal Functions
     #################################################################
@@ -119,18 +113,11 @@ class Logger:
     def _initSensors(self):
         for name,config in self.sensorConfigDict.items():
             config = dict(config)
-            try:
-                sensor = Sensor(config, self.analogPorts)
-            except SensorIsOff:
-                continue
+            try: sensor = Sensor(config, self.analogPorts)
+            except SensorIsOff: continue
+            except IOError:     continue
             self.sensorsDict[name] = sensor
 
-    def _printBanner(self,midText=None):
-        hashes = "##################################################\n"
-        spaces = (len(hashes) + len(midText))/2
-        midText = midText.rjust(spaces) + "\n"
-        banner = hashes + midText + hashes
-        self.printSystem(banner)
 ################################################################################
 # Main Loop
 ################################################################################

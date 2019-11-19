@@ -13,7 +13,10 @@ class IAQ_bme680():
         if (sensor_id == None):
             pass
         self.sid = sensor_id
-        sensor = bme680.BME680(bme680.I2C_ADDR_SECONDARY)
+        try:
+            sensor = bme680.BME680(bme680.I2C_ADDR_SECONDARY)
+        except IOError('Could not setup bme680 I2C'):
+            raise SensorSetupError('Returning from bme680')
         sensor.set_humidity_oversample(bme680.OS_2X)
         sensor.set_pressure_oversample(bme680.OS_4X)
         sensor.set_temperature_oversample(bme680.OS_8X)

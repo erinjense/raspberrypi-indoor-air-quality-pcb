@@ -285,16 +285,10 @@ Text Label 1100 1750 2    50   ~ 0
 MUL_B
 Text Label 1100 1850 2    50   ~ 0
 MUL_C
-Text Label 7900 3150 2    50   ~ 0
-FAN_PWM0
-Text Label 7900 3300 2    50   ~ 0
-FAN_PWM1
-Text Label 7900 3500 2    50   ~ 0
+Text Label 7900 3350 2    50   ~ 0
 FAN_nSLEEP
 Text Label 3800 2150 0    50   ~ 0
 FAN_nSLEEP
-Text Label 3800 2650 0    50   ~ 0
-FAN_PWM0
 Text Label 1100 2750 2    50   ~ 0
 FAN_PWM1
 Text Label 3800 1650 0    50   ~ 0
@@ -319,9 +313,8 @@ S 8450 3000 1150 1350
 U 5DB33F6F
 F0 "Fan Control" 59
 F1 "FanControl.sch" 59
-F2 "FAN_PWM0" I L 8450 3150 59 
-F3 "FAN_PWM1" I L 8450 3300 59 
-F4 "FAN_nSLEEP" I L 8450 3500 59 
+F2 "FAN_PWM1" I L 8450 3150 59 
+F3 "FAN_nSLEEP" I L 8450 3350 59 
 $EndSheet
 Wire Wire Line
 	4450 4450 5450 4450
@@ -351,8 +344,8 @@ GPS_PPS
 NoConn ~ 3800 1950
 Wire Wire Line
 	1400 4800 950  4800
-Text Notes 9200 3850 2    50   ~ 10
-Two Fans, \nUnidirectional
+Text Notes 9350 3600 2    50   ~ 10
+Unidirectional Fan\n
 Text Notes 6600 4600 2    50   ~ 10
 6:1\nMultiplexed\nADC\n (0 - 5 [V])
 Text Notes 1700 5100 0    50   ~ 0
@@ -361,14 +354,10 @@ Text Notes 6850 3650 2    79   ~ 16
 Multiplexed 16-bit ADC
 Text Notes 2450 4000 2    79   ~ 16
 I2C Connectors\nand\nI2C Logic Level Conversion
-Text Notes 9650 2850 2    79   ~ 16
-Fan 1: PWM controlled\nFan 2: PWM controlled
 Wire Wire Line
 	7900 3150 8450 3150
 Wire Wire Line
-	8450 3300 7900 3300
-Wire Wire Line
-	8450 3500 7900 3500
+	8450 3350 7900 3350
 Wire Wire Line
 	4450 5400 5450 5400
 Wire Wire Line
@@ -584,4 +573,9 @@ Wire Wire Line
 Connection ~ 5450 2150
 Wire Wire Line
 	5450 2150 5750 2150
+Text Notes 9650 2850 2    79   ~ 16
+ PWM controlled Fan\n
+Text Label 7900 3150 2    50   ~ 0
+FAN_PWM1
+NoConn ~ 3800 2650
 $EndSCHEMATC

@@ -6,7 +6,10 @@ from IAQ_MqGas import MqGas
 from IAQ_BME680 import IAQ_bme680
 
 class SensorInfo:
-    DEFAULT_DB=".sqlite/default.db"
+    FAILSAFE_FOLDER = "failsafe/"
+    FAILSAFE_DB     = FAILSAFE_FOLDER + "failsafe.db"
+    DEFAULT_FOLDER  = "/media/zephyrus-iaq-usb/zephyrus-iaq/"
+    DEFAULT_DB      = DEFAULT_FOLDER + "default.db"
     ##########################################################################################################
     # Default Sensor Setup Info.
     ##########################################################################################################
@@ -31,9 +34,7 @@ class SensorInfo:
                     'Carbon Monoxide',
                     'Ozone',
                     'Air Quality',
-                    'Temperature, Humidity, Pressure',
-                    'CO2',
-                    'Particulate']
+                    'Temperature, Humidity, Pressure']
 
     DATA_KEYS = MQ_DATA_KEYS + ['CO2','Particulate']
  

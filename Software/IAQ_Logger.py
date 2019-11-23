@@ -4,6 +4,7 @@ from GUI.IAQ_GUI import GUI
 from Sensors.IAQ_Sensor import SensorIdEnum
 from Sensors.IAQ_MqGas import MqGas
 from Sensors.IAQ_Sensor import Sensor
+from Sensors.IAQ_Sensor import SensorInfo
 from IAQ_FileHandler import FileHandler
 from IAQ_Exceptions import *
 import time
@@ -36,7 +37,8 @@ class Logger:
     #############################
     # Logger Setup Specifications
     #############################
-    setup_path  = None   # This is assigned to DEFAULT_PATH if user does not specify
+    dbFolder = None
+    dbPath   = None
     logger_id   = None
     logger_type = None
     softwareVersion = None  
@@ -47,17 +49,29 @@ class Logger:
     def __init__(self):
         # Init: FileHandler
         self.csv = FileHandler()
+        # Mount USB
+        self.dbFolder = SensorInfo.DEFAULT_FOLDER
+        self.dbPath   = SensorInfo.DEFAULT_DB
+        try: self.csv.mountUSB()
+        except UsbIsMounted:   pass
+        except UsbNotAttached:
+            # The logger needs a database to run
+            # If the USB is not attached then create a failsafe DB
+            self.dbFolder = SensorInfo.FAILSAFE_FOLDER
+            self.dbPath   = SensorInfo.FAILSAFE_DB
+        # Create Database if it doesn't exist
         try:
-            status = self._initFromDb(self.setup_path)
+            status = self._initFromDb(self.dbPath, self.dbFolder)
         except SetupFileError:
             raise LoggerSetupError('LoggerSetupError: Could not get sensor configuration.')
+        except SqlitePathErr: pass
         # Init: AnalogPortController
         self.analogPorts = AnalogPortController(self.sensorConfigDict) 
         # Init: Sensors
         self._initSensors()
         # Init: GUI
         self.gui = GUI(self.sensorConfigDict)
- 
+
     #################################################################
     # External API
     #################################################################
@@ -84,7 +98,7 @@ class Logger:
                 for item in (date,time,loc,temp,humidity,data):
                     dataList.append(item)
                 # Write to database
-                data = self.csv.writeSensorData(dataList,sensor.sid)
+                data = self.csv.writeSensorData(dataList,sensor.sid,self.dbPath)
                 self.gui.displayData(sensor.port, data)
             except SensorReadError:
                 print("Could not read sensor: "+name)
@@ -106,9 +120,14 @@ class Logger:
     #################################################################
     # Internal Functions
     #################################################################
-    def _initFromDb(self,filepath=None):
-        self.csv.createDefaultDatabase()
-        self.sensorConfigDict = self.csv.getSensorConfig()
+    def _initFromDb(self, dbPath=None, folder=None):
+        try: self.csv.createDatabase(dbPath)
+        except SqlitePathErr:
+            try: self.csv.createStorageFolder(folder)
+            except OSError:
+                raise SqlitePathErr('Cannot create folder. Folder location not available.')
+            self.csv.createDatabase(dbPath)
+        self.sensorConfigDict = self.csv.getSensorConfig(dbPath)
 
     def _initSensors(self):
         for name,config in self.sensorConfigDict.items():

@@ -22,3 +22,11 @@ class SensorIsOff(Error):
     pass
 class InvalidArguement(Error):
     pass
+class UsbIsMounted(Error):
+    pass
+class UsbNotMounted(Error):
+    pass
+class UsbNotAttached(Error):
+    pass
+class SqlitePathErr(Error):
+    pass

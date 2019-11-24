@@ -18,6 +18,8 @@ class GUI(tk.Tk):
     FramesList   = SensorFrames
 
     _sensor_update_flag = False
+    _logger_status_flag = False
+    _usb_status_flag    = False
     sensorList = None
     portStatus = {}
     container = None
@@ -94,6 +96,33 @@ class GUI(tk.Tk):
         frame = self.frames[page_name]
         frame.tkraise()
 
+    
+    def update_btn(self,startpage):
+        state = startpage.btn_txt.get()
+        if state == "Turn Data Logging On":
+            startpage.btn_txt.set("Turn Data Logging Off")
+            self._logger_status_flag = True
+            
+        elif state == "Turn Data Logging Off":
+            startpage.btn_txt.set("Turn Data Logging On")
+            self._logger_status_flag = False
+        else:
+            pass
+    def update_usb(self,startpage):
+        state = startpage.usb_txt.get()
+        if state == "Mount USB":
+            startpage.usb_txt.set("Eject USB")
+            self._usb_status_flag = True
+            
+        elif state == "Eject USB":
+            startpage.usb_txt.set("Mount USB")
+            self._usb_status_flag = False
+        else:
+            pass
+        
+        
+        
+
     #################################################################################
     # Internal API: Database, User Input and GUI Synchronization
     #################################################################################
@@ -118,6 +147,12 @@ class GUI(tk.Tk):
         frame = self.frames["SensorSetupView"]
         frame.update_SensorSetupView()
 
+    def u_LoggerStatus(self):
+        return self._logger_status_flag
+
+    def u_USBStatus(self):
+        return self._usb_status_flag
+
     def update_All(self,configDict):
         self._sensor_update_flag = True
         self.u_StartPage_SensorView_Button(configDict)
@@ -131,6 +166,8 @@ class StartPage(tk.Frame):
     buttons = {}
     btn_names = {}
     MAX_SENSORS = 6
+    btn_txt = None
+    usb_txt = None
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -155,6 +192,24 @@ class StartPage(tk.Frame):
         timeLabel.configure(bg=self.ctrl.TOP_SCRN_CLR)
         timeLabel.grid(row=0,column=1)
 
+    #################################################################################
+    # Start/Stop Data Recording
+    #################################################################################
+        self.btn_txt = tk.StringVar()
+        self.btn_txt.set("Turn Data Logging On")
+        StSp = tk.Button(self, textvariable=self.btn_txt,height=5,width=15,command=lambda : self.ctrl.update_btn(self))
+        StSp.configure(bg=self.ctrl.TOP_SCRN_CLR)
+        StSp.grid(row=9,column=0)
+
+    #################################################################################
+    # Mount/Eject USB
+    #################################################################################
+        self.usb_txt = tk.StringVar()
+        self.usb_txt.set("Mount USB")
+        usb = tk.Button(self, textvariable=self.usb_txt,height=5,width=15,command=lambda : self.ctrl.update_usb(self))
+        usb.configure(bg=self.ctrl.TOP_SCRN_CLR)
+        usb.grid(row=9,column=1)
+       
     #################################################################################
     # Temperature (BME680)
     #################################################################################

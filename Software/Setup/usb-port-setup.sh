@@ -37,10 +37,10 @@ FSTAB_EXISTS=0
 #   Using the specific USB port allows mounting any USB drive on that port
 #   ...even if it's dynamically mapped to /dev/sda1, /dev/sdb1, etc.
 ##########################################################################
-TOPLEFT_USB_PORT="/dev/disk/by-path/platform-3f980000.usb-usb-0:1.2:1.0-scsi-0:0:0:0-part1"
-TOPRIGHT_USB_PORT="/dev/disk/by-path/platform-3f980000.usb-usb-0:1.4:1.0-scsi-0:0:0:0-part1"
-BOTTOMLEFT_USB_PORT="/dev/disk/by-path/platform-3f980000.usb-usb-0:1.3:1.0-scsi-0:0:0:0-part1"
-BOTTOMRIGHT_USB_PORT="/dev/disk/by-path/platform-3f980000.usb-usb-0:1.5:1.0-scsi-0:0:0:0-part1"
+TOPLEFT_USB_PORT="/dev/disk/by-path/platform-3f980000.usb-usb-0:1.1.2:1.0-scsi-0:0:0:0-part1"
+TOPRIGHT_USB_PORT="/dev/disk/by-path/platform-3f980000.usb-usb-0:1.3:1.0-scsi-0:0:0:0-part1"
+BOTTOMLEFT_USB_PORT="/dev/disk/by-path/platform-3f980000.usb-usb-0:1.1.3:1.0-scsi-0:0:0:0-part1"
+BOTTOMRIGHT_USB_PORT="/dev/disk/by-path/platform-3f980000.usb-usb-0:1.2:1.0-scsi-0:0:0:0-part1"
 ##########################################################################
 
 check_path()

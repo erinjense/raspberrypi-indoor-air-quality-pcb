@@ -15,57 +15,19 @@ class FileHandler:
     ERR_NOT_MOUNTED=256
     ERR_IS_MOUNTED=8192
 
-    def newCsv(self,filename=None,setup_info=None,setup_header=None,headers=None):
-        # Append the Setup Header and it's corresponding info. underneath
-        # Append Sensor Header last. File is now ready for sensor data.
+    def newCsv(self,filename=None,header=None):
         with open(filename,'a') as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow(setup_header)   # Setup Info. Header
-            writer.writerow(setup_info)
-            writer.writerow(headers)   # Sensor Header
+            writer.writerow(header)
 
-    # Input:  Path to CSV file
-    # Output: Dictionary based on items in CSV
-    # The first column is the key, the rest are items. Items can be lists.
-    def csvToDict(self,path):
-        d = []
-        if isinstance(path,list):
-            for p in path:
-                with open(p,'rb') as f:
-                    reader = csv.reader(f,delimiter=',')
-                    d.append({rows[0]:rows[1:] for rows in reader})
-        else:
-            with open(path,'rb') as f:
-                reader = csv.reader(f,delimiter=',')
-                d = {rows[0]:rows[1:] for rows in reader}
-        return d
 
-    def getDataDict(self,header=None):
-        return dict.fromkeys(header,None)
+    def writeDataToCSV(self,data,filename=None):
+        if (self._fileExists(filename) == False):
+            raise CsvPathErr('CSV file path does not exist.')
 
-    def mountUSB(self, mountPath = None):
-        if mountPath == None: mountPath = self.DEFAULT_USB_MNT
-        out = os.system("mount " + mountPath)
-        if out == self.ERR_NOT_MOUNTED:
-            raise UsbNotAttached('mountUSB: USB is not attached to port.')
-        elif out == self.ERR_IS_MOUNTED:
-            raise UsbIsMounted('mountUSB: USB is already mounted.')
-
-    def umountUSB(self, mountPath = None):
-        if mountPath == None: mountPath = self.DEFAULT_USB_MNT
-        out = os.system("umount " + mountPath)
-        if out == self.ERR_NOT_MOUNTED:
-            raise UsbNotMounted('umountUSB: USB is not mounted.')
- 
-    def writeData(self,data=None,filename=None):
-        sd = set(data.keys())
-        sh = set(self.header)
-        b = sd.difference(sh)
-
-        if len(b) == 0:
-            with open(filename,'a') as csvfile:
-                writer = csv.writer(csvfile)
-                writer.writerow(list(reversed(data.values())))
+        with open(filename,'a') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(data)
 
     def createStorageFolder(self, path = None):
         if path == None: path = SensorInfo.FAILSAFE_FOLDER
@@ -110,13 +72,37 @@ class FileHandler:
         if path == None: path = SensorInfo.FAILSAFE_DB
         with closing (sqlite3.connect(path))\
                 as con, con, closing(con.cursor()) as c:
-            
             transaction = SensorInfo.getInsertCmd(sensor_id).format(*dataList)
             c.execute(transaction)
             con.commit()
         return transaction
 
+    def getSqliteTableKeys(self, sensor_id, path = None):
+        if path == None: path = SensorInfo.FAILSAFE_DB
+        with closing (sqlite3.connect(path))\
+                as con, con, closing(con.cursor()) as c:
+            cursor = c.execute('select * from ' + sensor_id)
+            keys = [description[0] for description in cursor.description]
+            return keys
+ 
     def _fileExists(self,f=None):
         try: open(f, 'r') 
         except IOError: return False
         return True
+
+    ###############################################################################
+    # USB Storage Manipulation
+    ###############################################################################
+    def mountUSB(self, mountPath = None):
+        if mountPath == None: mountPath = self.DEFAULT_USB_MNT
+        out = os.system("mount " + mountPath)
+        if out == self.ERR_NOT_MOUNTED:
+            raise UsbNotAttached('mountUSB: USB is not attached to port.')
+        elif out == self.ERR_IS_MOUNTED:
+            raise UsbIsMounted('mountUSB: USB is already mounted.')
+
+    def umountUSB(self, mountPath = None):
+        if mountPath == None: mountPath = self.DEFAULT_USB_MNT
+        out = os.system("umount " + mountPath)
+        if out == self.ERR_NOT_MOUNTED:
+            raise UsbNotMounted('umountUSB: USB is not mounted.')

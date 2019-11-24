@@ -72,7 +72,6 @@ class SensorInfo:
                     '{6}','{7}')
                     '''.format(name,key,port,status,manufacturer,calibration,path,None)
             setupList.append(setup)
-            print setup
         return setupList
 
     ##########################################################################################################
@@ -81,18 +80,19 @@ class SensorInfo:
     STORAGE_KEYS = ["Date(YYYY/MM/DD)","Time(HH:MM:SS)","Location(Deg)","Temp(C)","Humidity(RH)"]
     STORAGE_FMT = ''' ("{0}" TEXT,"{1}" TEXT,"{2}" REAL,"{3}" REAL,"{4}" REAL,"{5}" REAL)'''
     STORAGE_INSERT_FMT = ''' ("{0}","{1}",{2},{3},{4},{5})'''
+    STORAGE_CSV_FMT = "({0},{1},{2},{3},{4},{5})"
     @staticmethod
     def getStorageSetup():
         setupList = []
-        for sid,dkey in zip(SensorIdEnum,SensorInfo.DATA_KEYS):
-            if "MQ" in sid.name:
-                dkey = dkey+"(PPM)"
-            table_info = SensorInfo.STORAGE_KEYS
-            table_info.append(dkey)
-            data_header = SensorInfo.STORAGE_FMT.format(*table_info)
-            sensor_table = "CREATE TABLE {0}".format(sid.name)+data_header
+        # STORAGE_KEYS contains keys shared among all sensors
+        # dkey is the key specific to a sensor
+        # e.g. the MQ2 sensor key will be 'Methane,Butane,LPG,Smoke'(RAW)
+        #      the SDC30 CO2 sensor dkey would be 'CO2'(PPM)
+        for sid,dkey in zip(SensorIdEnum, SensorInfo.DATA_KEYS):
+            if "MQ" in sid.name: dkey = dkey + "(Raw)"
+            data_header = SensorInfo.STORAGE_FMT.format(*(SensorInfo.STORAGE_KEYS + [dkey]))
+            sensor_table = "CREATE TABLE {0}".format(sid.name) + data_header
             setupList.append(sensor_table)
-            print sensor_table
         return setupList
 
     @staticmethod
@@ -100,7 +100,6 @@ class SensorInfo:
         insertCmd = "INSERT INTO {0} VALUES".format(sensor_id.name)\
                         + SensorInfo.STORAGE_INSERT_FMT
         return insertCmd
-
 
     ##########################################################################################################
 

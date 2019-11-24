@@ -30,3 +30,5 @@ class UsbNotAttached(Error):
     pass
 class SqlitePathErr(Error):
     pass
+class CsvPathErr(Error):
+    pass

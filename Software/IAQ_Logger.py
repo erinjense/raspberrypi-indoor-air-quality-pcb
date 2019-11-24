@@ -97,9 +97,27 @@ class Logger:
                 # Create list in order of database storage
                 for item in (date,time,loc,temp,humidity,data):
                     dataList.append(item)
+                ##########################################################
                 # Write to database
-                data = self.csv.writeSensorData(dataList,sensor.sid,self.dbPath)
-                self.gui.displayData(sensor.port, data)
+                ##########################################################
+                self.csv.writeSensorData(dataList,sensor.sid,self.dbPath)
+                ##########################################################
+                # Write to CSV File
+                ##########################################################
+                # Create filepath name based on sensor name and date
+                # e.g zephyrus-iaq/MQ2/MQ2_11-23-2019_.csv
+                csvFolder = self.dbFolder + name + "/"
+                csvFile   = csvFolder + name + "_" + date + "_.csv"
+                try: self.csv.writeDataToCSV(dataList, csvFile)
+                except CsvPathErr:
+                    try: self.csv.createStorageFolder(csvFolder)
+                    except OSError:
+                        pass
+                        #raise SqlitePathErr('Cannot create folder. Folder location not available.')
+                    header = self.csv.getSqliteTableKeys(name, self.dbPath)
+                    print header
+                    self.csv.newCsv(csvFile, header)
+                    self.csv.writeDataToCSV(dataList, csvFile)
             except SensorReadError:
                 print("Could not read sensor: "+name)
                 continue

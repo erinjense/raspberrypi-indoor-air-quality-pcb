@@ -3,15 +3,23 @@ import ScrolledText as tkst
 import time
 import csv
 from enum import Enum
+import datetime
+from itertools import cycle
 
 class GUI(tk.Tk):
     MAX_PORTS = 6
+    BACKGROUND_COLOR = 'LightSteelBlue3'
+    SENSOR_BUTN_CLR  = 'PaleGreen4'
+    TOP_SCRN_CLR = 'light steel blue'
+
 
     AnalogFrames = ["A0", "A1", "A2", "A3","A4", "A5"]
     SensorFrames = AnalogFrames + ["SDC30", "SDS011"]
     FramesList   = SensorFrames
 
     _sensor_update_flag = False
+    _logger_status_flag = False
+    _usb_status_flag    = False
     sensorList = None
     portStatus = {}
     container = None
@@ -20,16 +28,14 @@ class GUI(tk.Tk):
     def __init__(self, sensorConfigDict, *args, **kwargs):
         self.portStatus = sensorConfigDict
         tk.Tk.__init__(self, *args, **kwargs)
-        geometry = str(self.winfo_screenwidth()) + 'x'+str(self.winfo_screenheight())
+        geometry = ('800x480')
         self.geometry(geometry)
         self.title('Indoor Air Quality Logger')
         self.resizable(0, 0)
-
-        gmtime = time.asctime(time.gmtime(time.time()))
-        tk.Label(self, text=gmtime).pack()
+        self.configure(bg=self.BACKGROUND_COLOR)
 
         self.container = tk.Frame(self)
-        self.container.pack(side="top", fill="both", expand=True)
+        self.container.grid(row=0,column=0)
         self._init_frames()
         self.updatePortStatus()
         self.show_frame("StartPage")
@@ -39,13 +45,16 @@ class GUI(tk.Tk):
         frame = StartPage(parent=self.container,controller=self)
         self.frames["StartPage"] = frame
         frame.grid(row=0, column=0, sticky="nsew")
+        frame.configure(bg=self.BACKGROUND_COLOR)
         # SensorView frames
         for port in self.SensorFrames:
             sframe = SensorView(parent=self.container, controller=self, port=port)
+            sframe.configure(bg=self.BACKGROUND_COLOR)
             self.frames[port] = sframe
             sframe.grid(row=0, column=0, sticky="nsew")
         # SensorSetupView frame
         frame = SensorSetupView(parent=self.container,controller=self)
+        frame.configure(bg=self.BACKGROUND_COLOR)
         self.frames["SensorSetupView"] = frame
         frame.grid(row=0, column=0, sticky="nsew")
 
@@ -79,8 +88,6 @@ class GUI(tk.Tk):
     def get_portStatus(self):
         return self.portStatus
 
-    def startpage_output(self,msg=None): return self._output(msg,"StartPage")
-
     #################################################################################
     # Callbacks
     #################################################################################
@@ -88,6 +95,33 @@ class GUI(tk.Tk):
     def show_frame(self, page_name=None):
         frame = self.frames[page_name]
         frame.tkraise()
+
+    
+    def update_btn(self,startpage):
+        state = startpage.btn_txt.get()
+        if state == "Turn Data Logging On":
+            startpage.btn_txt.set("Turn Data Logging Off")
+            self._logger_status_flag = True
+            
+        elif state == "Turn Data Logging Off":
+            startpage.btn_txt.set("Turn Data Logging On")
+            self._logger_status_flag = False
+        else:
+            pass
+    def update_usb(self,startpage):
+        state = startpage.usb_txt.get()
+        if state == "Mount USB":
+            startpage.usb_txt.set("Eject USB")
+            self._usb_status_flag = True
+            
+        elif state == "Eject USB":
+            startpage.usb_txt.set("Mount USB")
+            self._usb_status_flag = False
+        else:
+            pass
+        
+        
+        
 
     #################################################################################
     # Internal API: Database, User Input and GUI Synchronization
@@ -99,11 +133,12 @@ class GUI(tk.Tk):
         port = configDict["port"]
         if port not in startpage.buttons.keys(): return
         status = configDict["status"]
-        name   = configDict["name"]
+        name   = configDict['type']
+        name = name.replace(',','\n')
         if status == "OFF":
             color = "grey"
         elif status == "ON":
-            color = "green"
+            color = self.SENSOR_BUTN_CLR
         startpage.buttons[port].config(text=name)
         startpage.buttons[port].config(bg=color)
         startpage.btn_names[port] = name
@@ -111,6 +146,12 @@ class GUI(tk.Tk):
     def u_SensorSetupView(self):
         frame = self.frames["SensorSetupView"]
         frame.update_SensorSetupView()
+
+    def u_LoggerStatus(self):
+        return self._logger_status_flag
+
+    def u_USBStatus(self):
+        return self._usb_status_flag
 
     def update_All(self,configDict):
         self._sensor_update_flag = True
@@ -124,38 +165,110 @@ class StartPage(tk.Frame):
     ctrl = None
     buttons = {}
     btn_names = {}
+    MAX_SENSORS = 6
+    btn_txt = None
+    usb_txt = None
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.ctrl = controller
+
+    #################################################################################
+    # Date
+    #################################################################################
+        date = datetime.datetime.now().date()
+        date = str(date.strftime('%b %d, %Y'))
+        dateLabel = tk.Label(self, text=date,height=5,width=20)
+        dateLabel.configure(bg=self.ctrl.TOP_SCRN_CLR)
+        dateLabel.grid(row=0,column=0)
+
+
+    #################################################################################
+    # Time
+    #################################################################################
+        time = datetime.datetime.now().time()
+        time = str(time.strftime('%-I:%M:%S %p'))
+        timeLabel = tk.Label(self, text=time,height=5,width=20)
+        timeLabel.configure(bg=self.ctrl.TOP_SCRN_CLR)
+        timeLabel.grid(row=0,column=1)
+
+    #################################################################################
+    # Start/Stop Data Recording
+    #################################################################################
+        self.btn_txt = tk.StringVar()
+        self.btn_txt.set("Turn Data Logging On")
+        StSp = tk.Button(self, textvariable=self.btn_txt,height=5,width=15,command=lambda : self.ctrl.update_btn(self))
+        StSp.configure(bg=self.ctrl.TOP_SCRN_CLR)
+        StSp.grid(row=9,column=0)
+
+    #################################################################################
+    # Mount/Eject USB
+    #################################################################################
+        self.usb_txt = tk.StringVar()
+        self.usb_txt.set("Mount USB")
+        usb = tk.Button(self, textvariable=self.usb_txt,height=5,width=15,command=lambda : self.ctrl.update_usb(self))
+        usb.configure(bg=self.ctrl.TOP_SCRN_CLR)
+        usb.grid(row=9,column=1)
+       
+    #################################################################################
+    # Temperature (BME680)
+    #################################################################################
+
+    #################################################################################
+    # Humidity (BME680)
+    #################################################################################
+
+    #################################################################################
+    # Barometric Pressure (BME680)
+    #################################################################################
+
+    #################################################################################
+    # CO2
+    #################################################################################
+
+
+    #################################################################################
+    # MQ Gas Sensors (x6)
+    #################################################################################
+
+
+
+
+   
+    #################################################################################
+    # Menu Bar
+    #################################################################################
+
+    #################################################################################
+    # Setup Buttons for Sensors
+    #################################################################################
         buttonCount = 0
-        row = 1
+        nRow = cycle(range(6,self.MAX_SENSORS+6))
+        nCol = cycle(range(0,2))
+        row = 2
         col = 0
         for frameName in controller.FramesList:
-            if (buttonCount == 2):
-                row += 1
-                buttonCount = 0
 
-            self.btn_names[frameName] = frameName
-            button = tk.Button(self,text=self.btn_names[frameName],height=2,width=15,
+            if buttonCount == 2:
+                buttonCount = 0
+                row = nRow.next()
+            col = nCol.next()
+            buttonCount += 1
+            buttonName = frameName
+            for items in self.ctrl.portStatus.values():
+                config = dict(items)
+                if config['port'] == frameName:
+                    buttonName = str(config['type'])
+                    key = buttonName
+                    buttonName = buttonName.replace(',','\n')
+                    break
+            self.btn_names[key] = buttonName
+            button = tk.Button(self,text=self.btn_names[key],height=5,width=15,
                     command=lambda frame=frameName: controller.show_frame(frame))
             button.grid(row=row,column=col)
+            button.configure(wraplength=200)
             self.buttons[frameName] = button
-
-            buttonCount += 1
-            # toggle column position
-            col = 1 if (col == 0) else 0
-
-        if (self.scrolledText == None):
-            self.scrolledText = tkst.ScrolledText(self)
-            self.scrolledText.grid(row=1, column=3, rowspan=6)
-
-        s = tk.Scrollbar(self)
-        s.grid(row=1, column=4, rowspan=6)
-
-    def printScrolledText(self,msg=None):
-        if (msg != None):
-            self.scrolledText.insert(tk.INSERT,msg + "\n")
+    #################################################################################
 
 
 class SensorView(tk.Frame):
@@ -170,7 +283,7 @@ class SensorView(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.port = port
         button = tk.Button(self, text="Go to the Main Page", command=lambda: self.controller.show_frame("StartPage"))
-        button.grid(row=1, column=0)
+        button.grid(row=0, column=0)
 
         self.parent = parent
         self.controller = controller

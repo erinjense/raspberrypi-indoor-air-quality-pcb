@@ -4,6 +4,7 @@ from GUI.IAQ_GUI import GUI
 from Sensors.IAQ_Sensor import SensorIdEnum
 from Sensors.IAQ_MqGas import MqGas
 from Sensors.IAQ_Sensor import Sensor
+from Sensors.IAQ_Sensor import SensorInfo
 from IAQ_FileHandler import FileHandler
 from IAQ_Exceptions import *
 import time
@@ -36,7 +37,8 @@ class Logger:
     #############################
     # Logger Setup Specifications
     #############################
-    setup_path  = None   # This is assigned to DEFAULT_PATH if user does not specify
+    dbFolder = None
+    dbPath   = None
     logger_id   = None
     logger_type = None
     softwareVersion = None  
@@ -47,23 +49,35 @@ class Logger:
     def __init__(self):
         # Init: FileHandler
         self.csv = FileHandler()
+        # Mount USB
+        self.dbFolder = SensorInfo.DEFAULT_FOLDER
+        self.dbPath   = SensorInfo.DEFAULT_DB
+        try: self.csv.mountUSB()
+        except UsbIsMounted:   pass
+        except UsbNotAttached:
+            # The logger needs a database to run
+            # If the USB is not attached then create a failsafe DB
+            self.dbFolder = SensorInfo.FAILSAFE_FOLDER
+            self.dbPath   = SensorInfo.FAILSAFE_DB
+        # Create Database if it doesn't exist
         try:
-            status = self._initFromDb(self.setup_path)
+            status = self._initFromDb(self.dbPath, self.dbFolder)
         except SetupFileError:
-            self._printBanner("Setup FAILURE")
             raise LoggerSetupError('LoggerSetupError: Could not get sensor configuration.')
+        except SqlitePathErr: pass
         # Init: AnalogPortController
         self.analogPorts = AnalogPortController(self.sensorConfigDict) 
         # Init: Sensors
         self._initSensors()
         # Init: GUI
         self.gui = GUI(self.sensorConfigDict)
-        self._printBanner("Setup SUCCESS")
- 
+
     #################################################################
     # External API
     #################################################################
     def log(self):
+        loggerStatus = self.gui.u_LoggerStatus()
+        if loggerStatus == False: return
         # Log data routine for every MQ Sensor
         for name,sensor in self.sensorsDict.items():
             try:
@@ -74,21 +88,25 @@ class Logger:
                 date = str(datetime.datetime.now().date())
                 time = str(datetime.datetime.now().time())
                 loc  = 0
-                temp     = self.sensorsDict["BME680"].getTemperature()
-                humidity = self.sensorsDict["BME680"].getHumidity()
+                temp     = None
+                humidity = None
+                try:
+                    temp     = self.sensorsDict["BME680"].getTemperature()
+                    humidity = self.sensorsDict["BME680"].getHumidity()
+                except KeyError: pass
                 # Get sensor data
                 data = sensor.getData()
                 # Create list in order of database storage
                 for item in (date,time,loc,temp,humidity,data):
                     dataList.append(item)
                 # Write to database
-                data = self.csv.writeSensorData(dataList,sensor.sid)
+                data = self.csv.writeSensorData(dataList,sensor.sid,self.dbPath)
                 self.gui.displayData(sensor.port, data)
             except SensorReadError:
-                self.printSystem("Could not read sensor: "+name)
+                print("Could not read sensor: "+name)
                 continue
             except SensorSetupError:
-                self.printSystem("Could not setup sensor: "+name)
+                print("Could not setup sensor: "+name)
                 continue
 
     def updateGui(self):
@@ -101,36 +119,26 @@ class Logger:
         self.gui.update()
         self.gui.update_idletasks()
 
-    def printSystem(self,msg,sensorId=None):
-        try:
-            self.gui.startpage_output(msg)
-            return True
-        except AttributeError:
-            print("Fatal Error: GUI failed to load.")
-            return False
-
     #################################################################
     # Internal Functions
     #################################################################
-    def _initFromDb(self,filepath=None):
-        self.csv.createDefaultDatabase()
-        self.sensorConfigDict = self.csv.getSensorConfig()
+    def _initFromDb(self, dbPath=None, folder=None):
+        try: self.csv.createDatabase(dbPath)
+        except SqlitePathErr:
+            try: self.csv.createStorageFolder(folder)
+            except OSError:
+                raise SqlitePathErr('Cannot create folder. Folder location not available.')
+            self.csv.createDatabase(dbPath)
+        self.sensorConfigDict = self.csv.getSensorConfig(dbPath)
 
     def _initSensors(self):
         for name,config in self.sensorConfigDict.items():
             config = dict(config)
-            try:
-                sensor = Sensor(config, self.analogPorts)
-            except SensorIsOff:
-                continue
+            try: sensor = Sensor(config, self.analogPorts)
+            except SensorIsOff: continue
+            except IOError:     continue
             self.sensorsDict[name] = sensor
 
-    def _printBanner(self,midText=None):
-        hashes = "##################################################\n"
-        spaces = (len(hashes) + len(midText))/2
-        midText = midText.rjust(spaces) + "\n"
-        banner = hashes + midText + hashes
-        self.printSystem(banner)
 ################################################################################
 # Main Loop
 ################################################################################

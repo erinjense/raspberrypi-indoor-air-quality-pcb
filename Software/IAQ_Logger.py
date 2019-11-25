@@ -15,6 +15,11 @@ import os
 
 class Logger:
     ############################
+    # Exit Status Codes
+    ############################
+    NO_USB = 512
+    USB_OK = 0
+    ############################
     # GUI Control
     ############################
     gui = None
@@ -139,16 +144,14 @@ class Logger:
         self.gui.update_idletasks()
 
     def updateUSB(self):
-
         current = self.usb_status
-
         # Check if USB was disconnected
-        out = os.system("dmesg /dev/zephyrus-iaq-usb | grep usb | tail -1 | grep disconnect")
-        if out == 0:
+        out = os.system("ls /dev/zephyrus-iaq-usb > /dev/null 2>&1")
+        if out == self.NO_USB:
             self.usb_status = None
             try: self.gui.updateUsbStatus(self.usb_status)
             except AttributeError: pass
-        elif out != 0 and self.usb_status == None:
+        elif out == self.USB_OK and self.usb_status == None:
             self.usb_status = False
             try: self.gui.updateUsbStatus(self.usb_status)
             except AttributeError: pass

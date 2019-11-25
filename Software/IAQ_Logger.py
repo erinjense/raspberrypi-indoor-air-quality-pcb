@@ -101,11 +101,26 @@ class Logger:
                 except KeyError: pass
                 # Get sensor data
                 data = sensor.getData()
+
                 # Create list in order of database storage
                 for item in (date,time,loc,temp,humidity,data):
                     dataList.append(item)
+
                 # Write to database
                 self.csv.writeSensorData(dataList,sensor.sid,self.dbPath)
+
+                # Write to CSV
+                csvFolder = self.dbFolder + name + "/"
+                csvFile = csvFolder + name + "_" + date + "_.csv"
+                try:
+                    self.csv.writeDataToCSV(dataList,csvFile)
+                except CsvPathErr:
+                    header = self.csv.getSqliteTableKeys(name,self.dbPath)
+                    try :
+                        self.csv.newCsv(csvFile,header)
+                    except IOError:
+                        self.csv.createStorageFolder(csvFolder)
+
             except SensorReadError:
                 print("Could not read sensor: "+name)
                 continue

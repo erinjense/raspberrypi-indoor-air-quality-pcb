@@ -10,8 +10,9 @@ class GUI(tk.Tk):
     MAX_PORTS = 6
     BACKGROUND_COLOR = 'LightSteelBlue3'
     SENSOR_BUTN_CLR  = 'PaleGreen4'
-    TOP_SCRN_CLR = 'light steel blue'
-
+    TOP_SCRN_CLR     = 'light steel blue'
+    LOG_ON  = 'Start Logging'
+    LOG_OFF = 'Stop Logging'
 
     AnalogFrames = ["A0", "A1", "A2", "A3","A4", "A5"]
     SensorFrames = AnalogFrames + ["SDC30", "SDS011"]
@@ -19,7 +20,7 @@ class GUI(tk.Tk):
 
     _sensor_update_flag = False
     _logger_status_flag = False
-    _usb_status_flag    = False
+    _usb_status_flag    = None
     sensorList = None
     portStatus = {}
     container = None
@@ -67,6 +68,8 @@ class GUI(tk.Tk):
 
     #################################################################################
     # External API: Used by IAQ_Logger 
+    # The GUI keeps track of user input with status flags in Internal Callbacks
+    # The Logger needs to perform actions and synchronize itself with the below functions
     #################################################################################
 
     def displayData(self,port,data):
@@ -80,6 +83,33 @@ class GUI(tk.Tk):
             port = dict(sensorConfig)["port"]
         self.u_SensorSetupView()
 
+    def updateUsbStatus(self, usb_status):
+        self._usb_status_flag = usb_status
+        try:
+            startpage = self.frames["StartPage"]
+            if self._usb_status_flag == True:
+                startpage.usb_txt.set("Eject USB")
+                startpage.usb_btn['state'] = 'normal'
+            elif self._usb_status_flag == False:
+                startpage.usb_txt.set("Mount USB")
+                startpage.usb_btn['state'] = 'normal'
+            elif self._usb_status_flag == None:
+                startpage.usb_txt.set("No USB")
+                startpage.usb_btn['state'] = 'disabled'
+        except KeyError:
+            raise KeyError('StartPage does not exist')
+
+    def updateLoggerStatus(self, logger_status):
+        self._logger_status_flag = logger_status
+        try:
+            startpage = self.frames["StartPage"]
+            if self._logger_status_flag == True:
+                startpage.logger_txt.set(self.LOG_OFF)
+            elif self._logger_status_flag == False:
+                startpage.logger_txt.set(self.LOG_ON)
+        except KeyError:
+            raise KeyError('StartPage does not exist')
+
     def checkUserUpdates(self):
         flag = self._sensor_update_flag
         self._sensor_update_flag = False
@@ -88,41 +118,43 @@ class GUI(tk.Tk):
     def get_portStatus(self):
         return self.portStatus
 
+    def getUsbStatus(self):
+        return self._usb_status_flag
+
+    def getLoggerStatus(self):
+        return self._logger_status_flag
+
     #################################################################################
-    # Callbacks
+    # Internal Callbacks
     #################################################################################
 
     def show_frame(self, page_name=None):
         frame = self.frames[page_name]
         frame.tkraise()
-
     
-    def update_btn(self,startpage):
-        state = startpage.btn_txt.get()
-        if state == "Turn Data Logging On":
-            startpage.btn_txt.set("Turn Data Logging Off")
+    def update_logger(self, startpage):
+        state = startpage.logger_txt.get()
+        if state == self.LOG_ON:
+            startpage.logger_txt.set(self.LOG_OFF)
             self._logger_status_flag = True
             
-        elif state == "Turn Data Logging Off":
-            startpage.btn_txt.set("Turn Data Logging On")
+        elif state == self.LOG_OFF:
+            startpage.logger_txt.set(self.LOG_ON)
             self._logger_status_flag = False
         else:
             pass
-    def update_usb(self,startpage):
+
+    def update_usb(self, startpage):
         state = startpage.usb_txt.get()
         if state == "Mount USB":
             startpage.usb_txt.set("Eject USB")
             self._usb_status_flag = True
-            
         elif state == "Eject USB":
             startpage.usb_txt.set("Mount USB")
             self._usb_status_flag = False
         else:
             pass
         
-        
-        
-
     #################################################################################
     # Internal API: Database, User Input and GUI Synchronization
     #################################################################################
@@ -147,12 +179,6 @@ class GUI(tk.Tk):
         frame = self.frames["SensorSetupView"]
         frame.update_SensorSetupView()
 
-    def u_LoggerStatus(self):
-        return self._logger_status_flag
-
-    def u_USBStatus(self):
-        return self._usb_status_flag
-
     def update_All(self,configDict):
         self._sensor_update_flag = True
         self.u_StartPage_SensorView_Button(configDict)
@@ -166,8 +192,9 @@ class StartPage(tk.Frame):
     buttons = {}
     btn_names = {}
     MAX_SENSORS = 6
-    btn_txt = None
+    logger_txt = None
     usb_txt = None
+    usb_btn = None
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -195,9 +222,9 @@ class StartPage(tk.Frame):
     #################################################################################
     # Start/Stop Data Recording
     #################################################################################
-        self.btn_txt = tk.StringVar()
-        self.btn_txt.set("Turn Data Logging On")
-        StSp = tk.Button(self, textvariable=self.btn_txt,height=5,width=15,command=lambda : self.ctrl.update_btn(self))
+        self.logger_txt = tk.StringVar()
+        self.logger_txt.set(self.ctrl.LOG_ON)
+        StSp = tk.Button(self, textvariable=self.logger_txt,height=5,width=15,command=lambda : self.ctrl.update_logger(self))
         StSp.configure(bg=self.ctrl.TOP_SCRN_CLR)
         StSp.grid(row=9,column=0)
 
@@ -206,9 +233,9 @@ class StartPage(tk.Frame):
     #################################################################################
         self.usb_txt = tk.StringVar()
         self.usb_txt.set("Mount USB")
-        usb = tk.Button(self, textvariable=self.usb_txt,height=5,width=15,command=lambda : self.ctrl.update_usb(self))
-        usb.configure(bg=self.ctrl.TOP_SCRN_CLR)
-        usb.grid(row=9,column=1)
+        self.usb_btn = tk.Button(self, textvariable=self.usb_txt,height=5,width=15,command=lambda : self.ctrl.update_usb(self))
+        self.usb_btn.configure(bg=self.ctrl.TOP_SCRN_CLR)
+        self.usb_btn.grid(row=9,column=1)
        
     #################################################################################
     # Temperature (BME680)

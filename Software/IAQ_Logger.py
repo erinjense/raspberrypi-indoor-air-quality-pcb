@@ -11,6 +11,7 @@ import time
 import logging
 import sys
 import datetime
+import os
 
 class Logger:
     ############################
@@ -34,6 +35,13 @@ class Logger:
     sensorsDict = {}
     ############################
 
+    ############################
+    # Logger Status Flags
+    ############################
+    usb_status    = None
+    logger_status = None
+    ############################
+
     #############################
     # Logger Setup Specifications
     #############################
@@ -47,36 +55,33 @@ class Logger:
     #############################
 
     def __init__(self):
+        # Begin logging by default
+        self.logger_status = True
+ 
         # Init: FileHandler
         self.csv = FileHandler()
-        # Mount USB
-        self.dbFolder = SensorInfo.DEFAULT_FOLDER
-        self.dbPath   = SensorInfo.DEFAULT_DB
-        try: self.csv.mountUSB()
-        except UsbIsMounted:   pass
-        except UsbNotAttached:
-            # The logger needs a database to run
-            # If the USB is not attached then create a failsafe DB
-            self.dbFolder = SensorInfo.FAILSAFE_FOLDER
-            self.dbPath   = SensorInfo.FAILSAFE_DB
-        # Create Database if it doesn't exist
-        try:
-            status = self._initFromDb(self.dbPath, self.dbFolder)
-        except SetupFileError:
-            raise LoggerSetupError('LoggerSetupError: Could not get sensor configuration.')
-        except SqlitePathErr: pass
+
+        # Attempt to Mount USB
+        self.usb_status = True
+        self.updateUSB()
+
         # Init: AnalogPortController
         self.analogPorts = AnalogPortController(self.sensorConfigDict) 
+
         # Init: Sensors
         self._initSensors()
+
         # Init: GUI
         self.gui = GUI(self.sensorConfigDict)
+        self.gui.updateUsbStatus(self.usb_status)
+        self.gui.updateLoggerStatus(self.logger_status)
 
     #################################################################
     # External API
     #################################################################
     def log(self):
-        loggerStatus = self.gui.u_LoggerStatus()
+        self.updateUSB()
+        loggerStatus = self.gui.getLoggerStatus()
         if loggerStatus == False: return
         # Log data routine for every MQ Sensor
         for name,sensor in self.sensorsDict.items():
@@ -100,8 +105,7 @@ class Logger:
                 for item in (date,time,loc,temp,humidity,data):
                     dataList.append(item)
                 # Write to database
-                data = self.csv.writeSensorData(dataList,sensor.sid,self.dbPath)
-                self.gui.displayData(sensor.port, data)
+                self.csv.writeSensorData(dataList,sensor.sid,self.dbPath)
             except SensorReadError:
                 print("Could not read sensor: "+name)
                 continue
@@ -110,14 +114,67 @@ class Logger:
                 continue
 
     def updateGui(self):
+       # Check if user changed configuration for sensors
         user_updated_sensors = self.gui.checkUserUpdates()
         if (True == user_updated_sensors):
             self.sensorConfigDict = self.gui.get_portStatus()    
-            print self.sensorConfigDict
             self._initSensors()
 
         self.gui.update()
         self.gui.update_idletasks()
+
+    def updateUSB(self):
+
+        current = self.usb_status
+
+        # Check if USB was disconnected
+        out = os.system("dmesg /dev/zephyrus-iaq-usb | grep usb | tail -1 | grep disconnect")
+        if out == 0:
+            self.usb_status = None
+            try: self.gui.updateUsbStatus(self.usb_status)
+            except AttributeError: pass
+        elif out != 0 and self.usb_status == None:
+            self.usb_status = False
+            try: self.gui.updateUsbStatus(self.usb_status)
+            except AttributeError: pass
+
+        # Synchronize Logger's USB status with GUI USB Status
+        # Return if GUI and Logger USB status are the same
+        try:
+            # Check if user pressed mount/eject USB
+            self.usb_status = self.gui.getUsbStatus()
+            # Return if no usb_status change
+            if current == self.usb_status: return
+        except AttributeError: pass
+ 
+        if self.usb_status == True:
+            # Mount USB
+            try:   self.csv.mountUSB()
+            except UsbIsMounted:   pass
+            except UsbNotAttached:
+                self.usb_status = None
+            # Update database path to default on USB
+            self.dbFolder = SensorInfo.DEFAULT_FOLDER
+            self.dbPath   = SensorInfo.DEFAULT_DB
+
+        # Eject USB and Don't Continue Logging
+        if self.usb_status == False:
+            # Eject USB
+            try:
+                self.csv.umountUSB()
+                try: self.gui.updateLoggerStatus(False)
+                except AttributeError: pass
+            except UsbNotMounted: pass
+
+        # Change database to failsafe folder on SD card instead of USB
+        if self.usb_status == False or self.usb_status == None:
+            # Update database path to failsafe in case user
+            # starts logging without mounting USB again
+            self.dbFolder = SensorInfo.FAILSAFE_FOLDER
+            self.dbPath   = SensorInfo.FAILSAFE_DB
+
+        # Re-Init Database
+        self._initFromDb(self.dbPath, self.dbFolder)
 
     #################################################################
     # Internal Functions
@@ -126,8 +183,7 @@ class Logger:
         try: self.csv.createDatabase(dbPath)
         except SqlitePathErr:
             try: self.csv.createStorageFolder(folder)
-            except OSError:
-                raise SqlitePathErr('Cannot create folder. Folder location not available.')
+            except OSError: pass
             self.csv.createDatabase(dbPath)
         self.sensorConfigDict = self.csv.getSensorConfig(dbPath)
 
@@ -142,18 +198,9 @@ class Logger:
 ################################################################################
 # Main Loop
 ################################################################################
-logger = None
+logger = Logger()
 start = time.time()
 while True:
-    # TODO: There needs to be a safe mode where the logger boots up into
-    # default settings mode if some configuration causes a LoggerSetupError
-    if logger == None:
-        try:
-            logger = Logger()
-        except LoggerSetupError:
-            logger = None
-            continue
-
     logger.updateGui()
     end = time.time()
     if ((end - start) >= 1):

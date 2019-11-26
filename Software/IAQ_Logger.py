@@ -19,6 +19,7 @@ class Logger:
     ############################
     NO_USB = 512
     USB_OK = 0
+
     ############################
     # GUI Control
     ############################
@@ -134,12 +135,6 @@ class Logger:
                 continue
 
     def updateGui(self):
-       # Check if user changed configuration for sensors
-        user_updated_sensors = self.gui.checkUserUpdates()
-        if (True == user_updated_sensors):
-            self.sensorConfigDict = self.gui.get_portStatus()    
-            self._initSensors()
-
         self.gui.update()
         self.gui.update_idletasks()
 

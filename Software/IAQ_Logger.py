@@ -51,36 +51,42 @@ class Logger:
     #############################
     # Logger Setup Specifications
     #############################
-    dbFolder = None
-    dbPath   = None
-    logger_id   = None
-    logger_type = None
-    softwareVersion = None  
-    sensor_names = []       
-    setup_info = []
+    dbFolder        = None
+    dbPath          = None
     #############################
 
     def __init__(self):
         # Begin logging by default
         self.logger_status = True
+
+        self.sensorConfigDict = SensorInfo.SENSOR_DICT
  
-        # Init: FileHandler
+        # # Init: FileHandler
         self.csv = FileHandler()
 
-        # Attempt to Mount USB
+        # # Attempt to Mount USB
         self.usb_status = True
         self.updateUSB()
 
-        # Init: AnalogPortController
+        # # Init: AnalogPortController
         self.analogPorts = AnalogPortController(self.sensorConfigDict) 
-
-        # Init: Sensors
+        # # Init: Sensors
         self._initSensors()
 
-        # Init: GUI
+        # # Init: GUI
         self.gui = GUI(self.sensorConfigDict)
         self.gui.updateUsbStatus(self.usb_status)
         self.gui.updateLoggerStatus(self.logger_status)
+
+    #################################################################
+    # Internal Functions
+    #################################################################
+    def _initSensors(self):
+        for key, values in self.sensorConfigDict.items():
+            sensor_dict = {key : values}
+            try: sensor = Sensor(sensor_dict, self.analogPorts)
+            except IOError: continue
+            self.sensorsDict[key] = sensor
 
     #################################################################
     # External API
@@ -92,41 +98,37 @@ class Logger:
         # Log data routine for every MQ Sensor
         for name,sensor in self.sensorsDict.items():
             try:
-                if sensor.status == "OFF": continue
                 dataList = []
                 # Date/Time is System clock
                 # System clock is updated from a GPS if available.
                 date = str(datetime.datetime.now().date())
                 time = str(datetime.datetime.now().time())
                 loc  = 0
-                temp     = None
+                bme680   = self.sensorsDict.get("BME680")
+                temp = None
                 humidity = None
                 try:
-                    temp     = self.sensorsDict["BME680"].getTemperature()
-                    humidity = self.sensorsDict["BME680"].getHumidity()
-                except KeyError: pass
+                    temp     = bme680.getTemperature()
+                    humidity = bme680.getHumidity()
+                except AttributeError: pass
                 # Get sensor data
                 data = sensor.getData()
 
                 # Create list in order of database storage
-                for item in (date,time,loc,temp,humidity,data):
-                    dataList.append(item)
-
-                # Write to database
-                self.csv.writeSensorData(dataList,sensor.sid,self.dbPath)
+                dataList.extend([date,time,loc,temp,humidity])
+                if type(data) is list: dataList.extend(data)
+                else: dataList.append(data)
 
                 # Write to CSV
                 csvFolder = self.dbFolder + name + "/"
-                csvFile = csvFolder + name + "_" + date + "_.csv"
+                csvFile   = csvFolder + name + "_" + date + "_.csv"
                 try:
                     self.csv.writeDataToCSV(dataList,csvFile)
                 except CsvPathErr:
-                    header = self.csv.getSqliteTableKeys(name,self.dbPath)
                     try :
-                        self.csv.newCsv(csvFile,header)
+                        self.csv.newCsv(csvFile, name)
                     except IOError:
                         self.csv.createStorageFolder(csvFolder)
-
             except SensorReadError:
                 print("Could not read sensor: "+name)
                 continue
@@ -166,9 +168,7 @@ class Logger:
             except UsbIsMounted:   pass
             except UsbNotAttached:
                 self.usb_status = None
-            # Update database path to default on USB
             self.dbFolder = SensorInfo.DEFAULT_FOLDER
-            self.dbPath   = SensorInfo.DEFAULT_DB
 
         # Eject USB and Don't Continue Logging
         if self.usb_status == False:
@@ -184,29 +184,6 @@ class Logger:
             # Update database path to failsafe in case user
             # starts logging without mounting USB again
             self.dbFolder = SensorInfo.FAILSAFE_FOLDER
-            self.dbPath   = SensorInfo.FAILSAFE_DB
-
-        # Re-Init Database
-        self._initFromDb(self.dbPath, self.dbFolder)
-
-    #################################################################
-    # Internal Functions
-    #################################################################
-    def _initFromDb(self, dbPath=None, folder=None):
-        try: self.csv.createDatabase(dbPath)
-        except SqlitePathErr:
-            try: self.csv.createStorageFolder(folder)
-            except OSError: pass
-            self.csv.createDatabase(dbPath)
-        self.sensorConfigDict = self.csv.getSensorConfig(dbPath)
-
-    def _initSensors(self):
-        for name,config in self.sensorConfigDict.items():
-            config = dict(config)
-            try: sensor = Sensor(config, self.analogPorts)
-            except SensorIsOff: continue
-            except IOError:     continue
-            self.sensorsDict[name] = sensor
 
 ################################################################################
 # Main Loop

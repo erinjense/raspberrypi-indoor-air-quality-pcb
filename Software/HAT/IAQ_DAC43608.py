@@ -63,8 +63,8 @@ class DAC43608:
     chE = None
     chF = None
 
-    def __init__(self, address=0x48, debug=False):
-        self.i2c = Adafruit_I2C(address,debug=True)
+    def __init__(self, address=0x48,debug=None):
+        self.i2c = Adafruit_I2C(address,debug=False)
         self.address = address
         self.debug = debug
 

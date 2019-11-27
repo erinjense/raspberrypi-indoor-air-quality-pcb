@@ -1,28 +1,27 @@
 import serial, time
 
-#Use the following line to read from usb
-ser = serial.Serial('/dev/ttyUSB0')
+class IAQ_sds011():
+    sid = None
+    serial = None
 
-#Use the following lines to read from serial TX and RX pins on GPIO
-#ser = serial.Serial(
-#    port='/dev/ttyS0',
-#    baudrate = 9600,
-#    parity = serial.PARITY_NONE,
-#    stopbits=serial.STOPBITS_ONE,
-#    bytesize=serial.EIGHTBITS,
-#    timeout=1)
+    def __init__(self, sensor_id=None, serial_port=None):
+        self.sid = sensor_id
+        self.serial = serial.Serial('/dev/ttyUSB0')
 
-while True:
-    data = []
-    for index in range(0,10):
-        datum = ser.read()
-        data.append(datum)
+        #ser = serial.Serial(
+        #    port='/dev/ttyS0',
+        #    baudrate = 9600,
+        #    parity = serial.PARITY_NONE,
+        #    stopbits=serial.STOPBITS_ONE,
+        #    bytesize=serial.EIGHTBITS,
+        #    timeout=1)
 
-    pmtwofive = int.from_bytes(b''.join(data[2:4]), byteorder='little')/10
-    print ('PM2.5: ',pmtwofive)
+    def getData(self):
+        data = []
+        for index in range(0,10):
+            datum = self.serial.read()
+            data.append(datum)
 
-    pmten = int.from_bytes(b''.join(data[4:6]), byteorder='little')/10
-    print ('PM10 : ',pmten)
-
-    time.sleep(1)
-    
+        pmtwofive = int(''.join(data[2:4]).encode('hex'), 16)/10
+        pmten = int(''.join(data[4:6]).encode('hex'), 16)/10
+        return [pmtwofive, pmten]

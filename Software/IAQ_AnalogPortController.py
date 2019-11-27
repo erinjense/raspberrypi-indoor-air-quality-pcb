@@ -1,5 +1,4 @@
 #!/usr/bin/python
-
 from HAT import IAQ_DAC43608
 from HAT import IAQ_Mux
 from Sensors.IAQ_Sensor import SensorIdEnum
@@ -18,7 +17,7 @@ class AnalogPortController:
     # Store a dictionary of Port and Sensor Id
     # E.g. {'A0':,SensorIdEnum.MQ2.name,...}
     #########################################
-    portIdDict = None
+    portIdDict = {}
     #########################################
     # Set the Gain of ADS1115 ADC
     # Ports A0-A5 are multiplexed onto ADC 0
@@ -33,13 +32,6 @@ class AnalogPortController:
         self.dac = IAQ_DAC43608.DAC43608()
         self.mux = IAQ_Mux.Mux()
         self.dac.writeConfig(0x0000)
-
-    def getPortNumById(self,sensor_id):
-        for sensorName,config in self.portIdDict.items():
-            config = dict(config)
-            if sensor_id.name == sensorName:
-                return config["port"]
-        raise ValueError('Sensor, '+sensor_id.name+' ,is not assigned to a port.')
 
     def readPort(self,portNum):
         if portNum is not self.currentPort:

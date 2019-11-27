@@ -52,11 +52,20 @@ class Logger:
     # Logger Setup Specifications
     #############################
     dbFolder        = None
-    dbPath          = None
+    #############################
+
+    #############################
+    # Time Tracking
+    #############################
+    startTime = None
+    totalRunTime = None
+    LOGGING_INTERVAL = 2
     #############################
 
     def __init__(self):
         # Begin logging by default
+        self.startTime     = time.time()
+        self.totalRunTime  = self.startTime
         self.logger_status = True
 
         self.sensorConfigDict = SensorInfo.SENSOR_DICT
@@ -95,6 +104,7 @@ class Logger:
         self.updateUSB()
         loggerStatus = self.gui.getLoggerStatus()
         if loggerStatus == False: return
+        if self.getElapsedLogTime() < self.LOGGING_INTERVAL: return
         # Log data routine for every MQ Sensor
         for name,sensor in self.sensorsDict.items():
             try:
@@ -136,7 +146,11 @@ class Logger:
                 print("Could not setup sensor: "+name)
                 continue
 
+    def getElapsedLogTime(self):
+        return int(self.startTime - time.time())
+
     def updateGui(self):
+        self.gui.updateTime()
         self.gui.update()
         self.gui.update_idletasks()
 

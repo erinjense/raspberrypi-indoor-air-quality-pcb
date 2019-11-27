@@ -10,17 +10,35 @@ class GUI(tk.Tk):
     ############################################
     # Graphics
     ############################################
-    BACKGROUND_COLOR = 'LightSteelBlue3'
-    SENSOR_BUTN_CLR  = 'PaleGreen4'
+    #######################
+    # Root
+    #######################
+    BACKGROUND_CLR   = 'LightSteelBlue3'
+    #######################
+    # StartPage.TopBar
+    #######################
     TOP_SCRN_CLR     = 'light steel blue'
+    #######################
+    # StartPage.SensorGrid
+    #######################
+    SENSOR_GRID_CLR  = 'RoyalBlue'
+    #######################
+    # StartPage.BottomBar
+    #######################
+    SENSOR_BUTN_CLR  = 'PaleGreen4'
 
     ############################################
     # Toggle Button Status Options
     ############################################
-
-    # Logger Status Button in BottomBar
+    #######################
+    # StartPage.BottomBar
+    #######################
     LOG_ON  = 'Start Logging'
     LOG_OFF = 'Stop Logging'
+
+    USB_EJECT = "Eject USB"
+    USB_MOUNT = "Mount USB"
+    USB_NONE  = "No USB"
 
     ############################################
     # Callback Status Flags
@@ -36,22 +54,20 @@ class GUI(tk.Tk):
     # None:  No USB attached
     _usb_status_flag    = None
 
-    sensorList = None
+    frames     = {}
     portStatus = {}
-    container = None
-    frames = {}
 
     def __init__(self, sensorConfigDict, *args, **kwargs):
         self.portStatus = sensorConfigDict
         tk.Tk.__init__(self, *args, **kwargs)
 
         ############################################
-        # Root Properties
+        #           Root Properties
         ############################################
         self.geometry('800x480')
         self.title('Indoor Air Quality Logger')
         self.resizable(0, 0)
-        self.configure(bg=self.BACKGROUND_COLOR)
+        self.configure(bg=self.BACKGROUND_CLR)
 
         ############################################
         #           StartPage
@@ -59,15 +75,14 @@ class GUI(tk.Tk):
         frame = StartPage(parent=self, controller=self)
         self.frames["StartPage"] = frame
         frame.pack(expand=True, fill='both')
-        frame.configure(bg=self.BACKGROUND_COLOR)
-        frame.configure(highlightbackground="red",
-                highlightcolor="red",highlightthickness=1,bd=0)
+        frame.configure(bg=self.BACKGROUND_CLR)
 
         self.show_frame("StartPage")
 
     ###########################################################################
     # External API: Used by IAQ_Logger 
     # The GUI keeps track of user input with status flags in Internal Callbacks
+    # TODO: Use binds instead of polling
     ###########################################################################
 
     def updateUsbStatus(self, usb_status):
@@ -76,13 +91,13 @@ class GUI(tk.Tk):
             startpage = self.frames["StartPage"]
             bottomBar = startpage.frames["BottomBar"]
             if self._usb_status_flag == True:
-                bottomBar.usb_txt.set("Eject USB")
+                bottomBar.usb_txt.set(self.USB_EJECT)
                 bottomBar.usb_btn['state'] = 'normal'
             elif self._usb_status_flag == False:
-                bottomBar.usb_txt.set("Mount USB")
+                bottomBar.usb_txt.set(self.USB_MOUNT)
                 bottomBar.usb_btn['state'] = 'normal'
             elif self._usb_status_flag == None:
-                bottomBar.usb_txt.set("No USB")
+                bottomBar.usb_txt.set(self.USB_NONE)
                 bottomBar.usb_btn['state'] = 'disabled'
         except KeyError:
             raise KeyError('StartPage does not exist')
@@ -98,6 +113,11 @@ class GUI(tk.Tk):
                 bottomBar.logger_txt.set(self.LOG_ON)
         except KeyError:
             raise KeyError('StartPage does not exist')
+
+    def updateTime(self):
+        startpage = self.frames.get("StartPage")
+        topbar = startpage.frames.get("TopBar")
+        topbar.updateTime()
 
     def getUsbStatus(self):
         return self._usb_status_flag
@@ -134,7 +154,8 @@ class GUI(tk.Tk):
             self._usb_status_flag = False
         else:
             pass
-        
+
+       
 class StartPage(tk.Frame):
     ctrl = None
     frames = {}
@@ -150,14 +171,14 @@ class StartPage(tk.Frame):
         #######################################################################
         topBar = TopBar(parent=self, controller = self.ctrl)
         topBar.pack(expand=True,fill='x')
-        topBar.configure(bg=self.ctrl.BACKGROUND_COLOR)
+        topBar.configure(bg=self.ctrl.BACKGROUND_CLR)
         self.frames["TopBar"] = topBar
 
         #######################################################################
         #   Sensor Rows
         #######################################################################
         sensorView = SensorGrid(parent=self, controller=self.ctrl)
-        sensorView.configure(bg=self.ctrl.BACKGROUND_COLOR)
+        sensorView.configure(bg=self.ctrl.BACKGROUND_CLR)
         sensorView.pack(expand=True,fill='x')
 
         #######################################################################
@@ -165,7 +186,7 @@ class StartPage(tk.Frame):
         #######################################################################
         bottomBar = BottomBar(parent=self, controller = self.ctrl)
         bottomBar.pack(expand=True,fill='x')
-        bottomBar.configure(bg=self.ctrl.BACKGROUND_COLOR)
+        bottomBar.configure(bg=self.ctrl.BACKGROUND_CLR)
         self.frames["BottomBar"] = bottomBar
 
 class SensorGrid(tk.Frame):
@@ -231,9 +252,11 @@ class SensorTile(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.ctrl = controller
-        self.configure(highlightbackground="red",highlightcolor="red",
-                highlightthickness=1,bd=0,width=270,height=108)
-
+        self.configure(highlightbackground = self.ctrl.SENSOR_GRID_CLR)
+        self.configure(highlightcolor = self.ctrl.SENSOR_GRID_CLR)
+        self.configure(highlightthickness = 3)
+        self.configure(bd = 0, width = 270, height = 108)
+        self.configure(bg=self.ctrl.BACKGROUND_CLR)
 
 class BottomBar(tk.Frame):
     ctrl = None
@@ -268,6 +291,8 @@ class BottomBar(tk.Frame):
 
 class TopBar(tk.Frame):
     ctrl = None
+    time = None
+    date = None
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -276,18 +301,18 @@ class TopBar(tk.Frame):
         #######################################################################
         # Date
         #######################################################################
-        date = datetime.datetime.now().date()
-        date = str(date.strftime('%b %d, %Y'))
-        dateLabel = tk.Label(self, text=date,height=5,width=15)
+        self.date = tk.StringVar()
+        self.updateDate()
+        dateLabel = tk.Label(self, textvariable=self.date,height=5,width=15)
         dateLabel.configure(bg=self.ctrl.TOP_SCRN_CLR)
         dateLabel.grid(row=0,column=0)
 
         #######################################################################
         # Time
         #######################################################################
-        time = datetime.datetime.now().time()
-        time = str(time.strftime('%-I:%M:%S %p'))
-        timeLabel = tk.Label(self, text=time,height=5,width=15)
+        self.time = tk.StringVar()
+        self.updateTime()
+        timeLabel = tk.Label(self, textvariable=self.time,height=5,width=15)
         timeLabel.configure(bg=self.ctrl.TOP_SCRN_CLR)
         timeLabel.grid(row=0,column=1)
 
@@ -302,3 +327,11 @@ class TopBar(tk.Frame):
         #######################################################################
         # Barometric Pressure (BME680)
         #######################################################################
+
+    def updateDate(self):
+        date = datetime.datetime.now().date()
+        self.date.set(str(date.strftime('%b %d, %Y')))
+
+    def updateTime(self):
+        time = datetime.datetime.now().time()
+        self.time.set(str(time.strftime('%-I:%M:%S %p')))

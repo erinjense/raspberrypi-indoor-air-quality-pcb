@@ -7,11 +7,9 @@ from Sensors.IAQ_Sensor import Sensor
 from Sensors.IAQ_Sensor import SensorInfo
 from IAQ_FileHandler import FileHandler
 from IAQ_Exceptions import *
-import time
-import logging
-import sys
 import datetime
 import os
+from timeit import default_timer as Timer
 
 class Logger:
     ############################
@@ -59,13 +57,15 @@ class Logger:
     #############################
     startTime = None
     totalRunTime = None
+    logTimeTracker = None
     LOGGING_INTERVAL = 2
     #############################
 
     def __init__(self):
         # Begin logging by default
-        self.startTime     = time.time()
-        self.totalRunTime  = self.startTime
+        self.startTime      = Timer()
+        self.logTimeTracker = Timer()
+        self.totalRunTime   = Timer()
         self.logger_status = True
 
         self.sensorConfigDict = SensorInfo.SENSOR_DICT
@@ -104,7 +104,7 @@ class Logger:
         self.updateUSB()
         loggerStatus = self.gui.getLoggerStatus()
         if loggerStatus == False: return
-        if self.getElapsedLogTime() < self.LOGGING_INTERVAL: return
+        if self.timeToLog() == False: return
         # Log data routine for every MQ Sensor
         for name,sensor in self.sensorsDict.items():
             try:
@@ -146,8 +146,15 @@ class Logger:
                 print("Could not setup sensor: "+name)
                 continue
 
+    def timeToLog(self):
+        stopTime = int(Timer() - self.logTimeTracker)
+        if stopTime >= self.LOGGING_INTERVAL:
+            self.logTimeTracker = Timer()
+            return True
+        return False
+
     def getElapsedLogTime(self):
-        return int(self.startTime - time.time())
+        return int(Timer() - self.startTime)
 
     def updateGui(self):
         self.gui.updateTime()
@@ -203,10 +210,6 @@ class Logger:
 # Main Loop
 ################################################################################
 logger = Logger()
-start = time.time()
 while True:
     logger.updateGui()
-    end = time.time()
-    if ((end - start) >= 1):
-        logger.log()
-        start = time.time()
+    logger.log()

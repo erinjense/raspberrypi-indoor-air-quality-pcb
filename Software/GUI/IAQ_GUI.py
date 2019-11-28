@@ -73,7 +73,7 @@ class GUI(tk.Tk):
         #           Root Properties
         ############################################
         self.geometry('800x480')
-        self.title('Indoor Air Quality Logger')
+        self.title('Zephyrus IAQ')
         self.resizable(0, 0)
         self.configure(bg=self.BACKGROUND_CLR)
 
@@ -403,13 +403,15 @@ class BottomBar(tk.Frame):
 
 class TopBar(tk.Frame):
     HEIGHT = 1
-    WIDTH  = 11
+    WIDTH  = 14
 
     TEMP_F    = " [F]"
     TEMP_C    = " [F]"
     TEMP_UNIT = TEMP_F
     HUM_UNIT  = " [RH]"
     PR_UNIT   = " [hPa]"
+
+    SETTINGS_IMG = "images/Settings-Logo.png"
 
     ctrl = None
     time = None
@@ -507,6 +509,26 @@ class TopBar(tk.Frame):
         locationLabel.configure(height=self.HEIGHT,width=self.WIDTH)
         locationLabel.configure(bg = self.ctrl.TOP_SCRN_CLR)
         locationLabel.grid(row=1,column=5)
+
+
+        #######################################################################
+        # Settings (Button)
+        #######################################################################
+        im = Image.open(self.SETTINGS_IMG)
+        im = im.resize((50, 50), Image.ANTIALIAS)
+
+        img = ImageTk.PhotoImage(image = im)
+        logoLabel = tk.Label(self, image = img)
+        logoLabel.image = img
+        logoLabel.configure(bg = self.ctrl.TOP_SCRN_CLR)
+        logoLabel.grid(row=0, column=6, rowspan=2, sticky="nsew")
+
+        settings = tk.Button(self)
+        settings.configure(image=img)
+        #settings.configure(command=lambda : self.ctrl.update_logger(self))
+        settings.configure(height=self.HEIGHT, width=self.WIDTH)
+        settings.configure(bg = self.ctrl.TOP_SCRN_CLR)
+        settings.grid(row=-0, column=6, rowspan=2, stick="nsew")
 
 
     def updateDate(self):

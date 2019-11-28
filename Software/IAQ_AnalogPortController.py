@@ -22,15 +22,17 @@ class AnalogPortController:
     # Set the Gain of ADS1115 ADC
     # Ports A0-A5 are multiplexed onto ADC 0
     #########################################
-    GAIN = 1
+    GAIN = 2/3
     IAQ_ADS1115_CH = 0
     #########################################
  
     def __init__(self,sensorPortDict=None):
         self.portIdDict = sensorPortDict
+
         self.adc = Adafruit_ADS1x15.ADS1115()
         self.dac = IAQ_DAC43608.DAC43608()
         self.mux = IAQ_Mux.Mux()
+
         self.dac.writeConfig(0x0000)
 
     def readPort(self,portNum):

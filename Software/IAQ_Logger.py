@@ -35,8 +35,11 @@ class Logger:
     ############################
     # Sensor Control
     ############################
+    sensorsDict      = {}
     sensorConfigDict = {}
-    sensorsDict = {}
+    bme680_temp     = None
+    bme680_humidity = None
+    bme680_pressure = None
     ############################
 
     ############################
@@ -115,14 +118,21 @@ class Logger:
                 time = str(datetime.datetime.now().time())
                 loc  = 0
                 bme680   = self.sensorsDict.get("BME680")
-                temp = None
+                temp     = None
                 humidity = None
+                pressure = None
                 try:
                     temp     = bme680.getTemperature()
                     humidity = bme680.getHumidity()
+                    pressure = bme680.getPressure()
                 except AttributeError: pass
+                self.bme680_temp     = temp
+                self.bme680_humidity = humidity
+                self.bme680_pressure = pressure
+
                 # Get sensor data
                 data = sensor.getData()
+                self.updateGui(data,name)
 
                 # Create list in order of database storage
                 dataList.extend([date,time,loc,temp,humidity])
@@ -156,8 +166,12 @@ class Logger:
     def getElapsedLogTime(self):
         return int(Timer() - self.startTime)
 
-    def updateGui(self):
+    def updateGui(self, data=None, sensor=None):
         self.gui.updateTime()
+        self.gui.updateTemp(self.bme680_temp)
+        self.gui.updateHumidity(self.bme680_humidity)
+        self.gui.updatePressure(self.bme680_pressure)
+        if data != None: self.gui.updateData(data, sensor)
         self.gui.update()
         self.gui.update_idletasks()
 

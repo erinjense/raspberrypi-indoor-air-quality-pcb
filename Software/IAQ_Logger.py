@@ -107,7 +107,7 @@ class Logger:
         self._updateUSB()
 
         # Init: AnalogPortController
-        self.analogPorts = AnalogPortController(self.sensorConfigDict)
+        self.analogPorts = AnalogPortController()
 
         # Init: Sensors
         self._initSensors()
@@ -123,8 +123,9 @@ class Logger:
     def _initSensors(self):
         for key, values in self.sensorConfigDict.items():
             sensor_dict = {key : values}
-            try:            sensor = Sensor(sensor_dict, self.analogPorts)
-            except IOError: continue
+            try: sensor = Sensor(sensor_dict, self.analogPorts)
+            except IOError:          continue
+            except SensorSetupError: continue
             self.sensorsDict[key] = sensor
 
     def _timeToLog(self):
@@ -202,9 +203,9 @@ class Logger:
                 time     = str(datetime.datetime.now().time())
                 loc      = 0
                 bme680   = self.sensorsDict.get("BME680")
-                temp     = None
-                humidity = None
-                pressure = None
+                temp     = ""
+                humidity = ""
+                pressure = ""
                 try:
                     temp     = bme680.getTemperature()
                     humidity = bme680.getHumidity()

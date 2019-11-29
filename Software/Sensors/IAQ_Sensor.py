@@ -124,17 +124,21 @@ class Sensor:
         values    = setupDictionary.values()[0]
         self.port = values.get("Port")
         self.sid  = SensorIdEnum[self.name]
-        self.portController = portController
-        if "MQ" in self.name:
-            self._Sensor = IAQ_MQgas(self.sid, self.port, self.portController)
-        if "BME680" in self.name:
-            self._Sensor = IAQ_BME680(self.sid)
-        if "SDS011" in self.name:
-            self._Sensor = IAQ_SDS011(self.sid, self.port)
-        if "SCD30" in self.name:
-            self._Sensor = IAQ_SCD30(self.sid)
-        if "XA1110" in self.name:
-            pass
+        try:
+            if "MQ" in self.name:
+                self.portController = portController
+                self._Sensor = IAQ_MQgas(self.sid, self.port, 
+                                                        self.portController)
+            if "BME680" in self.name:
+                self._Sensor = IAQ_BME680(self.sid)
+            if "SDS011" in self.name:
+                self._Sensor = IAQ_SDS011(self.sid, self.port)
+            if "SCD30" in self.name:
+                self._Sensor = IAQ_SCD30(self.sid)
+            if "XA1110" in self.name:
+                pass
+        except SensorSetupError:
+            raise SensorSetupError('Could not setup sensor ' + self.name)
 
     def getData(self):
         data = None

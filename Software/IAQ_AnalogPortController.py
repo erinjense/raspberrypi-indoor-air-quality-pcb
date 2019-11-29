@@ -14,11 +14,6 @@ class AnalogPortController:
     #########################################
     currentPort = None
     #########################################
-    # Store a dictionary of Port and Sensor Id
-    # E.g. {'A0':,SensorIdEnum.MQ2.name,...}
-    #########################################
-    portIdDict = {}
-    #########################################
     # Set the Gain of ADS1115 ADC
     # Ports A0-A5 are multiplexed onto ADC 0
     #########################################
@@ -26,9 +21,7 @@ class AnalogPortController:
     IAQ_ADS1115_CH = 0
     #########################################
  
-    def __init__(self,sensorPortDict=None):
-        self.portIdDict = sensorPortDict
-
+    def __init__(self):
         self.adc = Adafruit_ADS1x15.ADS1115()
         self.dac = IAQ_DAC43608.DAC43608()
         self.mux = IAQ_Mux.Mux()

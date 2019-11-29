@@ -24,6 +24,7 @@
 #################################################################################
 
 import serial, time
+from IAQ_Exceptions import *
 
 class IAQ_SDS011():
     sid = None
@@ -31,7 +32,10 @@ class IAQ_SDS011():
 
     def __init__(self, sensor_id=None, serial_port=None):
         self.sid = sensor_id
-        self.serial = serial.Serial('/dev/ttyUSB0')
+        try:
+            self.serial = serial.Serial('/dev/ttyUSB0')
+        except serial.serialutil.SerialException:
+            raise SensorSetupError('Could not setup serial for SDS011')
 
         #ser = serial.Serial(
         #    port='/dev/ttyS0',
@@ -48,5 +52,5 @@ class IAQ_SDS011():
             data.append(datum)
 
         pmtwofive = int(''.join(data[2:4]).encode('hex'), 16)/10
-        pmten = int(''.join(data[4:6]).encode('hex'), 16)/10
+        pmten     = int(''.join(data[4:6]).encode('hex'), 16)/10
         return [pmtwofive, pmten]

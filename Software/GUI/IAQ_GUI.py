@@ -130,21 +130,25 @@ class GUI(tk.Tk):
         topbar.updateTime()
 
     def updateTemp(self, temp):
+        if temp == None or temp == "": return
         startpage = self.frames.get("StartPage")
         topbar    = startpage.frames.get("TopBar")
         topbar.updateTemp(temp)
 
     def updateHumidity(self, humidity):
+        if humidity == None or humidity == "": return
         startpage = self.frames.get("StartPage")
         topbar    = startpage.frames.get("TopBar")
         topbar.updateHumidity(humidity)
 
     def updatePressure(self, pressure):
+        if pressure == None or pressure == "": return
         startpage = self.frames.get("StartPage")
         topbar    = startpage.frames.get("TopBar")
         topbar.updatePressure(pressure)
 
     def updateLocation(self, location):
+        if location == None or location == "": return
         startpage = self.frames.get("StartPage")
         topbar    = startpage.frames.get("TopBar")
         topbar.updateLocation(location)
@@ -154,6 +158,7 @@ class GUI(tk.Tk):
     ##################################
 
     def updateData(self, data, sensor_name):
+        if data == None or data == "": return
         startpage  = self.frames.get("StartPage")
         sensorgrid = startpage.frames.get("SensorGrid")
         sensortile = sensorgrid.frames.get(sensor_name)
@@ -423,7 +428,7 @@ class TopBar(tk.Frame):
     WIDTH  = 14
 
     TEMP_F    = " [F]"
-    TEMP_C    = " [F]"
+    TEMP_C    = " [C]"
     TEMP_UNIT = TEMP_F
     HUM_UNIT  = " [RH]"
     PR_UNIT   = " [hPa]"
@@ -542,7 +547,7 @@ class TopBar(tk.Frame):
 
         settings = tk.Button(self)
         settings.configure(image=img)
-        #settings.configure(command=lambda : self.ctrl.update_logger(self))
+        settings.configure(command=lambda : self.ctrl.show_frame("Settings"))
         settings.configure(height=self.HEIGHT, width=self.WIDTH)
         settings.configure(bg = self.ctrl.TOP_SCRN_CLR)
         settings.grid(row=-0, column=6, rowspan=2, stick="nsew")
@@ -565,17 +570,20 @@ class TopBar(tk.Frame):
             # Celsius
             else:
                 self.temp.set("{0:.3f}".format(temp))
-        except TypeError: return
+        except TypeError:
+            pass
         
     def updateHumidity(self, humidity):
         try:
             self.humidity.set(str(humidity) + self.HUM_UNIT)
-        except TypeError: return
+        except TypeError:
+            self.humidity.set("")
 
     def updatePressure(self, pressure):
         try:
             self.pressure.set(str(pressure) + self.PR_UNIT)
-        except TypeError: return
+        except TypeError:
+            self.pressure.set("")
 
     def updateLocation(self, location):
         pass

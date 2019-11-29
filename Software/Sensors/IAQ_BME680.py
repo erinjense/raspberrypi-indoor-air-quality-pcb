@@ -26,6 +26,7 @@
 
 import bme680
 import time
+from IAQ_Exceptions import *
 
 class IAQ_BME680():
     sid = None
@@ -35,13 +36,11 @@ class IAQ_BME680():
     MAX_ATTEMPTS = 5
 
     def __init__(self,sensor_id=None):
-        if (sensor_id == None):
-            pass
         self.sid = sensor_id
         try:
             sensor = bme680.BME680(bme680.I2C_ADDR_SECONDARY)
-        except IOError('Could not setup bme680 I2C'):
-            raise SensorSetupError('Returning from bme680')
+        except IOError:
+            raise SensorSetupError('Could not setup BME680 I2C.')
         # Set Oversample rate
         sensor.set_humidity_oversample(bme680.OS_2X)
         sensor.set_pressure_oversample(bme680.OS_4X)
@@ -62,6 +61,7 @@ class IAQ_BME680():
             if self._Bme680.get_sensor_data():
                 humidity = self._Bme680.data.humidity
                 break
+        if humidity == None: raise SensorReadError('BME680.getHumidity')
         return humidity
 
     def getTemp(self):
@@ -70,6 +70,7 @@ class IAQ_BME680():
             if self._Bme680.get_sensor_data():
                 temp = self._Bme680.data.temperature
                 break
+        if temp == None: raise SensorReadError('BME680.getTemp')
         return temp
 
     def getPressure(self):
@@ -78,6 +79,7 @@ class IAQ_BME680():
             if self._Bme680.get_sensor_data():
                 pressure = self._Bme680.data.pressure
                 break
+        if pressure == None: raise SensorReadError('BME680.getPressure')
         return pressure
 
     def getVOC(self):
@@ -86,6 +88,7 @@ class IAQ_BME680():
             if self._Bme680.data.heat_stable:
                 voc = self._Bme680.data.gas_resistance
                 break
+        if voc == None: raise SensorReadError('BME680.getVOC')
         return voc
     
     def getData(self):

@@ -17,3 +17,4 @@ Software/
     IAQ_Exceptions.py
     IAQ_FileHandler.py
     IAQ_Logger.py
+    IAQ_Config.py

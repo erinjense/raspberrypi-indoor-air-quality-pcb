@@ -1,12 +1,10 @@
 #!/usr/bin/python
 
 import csv
-import sqlite3
 import os
-from GUI.IAQ_GUI import *
-from contextlib import closing
+from GUI.IAQ_GUI    import *
 from IAQ_Exceptions import *
-from Sensors.IAQ_Sensor import SensorInfo
+from IAQ_Config     import SensorConfig
 
 class FileHandler:
 
@@ -29,14 +27,14 @@ class FileHandler:
             writer.writerow(data)
 
     def createStorageFolder(self, path = None):
-        if path == None: path = SensorInfo.FAILSAFE_FOLDER
+        if path == None: path = SensorConfig.FAILSAFE_FOLDER
         if (self._fileExists(path) == True): return
         os.makedirs(path)
 
     def _getSensorCsvHeader(self, sensor_id):
-        sensor_config = SensorInfo.SENSOR_DICT.get(sensor_id)
+        sensor_config = SensorConfig.SENSOR_DICT.get(sensor_id)
         data_keys     = sensor_config.get("DataKeys")
-        header        = SensorInfo.STORAGE_KEYS + data_keys
+        header        = SensorConfig.STORAGE_KEYS + data_keys
         return header
 
     def _fileExists(self,f=None):

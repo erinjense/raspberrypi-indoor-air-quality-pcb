@@ -26,7 +26,8 @@ import Tkinter as tk
 import ScrolledText as tkst
 import datetime
 import os
-from   Sensors.IAQ_Sensor import SensorInfo
+from   IAQ_Config         import SensorConfig
+from   IAQ_Config         import LoggerConfig
 from   enum               import Enum
 from   itertools          import cycle
 from   PIL                import ImageTk, Image
@@ -125,32 +126,27 @@ class GUI(tk.Tk):
     #######################
 
     def updateTime(self):
-        startpage = self.frames.get("StartPage")
-        topbar    = startpage.frames.get("TopBar")
+        topbar    = self.frames.get("TopBar")
         topbar.updateTime()
 
     def updateTemp(self, temp):
         if temp == None or temp == "": return
-        startpage = self.frames.get("StartPage")
-        topbar    = startpage.frames.get("TopBar")
+        topbar    = self.frames.get("TopBar")
         topbar.updateTemp(temp)
 
     def updateHumidity(self, humidity):
         if humidity == None or humidity == "": return
-        startpage = self.frames.get("StartPage")
-        topbar    = startpage.frames.get("TopBar")
+        topbar    = self.frames.get("TopBar")
         topbar.updateHumidity(humidity)
 
     def updatePressure(self, pressure):
         if pressure == None or pressure == "": return
-        startpage = self.frames.get("StartPage")
-        topbar    = startpage.frames.get("TopBar")
+        topbar    = self.frames.get("TopBar")
         topbar.updatePressure(pressure)
 
     def updateLocation(self, location):
         if location == None or location == "": return
-        startpage = self.frames.get("StartPage")
-        topbar    = startpage.frames.get("TopBar")
+        topbar    = self.frames.get("TopBar")
         topbar.updateLocation(location)
 
     ##################################
@@ -159,8 +155,7 @@ class GUI(tk.Tk):
 
     def updateData(self, data, sensor_name):
         if data == None or data == "": return
-        startpage  = self.frames.get("StartPage")
-        sensorgrid = startpage.frames.get("SensorGrid")
+        sensorgrid = self.frames.get("SensorGrid")
         sensortile = sensorgrid.frames.get(sensor_name)
         sensortile.updateData(data)
 
@@ -170,8 +165,7 @@ class GUI(tk.Tk):
     def updateUsbStatus(self, usb_status):
         self._usb_status_flag = usb_status
         try:
-            startpage = self.frames["StartPage"]
-            bottomBar = startpage.frames["BottomBar"]
+            bottomBar = self.frames["BottomBar"]
             if self._usb_status_flag == True:
                 bottomBar.usb_txt.set(self.USB_EJECT)
                 bottomBar.usb_btn['state'] = 'normal'
@@ -182,19 +176,18 @@ class GUI(tk.Tk):
                 bottomBar.usb_txt.set(self.USB_NONE)
                 bottomBar.usb_btn['state'] = 'disabled'
         except KeyError:
-            raise KeyError('StartPage does not exist')
+            raise KeyError('BottomBar does not exist')
 
     def updateLoggerStatus(self, logger_status):
         self._logger_status_flag = logger_status
         try:
-            startpage = self.frames["StartPage"]
-            bottomBar = startpage.frames["BottomBar"]
+            bottomBar = self.frames["BottomBar"]
             if self._logger_status_flag == True:
                 bottomBar.logger_txt.set(self.LOG_OFF)
             elif self._logger_status_flag == False:
                 bottomBar.logger_txt.set(self.LOG_ON)
         except KeyError:
-            raise KeyError('StartPage does not exist')
+            raise KeyError('BottomBar does not exist')
 
     ###########################################################################
     # Internal Callbacks
@@ -226,6 +219,18 @@ class GUI(tk.Tk):
         else:
             pass
 
+    def toggle_settings(self, topbar):
+        # Toggle View
+        if topbar.current_view == topbar.SETTINGS_VIEW:
+            topbar.current_view = topbar.SENSORGRID_VIEW
+            topbar.settings.configure(image = topbar.settings_img)
+            topbar.settings.image = topbar.settings_img
+        elif topbar.current_view == topbar.SENSORGRID_VIEW:
+            topbar.current_view = topbar.SETTINGS_VIEW
+            topbar.settings.configure(image = topbar.back_img)
+            topbar.settings.image = topbar.back_img
+        # Show New View
+        self.show_frame(topbar.current_view)
        
 class StartPage(tk.Frame):
     ctrl = None
@@ -241,25 +246,35 @@ class StartPage(tk.Frame):
         #   TopBar
         #######################################################################
         topBar = TopBar(parent=self, controller = self.ctrl)
-        topBar.pack(expand=True,fill='both')
+        topBar.grid(row=0, column=0, sticky="nsew")
         topBar.configure(bg=self.ctrl.BACKGROUND_CLR)
-        self.frames["TopBar"] = topBar
+        self.ctrl.frames["TopBar"] = topBar
 
         #######################################################################
+        # Mid-Section
+        #######################################################################
+        #####################
+        #    Settings
+        #####################
+        settings = Settings(parent=self, controller=self.ctrl)
+        settings.configure(bg=self.ctrl.BACKGROUND_CLR)
+        settings.grid(row=1, column=0, stick = "nsew")
+        self.ctrl.frames["Settings"] = settings
+
+        #####################
         #   SensorGrid
-        #######################################################################
-        sensorView = SensorGrid(parent=self, controller=self.ctrl)
-        sensorView.configure(bg=self.ctrl.BACKGROUND_CLR)
-        sensorView.pack(expand=True,fill='both')
-        self.frames["SensorGrid"] = sensorView
-
+        #####################
+        sensorGrid = SensorGrid(parent=self, controller=self.ctrl)
+        sensorGrid.configure(bg=self.ctrl.BACKGROUND_CLR)
+        sensorGrid.grid(row=1, column=0, sticky="nsew")
+        self.ctrl.frames["SensorGrid"] = sensorGrid
         #######################################################################
         #   BottomBar
         #######################################################################
         bottomBar = BottomBar(parent=self, controller = self.ctrl)
-        bottomBar.pack(expand=True,fill='both')
+        bottomBar.grid(row=2, column=0, sticky="nsew")
         bottomBar.configure(bg=self.ctrl.BACKGROUND_CLR)
-        self.frames["BottomBar"] = bottomBar
+        self.ctrl.frames["BottomBar"] = bottomBar
 
 class SensorGrid(tk.Frame):
     ctrl = None
@@ -326,8 +341,53 @@ class SensorGrid(tk.Frame):
         bme680_voc.grid_propagate(False)
         self.frames["BME680"] = bme680_voc
 
+class Settings(tk.Frame):
+    ctrl = None
+    frames = {}
+    HEIGHT = 5
+    WIDTH = 5
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.ctrl = controller
+        self.configure(highlightbackground = self.ctrl.SENSOR_GRID_CLR)
+        self.configure(highlightcolor      = self.ctrl.SENSOR_GRID_CLR)
+        self.configure(highlightthickness = 2)
+        self.rowconfigure(0,    weight=1)
+        self.rowconfigure(1,    weight=1)
+        self.rowconfigure(2,    weight=1)
+        self.columnconfigure(0, weight=1)
+        self.columnconfigure(1, weight=1)
+        self.columnconfigure(2, weight=1)
+
+        version = "Software Version: {0}".format(LoggerConfig.SOFTWARE_VERSION)
+        loggerId   = "Logger ID #: {0}".format(LoggerConfig.LOGGER_ID)
+        repository = "GitHub: {0}".format(LoggerConfig.GITHUB)
+        text       = "{0}\n{1}\n{2}\n".format(loggerId, version, repository)
+
+        configLabel = tk.Label(self,text = text)
+        configLabel.configure(bg=self.ctrl.TOP_SCRN_CLR)
+        configLabel.configure(font = "Times 15 bold")
+        configLabel.grid(row=0, column=0, sticky="nsew", rowspan=3)
+
+        update = tk.Button(self, text="Update")
+        update.configure(bg=self.ctrl.TOP_SCRN_CLR)
+        update.configure(font = "Times 15 bold")
+        update.grid(row=0, column=1, sticky="nsew", columnspan=2)
+
+        shutdown = tk.Button(self, text="Shutdown")
+        shutdown.configure(bg=self.ctrl.TOP_SCRN_CLR)
+        shutdown.configure(font = "Times 15 bold")
+        shutdown.grid(row=1, column=1, sticky="nsew", columnspan=2)
+
+        reboot = tk.Button(self, text="Reboot")
+        reboot.configure(bg=self.ctrl.TOP_SCRN_CLR)
+        reboot.configure(font = "Times 15 bold")
+        reboot.grid(row=2, column=1, sticky="nsew", columnspan=2)
+
+
 class SensorTile(tk.Frame):
-    WIDTH  = 270
+    WIDTH  = 265
     HEIGHT = 108
     ctrl   = None
     focus  = None
@@ -353,7 +413,7 @@ class SensorTile(tk.Frame):
         titleText.config(text = name)
         titleText.grid(row=0, column=0, sticky="nswe")
 
-        self.sensorFocus = SensorInfo.SENSOR_DICT[name]["Focus"]
+        self.sensorFocus = SensorConfig.SENSOR_DICT[name]["Focus"]
         self.focus = tk.StringVar()
 
         focusText = tk.Label(self)
@@ -374,7 +434,7 @@ class SensorTile(tk.Frame):
         self.focus.set(focus)
 
 class BottomBar(tk.Frame):
-    HEIGHT = 5
+    HEIGHT = 4
     WIDTH  = 13
     LOGO   = "images/Zephyrus-IAQ-Logo.png"
 
@@ -393,6 +453,7 @@ class BottomBar(tk.Frame):
         self.logger_txt = tk.StringVar()
         self.logger_txt.set(self.ctrl.LOG_ON)
         stSp = tk.Button(self, textvariable=self.logger_txt)
+        stSp.configure(font="Times 13 bold")
         stSp.configure(command=lambda : self.ctrl.update_logger(self))
         stSp.configure(height=self.HEIGHT, width=self.WIDTH)
         
@@ -405,6 +466,7 @@ class BottomBar(tk.Frame):
         self.usb_txt = tk.StringVar()
         self.usb_txt.set(self.ctrl.USB_MOUNT)
         self.usb_btn = tk.Button(self, textvariable=self.usb_txt)
+        self.usb_btn.configure(font="Times 13 bold")
         self.usb_btn.configure(command=lambda : self.ctrl.update_usb(self))
         self.usb_btn.configure(width=self.WIDTH, height=self.HEIGHT)
         self.usb_btn.configure(bg=self.ctrl.TOP_SCRN_CLR)
@@ -414,7 +476,7 @@ class BottomBar(tk.Frame):
         # Logo (Image)
         #######################################################################
         im = Image.open(self.LOGO)
-        im = im.resize((535, 95), Image.ANTIALIAS)
+        im = im.resize((506, 100), Image.ANTIALIAS)
 
         img = ImageTk.PhotoImage(image = im)
         logoLabel = tk.Label(self, image = img)
@@ -433,12 +495,19 @@ class TopBar(tk.Frame):
     HUM_UNIT  = " [RH]"
     PR_UNIT   = " [hPa]"
 
-    SETTINGS_IMG = "images/Settings-Logo.png"
+    SETTINGS_IMG    = "images/Settings-Logo.png"
+    BACK_IMG        = "images/Back-Icon.png"
+    SETTINGS_VIEW   = "Settings"
+    SENSORGRID_VIEW = "SensorGrid"
 
-    ctrl = None
-    time = None
-    date = None
-    location = None
+    settings        = None
+    settings_img    = None
+    back_img        = None
+    current_view    = None
+    ctrl            = None
+    time            = None
+    date            = None
+    location        = None
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -536,21 +605,21 @@ class TopBar(tk.Frame):
         #######################################################################
         # Settings (Button)
         #######################################################################
-        im = Image.open(self.SETTINGS_IMG)
-        im = im.resize((50, 50), Image.ANTIALIAS)
+        self.current_view = self.SENSORGRID_VIEW
+        settings_img = Image.open(self.SETTINGS_IMG)
+        settings_img = settings_img.resize((40, 40), Image.ANTIALIAS)
+        back_img     = Image.open(self.BACK_IMG)
+        back_img     = back_img.resize((40, 40), Image.ANTIALIAS)
 
-        img = ImageTk.PhotoImage(image = im)
-        logoLabel = tk.Label(self, image = img)
-        logoLabel.image = img
-        logoLabel.configure(bg = self.ctrl.TOP_SCRN_CLR)
-        logoLabel.grid(row=0, column=6, rowspan=2, sticky="nsew")
+        self.settings_img = ImageTk.PhotoImage(image = settings_img)
+        self.back_img     = ImageTk.PhotoImage(image = back_img)
 
-        settings = tk.Button(self)
-        settings.configure(image=img)
-        settings.configure(command=lambda : self.ctrl.show_frame("Settings"))
-        settings.configure(height=self.HEIGHT, width=self.WIDTH)
-        settings.configure(bg = self.ctrl.TOP_SCRN_CLR)
-        settings.grid(row=-0, column=6, rowspan=2, stick="nsew")
+        self.settings = tk.Button(self)
+        self.settings.configure(image = self.settings_img)
+        self.settings.image = self.settings_img
+        self.settings.configure(command=lambda : self.ctrl.toggle_settings(self))
+        self.settings.configure(bg = self.ctrl.TOP_SCRN_CLR)
+        self.settings.grid(row=-0, column=6, rowspan=2, stick="nsew")
 
 
     def updateDate(self):

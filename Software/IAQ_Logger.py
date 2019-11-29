@@ -29,7 +29,7 @@ from   IAQ_AnalogPortController import *
 from   GUI.IAQ_GUI              import GUI
 from   Sensors.IAQ_Sensor       import Sensor
 from   Sensors.IAQ_Sensor       import SensorIdEnum
-from   Sensors.IAQ_Sensor       import SensorInfo
+from   IAQ_Config               import SensorConfig
 from   IAQ_FileHandler          import FileHandler
 from   IAQ_Exceptions           import *
 from   timeit                   import default_timer as Timer
@@ -97,7 +97,7 @@ class Logger:
         self.totalRunTime   = Timer()
         self.logger_status  = True
 
-        self.sensorConfigDict = SensorInfo.SENSOR_DICT
+        self.sensorConfigDict = SensorConfig.SENSOR_DICT
  
         # Init: FileHandler
         self.csv = FileHandler()
@@ -177,9 +177,9 @@ class Logger:
         if self.usb_status == False or self.usb_status == None:
             # Update database path to failsafe in case user
             # starts logging without mounting USB again
-            self.csvFolder = SensorInfo.FAILSAFE_FOLDER
+            self.csvFolder = SensorConfig.FAILSAFE_FOLDER
         elif self.usb_status == True:
-            self.csvFolder = SensorInfo.DEFAULT_FOLDER
+            self.csvFolder = SensorConfig.DEFAULT_FOLDER
         else:
             print('Error: USB Status')
 

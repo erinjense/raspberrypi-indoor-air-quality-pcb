@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 #################################################################################
 # MIT License
 #
@@ -23,30 +25,30 @@
 #
 #################################################################################
 
-import serial, time
+from IAQ_Exceptions import *
 
-class IAQ_SDS011():
+class IAQ_MQgas():
     sid = None
-    serial = None
+    portController = None
+    analog_port = None
 
-    def __init__(self, sensor_id=None, serial_port=None):
-        self.sid = sensor_id
-        self.serial = serial.Serial('/dev/ttyUSB0')
-
-        #ser = serial.Serial(
-        #    port='/dev/ttyS0',
-        #    baudrate = 9600,
-        #    parity = serial.PARITY_NONE,
-        #    stopbits=serial.STOPBITS_ONE,
-        #    bytesize=serial.EIGHTBITS,
-        #    timeout=1)
+    def __init__(self,sensor_id=None,sensor_port=None,portController=None):
+        self.sid            = sensor_id
+        self.portController = portController
+        self.analog_port    = sensor_port
+        self.turnOn()
 
     def getData(self):
-        data = []
-        for index in range(0,10):
-            datum = self.serial.read()
-            data.append(datum)
+        if self.portController is None or self.analog_port is None:
+            raise SensorSetupError('Port controller or Analog Port is None')
+        try:
+            data = self.portController.readPort(self.analog_port)
+        except IOError:
+            raise SensorReadError('Could not get MQ Sensor data from ADC.')
+        return data
 
-        pmtwofive = int(''.join(data[2:4]).encode('hex'), 16)/10
-        pmten = int(''.join(data[4:6]).encode('hex'), 16)/10
-        return [pmtwofive, pmten]
+    def turnOff(self):
+        self.portController.turnOff(self.analog_port)
+
+    def turnOn(self):
+        self.portController.turnOn(self.analog_port)

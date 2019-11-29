@@ -7,7 +7,10 @@ Software/
         IAQ_Mux.py
     Sensors/
         IAQ_Sensor.py
-        IAQ_MqGas.py
+        IAQ_MQGas.py
+        IAQ_BME680.py
+        IAQ_SDS011.py
+        IAQ_SCD30.py
     third_party/
         bme680-python
     IAQ_AnalogPortController.py

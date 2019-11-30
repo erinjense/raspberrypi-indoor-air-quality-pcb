@@ -1,5 +1,4 @@
 Software/
-    Config/
     GUI/
         IAQ_GUI.py
     HAT/
@@ -11,8 +10,10 @@ Software/
         IAQ_BME680.py
         IAQ_SDS011.py
         IAQ_SCD30.py
+        IAQ_GPS.py
     third_party/
-        bme680-python
+        Adafruit_I2C.py
+        Adafruit_ADS1x15.py
     IAQ_AnalogPortController.py
     IAQ_Exceptions.py
     IAQ_FileHandler.py

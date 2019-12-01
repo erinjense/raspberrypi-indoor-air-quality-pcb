@@ -11,7 +11,7 @@ class SensorConfig:
     # Default Sensor Setup Info.
     ###########################################################################
     STORAGE_KEYS = ["Date(YYYY/MM/DD)", "Time(HH:MM:SS)", "Location(Deg)", 
-            "Temp(C)", "Pressure(hPa)", "Humidity(RH)"]
+            "Temp(C)","Humidity(RH)", "Pressure(hPa)"]
 
     MQ2_DICT = {
             "Port"   : 'A0',

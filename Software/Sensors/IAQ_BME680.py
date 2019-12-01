@@ -59,7 +59,8 @@ class IAQ_BME680():
         humidity = None
         for attempt in range(self.MAX_ATTEMPTS):
             if self._Bme680.get_sensor_data():
-                humidity = self._Bme680.data.humidity
+                try: humidity = self._Bme680.data.humidity
+                except IOError: pass
                 break
         if humidity == None: raise SensorReadError('BME680.getHumidity')
         return humidity
@@ -68,7 +69,8 @@ class IAQ_BME680():
         temp = None
         for attempt in range(self.MAX_ATTEMPTS):
             if self._Bme680.get_sensor_data():
-                temp = self._Bme680.data.temperature
+                try: temp = self._Bme680.data.temperature
+                except IOError: pass
                 break
         if temp == None: raise SensorReadError('BME680.getTemp')
         return temp
@@ -77,7 +79,8 @@ class IAQ_BME680():
         pressure = None
         for attempt in range(self.MAX_ATTEMPTS):
             if self._Bme680.get_sensor_data():
-                pressure = self._Bme680.data.pressure
+                try: pressure = self._Bme680.data.pressure
+                except IOError: pass
                 break
         if pressure == None: raise SensorReadError('BME680.getPressure')
         return pressure
@@ -86,7 +89,8 @@ class IAQ_BME680():
         voc = None
         for attempt in range(self.MAX_ATTEMPTS):
             if self._Bme680.data.heat_stable:
-                voc = self._Bme680.data.gas_resistance
+                try: voc = self._Bme680.data.gas_resistance
+                except IOError: pass
                 break
         if voc == None: raise SensorReadError('BME680.getVOC')
         return voc

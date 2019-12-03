@@ -53,4 +53,6 @@ class IAQ_SDS011():
 
         pmtwofive = int(''.join(data[2:4]).encode('hex'), 16)/10
         pmten     = int(''.join(data[4:6]).encode('hex'), 16)/10
-        return [pmtwofive, pmten]
+        output = [pmtwofive, pmten]
+        if not output: raise SensorReadError('Could not read SDS011')
+        return output

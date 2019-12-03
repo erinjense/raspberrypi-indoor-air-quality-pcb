@@ -95,14 +95,6 @@ class DAC43608:
         self.chE = 0
         self.chF = 0
 
-    # TODO: Add ~LDAC~ 0V pull down for synchronous mode.
-    def syncLDAC(void):
-        return
-
-    # TODO: Add ~CLR~ 0V pull down for clearing DAC buffers.
-    def clrBuffer(void):
-        return
-
     def writeDac(self, command, data_16bits):
         self.i2c.write16(command, data_16bits)
         return
@@ -129,4 +121,14 @@ class DAC43608:
     def writeDacD(self, resolution):
         self.chD = resolution
         self.writeDac(self.__DAC43608_DACD_DATA, self.chD)
+        return
+
+    def writeDacE(self, resolution):
+        self.chE = resolution
+        self.writeDac(self.__DAC43608_DACE_DATA, self.chE)
+        return
+
+    def writeDacF(self, resolution):
+        self.chF = resolution
+        self.writeDac(self.__DAC43608_DACF_DATA, self.chF)
         return

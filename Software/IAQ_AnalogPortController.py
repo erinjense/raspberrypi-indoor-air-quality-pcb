@@ -53,6 +53,12 @@ class AnalogPortController:
             self.dac.writeDacC(voltage)
         elif port == self.mux.Channel.A3.name:
             self.dac.writeDacD(voltage)
+        elif port == self.mux.Channel.A4.name:
+            self.dac.writeDacE(voltage)
+        elif port == self.mux.Channel.A5.name:
+            self.dac.writeDacF(voltage)
+        else:
+            print('Port Error: AnalogPortController.setVoltage')
 
     def checkPortInput(self,port):
         try:

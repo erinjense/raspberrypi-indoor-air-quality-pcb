@@ -231,6 +231,13 @@ class GUI(tk.Tk):
             topbar.settings.image = topbar.back_img
         # Show New View
         self.show_frame(topbar.current_view)
+
+    def shutdown_logger(self):
+        os.system("shutdown now")
+
+    def reboot_logger(self):
+        os.system("shutdown -r now")
+
        
 class StartPage(tk.Frame):
     ctrl = None
@@ -376,11 +383,13 @@ class Settings(tk.Frame):
         update.grid(row=0, column=1, sticky="nsew", columnspan=2)
 
         shutdown = tk.Button(self, text="Shutdown")
+        shutdown.configure(command=lambda : self.ctrl.shutdown_logger())
         shutdown.configure(bg=self.ctrl.TOP_SCRN_CLR)
         shutdown.configure(font = "Times 15 bold")
         shutdown.grid(row=1, column=1, sticky="nsew", columnspan=2)
 
         reboot = tk.Button(self, text="Reboot")
+        reboot.configure(command=lambda : self.ctrl.reboot_logger())
         reboot.configure(bg=self.ctrl.TOP_SCRN_CLR)
         reboot.configure(font = "Times 15 bold")
         reboot.grid(row=2, column=1, sticky="nsew", columnspan=2)

@@ -1,0 +1,9 @@
+[Shutdown]
+Identity=unix-user:*
+Action=org.freedesktop.login1.power-off
+ResultAny=yes
+
+[Restart]
+Identity=unix-user:*
+Action=org.freedesktop.login1.reboot
+ResultAny=yes

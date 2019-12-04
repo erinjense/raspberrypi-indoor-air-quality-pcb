@@ -65,6 +65,7 @@ class Logger:
     bme680_temp      = None
     bme680_humidity  = None
     bme680_pressure  = None
+    xa1110_location  = None
     ############################
 
     ############################
@@ -195,62 +196,65 @@ class Logger:
         if self._timeToLog()  == False: return
         # Log data routine for every MQ Sensor
         for name,sensor in self.sensorsDict.items():
+	    if name == "XA1110": continue
+            dataList = []
+            # Date/Time is System clock
+            # System clock is updated from a GPS (if available).
+            date     = str(datetime.datetime.now().date())
+            time     = str(datetime.datetime.now().time())
+            bme680   = self.sensorsDict.get("BME680")
+            xa1110   = self.sensorsDict.get("XA1110")
+            location = ""
+            temp     = ""
+            humidity = ""
+            pressure = ""
             try:
-                dataList = []
-                # Date/Time is System clock
-                # System clock is updated from a GPS (if available).
-                date     = str(datetime.datetime.now().date())
-                time     = str(datetime.datetime.now().time())
-                loc      = 0
-                bme680   = self.sensorsDict.get("BME680")
-                temp     = ""
-                humidity = ""
-                pressure = ""
-                try:
-                    temp     = bme680.getTemperature()
-                    humidity = bme680.getHumidity()
-                    pressure = bme680.getPressure()
-                except AttributeError: pass
-                self.bme680_temp     = temp
-                self.bme680_humidity = humidity
-                self.bme680_pressure = pressure
+                temp     = bme680.getTemperature()
+                humidity = bme680.getHumidity()
+                pressure = bme680.getPressure()
+            except AttributeError: print("BME680 does not exist.")
+	    location = xa1110.getLocation()
+            self.bme680_temp     = temp
+            self.bme680_humidity = humidity
+            self.bme680_pressure = pressure
+            self.xa1110_location = location
 
-                # Get sensor data
-                data = sensor.getData()
-
-                # Refresh GUI 
-                # (updates date,time,temp,humidity,pressure,data,...)
-                self.updateGui(data, name)
-
-                # Create list in order of CSV columns
-                # the sensor's unique 'data' is stored last.
-                # data could be a list, such as with the SDS011 PM2.5 & PM10
-                dataList.extend([date, time, loc, temp, humidity, pressure])
-                if type(data) is list: dataList.extend(data)
-                else:                  dataList.append(data)
-
-                # Write to CSV
-                csvFolder = self.csvFolder + name + "/"
-                csvFile   = csvFolder + name + "_" + date + "_.csv"
-                try:
-                    self.csv.writeDataToCSV(dataList,csvFile)
-                except CsvPathErr:
-                    try :
-                        self.csv.newCsv(csvFile, name)
-                    except IOError:
-                        self.csv.createStorageFolder(csvFolder)
+            # Get sensor data
+	    try:
+            	data = sensor.getData()
             except SensorReadError:
                 print("Could not read sensor: "  + name)
                 continue
-            except SensorSetupError:
-                print("Could not setup sensor: " + name)
-                continue
+
+            # Refresh GUI 
+            # (updates date,time,temp,humidity,pressure,data,...)
+            self.updateGui(data, name)
+
+            # Create list in order of CSV columns
+            # the sensor's unique 'data' is stored last.
+            # data could be a list, such as with the SDS011 PM2.5 & PM10
+            dataList.extend([date, time, location, temp, humidity, pressure])
+            if type(data) is list: dataList.extend(data)
+            else:                  dataList.append(data)
+
+            # Write to CSV
+            csvFolder = self.csvFolder + name + "/"
+            csvFile   = csvFolder + name + "_" + date + "_.csv"
+            try:
+                self.csv.writeDataToCSV(dataList,csvFile)
+            except CsvPathErr:
+                try :
+                    self.csv.newCsv(csvFile, name)
+                except IOError:
+                    self.csv.createStorageFolder(csvFolder)
+
 
     def updateGui(self, data=None, sensor=None):
         self.gui.updateTime()
         self.gui.updateTemp(self.bme680_temp)
         self.gui.updateHumidity(self.bme680_humidity)
         self.gui.updatePressure(self.bme680_pressure)
+        self.gui.updateLocation(self.xa1110_location)
         if data != None: self.gui.updateData(data, sensor)
         self.logger_status = self.gui.getLoggerStatus()
         self.gui.update()

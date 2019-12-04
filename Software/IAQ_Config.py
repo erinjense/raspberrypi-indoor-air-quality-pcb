@@ -67,6 +67,11 @@ class SensorConfig:
             "DataKeys": ['VOC (Ohms)'],
             "Status"  : 'On'
             }
+    XA1110_DICT = {
+            "Port"   : '/dev/ttySOFT0',
+            "Focus"  : 'Location',
+            "DataKeys": ['']
+            }
 
     SENSOR_DICT = {
             "MQ2"    : MQ2_DICT,
@@ -77,5 +82,6 @@ class SensorConfig:
             "MQ135"  : MQ135_DICT,
             "BME680" : BME680_DICT,
             "SCD30"  : SCD30_DICT,
-            "SDS011" : SDS011_DICT
+            "SDS011" : SDS011_DICT,
+            "XA1110" : XA1110_DICT
             }

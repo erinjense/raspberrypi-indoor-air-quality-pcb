@@ -48,7 +48,8 @@ class IAQ_SCD30():
 	    rawdata = self.i2c.readList(0x03,18)
 	    struct_co2 = struct.pack('BBBB', rawdata[0], rawdata[1],
                                              rawdata[3], rawdata[4])
-	    data = struct.unpack('>f', struct_co2)
+	    float_co2 = struct.unpack('>f', struct_co2)
+	    data = "%.4f"%float_co2
         except IOError:
             raise SensorReadError('Unable to read SCD30.')
         except TypeError:

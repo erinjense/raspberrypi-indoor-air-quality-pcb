@@ -48,6 +48,7 @@ class Sensor:
     name        = None
     port        = None
     sid         = None
+    status      = None
     _Sensor     = None
     portController = None
 
@@ -56,6 +57,7 @@ class Sensor:
         values    = setupDictionary.values()[0]
         self.port = values.get("Port")
         self.sid  = SensorIdEnum[self.name]
+        self.status = values.get("Status")
         try:
             if "MQ" in self.name:
                 self.portController = portController
@@ -74,6 +76,7 @@ class Sensor:
 
     def getData(self):
         data = None
+        if self.status == "Off": return data
         try:
             data = self._Sensor.getData()
         except SensorSetupError:
@@ -83,25 +86,31 @@ class Sensor:
         return data
 
     def getTemperature(self):
+        if self.status == "Off": return None
         if "BME680" in self.name:
             return self._Sensor.getTemp()
 
     def getHumidity(self):
+        if self.status == "Off": return None
         if "BME680" in self.name:
             return self._Sensor.getHumidity()
 
     def getPressure(self):
+        if self.status == "Off": return None
         if "BME680" in self.name:
             return self._Sensor.getPressure()
 
     def getLocation(self):
+        if self.status == "Off": return None
         if "XA1110" in self.name:
             pass
 
     def getDate(self):
+        if self.status == "Off": return None
         if "XA1110" in self.name:
             pass
 
     def getTime(self):
+        if self.status == "Off": return None
         if "XA1110" in self.name:
             pass

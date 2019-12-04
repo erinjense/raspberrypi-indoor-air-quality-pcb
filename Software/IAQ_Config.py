@@ -14,49 +14,58 @@ class SensorConfig:
             "Temp(C)","Humidity(RH)", "Pressure(hPa)"]
 
     MQ2_DICT = {
-            "Port"   : 'A0',
-            "Focus"  : 'Propane (Raw)',
-            "DataKeys": ['LPG, Propane, Hydrogen (RAW)']
+            "Port"    : 'A0',
+            "Focus"   : 'Propane (Raw)',
+            "DataKeys": ['LPG, Propane, Hydrogen (RAW)'],
+            "Status"  : 'On'
             }
     MQ4_DICT = {
             "Port"   : 'A1',
             "Focus"  : 'Methane (Raw)',
-            "DataKeys": ['Methane, Natural Gas (RAW)']
+            "DataKeys": ['Methane, Natural Gas (RAW)'],
+            "Status"  : 'On'
             }
     MQ5_DICT = {
             "Port"   : 'A2',
             "Focus"  : 'Natural Gas (Raw)',
-            "DataKeys": ['LPG, Natural Gas, Coal Gas (RAW)']
+            "DataKeys": ['LPG, Natural Gas, Coal Gas (RAW)'],
+            "Status"  : 'On'
             }
     MQ6_DICT = {
             "Port"   : 'A3',
             "Focus"  : 'LPG (Raw)',
-            "DataKeys": ['LPG, ISO-Butane, Propane (RAW)']
+            "DataKeys": ['LPG, ISO-Butane, Propane (RAW)'],
+            "Status"  : 'On'
             }
     MQ7_DICT = {
             "Port"   : 'A4',
             "Focus"  : 'CO (Raw)',
-            "DataKeys": ['Carbon Monoxide (RAW)']
+            "DataKeys": ['Carbon Monoxide (RAW)'],
+            "Status"  : 'Off'
             }
     MQ135_DICT = {
             "Port"   : 'A5',
             "Focus"  : 'NH3 (Raw)',
-            "DataKeys": ['NH3, NOx, Benzene, Smoke (RAW)']
+            "DataKeys": ['NH3, NOx, Benzene, Smoke (RAW)'],
+            "Status"  : 'Off'
             }
     SCD30_DICT = {
             "Port"   : 'SoftSerial',
             "Focus"  : 'CO2 (PPM)',
-            "DataKeys": ['CO2 (PPM)']
+            "DataKeys": ['CO2 (PPM)'],
+            "Status"  : 'On'
             }
     SDS011_DICT = {
             "Port"   : '/dev/ttyUSB0',
             "Focus": ['PM2.5 (PPM)','PM10 (PPM)'],
-            "DataKeys": ['PM2.5 (PPM)','PM10 (PPM)']
+            "DataKeys": ['PM2.5 (ug/m^3)','PM10 (ug/m^3)'],
+            "Status"  : 'On'
             }
     BME680_DICT = {
             "Port"   : 'I2C',
             "Focus"  : 'VOC (Ohms)',
-            "DataKeys": ['VOC (Ohms)']
+            "DataKeys": ['VOC (Ohms)'],
+            "Status"  : 'On'
             }
 
     SENSOR_DICT = {

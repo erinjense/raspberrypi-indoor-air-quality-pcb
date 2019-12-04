@@ -1,4 +1,4 @@
-(module REG_EY1501DI-ADJ (layer F.Cu) (tedit 0)
+(module REG_EY1501DI-ADJ (layer F.Cu) (tedit 5DE74D91)
   (attr smd)
   (fp_text reference REG_EY1501DI-ADJ (at -0.374724 -2.40847) (layer F.SilkS)
     (effects (font (size 0.64055 0.64055) (thickness 0.05)))
@@ -215,4 +215,9 @@
   (pad 9 smd rect (at 1.425 -0.5) (size 0.55 0.23) (layers F.Cu F.Paste F.Mask))
   (pad 10 smd rect (at 1.425 -1) (size 0.55 0.23) (layers F.Cu F.Paste F.Mask))
   (pad 11 smd rect (at 0 0 270) (size 2 1.6) (layers F.Cu F.Paste F.Mask))
+  (model ${KIPRJMOD}/lib/zephyrus-iaq.pretty/10-DFN-Regulator.STEP
+    (at (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
 )

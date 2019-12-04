@@ -1,4 +1,4 @@
-(module SON50P200X200X80-9N (layer F.Cu) (tedit 0)
+(module SON50P200X200X80-9N (layer F.Cu) (tedit 5DE74E2A)
   (attr smd)
   (fp_text reference SON50P200X200X80-9N (at 0.73 -2.017) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.05)))
@@ -28,4 +28,9 @@
   (pad 7 smd rect (at 0.985 -0.25) (size 0.76 0.27) (layers F.Cu F.Paste F.Mask))
   (pad 8 smd rect (at 0.985 -0.75) (size 0.76 0.27) (layers F.Cu F.Paste F.Mask))
   (pad 9 smd rect (at 0 0) (size 0.8 1.2) (layers F.Cu F.Paste F.Mask))
+  (model ${KIPRJMOD}/lib/zephyrus-iaq.pretty/LM27761DSGT--3DModel-STEP-56544.STEP
+    (at (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz -90 0 -90))
+  )
 )

@@ -1,4 +1,4 @@
-(module QFN50P300X300X80-17N (layer F.Cu) (tedit 0)
+(module QFN50P300X300X80-17N (layer F.Cu) (tedit 5DE7495E)
   (attr smd)
   (fp_text reference QFN50P300X300X80-17N (at 0.25 -3.74) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.05)))
@@ -42,4 +42,9 @@
   (pad 11 smd rect (at 1.46 -0.25) (size 0.79 0.27) (layers F.Cu F.Paste F.Mask))
   (pad 12 smd rect (at 1.46 -0.75) (size 0.79 0.27) (layers F.Cu F.Paste F.Mask))
   (pad 17 smd rect (at 0 0) (size 1.1 1.1) (layers F.Cu F.Paste F.Mask))
+  (model ${KIPRJMOD}/lib/zephyrus-iaq.pretty/TPS55340RTER--3DModel-STEP-56544.STEP
+    (at (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz -90 0 90))
+  )
 )

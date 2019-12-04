@@ -1,4 +1,4 @@
-(module "JST_SM03B-SRSS-TB(LF)(SN)" (layer F.Cu) (tedit 5DD1E7AC)
+(module "JST_SM03B-SRSS-TB(LF)(SN)" (layer F.Cu) (tedit 5DE74EC3)
   (attr smd)
   (fp_text reference "JST_SM03B-SRSS-TB(LF)(SN)" (at 0 6.35) (layer F.SilkS) hide
     (effects (font (size 1 1) (thickness 0.05)))
@@ -26,4 +26,9 @@
   (pad 3 smd rect (at 1 0 90) (size 1.55 0.6) (layers F.Cu F.Paste F.Mask))
   (pad S1 smd rect (at -2.3 3.875 180) (size 1.2 1.8) (layers F.Cu F.Paste F.Mask))
   (pad S2 smd rect (at 2.3 3.875 180) (size 1.2 1.8) (layers F.Cu F.Paste F.Mask))
+  (model "${KIPRJMOD}/lib/zephyrus-iaq.pretty/SM03B-SRSS-TB(LF)(SN)--3DModel-STEP-56544.STEP"
+    (offset (xyz 0 -0.5 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz -90 0 0))
+  )
 )

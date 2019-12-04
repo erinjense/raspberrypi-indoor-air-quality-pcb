@@ -1,4 +1,4 @@
-(module SMBJ5.0A (layer F.Cu) (tedit 5CBB6EC1)
+(module SMBJ5.0A (layer F.Cu) (tedit 5DE748DA)
   (descr <B>DIODE</B>)
   (attr smd)
   (fp_text reference SMBJ5.0A (at 0.38181 -2.79996) (layer F.SilkS)
@@ -17,4 +17,9 @@
   (fp_poly (pts (xy -1.35189 -1.9) (xy -0.8 -1.9) (xy -0.8 1.90266) (xy -1.35189 1.90266)) (layer Eco2.User) (width 0))
   (pad 1 smd rect (at -2.2 0) (size 2.4 2.4) (layers F.Cu F.Paste F.Mask))
   (pad 2 smd rect (at 2.2 0) (size 2.4 2.4) (layers F.Cu F.Paste F.Mask))
+  (model ${KIPRJMOD}/lib/zephyrus-iaq.pretty/SMBJ16A--3DModel-STEP-56544.STEP
+    (offset (xyz 0 0 1.5))
+    (scale (xyz 1 1 1))
+    (rotate (xyz -90 0 0))
+  )
 )

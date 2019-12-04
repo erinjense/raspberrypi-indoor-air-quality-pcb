@@ -157,6 +157,7 @@ class GUI(tk.Tk):
         if data == None or data == "": return
         sensorgrid = self.frames.get("SensorGrid")
         sensortile = sensorgrid.frames.get(sensor_name)
+        if sensortile == None: return
         sensortile.updateData(data)
 
     #######################
@@ -664,4 +665,7 @@ class TopBar(tk.Frame):
             self.pressure.set("")
 
     def updateLocation(self, location):
-        pass
+        try: 
+            self.location.set(str(location))
+        except TypeError:
+            self.location.set("")

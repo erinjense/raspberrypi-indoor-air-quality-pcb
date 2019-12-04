@@ -32,6 +32,7 @@ from IAQ_BME680     import IAQ_BME680
 from IAQ_SDS011     import IAQ_SDS011
 from IAQ_SCD30      import IAQ_SCD30
 from IAQ_MQgas      import IAQ_MQgas
+from IAQ_GPS        import IAQ_GPS
 
 class SensorIdEnum(Enum):
     MQ2    = 0
@@ -43,6 +44,7 @@ class SensorIdEnum(Enum):
     BME680 = 6
     SDS011 = 7
     SCD30  = 8
+    XA1110 = 9
 
 class Sensor:
     name        = None
@@ -70,7 +72,7 @@ class Sensor:
             if "SCD30" in self.name:
                 self._Sensor = IAQ_SCD30(self.sid)
             if "XA1110" in self.name:
-                pass
+                self._Sensor = IAQ_GPS(self.sid)
         except SensorSetupError:
             raise SensorSetupError('Could not setup sensor ' + self.name)
 
@@ -103,8 +105,8 @@ class Sensor:
     def getLocation(self):
         if self.status == "Off": return None
         if "XA1110" in self.name:
-            pass
-
+            return self._Sensor.getLocation()
+            
     def getDate(self):
         if self.status == "Off": return None
         if "XA1110" in self.name:

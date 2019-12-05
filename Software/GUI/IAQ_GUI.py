@@ -94,6 +94,7 @@ class GUI(tk.Tk):
         self.title('Zephyrus IAQ')
         self.resizable(0, 0)
         self.configure(bg=self.BACKGROUND_CLR)
+        self.attributes("-fullscreen",False)
 
         ############################################
         #           StartPage

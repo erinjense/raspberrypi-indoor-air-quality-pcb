@@ -103,32 +103,32 @@ class DAC43608:
         self.writeDac(self.__DAC43608_DEVICE_CONFIG, config_byte)
         return
 
-    def writeDacA(self, resolution):
-        self.chA = resolution
+    def writeDacA(self, DACn_DATA):
+        self.chA = DACn_DATA
         self.writeDac(self.__DAC43608_DACA_DATA, self.chA)
         return
 
-    def writeDacB(self, resolution):
-        self.chB = resolution
+    def writeDacB(self, DACn_DATA):
+        self.chB = DACn_DATA
         self.writeDac(self.__DAC43608_DACB_DATA, self.chB)
         return
 
-    def writeDacC(self, resolution):
-        self.chC = resolution
+    def writeDacC(self, DACn_DATA):
+        self.chC = DACn_DATA
         self.writeDac(self.__DAC43608_DACC_DATA, self.chC)
         return
 
-    def writeDacD(self, resolution):
-        self.chD = resolution
+    def writeDacD(self, DACn_DATA):
+        self.chD = DACn_DATA
         self.writeDac(self.__DAC43608_DACD_DATA, self.chD)
         return
 
-    def writeDacE(self, resolution):
-        self.chE = resolution
+    def writeDacE(self, DACn_DATA):
+        self.chE = DACn_DATA
         self.writeDac(self.__DAC43608_DACE_DATA, self.chE)
         return
 
-    def writeDacF(self, resolution):
-        self.chF = resolution
+    def writeDacF(self, DACn_DATA):
+        self.chF = DACn_DATA
         self.writeDac(self.__DAC43608_DACF_DATA, self.chF)
         return

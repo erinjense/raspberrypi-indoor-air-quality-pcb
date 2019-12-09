@@ -57,7 +57,7 @@ class SensorConfig:
             }
     SDS011_DICT = {
             "Port"   : '/dev/ttyUSB0',
-            "Focus": ['PM2.5 (PPM)','PM10 (PPM)'],
+            "Focus": ['PM2.5 (ug/m^3)','PM10 (ug/m^3)'],
             "DataKeys": ['PM2.5 (ug/m^3)','PM10 (ug/m^3)'],
             "Status"  : 'On'
             }
@@ -69,8 +69,9 @@ class SensorConfig:
             }
     XA1110_DICT = {
             "Port"   : '/dev/ttySOFT0',
-            "Focus"  : 'Location',
-            "DataKeys": ['']
+            "Focus"  : 'Location (Degrees)',
+            "DataKeys": ['Location (Degrees)']
+            "Status"  : 'On'
             }
 
     SENSOR_DICT = {
